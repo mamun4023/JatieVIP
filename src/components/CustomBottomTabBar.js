@@ -1,6 +1,8 @@
 import { NAVIGATION } from '@/constants';
+import { FontFamily } from '@/theme/Fonts';
+import { useTheme } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { TabBarIcon } from './TabBarIcon';
 
 const tabBarLabel = {
@@ -20,6 +22,7 @@ const tabBarIcon = {
 };
 
 function CustomBottomTabBar({ state, descriptors, navigation }) {
+  const { colors } = useTheme();
   return (
     <View style={{ flexDirection: 'row' }}>
       {state.routes.map((route, index) => {
@@ -62,18 +65,22 @@ function CustomBottomTabBar({ state, descriptors, navigation }) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{
-              flex: 1,
-              padding: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+            style={styles.tabBoxContainer}
           >
             <TabBarIcon
-              color={isFocused ? '#D3A708' : '#222'}
+              color={isFocused ? colors.activeTabIcon : colors.inactiveTabIcon}
               routeName={tabBarIcon[route.name]}
             />
-            <Text style={{ color: isFocused ? '#000' : '#222', fontSize: 12 }}>
+            <Text
+              style={[
+                styles.labelStyle,
+                {
+                  color: isFocused
+                    ? colors.activeTabLabel
+                    : colors.inactiveTabLabel,
+                },
+              ]}
+            >
               {tabBarLabel[label]}
             </Text>
           </TouchableOpacity>
@@ -82,5 +89,19 @@ function CustomBottomTabBar({ state, descriptors, navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBoxContainer: {
+    flex: 1,
+    padding: 6,
+    paddingBottom: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  labelStyle: {
+    fontSize: 14,
+    fontFamily: FontFamily.Recoleta_semibold,
+  },
+});
 
 export { CustomBottomTabBar };
