@@ -1,0 +1,31 @@
+import { FontFamily } from '@/theme/Fonts';
+import { StyleSheet } from 'react-native';
+import { ms } from 'react-native-size-matters';
+
+export const styles = colors =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: ms(20),
+      backgroundColor: 'gray',
+    },
+    subContainer: {
+      position: 'absolute',
+      bottom: ms(30),
+      alignItems: 'center',
+    },
+    socialContainer: {
+      flexDirection: 'row',
+      marginTop: ms(33),
+      marginBottom: ms(18),
+      justifyContent: 'space-between',
+      width: '80%',
+    },
+    copyrightTitle: {
+      fontFamily: FontFamily.BrandonGrotesque_regular,
+      fontSize: ms(15, 0.3),
+      color: colors.white,
+    },
+  });

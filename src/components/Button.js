@@ -3,27 +3,32 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { TextStyles } from '@/theme';
+import { useMemo } from 'react';
+import { ms } from 'react-native-size-matters';
 
-const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5,
-    borderWidth: 1,
-    padding: 10,
-    width: '100%',
-  },
-});
+const customStyles = colors =>
+  StyleSheet.create({
+    button: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: ms(8),
+      padding: ms(10),
+      width: '100%',
+      backgroundColor: colors.primary,
+    },
+  });
 
 export function Button({ style, textStyle, title, ...rest }) {
   const { colors } = useTheme();
+
+  const styles = useMemo(() => customStyles(colors), [colors]);
 
   return (
     <TouchableOpacity
       style={[styles.button, { borderColor: colors.border }, style]}
       {...rest}
     >
-      <Text style={[{ color: colors.text }, TextStyles.label, textStyle]}>
+      <Text style={[{ color: colors.white }, TextStyles.buttonText, textStyle]}>
         {title}
       </Text>
     </TouchableOpacity>

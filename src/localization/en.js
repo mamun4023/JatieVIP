@@ -21,4 +21,9 @@ export const en = {
     logout: 'Logout',
     message: 'This screen has the iOS native large header.',
   },
+  Welcome: {
+    login: 'Login',
+    signup: 'Sign Up',
+    copyright: '© JatieVIP, Inc. All rights reserved.',
+  },
 };

@@ -1,4 +1,5 @@
 export const NAVIGATION = {
+  welcome: 'Welcome',
   home: 'Home',
   login: 'Login',
   profile: 'Profile',

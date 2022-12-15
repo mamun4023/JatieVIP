@@ -70,34 +70,34 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = JatieVIP/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = JatieVIP/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = JatieVIP/main.m; sourceTree = "<group>"; };
-		161A0BAB381A49D897A133AB /* Recoleta-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Thin.ttf"; path = "../src/assets/fonts/Recoleta-Thin.ttf"; sourceTree = "<group>"; };
+		161A0BAB381A49D897A133AB /* Recoleta-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Thin.ttf"; path = "../src/assets/fonts/Recoleta-Thin.ttf"; sourceTree = "<group>"; };
 		264BAF310DD89192D239A246 /* Pods-JatieVIPCommonPods-JatieVIPDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPDev.debug.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev.debug.xcconfig"; sourceTree = "<group>"; };
-		29FCAB1F02C14E359CB1E64C /* Recoleta-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Light.ttf"; path = "../src/assets/fonts/Recoleta-Light.ttf"; sourceTree = "<group>"; };
-		365FA88F413F4CAE8FCE37DB /* BrandonGrotesque-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-MediumItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-MediumItalic.otf"; sourceTree = "<group>"; };
-		3E2A86DA44A242D88DD0C1BC /* Recoleta-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Medium.ttf"; path = "../src/assets/fonts/Recoleta-Medium.ttf"; sourceTree = "<group>"; };
+		29FCAB1F02C14E359CB1E64C /* Recoleta-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Light.ttf"; path = "../src/assets/fonts/Recoleta-Light.ttf"; sourceTree = "<group>"; };
+		365FA88F413F4CAE8FCE37DB /* BrandonGrotesque-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-MediumItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-MediumItalic.otf"; sourceTree = "<group>"; };
+		3E2A86DA44A242D88DD0C1BC /* Recoleta-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Medium.ttf"; path = "../src/assets/fonts/Recoleta-Medium.ttf"; sourceTree = "<group>"; };
 		4F3101417500C5EA9B03D2A3 /* Pods-JatieVIPCommonPods-JatieVIPDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPDev.release.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev.release.xcconfig"; sourceTree = "<group>"; };
-		59718F5FBC4F4B5EA0F22C54 /* Recoleta-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Regular.ttf"; path = "../src/assets/fonts/Recoleta-Regular.ttf"; sourceTree = "<group>"; };
+		59718F5FBC4F4B5EA0F22C54 /* Recoleta-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Regular.ttf"; path = "../src/assets/fonts/Recoleta-Regular.ttf"; sourceTree = "<group>"; };
 		5E8F9CD897B3549DB541CD9A /* libPods-JatieVIPCommonPods-JatieVIPStaging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JatieVIPCommonPods-JatieVIPStaging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		663E97D2F6E64EBDBCA3F6E0 /* BrandonGrotesque-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Regular.otf"; path = "../src/assets/fonts/BrandonGrotesque-Regular.otf"; sourceTree = "<group>"; };
-		66CA798C1C394B98A23DAC8A /* Recoleta-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Black.ttf"; path = "../src/assets/fonts/Recoleta-Black.ttf"; sourceTree = "<group>"; };
-		6F714FADECD94BFB9C525E44 /* BrandonGrotesque-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Black.otf"; path = "../src/assets/fonts/BrandonGrotesque-Black.otf"; sourceTree = "<group>"; };
+		663E97D2F6E64EBDBCA3F6E0 /* BrandonGrotesque-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Regular.otf"; path = "../src/assets/fonts/BrandonGrotesque-Regular.otf"; sourceTree = "<group>"; };
+		66CA798C1C394B98A23DAC8A /* Recoleta-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Black.ttf"; path = "../src/assets/fonts/Recoleta-Black.ttf"; sourceTree = "<group>"; };
+		6F714FADECD94BFB9C525E44 /* BrandonGrotesque-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Black.otf"; path = "../src/assets/fonts/BrandonGrotesque-Black.otf"; sourceTree = "<group>"; };
 		8214DFE7F62E8A3FC04BE4E9 /* Pods-JatieVIPCommonPods-JatieVIPStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPStaging.release.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging.release.xcconfig"; sourceTree = "<group>"; };
-		8377C8888121481C924C4A55 /* BrandonGrotesque-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-BoldItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-BoldItalic.otf"; sourceTree = "<group>"; };
-		965DA0119491402B81B92B98 /* BrandonGrotesque-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Light.otf"; path = "../src/assets/fonts/BrandonGrotesque-Light.otf"; sourceTree = "<group>"; };
-		9BBD4796F9F34EC392C52D1C /* Recoleta-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Bold.ttf"; path = "../src/assets/fonts/Recoleta-Bold.ttf"; sourceTree = "<group>"; };
+		8377C8888121481C924C4A55 /* BrandonGrotesque-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-BoldItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-BoldItalic.otf"; sourceTree = "<group>"; };
+		965DA0119491402B81B92B98 /* BrandonGrotesque-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Light.otf"; path = "../src/assets/fonts/BrandonGrotesque-Light.otf"; sourceTree = "<group>"; };
+		9BBD4796F9F34EC392C52D1C /* Recoleta-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Bold.ttf"; path = "../src/assets/fonts/Recoleta-Bold.ttf"; sourceTree = "<group>"; };
 		A1EF91A50B46AD681D2422E8 /* Pods-JatieVIPCommonPods-JatieVIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIP.debug.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP.debug.xcconfig"; sourceTree = "<group>"; };
-		A522AB3D3458474FA71A76AD /* BrandonGrotesque-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Medium.otf"; path = "../src/assets/fonts/BrandonGrotesque-Medium.otf"; sourceTree = "<group>"; };
+		A522AB3D3458474FA71A76AD /* BrandonGrotesque-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Medium.otf"; path = "../src/assets/fonts/BrandonGrotesque-Medium.otf"; sourceTree = "<group>"; };
 		AEDB9F8D05F163A04542EE84 /* libPods-JatieVIPCommonPods-JatieVIPDev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JatieVIPCommonPods-JatieVIPDev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB4C1255746D451EBFC2FB77 /* BrandonGrotesque-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-ThinItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-ThinItalic.otf"; sourceTree = "<group>"; };
+		BB4C1255746D451EBFC2FB77 /* BrandonGrotesque-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-ThinItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-ThinItalic.otf"; sourceTree = "<group>"; };
 		C8B53951CEFB78E175833692 /* Pods-JatieVIPCommonPods-JatieVIPStaging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPStaging.debug.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging.debug.xcconfig"; sourceTree = "<group>"; };
-		D5D6D3F684884F0F8E02EB25 /* Recoleta-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-SemiBold.ttf"; path = "../src/assets/fonts/Recoleta-SemiBold.ttf"; sourceTree = "<group>"; };
+		D5D6D3F684884F0F8E02EB25 /* Recoleta-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-SemiBold.ttf"; path = "../src/assets/fonts/Recoleta-SemiBold.ttf"; sourceTree = "<group>"; };
 		DC57F142DCAB2A1FCC2F561B /* Pods-JatieVIPCommonPods-JatieVIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIP.release.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP.release.xcconfig"; sourceTree = "<group>"; };
-		DDC80FF2E87246E696DFD31B /* BrandonGrotesque-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-LightItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-LightItalic.otf"; sourceTree = "<group>"; };
+		DDC80FF2E87246E696DFD31B /* BrandonGrotesque-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-LightItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-LightItalic.otf"; sourceTree = "<group>"; };
 		E0312BE9AE405CB225D99CF8 /* Pods-JatieVIPCommonPods-JatieVIPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPTests.debug.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9D342835C5E6A64D513F2FD /* libPods-JatieVIPCommonPods-JatieVIPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JatieVIPCommonPods-JatieVIPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAEA88FD91234D14883E3B8B /* BrandonGrotesque-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Bold.otf"; path = "../src/assets/fonts/BrandonGrotesque-Bold.otf"; sourceTree = "<group>"; };
+		EAEA88FD91234D14883E3B8B /* BrandonGrotesque-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Bold.otf"; path = "../src/assets/fonts/BrandonGrotesque-Bold.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FCF678835649404A86BB025A /* BrandonGrotesque-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-RegularItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-RegularItalic.otf"; sourceTree = "<group>"; };
+		FCF678835649404A86BB025A /* BrandonGrotesque-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-RegularItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-RegularItalic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,7 +251,6 @@
 				BB4C1255746D451EBFC2FB77 /* BrandonGrotesque-ThinItalic.otf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -974,6 +973,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = JatieVIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -988,6 +988,7 @@
 				PRODUCT_NAME = JatieVIP;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -999,6 +1000,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = JatieVIP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1012,6 +1014,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.airlystudio.jatievip;
 				PRODUCT_NAME = JatieVIP;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

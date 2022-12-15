@@ -5,7 +5,7 @@ export const theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: '#B0BEC5',
+      primary: '#D3A708',
       secondary: '#29434E',
       error: '#D32F2F',
       text: '#212121',
@@ -14,6 +14,7 @@ export const theme = {
       inactiveTabIcon: '#80818E',
       activeTabLabel: '#2B2D42',
       inactiveTabLabel: '#80818E',
+      white: '#fff',
     },
   },
   dark: {
