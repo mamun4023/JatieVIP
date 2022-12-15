@@ -1,12 +1,18 @@
 import { NAVIGATION } from '@/constants';
 import { FontFamily } from '@/theme/Fonts';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useTheme } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { TabBarIcon } from './TabBarIcon';
+import {
+  faNewspaper,
+  faMessage,
+  faUserCircle,
+} from '@fortawesome/free-regular-svg-icons';
+import { faCrown, faGift } from '@fortawesome/free-solid-svg-icons';
 
 const tabBarLabel = {
-  [NAVIGATION.homeNavigator]: 'Home',
+  [NAVIGATION.homeNavigator]: 'Feed',
   [NAVIGATION.messageNavigator]: 'Message',
   [NAVIGATION.exclusiveNavigator]: 'Exclusive',
   [NAVIGATION.giveawayNavigator]: 'Giveaway',
@@ -14,11 +20,11 @@ const tabBarLabel = {
 };
 
 const tabBarIcon = {
-  [NAVIGATION.homeNavigator]: 'Home',
-  [NAVIGATION.messageNavigator]: 'Profile',
-  [NAVIGATION.exclusiveNavigator]: 'Profile',
-  [NAVIGATION.giveawayNavigator]: 'Profile',
-  [NAVIGATION.profileNavigator]: 'Profile',
+  [NAVIGATION.homeNavigator]: faNewspaper,
+  [NAVIGATION.messageNavigator]: faMessage,
+  [NAVIGATION.exclusiveNavigator]: faCrown,
+  [NAVIGATION.giveawayNavigator]: faGift,
+  [NAVIGATION.profileNavigator]: faUserCircle,
 };
 
 function CustomBottomTabBar({ state, descriptors, navigation }) {
@@ -67,10 +73,12 @@ function CustomBottomTabBar({ state, descriptors, navigation }) {
             onLongPress={onLongPress}
             style={styles.tabBoxContainer}
           >
-            <TabBarIcon
+            <FontAwesomeIcon
+              icon={tabBarIcon[route.name]}
+              size={20}
               color={isFocused ? colors.activeTabIcon : colors.inactiveTabIcon}
-              routeName={tabBarIcon[route.name]}
             />
+
             <Text
               style={[
                 styles.labelStyle,
@@ -99,6 +107,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   labelStyle: {
+    paddingTop: 5,
     fontSize: 14,
     fontFamily: FontFamily.Recoleta_semibold,
   },
