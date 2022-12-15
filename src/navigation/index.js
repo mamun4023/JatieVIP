@@ -6,6 +6,7 @@ import { AppNavigator } from '@/navigation/AppNavigator';
 import { AuthNavigator } from '@/navigation/AuthNavigator';
 import { getUser } from '@/selectors/UserSelectors';
 import { theme } from '@/theme';
+import { navigationRef } from './RootNavigation';
 
 export function RootNavigator() {
   const user = useSelector(getUser);
@@ -13,7 +14,7 @@ export function RootNavigator() {
 
   return (
     // Force use "light" color scheme for now
-    <NavigationContainer theme={theme['light']}>
+    <NavigationContainer ref={navigationRef} theme={theme['light']}>
       {user ? <AppNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
