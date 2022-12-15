@@ -12,7 +12,8 @@ export function RootNavigator() {
   const scheme = useColorScheme();
 
   return (
-    <NavigationContainer theme={theme[scheme]}>
+    // Force use "light" color scheme for now
+    <NavigationContainer theme={theme['light']}>
       {user ? <AppNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
