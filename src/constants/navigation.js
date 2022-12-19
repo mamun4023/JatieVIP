@@ -13,4 +13,6 @@ export const NAVIGATION = {
   exclusiveNavigator: 'ExclusiveNavigator',
   giveawayNavigator: 'GiveawayNavigator',
   profileNavigator: 'ProfileNavigator',
+  signUp: 'SignUp',
+  addProfilePicture: 'AddProfilePicture',
 };

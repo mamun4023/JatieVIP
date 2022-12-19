@@ -1,7 +1,14 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NAVIGATION } from '@/constants';
-import { EnterOtp, Login, SetupUserId, Welcome } from '@/screens';
+import {
+  AddProfilePicture,
+  EnterOtp,
+  Login,
+  SetupUserId,
+  SignUp,
+  Welcome,
+} from '@/screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +35,16 @@ export function AuthNavigator() {
       <Stack.Screen
         component={SetupUserId}
         name={NAVIGATION.setupUserId}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        component={SignUp}
+        name={NAVIGATION.signUp}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        component={AddProfilePicture}
+        name={NAVIGATION.addProfilePicture}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

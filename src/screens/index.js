@@ -7,3 +7,5 @@ export { Giveaway } from '@/screens/Giveaway/Giveaway';
 export { Profile } from '@/screens/Profile/Profile';
 export { EnterOtp } from '@/screens/EnterOtp/EnterOtp';
 export { SetupUserId } from '@/screens/SetupUserId/SetupUserId';
+export { SignUp } from '@/screens/SignUp/SignUp';
+export { AddProfilePicture } from '@/screens/AddProfilePicture/AddProfilePicture';

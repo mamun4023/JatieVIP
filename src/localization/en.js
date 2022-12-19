@@ -46,4 +46,23 @@ export const en = {
     signup: 'Sign Up',
     copyright: '© JatieVIP, Inc. All rights reserved.',
   },
+  SignUp: {
+    title: 'Tell us a little more about yourself',
+    yourName: 'Your Name',
+    name: 'Enter your name',
+    email: 'Email',
+    emailPlaceHolder: 'Enter your email',
+    birthday: 'Birthday',
+    gender: 'Gender',
+    country: 'Country',
+    dobPlaceHolder: 'Select your date of birth',
+    genderPlaceHolder: 'Select your gender',
+    countryPlaceHolder: 'Select your country',
+  },
+  addYourProfilePicture: {
+    title: 'Add Your Profile Picture',
+    upload: 'Upload',
+    Finish: 'Finish',
+    skip: 'Skip',
+  },
 };

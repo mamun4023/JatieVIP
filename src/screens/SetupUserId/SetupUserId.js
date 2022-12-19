@@ -8,6 +8,8 @@ import { styles } from '@/screens/EnterOtp/EnterOtp.styles';
 import { errorsSelector } from '@/selectors/ErrorSelectors';
 import { isLoadingSelector } from '@/selectors/StatusSelectors';
 import { AuthHeader } from '@/components/AuthHeader';
+import { navigationRef } from '@/navigation/RootNavigation';
+import { NAVIGATION } from '@/constants';
 
 export function SetupUserId() {
   const [userId, setUserId] = useState('');
@@ -21,7 +23,9 @@ export function SetupUserId() {
     shallowEqual
   );
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    navigationRef.navigate(NAVIGATION.signUp);
+  };
 
   return (
     <View style={styles.container}>

@@ -19,6 +19,7 @@ export const theme = {
       hyperlink: '#9381FF',
       textFieldBackgroundColor: '#F8F8F9',
       textFieldBorderColor: '#F2F2F3',
+      userBackgroundColor: '#F8F2DA',
     },
   },
   dark: {
