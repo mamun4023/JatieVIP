@@ -32,7 +32,6 @@ export function EnterOtp() {
   );
 
   const handleSubmit = () => {
-    // dispatch(login(username, password));
     navigationRef.navigate(NAVIGATION.setupUserId);
   };
 
