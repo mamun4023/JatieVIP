@@ -25,11 +25,16 @@ export const en = {
     privacyPolicy: 'Privacy Policy',
   },
   enterOtp: {
-    title: 'Enter OTP to continue',
+    title: 'Enter OTP to \ncontinue',
     enterTheVerificationCode:
       'Please enter the verification code that was sent to',
     edit: 'Edit',
     sorryCodeDidnotMatch: 'Sorry, the code didn’t match. Resend',
+  },
+  setupUserId: {
+    title: 'Setup your \nUser ID',
+    subtitle: 'Select your User ID',
+    placeholder: '@username',
   },
   profile: {
     header: 'Profile',

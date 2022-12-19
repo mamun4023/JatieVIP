@@ -3,6 +3,7 @@ export const NAVIGATION = {
   home: 'Home',
   login: 'Login',
   enterOtp: 'EnterOtp',
+  setupUserId: 'SetupUserId',
   profile: 'Profile',
   message: 'Message',
   exclusive: 'Exclusive',

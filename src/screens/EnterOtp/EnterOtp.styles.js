@@ -6,7 +6,6 @@ import { ms } from 'react-native-size-matters';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: ms(70),
     paddingHorizontal: ms(20),
   },
   submitButton: {

@@ -12,6 +12,9 @@ import { Logo } from '@/assets';
 import { TextStyles, theme } from '@/theme';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 import { useRef } from 'react';
+import { AuthHeader } from '@/components/AuthHeader';
+import { navigationRef } from '@/navigation/RootNavigation';
+import { NAVIGATION } from '@/constants';
 
 export function EnterOtp() {
   const dispatch = useDispatch();
@@ -30,16 +33,12 @@ export function EnterOtp() {
 
   const handleSubmit = () => {
     // dispatch(login(username, password));
+    navigationRef.navigate(NAVIGATION.setupUserId);
   };
 
   return (
     <View style={styles.container}>
-      <View style={{ width: '80%' }}>
-        <View style={{ marginBottom: ms(10) }}>
-          <Logo height={ms(70)} width={ms(70)} />
-        </View>
-        <Text style={TextStyles.title}>{strings.enterOtp.title}</Text>
-      </View>
+      <AuthHeader title={strings.enterOtp.title} />
       <Text style={styles.subTitle}>
         {strings.enterOtp.enterTheVerificationCode + ' +1 9876543210'}
         {'   '}
