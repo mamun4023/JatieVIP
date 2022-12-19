@@ -1,9 +1,12 @@
 
 import React, {useState} from 'react';
-import { Text, View, Image, StyleSheet, StatusBar, Button} from 'react-native';
-import { theme } from '@/theme'; 
-import { TextStyles } from '@/theme';
-import { FontFamily } from '@/theme/Fonts';
+import { 
+  Text, 
+  View, 
+  Image, 
+  StyleSheet, 
+  StatusBar, 
+} from 'react-native';
 import {
   faSliders, 
   faSearch, 
@@ -12,14 +15,17 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TextStyles, theme } from '@/theme';
+import { FontFamily } from '@/theme/Fonts';
+import {NAVIGATION} from '@/constants'
 import { Icon } from '@/components';
 import MyStatus from './myStatus';
 import MyActivity from './myActivity';
 import {StatusNavigatorBar} from '@/components'
+import { strings } from '@/localization';
 
 export function Profile({navigation}) {
   const [status, setStatus] = useState('my_status')
-
   return (
     <View style={styles.container}>
       <StatusBar barStyle= 'dark-content'  backgroundColor= 'transparent' />
@@ -40,6 +46,7 @@ export function Profile({navigation}) {
             <Icon 
               icon= {faSliders} 
               size = {20}
+              onPress = {()=> navigation.navigate(NAVIGATION.profileSetting)}
               style={styles.icon}   
             />
             <Icon 
@@ -57,18 +64,18 @@ export function Profile({navigation}) {
       </View>
       <View style = {styles.followerContainer}>
         <TouchableOpacity> 
-          <Text style = {styles.follower} onPress = {()=> navigation.navigate('followers')}> Followers  
+          <Text style = {styles.follower} onPress = {()=> navigation.navigate(NAVIGATION.followers)}> Followers  
             <Text style ={{fontWeight : 'bold'}}> 24 </Text>
           </Text>
         </TouchableOpacity>
         <TouchableOpacity>  
-          <Text style = {styles.follower} onPress = {()=> navigation.navigate('following')} > Following  
+          <Text style = {styles.follower} onPress = {()=> navigation.navigate(NAVIGATION.following)} > Following  
             <Text style = {{fontWeight : 'bold'}}> 30 </Text>
           </Text>
         </TouchableOpacity>
       </View>
       <StatusNavigatorBar 
-        title1 = "MY Status"
+        title1 = "My Status"
         key1  = "my_status"
         title2 = "My Activity"
         key2 = "my_activity"
@@ -90,14 +97,14 @@ export function Profile({navigation}) {
               left : '25%'
             }}
            > 
-              <Text style = {[TextStyles.label, {color : 'black'}]} > Share To Feed</Text>
+              <Text style = {[TextStyles.label, {color : 'black'}]} >{strings.profile.feedTitle}</Text>
               <View style = {{
                   flexDirection : 'row',
                   justifyContent : 'space-around',
                   alignItems : 'center'
                 }}
               > 
-                <Text> What's on your mind? </Text>
+                <Text> {strings.profile.feedLebel} </Text>
                 <Icon 
                   icon={faArrowRight}
                   size = {15}

@@ -3,11 +3,11 @@ import {
     View, 
     Modal, 
     TouchableWithoutFeedback, 
-    StyleSheet
+    StyleSheet,
 } from 'react-native';
 import {theme} from '@/theme'
 
-export function ModalDown({open, setOpen, children}){
+export function ModalDown({open, setOpen, height, children}){
     return(
             <Modal
                 visible = {open}
@@ -16,7 +16,11 @@ export function ModalDown({open, setOpen, children}){
             >
                 <TouchableWithoutFeedback onPress={()=> setOpen(false)}>
                     <View style = {styles.container}> 
-                        <View style = {styles.body}> {children} </View>
+                        <View style = {[styles.body, {
+                             height : height,
+                        }]}> 
+                            {children}
+                        </View>
                     </View>
               </TouchableWithoutFeedback>
             </Modal>
@@ -29,10 +33,10 @@ const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.primaryBg,
    },
    body: {
-    height : 200,
     width : '100%',
     backgroundColor : theme.light.colors.white,
     position : 'absolute',
     bottom : 0,
+    padding : 10
    } 
 })

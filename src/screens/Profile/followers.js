@@ -1,4 +1,3 @@
-import { Button, Icon } from '@/components';
 import React, {useState} from 'react';
 import {
     View, 
@@ -9,24 +8,20 @@ import {
     Image, 
     Modal,
     TouchableWithoutFeedback,
-    TouchableOpacity 
+    TouchableOpacity, 
+    Alert
 } from 'react-native';
 import {
-    faComment, 
     faEllipsis,
-    faShareNodes,
-    faCircleUp,
-    faCircleDown,
     faArrowLeft,
-    faUserMinus,
     faMessage,
     faFlag,
     faXmark,
     faUserPlus
   } from '@fortawesome/free-solid-svg-icons';
-  import { theme } from '@/theme'; 
-  import { TextStyles } from '@/theme';
-
+  import { TextStyles, theme } from '@/theme';
+  import { Icon, Badge } from '@/components';
+  import {ModalDown, ModalList} from '@/components';
 
 const Data = [
     {
@@ -99,31 +94,19 @@ const Data = [
 
 export default function Followers({navigation}){
     const [open, setOpen] = useState(false);
-
     return(
         <View style = {styles.container}>
             <StatusBar barStyle= 'dark-content' backgroundColor= 'transparent' />
-            <View style ={{
-                padding : 5
-            }} >
-                <Icon 
-                    icon={faArrowLeft}
-                    size = {20}
-                    onPress = {()=> navigation.goBack()}
-                />
+            <View style ={{ padding : 5 }}>
+              <Icon 
+                  icon={faArrowLeft}
+                  size = {20}
+                  onPress = {()=> navigation.goBack()}
+              />
             </View>
-            <View style = {{
-                paddingTop : 5,
-                paddingBottom : 5,
-                flexDirection : 'row',
-                alignItems : 'center'
-            }}> 
+            <View style = {styles.listContainer}> 
                 <Text style = {TextStyles.header}> Followers </Text>
-                <Text style = {[TextStyles.title, {
-                    backgroundColor : "#eee",
-                    padding : 3,
-                    borderRadius : 100
-                }]}>  24 </Text>
+                <Badge count={100} size = {18} />
             
             </View>
             <View>
@@ -174,103 +157,35 @@ export default function Followers({navigation}){
                     } }
                 />
             </View>
-
-            {/* modal start */}
-            <Modal
-              visible = {open}
-              transparent = {true}
-              animationType = "slide"
-            
-            >
-              <TouchableWithoutFeedback 
-                onPress={()=> setOpen(false)}
-              >
-              <View 
-                style = {{
-                  flex : 1,
-                  backgroundColor: 'rgba(232, 174, 11, 0.2)',
-            
-                }}
-              > 
-                <View
-                  style = {{
-                    height : 200,
-                    width : '100%',
-                    backgroundColor : 'rgba(255,255,255,1)',
-                    position : 'absolute',
-                    bottom : 0,
-                  }}
-                >
-
-                
-                  <View style = {{
-
-                  }}>
-                    <TouchableOpacity style = {{
-                      flexDirection : 'row',
-                      padding : 10,
-                      alignItems : 'center'
-                    }}>
-                      
-                      <Icon 
-                        icon={faUserPlus}
-                        size = {20}
-                        style = {styles.icon}
-                      />
-                      <Text> Follow </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity 
-                      style = {{
-                        flexDirection : 'row',
-                        padding : 10,
-                        alignItems : 'center'
-                      }}
-                    > 
-                        <Icon 
-                          icon={faMessage}
-                          size = {20}
-                        />
-                        <Text> Send private message </Text>
-                       
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                      style = {{
-                        flexDirection : 'row',
-                        padding : 10,
-                        alignItems : 'center'
-                      }}
-                    > 
-                        <Icon 
-                          icon={faFlag}
-                          size = {20}
-                        />
-                        <Text> Report User </Text>
-                       
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                      style = {{
-                        flexDirection : 'row',
-                        padding : 10,
-                        alignItems : 'center'
-                      }}
-                    > 
-                        <Icon 
-                          icon={faXmark}
-                          size = {20}
-                        />
-                        <Text> Block </Text>
-                       
-                    </TouchableOpacity>
-
-                  </View>
-                  
-                  
-                  </View>
-              </View>
-              </TouchableWithoutFeedback>
-            </Modal>
-            
+            <ModalDown 
+              open={open} 
+              setOpen = {setOpen}
+            > 
+                <ModalList 
+                  title= "Follow"
+                  icon={faUserPlus}
+                  iconBg = {theme.light.colors.infoBg}
+                />
+                <ModalList 
+                  title= "Send Message"
+                  icon={faMessage}
+                  iconColor = {theme.light.colors.info}
+                  iconBg = {theme.light.colors.infoBgLight}
+                  onPress = {()=> Alert.alert("working")}
+                />
+                 <ModalList 
+                  title= "Report"
+                  icon={faFlag}
+                  iconColor = {theme.light.colors.info}
+                  iconBg = {theme.light.colors.infoBgLight}
+                />
+                 <ModalList 
+                  title= "Block"
+                  icon={faXmark}
+                  iconColor = {theme.light.colors.info}
+                  iconBg = {theme.light.colors.infoBgLight}
+                />
+            </ModalDown>
         </View>
     )
 }
@@ -281,5 +196,11 @@ const styles = StyleSheet.create({
         flex : 1,
         padding : 15,
         backgroundColor : "white"
+    },
+    listContainer : {
+      paddingTop : 5,
+      paddingBottom : 5,         
+      flexDirection : 'row',
+      alignItems : 'center'
     }
 })

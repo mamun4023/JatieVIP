@@ -4,6 +4,7 @@ import { NAVIGATION } from '@/constants';
 import { Profile } from '@/screens';
 import Following from '@/screens/Profile/following';
 import Followers from '@/screens/Profile/followers';
+import Settings from '@/screens/Profile/settings';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,13 +20,18 @@ export function ProfileNavigator() {
         options={{ headerLargeTitle: false }}
       />
       <Stack.Screen
-        name= 'followers'
+        name= {NAVIGATION.followers}
         component={Followers}
       />
       <Stack.Screen
-        name= 'following'
+        name= {NAVIGATION.following}
         component={Following}
       />
+      <Stack.Screen
+        name= {NAVIGATION.profileSetting}
+        component={Settings}
+      />
+
 
     </Stack.Navigator>
   );

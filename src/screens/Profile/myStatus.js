@@ -15,7 +15,7 @@ import {
 import { Icon } from '@/components';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {ModalDown} from '@/components'
+import {ModalDown, ModalList} from '@/components'
 
 export default function MyStatus() {
   const [open, setOpen] = useState(false)
@@ -92,7 +92,6 @@ export default function MyStatus() {
                             color : 'gray'
                           }]}
                         />
-
                         <Icon 
                           icon={faEllipsis}
                           size = {15}
@@ -101,7 +100,6 @@ export default function MyStatus() {
                           }]}
                           onPress = {()=> setOpen(true)}
                         />
-                      
                       </View>
                    </View>
                 </View>
@@ -110,34 +108,18 @@ export default function MyStatus() {
               open={open}
               setOpen = {setOpen}
             > 
-
-              <View>
-                <TouchableOpacity style = {{
-                  flexDirection : 'row',
-                  padding : 10,
-                  alignItems : 'center'
-                }}>
-                  <Icon 
-                    icon={faPen}
-                    size = {20}
-                    style = {styles.icon}
-                  />
-                  {/* <Text> Edit post</Text> */}
-                </TouchableOpacity>
-                <TouchableOpacity 
-                  style = {{
-                    flexDirection : 'row',
-                    padding : 10,
-                    alignItems : 'center'
-                  }}
-                > 
-                    <Icon 
-                      icon={faTrash}
-                      size = {20}
-                    />
-                    {/* <Text> Delete post </Text> */}
-                </TouchableOpacity>
-              </View>
+            <ModalList 
+              title='Edit'
+              icon={faPen}
+              iconBg = {theme.light.colors.infoBgLight}
+              iconColor= {theme.light.colors.info}
+            />
+            <ModalList 
+              title='Remove'
+              icon={faTrash}
+              iconBg = {theme.light.colors.infoBgLight}
+              iconColor= {theme.light.colors.info}
+            />
             </ModalDown>
         </View>
   );
@@ -170,7 +152,7 @@ export const styles = StyleSheet.create({
     textAlign : 'justify'
   },
   icon : {
-    margin : 5
+    margin : 5,
   },
   footer : {
     flexDirection : "row",
@@ -178,5 +160,32 @@ export const styles = StyleSheet.create({
     backgroundColor : theme.light.colors.infoBgLight,
     padding : 8,
     borderRadius : 10
+  },
+
+  modalIconContainer: {
+    flexDirection : 'row',
+    margin : 10,
+    alignItems : 'center'
+  },
+
+  modalIcon : {
+    backgroundColor : theme.light.colors.infoBgLight,
+    padding : 3,
+    borderRadius : 100
+  },
+
+  editIcon : {
+    margin : 10,
+    color : theme.light.colors.info
+  },
+  removeIcon: {
+    margin : 10,
+    color : theme.light.colors.secondary
+  },
+  modalText : {
+    fontFamily : FontFamily.Recoleta_bold,
+    fontSize : 18,
+    paddingLeft : 8,
+    color : theme.light.colors.black
   }
 });
