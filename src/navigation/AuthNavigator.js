@@ -7,7 +7,9 @@ const Stack = createNativeStackNavigator();
 
 export function AuthNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{ contentStyle: { backgroundColor: '#fff' } }}
+    >
       <Stack.Screen
         component={Welcome}
         name={NAVIGATION.welcome}
