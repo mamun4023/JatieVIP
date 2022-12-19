@@ -1,32 +1,24 @@
 
-import React from 'react';
-import { Text, View, Image, StyleSheet, StatusBar } from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, Image, StyleSheet, StatusBar, Button} from 'react-native';
 import { theme } from '@/theme'; 
-import { styles } from '@/screens/Profile/Profile.styles';
 import { TextStyles } from '@/theme';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { FontFamily } from '@/theme/Fonts';
 import {
   faSliders, 
   faSearch, 
-  faComment, 
-  faEllipsis,
-  faShareNodes,
-  faCircleUp,
-  faCircleDown,
-  faAddressCard,
   faArrowRight,
   faNewspaper
 } from '@fortawesome/free-solid-svg-icons';
-import MyStatus from './myStatus';
-
 import {faBell} from '@fortawesome/free-regular-svg-icons';
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from '@/components';
-import { useState } from 'react';
+import MyStatus from './myStatus';
 import MyActivity from './myActivity';
+import {StatusNavigatorBar} from '@/components'
 
-export function Profile() {
-  const [myStatus, setMystatus] = useState(true)
+export function Profile({navigation}) {
+  const [status, setStatus] = useState('my_status')
 
   return (
     <View style={styles.container}>
@@ -44,7 +36,6 @@ export function Profile() {
             <Text style = {TextStyles.label}> @adamvoigt</Text>
         </View>
         </View>
-        
          <View style = {styles.iconContiner} > 
             <Icon 
               icon= {faSliders} 
@@ -64,26 +55,26 @@ export function Profile() {
             <View style = {styles.bellAlert}/> 
          </View>
       </View>
-      <View style = {styles.followerContainer} >
-            <Text style = {styles.follower} > Followers  <Text style ={{fontWeight : 'bold'}}>24 </Text></Text>
-            <Text style = {styles.follower} > Following  <Text style = {{fontWeight : 'bold'}}>30 </Text></Text>
+      <View style = {styles.followerContainer}>
+        <TouchableOpacity> 
+          <Text style = {styles.follower} onPress = {()=> navigation.navigate('followers')}> Followers  
+            <Text style ={{fontWeight : 'bold'}}> 24 </Text>
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>  
+          <Text style = {styles.follower} onPress = {()=> navigation.navigate('following')} > Following  
+            <Text style = {{fontWeight : 'bold'}}> 30 </Text>
+          </Text>
+        </TouchableOpacity>
       </View>
-      <View style = {styles.statusContainer} >
-          <View style = {styles.myStatus}>  
-            <Text 
-              style = {styles.statusText}
-              onPress = {()=> setMystatus(true)}  
-            > My Status 
-            
-            </Text> 
-          </View>
-          <View style = {styles.myActivity}>
-            <Text  
-              style = {styles.statusText}
-              onPress = {()=> setMystatus(false)} 
-              > My Activity </Text>  
-          </View>
-      </View>
+      <StatusNavigatorBar 
+        title1 = "MY Status"
+        key1  = "my_status"
+        title2 = "My Activity"
+        key2 = "my_activity"
+        status = {status} 
+        setStatus = {setStatus} 
+      />
       <View style = {styles.line}/> 
       <View  style = {styles.feedContainer} >
           <View style = {styles.feedIconContainer}>
@@ -99,21 +90,97 @@ export function Profile() {
               left : '25%'
             }}
            > 
-              <Text style = {TextStyles.label} > Share To Feed</Text>
-              <Text> What's on your mind? </Text>
+              <Text style = {[TextStyles.label, {color : 'black'}]} > Share To Feed</Text>
+              <View style = {{
+                  flexDirection : 'row',
+                  justifyContent : 'space-around',
+                  alignItems : 'center'
+                }}
+              > 
+                <Text> What's on your mind? </Text>
+                <Icon 
+                  icon={faArrowRight}
+                  size = {15}
+                  style = {{
+                    marginLeft : 120,
+                    color : 'gray'
+                  }}
+                />
+              </View>
            </View>
-          <View>
-            <Icon 
-              icon={faArrowRight}
-              size = {20}
-            />
-          </View>
       </View>
-      <MyStatus />
-      {/* <MyActivity/>
-      <MyActivity/>
-      <MyActivity/> */}
+      {status == 'my_status'? <MyStatus /> : <MyActivity/>}
     </View>
   );
 }
 
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor : 'white',
+  },
+  headerContainer : {
+    flexDirection : 'row',
+    justifyContent : 'space-between',
+    padding : 10
+  },
+  headerImageContainer : {
+    flexDirection : 'row'
+  },
+  headerImage : {
+    width: 50,
+    height: 50,
+    borderWidth: 2,
+    borderRadius: 75
+  },
+  iconContiner: {
+    flexDirection : 'row'
+  },  
+  icon : {
+    margin : 10
+  },
+  bellAlert : {
+    height : 10,
+    width : 10,
+    backgroundColor : 'red',
+    position : 'absolute',
+    borderRadius : 100,
+    left : 100,
+    top : 8
+  },
+  followerContainer: {
+    flexDirection : 'row',
+    borderRadius : 10,
+    justifyContent : 'center'
+  },
+  follower : [
+    TextStyles.label, {
+      padding : 8,
+      backgroundColor : theme.light.colors.infoBgLight,
+      margin : 5,
+      borderRadius : 10
+    }
+  ],
+  line : {
+    borderBottomColor: theme.light.colors.primary,
+    borderBottomWidth: 2.5,
+  },
+  feedContainer : {
+    elevation : 8,
+    width : '100%',
+    height : 100,
+    backgroundColor : theme.light.colors.white,
+    flexDirection : 'row',
+    justifyContent : 'space-between',
+    alignItems : 'center',
+    padding : 20
+  },
+  feedIconContainer : {
+    backgroundColor : theme.light.colors.primaryBg,
+    padding : 10,
+    borderRadius : 100,
+  },
+  feedIcon: {
+    color : theme.light.colors.primary
+  },
+});

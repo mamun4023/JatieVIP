@@ -1,22 +1,21 @@
-
 import React from 'react';
-import { Text, View, Image, Modal, TouchableWithoutFeedback } from 'react-native';
-import { theme } from '@/theme'; 
-import { styles } from '@/screens/Profile/myStutus.style';
-import { TextStyles } from '@/theme';
+import { Text, View, Image, StyleSheet } from 'react-native';
+import { TextStyles, theme } from '@/theme';
+import { FontFamily } from '@/theme/Fonts';
+
 import {
   faComment, 
   faEllipsis,
   faShareNodes,
   faCircleUp,
   faCircleDown,
-  faRemove,
-  faEdit,
   faTrash,
   faPen
 } from '@fortawesome/free-solid-svg-icons';
 import { Icon } from '@/components';
 import { useState } from 'react';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import {ModalDown} from '@/components'
 
 export default function MyStatus() {
   const [open, setOpen] = useState(false)
@@ -38,8 +37,8 @@ export default function MyStatus() {
                           }}
                         />
                         <View >
-                          <Text style = {[TextStyles.header, {fontSize : 20}]} > Adam Voigt</Text>
-                          <Text style = {[TextStyles.header, {fontSize : 15}]}> @adamvoigt</Text>
+                          <Text style = {[TextStyles.header, {fontSize : 15, color : 'black'}]} > Adam Voigt</Text>
+                          <Text style = {[TextStyles.header, {fontSize : 12}]}> @adamvoigt</Text>
                         </View>
                     </View>
                 
@@ -107,74 +106,77 @@ export default function MyStatus() {
                    </View>
                 </View>
             </View>
+            <ModalDown 
+              open={open}
+              setOpen = {setOpen}
+            > 
 
-            <Modal
-              visible = {open}
-              transparent = {true}
-              animationType = "slide"
-            
-            >
-              <TouchableWithoutFeedback 
-                onPress={()=> setOpen(false)}
-              >
-              <View 
-                style = {{
-                  flex : 1,
-                  backgroundColor: 'rgba(232, 174, 11, 0.2)',
-            
-                }}
-              > 
-                <View
+              <View>
+                <TouchableOpacity style = {{
+                  flexDirection : 'row',
+                  padding : 10,
+                  alignItems : 'center'
+                }}>
+                  <Icon 
+                    icon={faPen}
+                    size = {20}
+                    style = {styles.icon}
+                  />
+                  {/* <Text> Edit post</Text> */}
+                </TouchableOpacity>
+                <TouchableOpacity 
                   style = {{
-                    height : 200,
-                    width : '100%',
-                    backgroundColor : 'rgba(255,255,255,1)',
-                    position : 'absolute',
-                    bottom : 0,
+                    flexDirection : 'row',
+                    padding : 10,
+                    alignItems : 'center'
                   }}
-                >
-
-                
-                  <View style = {{
-
-                  }}>
-                    <View style = {{
-                      flexDirection : 'row',
-                      padding : 10,
-                      alignItems : 'center'
-                    }}>
-                      
-                      <Icon 
-                        icon={faPen}
-                        size = {20}
-                        style = {styles.icon}
-                      />
-                      <Text> Edit post</Text>
-                    </View>
-
-                    <View 
-                      style = {{
-                        flexDirection : 'row',
-                        padding : 10,
-                        alignItems : 'center'
-                      }}
-                    > 
-                        <Icon 
-                          icon={faTrash}
-                          size = {20}
-                        />
-                        <Text> Delete post </Text>
-                       
-                    </View>
-
-                  </View>
-                  
-                  
-                  </View>
+                > 
+                    <Icon 
+                      icon={faTrash}
+                      size = {20}
+                    />
+                    {/* <Text> Delete post </Text> */}
+                </TouchableOpacity>
               </View>
-              </TouchableWithoutFeedback>
-            </Modal>
+            </ModalDown>
         </View>
   );
 }
 
+export const styles = StyleSheet.create({
+  postContainer : {
+    flex : 1,
+    backgroundColor: theme.light.colors.primaryBgLight,
+  },
+  postCard : {
+    backgroundColor : 'white',
+    margin : 10,
+    borderRadius : 10,
+    elevation : 5
+  },
+  postHeader: {
+    flexDirection : 'row',
+    justifyContent : 'space-between',
+    padding : 10
+  },
+  Image : {
+    width: 35,
+    height: 35,
+    borderWidth: 2,
+    borderRadius: 75
+  },
+  postText : {
+    fontFamily : FontFamily.BrandonGrotesque_medium,
+    textAlign : 'justify'
+  },
+  icon : {
+    margin : 5
+  },
+  footer : {
+    flexDirection : "row",
+    justifyContent : 'space-between',
+    backgroundColor : theme.light.colors.infoBgLight,
+    padding : 8,
+    borderRadius : 10
+  }
+});
