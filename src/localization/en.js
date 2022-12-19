@@ -24,6 +24,13 @@ export const en = {
     and: ' and ',
     privacyPolicy: 'Privacy Policy',
   },
+  enterOtp: {
+    title: 'Enter OTP to continue',
+    enterTheVerificationCode:
+      'Please enter the verification code that was sent to',
+    edit: 'Edit',
+    sorryCodeDidnotMatch: 'Sorry, the code didn’t match. Resend',
+  },
   profile: {
     header: 'Profile',
     logout: 'Logout',

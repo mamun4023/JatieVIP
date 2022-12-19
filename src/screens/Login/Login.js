@@ -11,9 +11,10 @@ import { isLoadingSelector } from '@/selectors/StatusSelectors';
 import { ms } from 'react-native-size-matters';
 import { Logo } from '@/assets';
 import { TextStyles, theme } from '@/theme';
+import { navigationRef } from '@/navigation/RootNavigation';
+import { NAVIGATION } from '@/constants';
 
 export function Login() {
-  const { colors } = useTheme();
   const dispatch = useDispatch();
   const [mobileNumber, setMobileNumber] = useState('');
 
@@ -28,6 +29,7 @@ export function Login() {
 
   const handleSubmit = () => {
     // dispatch(login(username, password));
+    navigationRef.navigate(NAVIGATION.enterOtp);
   };
 
   return (

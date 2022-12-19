@@ -7,7 +7,7 @@ export const theme = {
       ...DefaultTheme.colors,
       primary: '#D3A708',
       secondary: '#29434E',
-      error: '#D32F2F',
+      error: '#FE5F55',
       text: '#2B2D42',
       border: '#212121',
       activeTabIcon: '#D3A708',

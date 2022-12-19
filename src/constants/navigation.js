@@ -2,6 +2,7 @@ export const NAVIGATION = {
   welcome: 'Welcome',
   home: 'Home',
   login: 'Login',
+  enterOtp: 'EnterOtp',
   profile: 'Profile',
   message: 'Message',
   exclusive: 'Exclusive',

@@ -23,6 +23,7 @@ export const TextStyles = StyleSheet.create({
   },
   error: {
     fontSize: ms(14, 0.3),
-    fontWeight: '400',
+    fontFamily: FontFamily.BrandonGrotesque_regular,
+    fontSize: ms(18),
   },
 });

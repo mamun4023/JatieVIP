@@ -5,3 +5,4 @@ export { Message } from '@/screens/Message/Message';
 export { Exclusive } from '@/screens/Exclusive/Exclusive';
 export { Giveaway } from '@/screens/Giveaway/Giveaway';
 export { Profile } from '@/screens/Profile/Profile';
+export { EnterOtp } from '@/screens/EnterOtp/EnterOtp';

@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "postinstall": "npx jetify && npx pod-install"
+    "postinstall": "patch-package && npx jetify && npx pod-install"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -21,6 +21,8 @@
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.6",
     "axios": "^0.27.2",
+    "deprecated-react-native-prop-types": "^4.0.0",
+    "patch-package": "^6.5.0",
     "prop-types": "^15.8.1",
     "react": "18.0.0",
     "react-native": "0.69.4",
@@ -33,6 +35,7 @@
     "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.15.0",
     "react-native-size-matters": "^0.4.0",
+    "react-native-smooth-pincode-input": "^1.0.9",
     "react-native-svg": "^13.6.0",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
