@@ -70,7 +70,7 @@ export function AddProfilePicture() {
   };
 
   const RemovePic = () => {
-    setImage(!image);
+    setImage(!imag);
   };
   return (
     <View style={styles.container}>

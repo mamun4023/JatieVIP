@@ -6,23 +6,17 @@ import { ms, vs } from 'react-native-size-matters';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  subContainer: {
     paddingHorizontal: ms(20),
   },
   mainView: {
     alignItems: 'center',
-  },
-  submitButton: {
-    marginTop: vs(10),
-    width: '50%',
-  },
-  formContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1.4,
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+
     backgroundColor: theme.light.colors.userBackgroundColor,
-    borderRadius: 100,
-    height: vs(130),
-    width: ms(140),
-    marginTop: vs(50),
   },
   skipButton: {
     backgroundColor: theme.light.colors.white,
@@ -34,8 +28,27 @@ export const styles = StyleSheet.create({
     color: theme.light.colors.activeTabIcon,
   },
   bottomButtons: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    paddingVertical: vs(20),
+    flex: 0.6,
+    justifyContent: 'flex-start',
+    paddingVertical: vs(10),
+    paddingHorizontal: ms(20),
+  },
+  headingText: {
+    color: theme.light.colors.title,
+    fontFamily: FontFamily.Recoleta_bold,
+  },
+  header: {
+    height: 50,
+    width: '100%',
+    backgroundColor: theme.light.colors.white,
+    justifyContent: 'center',
+    paddingHorizontal: ms(20),
+    elevation: 5,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+  },
+  pictureView: {
+    flex: 1.4,
+    paddingHorizontal: ms(10),
   },
 });

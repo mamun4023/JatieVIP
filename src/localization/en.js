@@ -68,5 +68,7 @@ export const en = {
     replace: 'Replace',
     uploadFromCamera: 'Upload from Camera',
     uploadFromGallery: 'Upload from Gallery',
+    adjustPicture: 'Adjust Picture',
+    cropAndClose: 'Crop & Close',
   },
 };
