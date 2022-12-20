@@ -74,25 +74,27 @@ export default function Followers({navigation}){
                 <ModalList 
                   title= "Follow"
                   icon={faUserPlus}
-                  iconBg = {theme.light.colors.infoBg}
+                  iconColor = {theme.light.colors.primary}
+                  iconBg = {theme.light.colors.primaryBgLight}
+
                 />
                 <ModalList 
-                  title= "Send Message"
+                  title= "Send a Private  Message"
                   icon={faMessage}
-                  iconColor = {theme.light.colors.info}
-                  iconBg = {theme.light.colors.infoBgLight}
+                  iconColor = {theme.light.colors.success}
+                  iconBg = {theme.light.colors.successBgLight}
                   onPress = {()=> Alert.alert("working")}
                 />
                 <ModalList 
                   title= "Report"
                   icon={faFlag}
-                  iconColor = {theme.light.colors.info}
+                  iconColor = {theme.light.colors.secondary}
                   iconBg = {theme.light.colors.infoBgLight}
                 />
                 <ModalList 
                   title= "Block"
                   icon={faXmark}
-                  iconColor = {theme.light.colors.info}
+                  iconColor = {theme.light.colors.secondary}
                   iconBg = {theme.light.colors.infoBgLight}
                 />
             </ModalDown>

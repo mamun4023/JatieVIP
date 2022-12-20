@@ -8,7 +8,8 @@ export const CardBody = ({text})=>{
     return(
         <View style = {styles.container}>
             <Text style = {[TextStyles.text, {
-                fontFamily : FontFamily.BrandonGrotesque_medium
+                fontFamily : FontFamily.BrandonGrotesque_medium,
+                textAlign : 'justify'
             }]} >
                 {text} 
             </Text>
@@ -22,6 +23,7 @@ CardBody.prototype = {
 
 const styles = StyleSheet.create({
     container : {
-        padding : 10
+        padding : 10,
+        margin : 10
     }
 })

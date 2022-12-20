@@ -1,19 +1,8 @@
-
 import React, {useState} from 'react';
-import { 
-  Text, 
-  View, 
-  Image, 
-  StyleSheet, 
-  StatusBar, 
-} from 'react-native';
-import {
-  faSliders, 
-  faSearch, 
-} from '@fortawesome/free-solid-svg-icons';
+import { Text, View, Image, StyleSheet, StatusBar} from 'react-native';
+import {faSliders, faSearch} from '@fortawesome/free-solid-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons';
 import { TextStyles, theme } from '@/theme';
-import { FontFamily } from '@/theme/Fonts';
 import {NAVIGATION} from '@/constants'
 import MyStatus from './myStatus';
 import MyActivity from './myActivity';
@@ -76,8 +65,10 @@ export function Profile({navigation}) {
         setStatus = {setStatus} 
       />
       <HorizontalLine />
-      <ShareFeed /> 
-      {status == 'my_status'? <MyStatus /> : <MyActivity/>}
+      <ShareFeed />
+      <View style = {styles.feedContainer}>  
+        {status == 'my_status'? <MyStatus /> : <MyActivity/>}
+      </View>      
     </View>
   );
 }
@@ -116,17 +107,8 @@ export const styles = StyleSheet.create({
     left : 100,
     top : 8
   },
-  followerContainer: {
-    flexDirection : 'row',
-    borderRadius : 10,
-    justifyContent : 'center'
-  },
-  follower : [
-    TextStyles.label, {
-      padding : 8,
-      backgroundColor : theme.light.colors.infoBgLight,
-      margin : 5,
-      borderRadius : 10
-    }
-  ],
+  feedContainer : {
+    flex : 1,
+    backgroundColor : theme.light.colors.primaryBgLight,
+  }
 });

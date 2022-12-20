@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 import { theme } from '@/theme'; 
 import { TextStyles } from '@/theme';
-import { Icon } from '@/components';
+import { Card, CardHeader, Icon } from '@/components';
 import {
     faComment, 
     faEllipsis,
@@ -12,67 +12,85 @@ import {
   } from '@fortawesome/free-solid-svg-icons';
 export default function MyActivity(){
     return(
-        <View style = {styles.card}>
-            <View style = {styles.postHeader}> 
-                <View
-                    style = {{
-                      flexDirection : 'row',  
-                    }}
-                >
-                    <Image 
-                        style = {styles.Image}
-                        source={{
-                            uri : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc="
-                        }}
-                    />
-                    <View >
-                        <Text style = {[TextStyles.header, {fontSize : 20}]} > Adam Voigt</Text>
-                        <Text style = {[TextStyles.header, {fontSize : 15}]}> @adamvoigt</Text>
+        <View>
+            <FlatList 
+                data={Data}
+                key = {(item)=> item.id}
+                renderItem = {({item})=>(
+                    <View style = {{margin : 10}} > 
+                        <Card>
+                            <CardHeader 
+                                fullName = {item.fullName}
+                                userName = {item.userName}
+                                profilePic = {item.profilePic}
+                                time = {10}
+                            />
+                              <View style = {styles.activity}>
+                                <Icon 
+                                    icon={faCircleUp}
+                                    size = {15}
+                                    style = {[styles.icon, {
+                                    color : 'green'
+                                    }]}
+                                />
+                                <Text> Upvoted on Lisa post</Text>
+                            </View>
+                        </Card>
                     </View>
-                </View>
-                <View style = {{
-                  flexDirection : 'row'
-                }}> 
-                    <Text> 10 min ago</Text>
-                </View>
-            </View>
-
-            <View style = {styles.activity}>
-                <Icon 
-                    icon={faCircleUp}
-                    size = {15}
-                    style = {[styles.icon, {
-                     color : 'green'
-                    }]}
-                />
-                <Text> Upvoted on Lisa post</Text>
-            </View>
-
+                )}
+            />
         </View>
     )
 }
 
-
 const styles = StyleSheet.create({
-    card : {
-        backgroundColor : 'white',
-        margin : 10,
-        borderRadius : 10,
-        elevation : 5,
-      },
-      postHeader: {
+    activity : {
         flexDirection : 'row',
-        justifyContent : 'space-between',
-        padding : 10
-      },
-      Image : {
-        width: 50,
-        height: 50,
-        borderWidth: 2,
-        borderRadius: 75
-      },
-      activity : {
-        flexDirection : 'row',
-        padding : 10
-      }
+        padding : 10,
+        alignItems : 'center'
+    }
 })
+
+
+const Data = [
+    {
+        id : 1,
+        fullName : "Adam Voigt",
+        userName : "@adam",
+        profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
+        status : 'Upvoted',
+        time : 10,
+    },
+    {
+        id : 2,
+        fullName : "Adam Voigt",
+        userName : "@adam",
+        profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
+        status : 'Downvoted',
+        time : 10,
+    },
+    {
+        id : 3,
+        fullName : "Adam Voigt",
+        userName : "@adam",
+        profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
+        status : 'Commented',
+        time : 10,
+    },
+    {
+        id : 4,
+        fullName : "Adam Voigt",
+        userName : "@adam",
+        profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
+        status : 'Commented',
+        time : 10,
+    },
+    {
+        id : 5,
+        fullName : "Adam Voigt",
+        userName : "@adam",
+        profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
+        status : 'Commented',
+        time : 10,
+    }
+]

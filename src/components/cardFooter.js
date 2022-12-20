@@ -24,7 +24,7 @@ export const CardFooter = ({likeCount, disLikeCount, commentCount, likePress, di
                     size = {15}
                     onPress = {likePress}
                     style = {[styles.icon, {
-                    color : 'green'
+                    color : theme.light.colors.success
                 }]}
                 /><Text>{likeCount} </Text>
                     <Icon 
@@ -32,7 +32,7 @@ export const CardFooter = ({likeCount, disLikeCount, commentCount, likePress, di
                         size = {15}
                         onPress = {disLikePress}
                         style = {[styles.icon, {
-                        color : 'red'
+                        color : theme.light.colors.error
                         }]}
                     /><Text>{disLikeCount} </Text>
                         <Icon 
