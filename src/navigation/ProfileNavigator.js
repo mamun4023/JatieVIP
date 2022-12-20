@@ -5,6 +5,7 @@ import { Profile } from '@/screens';
 import Following from '@/screens/Profile/following';
 import Followers from '@/screens/Profile/followers';
 import Settings from '@/screens/Profile/settings';
+import UserProfile from '@/screens/Profile/userProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +32,10 @@ export function ProfileNavigator() {
         name= {NAVIGATION.profileSetting}
         component={Settings}
       />
-
+      <Stack.Screen
+        name= {NAVIGATION.userProfile}
+        component={UserProfile}
+      />
 
     </Stack.Navigator>
   );

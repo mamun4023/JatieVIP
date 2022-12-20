@@ -6,10 +6,8 @@ import {
     FlatList, 
     StatusBar, 
     Image, 
-    Modal,
-    TouchableWithoutFeedback,
-    TouchableOpacity, 
-    Alert
+    Alert,
+    TouchableOpacity
 } from 'react-native';
 import {
     faEllipsis,
@@ -19,9 +17,125 @@ import {
     faXmark,
     faUserPlus
   } from '@fortawesome/free-solid-svg-icons';
-  import { TextStyles, theme } from '@/theme';
-  import { Icon, Badge } from '@/components';
-  import {ModalDown, ModalList} from '@/components';
+import { TextStyles, theme } from '@/theme';
+import { Icon, Badge } from '@/components';
+import {ModalDown, ModalList} from '@/components';
+import {NAVIGATION} from '@/constants'
+
+
+export default function Followers({navigation}){
+    const [open, setOpen] = useState(false);
+    return(
+        <View style = {styles.container}>
+            <StatusBar barStyle= 'dark-content' backgroundColor= 'transparent' />
+            <View style ={{ padding : 5 }}>
+              <Icon 
+                  icon={faArrowLeft}
+                  size = {20}
+                  onPress = {()=> navigation.goBack()}
+              />
+            </View>
+            <View style = {styles.listHeader}> 
+                <Text style = {TextStyles.header}> Followers </Text>
+                <Badge count={100} size = {18} />
+            </View>
+            <View>
+                <FlatList 
+                    data={Data}
+                    key = {(props)=>props.id}
+                    initialNumToRender ={10}
+                    renderItem = {({item})=> {
+                        return (
+                            <View style = {styles.listContainer}>   
+                                <TouchableOpacity 
+                                    style = {styles.list}
+                                    onPress = {()=> navigation.navigate(NAVIGATION.userProfile)}
+                                > 
+                                    <Image source={{uri : item.image}} style = {styles.profileImage} />
+                                    <View> 
+                                        <Text style = {TextStyles.label}> {item.name} { " "} </Text> 
+                                        <Text> {item.userName}  </Text>
+                                    </View>
+                                </TouchableOpacity>
+                                <Icon 
+                                  icon={faEllipsis}
+                                  size = {20}
+                                  onPress = {()=> setOpen(true)}
+                                />
+                            </View>
+                        )
+                    } }
+                />
+            </View>
+            <ModalDown 
+              open={open} 
+              setOpen = {setOpen}
+            > 
+                <ModalList 
+                  title= "Follow"
+                  icon={faUserPlus}
+                  iconBg = {theme.light.colors.infoBg}
+                />
+                <ModalList 
+                  title= "Send Message"
+                  icon={faMessage}
+                  iconColor = {theme.light.colors.info}
+                  iconBg = {theme.light.colors.infoBgLight}
+                  onPress = {()=> Alert.alert("working")}
+                />
+                <ModalList 
+                  title= "Report"
+                  icon={faFlag}
+                  iconColor = {theme.light.colors.info}
+                  iconBg = {theme.light.colors.infoBgLight}
+                />
+                <ModalList 
+                  title= "Block"
+                  icon={faXmark}
+                  iconColor = {theme.light.colors.info}
+                  iconBg = {theme.light.colors.infoBgLight}
+                />
+            </ModalDown>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container : {
+      flex : 1,
+      padding : 15,
+      backgroundColor : "white"
+    },
+    listHeader : {
+      paddingTop : 5,
+      paddingBottom : 5,         
+      flexDirection : 'row',
+      alignItems : 'center'
+    },
+    listContainer : {
+      padding  : 2,
+      flexDirection : 'row',
+      justifyContent : 'space-between',
+      margin : 5,
+      alignItems : 'center'
+    },
+    list : {
+      flexDirection : "row",
+      alignItems : "center"
+    },
+    profileImage : {
+      height : 50,
+      width : 50,
+      borderRadius : 100,
+      borderWidth : 1,
+      borderColor : 'gray'
+    }
+})
+
+
+
+
+
 
 const Data = [
     {
@@ -91,116 +205,3 @@ const Data = [
         image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
     }
 ]
-
-export default function Followers({navigation}){
-    const [open, setOpen] = useState(false);
-    return(
-        <View style = {styles.container}>
-            <StatusBar barStyle= 'dark-content' backgroundColor= 'transparent' />
-            <View style ={{ padding : 5 }}>
-              <Icon 
-                  icon={faArrowLeft}
-                  size = {20}
-                  onPress = {()=> navigation.goBack()}
-              />
-            </View>
-            <View style = {styles.listContainer}> 
-                <Text style = {TextStyles.header}> Followers </Text>
-                <Badge count={100} size = {18} />
-            
-            </View>
-            <View>
-                <FlatList 
-                    data={Data}
-                    key = {(props)=>props.id}
-                    initialNumToRender ={10}
-                    renderItem = {({item})=> {
-                        return (
-                            <View 
-                                style = {{
-                                    padding  : 2,
-                                    flexDirection : 'row',
-                                    justifyContent : 'space-between',
-                                    margin : 5,
-                                    alignItems : 'center'
-                                }}
-                            >   
-                                <View style = {{
-                                    flexDirection : "row",
-                                    alignItems : "center"
-                                }}> 
-                                    <Image 
-                                        source={{
-                                            uri : item.image
-                                        }}
-                                        style = {{
-                                            height : 50,
-                                            width : 50,
-                                            borderRadius : 100,
-                                            borderWidth : 1,
-                                            borderColor : 'gray'
-                                        }}
-                                    />
-                                    <View> 
-                                        <Text style = {TextStyles.label}> {item.name} { " "} </Text> 
-                                        <Text> {item.userName}  </Text>
-                                    
-                                    </View>
-                                </View>
-                                <Icon 
-                                    icon={faEllipsis}
-                                    size = {20}
-                                    onPress = {()=> setOpen(true)}
-                                />
-                            </View>
-                        )
-                    } }
-                />
-            </View>
-            <ModalDown 
-              open={open} 
-              setOpen = {setOpen}
-            > 
-                <ModalList 
-                  title= "Follow"
-                  icon={faUserPlus}
-                  iconBg = {theme.light.colors.infoBg}
-                />
-                <ModalList 
-                  title= "Send Message"
-                  icon={faMessage}
-                  iconColor = {theme.light.colors.info}
-                  iconBg = {theme.light.colors.infoBgLight}
-                  onPress = {()=> Alert.alert("working")}
-                />
-                 <ModalList 
-                  title= "Report"
-                  icon={faFlag}
-                  iconColor = {theme.light.colors.info}
-                  iconBg = {theme.light.colors.infoBgLight}
-                />
-                 <ModalList 
-                  title= "Block"
-                  icon={faXmark}
-                  iconColor = {theme.light.colors.info}
-                  iconBg = {theme.light.colors.infoBgLight}
-                />
-            </ModalDown>
-        </View>
-    )
-}
-
-
-const styles = StyleSheet.create({
-    container : {
-        flex : 1,
-        padding : 15,
-        backgroundColor : "white"
-    },
-    listContainer : {
-      paddingTop : 5,
-      paddingBottom : 5,         
-      flexDirection : 'row',
-      alignItems : 'center'
-    }
-})

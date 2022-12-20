@@ -5,6 +5,7 @@ import {
     TouchableWithoutFeedback, 
     StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import {theme} from '@/theme'
 
 export function ModalDown({open, setOpen, height, children}){
@@ -25,6 +26,13 @@ export function ModalDown({open, setOpen, height, children}){
               </TouchableWithoutFeedback>
             </Modal>
     )
+}
+
+
+ModalDown.prototype = {
+    open : PropTypes.string.isRequired,
+    setOpen : PropTypes.func.isRequired,
+    height : PropTypes.string
 }
 
 const styles = StyleSheet.create({

@@ -125,7 +125,7 @@ export default function MyStatus() {
   );
 }
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   postContainer : {
     flex : 1,
     backgroundColor: theme.light.colors.primaryBgLight,

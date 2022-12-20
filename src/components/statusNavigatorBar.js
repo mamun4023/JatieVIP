@@ -2,9 +2,9 @@ import React, {useState} from "react"
 import {View,  Text, StyleSheet} from 'react-native';
 import { theme, TextStyles} from '@/theme'; 
 import { FontFamily } from '@/theme/Fonts';
+import PropsType from 'prop-types';
 
 export function StatusNavigatorBar({status, setStatus, title1, title2, key1, key2}){
-
     return(
         <View style = {styles.statusContainer} >
           <View style = {styles.status}>  
@@ -23,6 +23,15 @@ export function StatusNavigatorBar({status, setStatus, title1, title2, key1, key
           </View>
       </View>
     )
+}
+
+StatusNavigatorBar.prototype = {
+  status : PropsType.string.isRequired,
+  setStatus : PropsType.func.isRequired,
+  title1 : PropsType.string.isRequired,
+  title2 : PropsType.string.isRequired,
+  key1 : PropsType.string.isRequired,
+  key2 : PropsType.string.isRequired
 }
 
 const styles = StyleSheet.create({
