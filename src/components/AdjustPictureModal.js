@@ -1,50 +1,50 @@
 import { useTheme } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { Button, ErrorView, TextField } from '@/components';
+import React from 'react';
+import { Text, View } from 'react-native';
+import { shallowEqual, useSelector } from 'react-redux';
+import { TYPES } from '@/actions/UserActions';
+import { Button } from '@/components';
 import { strings } from '@/localization';
 import { errorsSelector } from '@/selectors/ErrorSelectors';
 import { isLoadingSelector } from '@/selectors/StatusSelectors';
-import { AuthHeader } from '@/components/AuthHeader';
+import { ms, vs } from 'react-native-size-matters';
 import { theme } from '@/theme';
+import { AuthHeader } from '@/components/AuthHeader';
 import { FontFamily } from '@/theme/Fonts';
 import { StyleSheet } from 'react-native';
-import { ms, vs } from 'react-native-size-matters';
 
 export function AdjustPictureModal() {
   const { colors } = useTheme();
+  const isLoading = useSelector(state =>
+    isLoadingSelector([TYPES.LOGIN], state)
+  );
 
+  const errors = useSelector(
+    state => errorsSelector([TYPES.LOGIN], state),
+    shallowEqual
+  );
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <AuthHeader />
       </View>
 
-      <ErrorView errors={errors} />
       <View style={styles.pictureView}>
         <View style={styles.header}>
           <Text style={styles.headingText}>
             {strings.addYourProfilePicture.adjustPicture}
           </Text>
         </View>
+
         <View style={styles.mainView}></View>
       </View>
       <View style={styles.bottomButtons}>
-        <Button
-          title={
-            isLoading
-              ? strings.common.loading
-              : strings.addYourProfilePicture.cropAndClose
-          }
-        />
+        <Button title={strings.addYourProfilePicture.cropAndClose} />
+
         <Button
           style={styles.skipButton}
           textStyle={styles.skipButtonText}
-          title={
-            isLoading
-              ? strings.common.loading
-              : strings.addYourProfilePicture.replace
-          }
+          title={strings.addYourProfilePicture.replace}
         />
       </View>
     </View>

@@ -60,4 +60,8 @@ export const styles = StyleSheet.create({
     marginBottom: vs(10),
     marginRight: -22,
   },
+  closeIcon: {
+    height: vs(20),
+    width: ms(20),
+  },
 });

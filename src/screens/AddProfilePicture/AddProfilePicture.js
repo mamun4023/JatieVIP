@@ -121,7 +121,7 @@ export function AddProfilePicture() {
       </View>
       <View style={styles.bottomButtons}>
         <Button
-          // onPress={handleSubmit}
+          onPress={handleSubmit}
           title={
             isLoading
               ? strings.common.loading
