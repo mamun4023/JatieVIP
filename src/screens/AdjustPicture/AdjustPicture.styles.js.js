@@ -38,30 +38,4 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingVertical: vs(20),
   },
-  img: {
-    height: vs(130),
-    width: ms(140),
-    position: 'absolute',
-    borderRadius: 100,
-  },
-  replaceRemoveButton: {
-    width: '40%',
-    margin: 10,
-  },
-  modalBackground: {
-    padding: ms(30),
-    justifyContent: 'center',
-    backgroundColor: 'white',
-    borderRadius: 12,
-  },
-  closeView: {
-    alignItems: 'flex-end',
-    marginTop: -23,
-    marginBottom: vs(10),
-    marginRight: -22,
-  },
-  closeIcon: {
-    height: vs(20),
-    width: ms(20),
-  },
 });

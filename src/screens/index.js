@@ -9,3 +9,4 @@ export { EnterOtp } from '@/screens/EnterOtp/EnterOtp';
 export { SetupUserId } from '@/screens/SetupUserId/SetupUserId';
 export { SignUp } from '@/screens/SignUp/SignUp';
 export { AddProfilePicture } from '@/screens/AddProfilePicture/AddProfilePicture';
+export { AdjustPicture } from '@/screens/AdjustPicture/AdjustPicture';

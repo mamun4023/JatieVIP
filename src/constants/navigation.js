@@ -15,4 +15,5 @@ export const NAVIGATION = {
   profileNavigator: 'ProfileNavigator',
   signUp: 'SignUp',
   addProfilePicture: 'AddProfilePicture',
+  adjustPicture: 'AdjustPicture',
 };

@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NAVIGATION } from '@/constants';
 import {
   AddProfilePicture,
+  AdjustPicture,
   EnterOtp,
   Login,
   SetupUserId,
@@ -45,6 +46,11 @@ export function AuthNavigator() {
       <Stack.Screen
         component={AddProfilePicture}
         name={NAVIGATION.addProfilePicture}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        component={AdjustPicture}
+        name={NAVIGATION.adjustPicture}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

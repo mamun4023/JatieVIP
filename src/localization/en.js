@@ -64,5 +64,9 @@ export const en = {
     upload: 'Upload',
     Finish: 'Finish',
     skip: 'Skip',
+    remove: 'Remove',
+    replace: 'Replace',
+    uploadFromCamera: 'Upload from Camera',
+    uploadFromGallery: 'Upload from Gallery',
   },
 };
