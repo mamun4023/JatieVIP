@@ -368,7 +368,7 @@ PODS:
     - React-perflogger (= 0.69.4)
   - ReactNativeLocalization (2.3.1):
     - React-Core
-  - RNBootSplash (4.4.0):
+  - RNBootSplash (4.3.2):
     - React-Core
   - RNCMaskedView (0.2.7):
     - React-Core
@@ -636,7 +636,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 61ee22a8cdf8b6bb2a7fb7b4ba2cc763e5285196
   ReactCommon: 8f67bd7e0a6afade0f20718f859dc8c2275f2e83
   ReactNativeLocalization: 076497d7ca70341c751cd3b3e7c86187332a182d
-  RNBootSplash: 8ecffd190fae05291b671ea2280c5238f15499a9
+  RNBootSplash: 5f346163977573d6b2aeba1b25df9d2245c0d73c
   RNCMaskedView: cb9670ea9239998340eaab21df13fa12a1f9de15
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
   RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
