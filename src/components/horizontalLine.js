@@ -2,12 +2,13 @@
 import React from 'react';
 import {View} from 'react-native';
 import {theme} from '@/theme';
+import PropsType from 'prop-types';
 
-export const HorizontalLine = ()=>{
+export const HorizontalLine = ({color})=>{
     return(
         <View 
             style = {{
-                borderBottomColor: theme.light.colors.primary,
+                borderBottomColor: color? color : theme.light.colors.primary,
                 borderBottomWidth: 2.5,
             }}
         />
@@ -15,3 +16,6 @@ export const HorizontalLine = ()=>{
     )
 }
 
+HorizontalLine.prototype = {
+    color : PropsType.string
+}

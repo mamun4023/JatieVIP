@@ -24,7 +24,7 @@ export const CardHeader = ({fullName, userName, profilePic, time})=>{
                 </View>
             </View>
             <View style = {{ flexDirection : 'row' }}> 
-                <Text> {time} min ago</Text>
+                <Text> {time} mins ago</Text>
             </View>
         </View>
     )

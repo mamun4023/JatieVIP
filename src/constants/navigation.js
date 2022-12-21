@@ -6,6 +6,7 @@ export const NAVIGATION = {
   following : 'Following',
   profileSetting : 'ProfileSetting',
   userProfile : 'UserProfile',
+  editProfile : "EditProfile",
   message: 'Message',
   exclusive: 'Exclusive',
   giveaway: 'Giveaway',

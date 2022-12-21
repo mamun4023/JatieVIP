@@ -6,7 +6,7 @@ import {
     StyleSheet,
     Alert,
     TouchableOpacity,
-    FlatList
+    FlatList,
 } from 'react-native';
 import {
     faSearch, 
@@ -15,7 +15,9 @@ import {
     faUserPlus, 
     faEllipsis,
     faFlag,
-    faXmark
+    faXmark,
+    faPen,
+    faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import {TextStyles, theme} from '@/theme'
 
@@ -27,7 +29,9 @@ import {HorizontalLine} from '@/components';
 
 
 export default function UserProfile(){
-    const [open, setOpen] = useState(false)
+    const [openMore, setOpenMore] = useState(false)
+    const [openEdit, setOpenEdit] = useState(false)
+
     return(
         <View style = {styles.container}>
             <View style = {styles.headerContainer}> 
@@ -89,7 +93,7 @@ export default function UserProfile(){
                         <Text style = {[TextStyles.label, {color : theme.light.colors.primary}]} > {strings.profile.followers} </Text> 
                     </TouchableOpacity>
                </View>
-               <TouchableOpacity onPress={()=>setOpen(true)} style = {styles.moreIconContainer}> 
+               <TouchableOpacity onPress={()=>setOpenMore(true)} style = {styles.moreIconContainer}> 
                  <FontAwesomeIcon 
                     icon = {faEllipsis}
                  />
@@ -109,7 +113,7 @@ export default function UserProfile(){
                         time = {item.time}
                         />
                         <CardBody 
-                        text = {item.text}
+                            text = {item.text}
                         />
                         <CardFooter 
                             likeCount= {item.like}
@@ -119,43 +123,63 @@ export default function UserProfile(){
                             commentCount = {item.comment}
                             commentPress = {()=> Alert.alert("Comment")}
                             sharePress = {()=> Alert.alert("share")}
-                            morePress = {()=>setOpen(true)}
+                            morePress = {()=>setOpenEdit(true)}
                         />
                     </Card>
                     </View>
                 )}
              />
-
-            <ModalDown 
-              open={open} 
-              setOpen = {setOpen}
-            > 
+            {openMore && 
+                <ModalDown 
+                open={openMore} 
+                setOpen = {setOpenMore}
+                > 
+                    <ModalList 
+                    title= "Follow"
+                    icon={faUserPlus}
+                    iconColor = {theme.light.colors.primary}
+                    iconBg = {theme.light.colors.primaryBgLight}
+                    />
+                    <ModalList 
+                    title= "Send a Private  Message"
+                    icon={faMessage}
+                    iconColor = {theme.light.colors.success}
+                    iconBg = {theme.light.colors.successBgLight}
+                    onPress = {()=> Alert.alert("working")}
+                    />
+                    <ModalList 
+                    title= "Report"
+                    icon={faFlag}
+                        iconColor = {theme.light.colors.secondary}
+                        iconBg = {theme.light.colors.infoBgLight}
+                        />
+                        <ModalList 
+                        title= "Block"
+                        icon={faXmark}
+                        iconColor = {theme.light.colors.secondary}
+                        iconBg = {theme.light.colors.infoBgLight}
+                        />
+                </ModalDown>
+            }
+            {openEdit && 
+                <ModalDown 
+                    open={openEdit}
+                    setOpen = {setOpenEdit}
+                > 
                 <ModalList 
-                  title= "Follow"
-                  icon={faUserPlus}
-                  iconColor = {theme.light.colors.primary}
-                  iconBg = {theme.light.colors.primaryBgLight}
+                    title='Edit'
+                    icon={faPen}
+                    iconBg = {theme.light.colors.infoBgLight}
+                    iconColor= {theme.light.colors.info}
                 />
                 <ModalList 
-                  title= "Send a Private  Message"
-                  icon={faMessage}
-                  iconColor = {theme.light.colors.success}
-                  iconBg = {theme.light.colors.successBgLight}
-                  onPress = {()=> Alert.alert("working")}
-                />
-                <ModalList 
-                  title= "Report"
-                  icon={faFlag}
-                  iconColor = {theme.light.colors.secondary}
+                  title='Remove'
+                  icon={faTrash}
                   iconBg = {theme.light.colors.infoBgLight}
+                  iconColor= {theme.light.colors.secondary}
                 />
-                <ModalList 
-                  title= "Block"
-                  icon={faXmark}
-                  iconColor = {theme.light.colors.secondary}
-                  iconBg = {theme.light.colors.infoBgLight}
-                />
-            </ModalDown>
+              </ModalDown>
+            }
         </View>
     )
 }
