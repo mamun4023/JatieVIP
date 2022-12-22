@@ -14,3 +14,4 @@ export {Card} from '@/components/card';
 export {CardHeader} from '@/components/cardHeader';
 export {CardBody} from '@/components/cardBody';
 export {CardFooter} from '@/components/cardFooter';
+export {PopUp} from '@/components/popUp'; 

@@ -16,6 +16,7 @@ export const theme = {
       success : 'rgb(91,212,111)',
       successBg : 'rgba(91,212,111, 0.3)',
       successBgLight : 'rgba(91,212,111, 0.1)',
+      inputFiled : "#eee",
       error: '#D32F2F',
       text: '#212121',
       border: '#212121',
