@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
   },
   submitButton: {
     marginTop: 20,
+    marginBottom: 20,
   },
   subTitle: {
     fontSize: ms(18, 0.3),

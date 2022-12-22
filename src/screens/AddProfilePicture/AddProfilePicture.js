@@ -1,16 +1,14 @@
 import { useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View, Image } from 'react-native';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { login, TYPES } from '@/actions/UserActions';
-import { Button, ErrorView, TextField } from '@/components';
+import { TouchableOpacity, View, Image } from 'react-native';
+import { shallowEqual, useSelector } from 'react-redux';
+import { TYPES } from '@/actions/UserActions';
+import { Button, ErrorView } from '@/components';
 import { strings } from '@/localization';
 import { styles } from '@/screens/AddProfilePicture/AddProfilePhoto.styles';
 import { errorsSelector } from '@/selectors/ErrorSelectors';
 import { isLoadingSelector } from '@/selectors/StatusSelectors';
-import { ms, vs } from 'react-native-size-matters';
-import { Logo } from '@/assets';
-import { TextStyles, theme } from '@/theme';
+import { vs } from 'react-native-size-matters';
 import { navigationRef } from '@/navigation/RootNavigation';
 import { NAVIGATION } from '@/constants';
 import { AuthHeader } from '@/components/AuthHeader';
@@ -18,7 +16,6 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import Modal from 'react-native-modal';
-import { settingsIcon } from '@/assets';
 import { close } from '@/assets';
 export function AddProfilePicture() {
   const { colors } = useTheme();
@@ -44,33 +41,41 @@ export function AddProfilePicture() {
   };
 
   const handleSubmit = () => {
-    navigationRef.navigate(NAVIGATION.adjustPicture);
+    // navigationRef.navigate(NAVIGATION.adjustPicture);
   };
   const OpenGallery = () => {
     ImageCropPicker.openPicker({
       width: 300,
       height: 400,
       cropping: true,
-    }).then(image => {
-      console.log(image);
-      setImage(image.path);
-      setModalVisible(!isModalVisible);
-    });
+    })
+      .then(image => {
+        console.log(image);
+        setImage(image.path);
+        setModalVisible(!isModalVisible);
+      })
+      .catch(e => {
+        console.log('Error: ' + e);
+      });
   };
   const OpenCamera = () => {
     ImageCropPicker.openCamera({
       width: 300,
       height: 400,
       cropping: true,
-    }).then(image => {
-      console.log('uploaded image--->', image);
-      setModalVisible(!isModalVisible);
-      setImage(image.path);
-    });
+    })
+      .then(image => {
+        console.log('uploaded image--->', image);
+        setModalVisible(!isModalVisible);
+        setImage(image.path);
+      })
+      .catch(e => {
+        console.log('Error: ' + e);
+      });
   };
 
   const RemovePic = () => {
-    setImage(!imag);
+    setImage(!image);
   };
   return (
     <View style={styles.container}>
