@@ -1,12 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image, TextInput} from 'react-native';
 import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import { Icon, HorizontalLine, Button, TextField } from '@/components';
+import DatePicker from 'react-native-date-picker';
+import Moment from 'moment';
+import DropDownPicker from 'react-native-dropdown-picker';
+import { CropView } from 'react-native-image-crop-tools';
 
 export default function EditProfile({navigation}){
+    // const [date, setDate] = useState(new Date())
+    // const [open, setOpen] = useState(false)
+    // console.log(Moment(date).format('DD-MM-YYYY'))
+
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [gender, setGender] = useState([
+      {label: 'male', value: 'Male'},
+      {label: 'female', value: 'Female'}
+    ]);
+    
     return(
         <View style = {styles.container}>
             <View style ={styles.header}>
@@ -63,13 +78,44 @@ export default function EditProfile({navigation}){
                         />
                     </View>
                     <View style = {styles.textFiledContainer}> 
+                        <Text style = {[styles.textFieldLebel]}> Date of Birth </Text>
+                        <TextInput 
+                            style={styles.textFiled}
+                        />
+                    </View>
+                    <View style = {styles.textFiledContainer}> 
                         <Text style = {[styles.textFieldLebel]}> Email </Text>
                         <TextInput 
                             style={styles.textFiled}
-                        
                         />
                     </View>
-                 
+
+                    {/* <Button title="Open" onPress={() => setOpen(true)} /> */}
+                    {/* <DatePicker
+                        modal
+                        mode='time'
+                        open={open}
+                        locale = "fr"
+                        date={date}
+                        onConfirm={(date) => {
+                        setOpen(false)
+                        setDate(date)
+                        }}
+                        onCancel={() => {
+                        setOpen(false)
+                        }}
+                    />       */}
+
+                    
+                    <DropDownPicker
+                        open={open}
+                        value={value}
+                        items={gender}
+                        setOpen={setOpen}
+                        setValue={setValue}
+                        setItems={setGender}
+                    />
+                            
                </View>
             </View>
         </View>
