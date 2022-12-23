@@ -4,6 +4,10 @@ import { FontFamily } from './Fonts';
 import { theme } from './theme';
 
 export const TextStyles = StyleSheet.create({
+  header : {
+    fontSize : 25,
+    fontFamily : FontFamily.Recoleta_bold
+  },
   title: {
     fontSize: ms(32, 0.3),
     fontFamily: FontFamily.Recoleta_bold,

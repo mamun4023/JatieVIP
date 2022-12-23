@@ -1,0 +1,209 @@
+import React, {useState} from 'react';
+import {
+    View, 
+    Text, 
+    StyleSheet, 
+    FlatList, 
+    StatusBar, 
+    Image, 
+    Alert,
+    TouchableOpacity
+} from 'react-native';
+import {
+    faEllipsis,
+    faArrowLeft,
+    faMessage,
+    faFlag,
+    faXmark,
+    faUserPlus
+  } from '@fortawesome/free-solid-svg-icons';
+import { TextStyles, theme } from '@/theme';
+import { Icon, Badge } from '@/components';
+import {ModalDown, ModalList} from '@/components';
+import {NAVIGATION} from '@/constants'
+
+
+export default function Followers({navigation}){
+    const [open, setOpen] = useState(false);
+    return(
+        <View style = {styles.container}>
+            <StatusBar barStyle= 'dark-content' backgroundColor= 'transparent' />
+            <View style ={{ padding : 5 }}>
+              <Icon 
+                  icon={faArrowLeft}
+                  size = {20}
+                  onPress = {()=> navigation.goBack()}
+              />
+            </View>
+            <View style = {styles.listHeader}> 
+                <Text style = {TextStyles.header}> Followers </Text>
+                <Badge count={100} size = {18} />
+            </View>
+            <View>
+                <FlatList 
+                    data={Data}
+                    key = {(props)=>props.id}
+                    initialNumToRender ={10}
+                    renderItem = {({item})=> {
+                        return (
+                            <View style = {styles.listContainer}>   
+                                <TouchableOpacity 
+                                    style = {styles.list}
+                                    onPress = {()=> navigation.navigate(NAVIGATION.userProfile)}
+                                > 
+                                    <Image source={{uri : item.image}} style = {styles.profileImage} />
+                                    <View> 
+                                        <Text style = {TextStyles.label}> {item.name} { " "} </Text> 
+                                        <Text> {item.userName}  </Text>
+                                    </View>
+                                </TouchableOpacity>
+                                <Icon 
+                                  icon={faEllipsis}
+                                  size = {20}
+                                  onPress = {()=> setOpen(true)}
+                                />
+                            </View>
+                        )
+                    } }
+                />
+            </View>
+            <ModalDown 
+              open={open} 
+              setOpen = {setOpen}
+            > 
+                <ModalList 
+                  title= "Follow"
+                  icon={faUserPlus}
+                  iconColor = {theme.light.colors.primary}
+                  iconBg = {theme.light.colors.primaryBgLight}
+
+                />
+                <ModalList 
+                  title= "Send a Private  Message"
+                  icon={faMessage}
+                  iconColor = {theme.light.colors.success}
+                  iconBg = {theme.light.colors.successBgLight}
+                  onPress = {()=> Alert.alert("working")}
+                />
+                <ModalList 
+                  title= "Report"
+                  icon={faFlag}
+                  iconColor = {theme.light.colors.secondary}
+                  iconBg = {theme.light.colors.infoBgLight}
+                />
+                <ModalList 
+                  title= "Block"
+                  icon={faXmark}
+                  iconColor = {theme.light.colors.secondary}
+                  iconBg = {theme.light.colors.infoBgLight}
+                />
+            </ModalDown>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container : {
+      flex : 1,
+      padding : 15,
+      backgroundColor : "white"
+    },
+    listHeader : {
+      paddingTop : 5,
+      paddingBottom : 5,         
+      flexDirection : 'row',
+      alignItems : 'center'
+    },
+    listContainer : {
+      padding  : 2,
+      flexDirection : 'row',
+      justifyContent : 'space-between',
+      margin : 5,
+      alignItems : 'center'
+    },
+    list : {
+      flexDirection : "row",
+      alignItems : "center"
+    },
+    profileImage : {
+      height : 50,
+      width : 50,
+      borderRadius : 100,
+      borderWidth : 1,
+      borderColor : 'gray'
+    }
+})
+
+
+
+
+
+
+const Data = [
+    {
+        id : 1,
+        name : "Harinder Bharwal",
+        userName : "@harinder",
+        image : 'https://image.shutterstock.com/image-photo/young-handsome-man-beard-wearing-260nw-1768126784.jpg'
+    },
+    {
+        id : 2,
+        name : "Peter Taylor",
+        userName : '@peter',
+        image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmAgieDfVf6AX0Ox5zuIgW78Laf6YxS37M1byexctLnQ&s'
+    },
+    {
+        id : 3,
+        name : "Danna Koprivoan",
+        userName : "@dana",
+        image : 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    },
+    {
+        id : 4,
+        name : "Mayke Sehurs",
+        userName : "@mayke",
+        image : 'https://media.istockphoto.com/photos/smiling-man-outdoors-in-the-city-picture-id1179420343?b=1&k=20&m=1179420343&s=612x612&w=0&h=c9Z3DyUg-YvgOQnL_ykTIgVTWXjF-GNo4FUQ7i5fyyk=',
+    },
+    {
+        id : 5,
+        name : "Anatoly Shcherbatykh",
+        userName : "@anatoly",
+        image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
+    },
+    {
+        id : 6,
+        name : "Otmar Dolezal",
+        userName : "@otmar",
+        image : 'https://img.freepik.com/free-photo/no-problem-concept-bearded-man-makes-okay-gesture-has-everything-control-all-fine-gesture-wears-spectacles-jumper-poses-against-pink-wall-says-i-got-this-guarantees-something_273609-42817.jpg?w=2000',
+    },
+    {
+        id : 7,
+        name : "Siri Jakobsson",
+        userName : "@mayke",
+        image : 'https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?w=2000',
+    },
+    {
+        id : 8,
+        name : "Bansilal Brata ",
+        userName : "@brata",
+        image : 'https://image.shutterstock.com/image-photo/young-handsome-man-beard-wearing-260nw-1768126784.jpg',
+    },
+    {
+        id : 9,
+        name : "Teng Hu",
+        userName : "@teng",
+        image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
+    },
+    {
+        id : 10,
+        name : "Lacara jones",
+        userName : "@jones",
+        image : 'https://media.istockphoto.com/id/1335941248/photo/shot-of-a-handsome-young-man-standing-against-a-grey-background.jpg?b=1&s=170667a&w=0&k=20&c=Dl9uxPY_Xn159JiazEj0bknMkLxFdY7f4tK1GtOGmis=',
+    },
+    {
+        id : 11,
+        name : "Dusana Semanov",
+        userName : "@dusana",
+        image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
+    }
+]
