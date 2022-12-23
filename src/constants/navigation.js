@@ -7,6 +7,8 @@ export const NAVIGATION = {
   profileSetting : 'ProfileSetting',
   userProfile : 'UserProfile',
   editProfile : "EditProfile",
+  notificationSettings : "NotificationSettings",
+  blockedUsers : "BlockedUsers",
   message: 'Message',
   exclusive: 'Exclusive',
   giveaway: 'Giveaway',

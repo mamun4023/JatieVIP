@@ -70,21 +70,21 @@ export default function Settings({navigation}){
 
                     />
                 </TouchableOpacity>
-                <TouchableOpacity style = {styles.list}>
+                <TouchableOpacity onPress={()=>navigation.navigate(NAVIGATION.blockedUsers)} style = {styles.list}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <FontAwesomeIcon 
                             icon={faLock}
                             color = {theme.light.colors.primary}
                             size = {20}
                         />
-                        <Text style = {[TextStyles.header ,styles.listText]} >Block Users</Text>
+                        <Text style = {[TextStyles.header ,styles.listText]} >Blocked Users</Text>
                     </View>
                     <FontAwesomeIcon 
                         icon={faArrowRight}
                         color = {theme.light.colors.info}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity style = {styles.list}>
+                <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.notificationSettings)} style = {styles.list}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <FontAwesomeIcon 
                             icon={faBell}
