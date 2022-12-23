@@ -7,6 +7,8 @@ import Followers from '@/screens/Profile/followers';
 import Settings from '@/screens/Profile/settings';
 import UserProfile from '@/screens/Profile/userProfile';
 import EditProfile from '@/screens/Profile/editProfile';
+import NotificationSettings from '@/screens/Profile/notificationSettings';
+import BlockedUsers from '@/screens/Profile/blockedUsers';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +42,14 @@ export function ProfileNavigator() {
       <Stack.Screen
         name= {NAVIGATION.editProfile}
         component={EditProfile}
+      />
+      <Stack.Screen
+        name= {NAVIGATION.notificationSettings}
+        component={NotificationSettings}
+      />
+      <Stack.Screen
+        name= {NAVIGATION.blockedUsers}
+        component={BlockedUsers}
       />
 
     </Stack.Navigator>

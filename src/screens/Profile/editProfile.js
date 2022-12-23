@@ -15,6 +15,7 @@ export default function EditProfile({navigation}){
     const [date, setDate] = useState(new Date())
     const [openDatePicker, setOpenDatePicker] = useState(false)
     const [openPopUp, setOpenPopUp] = useState(false)
+    const [subscriptionPopup, setSubscriptionPopup] = useState(false)
     const [openReplace, setReplace] = useState(false);
     const [genderListOpen, setGenderListOpen] = useState(false);
     const [genderValue, setGenderValue] = useState(null);
@@ -49,12 +50,12 @@ export default function EditProfile({navigation}){
                     </View>
                     <View style = {{flexDirection : 'row'}} >
                         <TouchableOpacity onPress={()=> setReplace(true) }>  
-                            <View style= {[styles.btn, {backgroundColor : theme.light.colors.primary, marginRight : 10, width : 120} ]}> 
+                            <View style= {[styles.btn, {backgroundColor : theme.light.colors.primary, marginRight : 10} ]}> 
                                 <Text style = {[styles.btnTxt, {color : 'white'}]}> Replace </Text>
                             </View>           
                         </TouchableOpacity>
                         <TouchableOpacity>  
-                            <View style= {[styles.btn, {width : 120}]}> 
+                            <View style= {[styles.btn]}> 
                                 <Text style = {[styles.btnTxt, {color : theme.light.colors.primary}]}> Save </Text>
                             </View>           
                         </TouchableOpacity>
@@ -142,6 +143,7 @@ export default function EditProfile({navigation}){
                             style={styles.textFiled}
                         />
                         <Text> You used this phone number to Login your account</Text>
+                        
                     </View>
                     <View style = {{marginTop : 20}} />            
                     <HorizontalLine color = "#eee" />
@@ -155,16 +157,50 @@ export default function EditProfile({navigation}){
                             <Text style = {[styles.btnTxt, {color : theme.light.colors.primary}]}> Close My Account</Text>
                         </View>           
                     </TouchableOpacity>
-                  
+                    
                </View>
+               <View style = {styles.bottomTextContainer}> 
+                    <Text style = {styles.bottomTextLebel}>You can't close your account while your subsription is still active.</Text>
+                    <TouchableOpacity onPress={()=> setSubscriptionPopup(true)}> 
+                        <Text style = {styles.bottomTextLink} > Manage your subscription</Text>
+                    </TouchableOpacity>
+
+                    {/* Pop up message */}
+                    <PopUp
+                        open = {subscriptionPopup}
+                        setOpen = {setSubscriptionPopup}
+                    >
+                        <TouchableOpacity onPress={()=> setSubscriptionPopup(false)}  style = {{padding : 20}} > 
+                            <FontAwesomeIcon 
+                                icon={faClose}
+                                size = {30}
+                                color = {theme.light.colors.primary}
+                            />
+                        </TouchableOpacity>
+                        <Text style = {[styles.errorTxt, {color : 'black'}]} > How do i cancel my subscription?</Text>
+                        <View style = {{alignItems : 'flex-start'}}> 
+                            <Text style = {styles.errorTxt}>1. Login to www.jativip.com</Text>
+                            <Text style = {styles.errorTxt} >2. Click 'Manage'</Text>
+                            <Text style = {styles.errorTxt}>3. Click 'Cancel Renewal'</Text>
+                        </View>
+                        <TouchableOpacity>  
+                            <View style= {[styles.btn, {backgroundColor : theme.light.colors.primary, width : 300}]}> 
+                                <Text style = {[styles.btnTxt, {color : 'white'}]}> Ok</Text>
+                            </View>           
+                        </TouchableOpacity>
+                    </PopUp>
+
+
+               </View>
+               
                <View style = {{marginBottom : 50}} />
+               
             </ScrollView>
           
-          <PopUp
-            open = {openPopUp}
-            setOpen = {setOpenPopUp}
-          >
-            <> 
+            <PopUp
+                open = {openPopUp}
+                setOpen = {setOpenPopUp}
+            >
                 <TouchableOpacity onPress={()=> setOpenPopUp(false)}  style = {{padding : 20}} > 
                     <FontAwesomeIcon 
                         icon={faClose}
@@ -183,7 +219,6 @@ export default function EditProfile({navigation}){
                         <Text style = {[styles.btnTxt, {color : theme.light.colors.primary}]}> Yes</Text>
                     </View>           
                 </TouchableOpacity>
-            </>
             </PopUp>
             <Modal  
                 visible = {openReplace}
@@ -316,6 +351,26 @@ const styles = StyleSheet.create({
         backgroundColor : 'white',
         width : '100%',
         padding : 10,
+    },
+
+    bottomTextContainer : {
+        alignItems : 'center', 
+        padding : 10,
+    },
+    bottomTextLebel : {
+        textAlign : 'center',
+        fontFamily : FontFamily.BrandonGrotesque_medium,
+        fontSize : 16
+    },
+    bottomTextLink : {
+        color : theme.light.colors.primary,
+        textDecorationLine : 'underline',
+        fontFamily : FontFamily.BrandonGrotesque_medium,
+        fontSize : 20
+    },
+    errorTxt : {
+        fontFamily : FontFamily.BrandonGrotesque_medium,
+        fontSize : 20
     }
 })
 
