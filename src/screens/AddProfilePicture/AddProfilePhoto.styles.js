@@ -64,4 +64,8 @@ export const styles = StyleSheet.create({
     height: vs(20),
     width: ms(20),
   },
+  HeadingTextStyle: {
+    color: 'black',
+    fontFamily: FontFamily.Recoleta_bold,
+  },
 });

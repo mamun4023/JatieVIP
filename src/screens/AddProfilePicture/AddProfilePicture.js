@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { TouchableOpacity, View, Image } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { TouchableOpacity, View, Image, ScrollView } from 'react-native';
 import { shallowEqual, useSelector } from 'react-redux';
 import { TYPES } from '@/actions/UserActions';
 import { Button, ErrorView } from '@/components';
@@ -9,20 +9,31 @@ import { styles } from '@/screens/AddProfilePicture/AddProfilePhoto.styles';
 import { errorsSelector } from '@/selectors/ErrorSelectors';
 import { isLoadingSelector } from '@/selectors/StatusSelectors';
 import { vs } from 'react-native-size-matters';
-import { navigationRef } from '@/navigation/RootNavigation';
-import { NAVIGATION } from '@/constants';
 import { AuthHeader } from '@/components/AuthHeader';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import Modal from 'react-native-modal';
 import { close } from '@/assets';
+import { EditViewModal } from '@/components/CropPictureModal';
+
 export function AddProfilePicture() {
   const { colors } = useTheme();
-  const [visible, setVisible] = useState(false);
-  const [image, setImage] = useState();
-  const [profilePicture, setProfilePicture] = useState('');
+  const [image, setImage] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [cropImageModal, setCropImageModal] = useState();
+
+  const cropViewRef = useRef(null);
+
+  const ReplaceImage = () => {
+    console.log('ReplaceImage');
+    setImage(null);
+    setCropImageModal(false);
+  };
+
+  const ImageCropModal = () => {
+    setCropImageModal(false);
+  };
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -43,16 +54,18 @@ export function AddProfilePicture() {
   const handleSubmit = () => {
     // navigationRef.navigate(NAVIGATION.adjustPicture);
   };
+
   const OpenGallery = () => {
     ImageCropPicker.openPicker({
       width: 300,
       height: 400,
-      cropping: true,
+      cropping: false,
     })
       .then(image => {
         console.log(image);
         setImage(image.path);
         setModalVisible(!isModalVisible);
+        setCropImageModal(true);
       })
       .catch(e => {
         console.log('Error: ' + e);
@@ -62,12 +75,13 @@ export function AddProfilePicture() {
     ImageCropPicker.openCamera({
       width: 300,
       height: 400,
-      cropping: true,
+      cropping: false,
     })
       .then(image => {
         console.log('uploaded image--->', image);
         setModalVisible(!isModalVisible);
         setImage(image.path);
+        setCropImageModal(true);
       })
       .catch(e => {
         console.log('Error: ' + e);
@@ -77,8 +91,9 @@ export function AddProfilePicture() {
   const RemovePic = () => {
     setImage(!image);
   };
+
   return (
-    <View style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <AuthHeader title={strings.addYourProfilePicture.title} />
 
       <ErrorView errors={errors} />
@@ -90,6 +105,21 @@ export function AddProfilePicture() {
             <FontAwesomeIcon icon={faUser} size={65} color={colors.white} />
           )}
         </View>
+        <EditViewModal
+          textStyleHeading={styles.HeadingTextStyle}
+          style={{ width: '100%' }}
+          sourceUrl={image}
+          isVisible={cropImageModal}
+          onImageCrop={res => {
+            console.log('uploaded image--->', res);
+            const finalImagePath = 'file://' + res.uri;
+            setImage(finalImagePath);
+            if (res !== null) {
+              setCropImageModal(false);
+            }
+          }}
+          onPress={ReplaceImage}
+        />
         {!image ? (
           <Button
             onPress={toggleModal}
@@ -142,6 +172,7 @@ export function AddProfilePicture() {
               : strings.addYourProfilePicture.skip
           }
         />
+
         <Modal isVisible={isModalVisible}>
           <View style={styles.modalBackground}>
             <TouchableOpacity onPress={closeModal}>
@@ -162,6 +193,6 @@ export function AddProfilePicture() {
           </View>
         </Modal>
       </View>
-    </View>
+    </ScrollView>
   );
 }
