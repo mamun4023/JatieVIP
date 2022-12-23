@@ -1,8 +1,8 @@
 import { useTheme } from '@react-navigation/native';
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity, View, Image, ScrollView } from 'react-native';
-import { shallowEqual, useSelector } from 'react-redux';
-import { TYPES } from '@/actions/UserActions';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { login, TYPES } from '@/actions/UserActions';
 import { Button, ErrorView } from '@/components';
 import { strings } from '@/localization';
 import { styles } from '@/screens/AddProfilePicture/AddProfilePhoto.styles';
@@ -23,10 +23,9 @@ export function AddProfilePicture() {
   const [isModalVisible, setModalVisible] = useState(false);
   const [cropImageModal, setCropImageModal] = useState();
 
-  const cropViewRef = useRef(null);
+  const dispatch = useDispatch();
 
   const ReplaceImage = () => {
-    console.log('ReplaceImage');
     setImage(null);
     setCropImageModal(false);
   };
@@ -52,7 +51,9 @@ export function AddProfilePicture() {
   };
 
   const handleSubmit = () => {
-    // navigationRef.navigate(NAVIGATION.adjustPicture);
+    const dummyUserName = 'Dummy';
+    const dummyUserPassword = 'Dummy';
+    dispatch(login(dummyUserName, dummyUserPassword));
   };
 
   const OpenGallery = () => {
@@ -78,7 +79,6 @@ export function AddProfilePicture() {
       cropping: false,
     })
       .then(image => {
-        console.log('uploaded image--->', image);
         setModalVisible(!isModalVisible);
         setImage(image.path);
         setCropImageModal(true);
@@ -111,7 +111,6 @@ export function AddProfilePicture() {
           sourceUrl={image}
           isVisible={cropImageModal}
           onImageCrop={res => {
-            console.log('uploaded image--->', res);
             const finalImagePath = 'file://' + res.uri;
             setImage(finalImagePath);
             if (res !== null) {
@@ -124,32 +123,20 @@ export function AddProfilePicture() {
           <Button
             onPress={toggleModal}
             style={styles.submitButton}
-            title={
-              isLoading
-                ? strings.common.loading
-                : strings.addYourProfilePicture.upload
-            }
+            title={strings.addYourProfilePicture.upload}
           />
         ) : (
           <View style={{ flexDirection: 'row' }}>
             <Button
               onPress={RemovePic}
               style={styles.replaceRemoveButton}
-              title={
-                isLoading
-                  ? strings.common.loading
-                  : strings.addYourProfilePicture.remove
-              }
+              title={strings.addYourProfilePicture.remove}
             />
 
             <Button
               onPress={toggleModal}
               style={styles.replaceRemoveButton}
-              title={
-                isLoading
-                  ? strings.common.loading
-                  : strings.addYourProfilePicture.replace
-              }
+              title={strings.addYourProfilePicture.replace}
             />
           </View>
         )}
@@ -164,13 +151,10 @@ export function AddProfilePicture() {
           }
         />
         <Button
+          onPress={handleSubmit}
           style={styles.skipButton}
           textStyle={styles.skipButtonText}
-          title={
-            isLoading
-              ? strings.common.loading
-              : strings.addYourProfilePicture.skip
-          }
+          title={strings.addYourProfilePicture.skip}
         />
 
         <Modal isVisible={isModalVisible}>

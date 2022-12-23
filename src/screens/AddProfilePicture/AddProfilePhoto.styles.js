@@ -19,8 +19,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: theme.light.colors.userBackgroundColor,
-    borderRadius: 100,
-    height: vs(130),
+    borderRadius: ms(70),
+    height: ms(140),
     width: ms(140),
     marginTop: vs(50),
   },
@@ -39,10 +39,10 @@ export const styles = StyleSheet.create({
     paddingVertical: vs(20),
   },
   img: {
-    height: vs(130),
+    height: ms(140),
     width: ms(140),
     position: 'absolute',
-    borderRadius: 100,
+    borderRadius: ms(70),
   },
   replaceRemoveButton: {
     width: '40%',

@@ -39,12 +39,12 @@ export const en = {
   profile: {
     header: 'Profile',
     logout: 'Logout',
-    feedTitle : 'Share To Feed',
-    feedLebel : "What's on your mind?",
-    followers : "Followers",
-    following : 'Following',
-    myStatus  : 'My Status',
-    myActivity : 'My Activity',
+    feedTitle: 'Share To Feed',
+    feedLebel: "What's on your mind?",
+    followers: 'Followers',
+    following: 'Following',
+    myStatus: 'My Status',
+    myActivity: 'My Activity',
     message: 'This screen has the iOS native large header.',
   },
   Welcome: {
@@ -66,7 +66,7 @@ export const en = {
     countryPlaceHolder: 'Select your country',
   },
   addYourProfilePicture: {
-    title: 'Add Your Profile Picture',
+    title: 'Add Your Profile \nPicture',
     upload: 'Upload',
     Finish: 'Finish',
     skip: 'Skip',

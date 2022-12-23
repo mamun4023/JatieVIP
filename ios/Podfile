@@ -8,7 +8,7 @@ production = ENV["PRODUCTION"] == "1"
 
 abstract_target 'JatieVIPCommonPods' do
   config = use_native_modules!
-  
+  pod 'react-native-image-crop-tools', :path => '../node_modules/react-native-image-crop-tools'
   
   target 'JatieVIPDev' do
   end
@@ -41,5 +41,8 @@ abstract_target 'JatieVIPCommonPods' do
   post_install do |installer|
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    end
   end
 end
