@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: vs(20),
+    padding: vs(20),
   },
   feedIconContainer: {
     backgroundColor: theme.light.colors.primaryBg,
