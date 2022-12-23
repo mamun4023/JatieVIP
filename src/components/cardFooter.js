@@ -13,7 +13,7 @@ import {
 
 export const CardFooter = ({likeCount, disLikeCount, commentCount, likePress, disLikePress, commentPress, sharePress, morePress})=>{
     return(
-        <View style = {styles.footer} >
+        <View style = {styles.footer}>
             <View style ={{
                 flexDirection : 'row',
                 alignItems : 'center',

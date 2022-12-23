@@ -56,12 +56,13 @@ export default function Settings({navigation}){
                 </TouchableOpacity>
                 <TouchableOpacity style = {styles.list} onPress = {()=> navigation.navigate(NAVIGATION.editProfile)}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
-                        <FontAwesomeIcon 
-                            icon={faUser}
-                            size = {20}
-                            color = {theme.light.colors.primary}
-
-                        />
+                        <View style = {styles.iconContainer}> 
+                            <FontAwesomeIcon 
+                                icon={faUser}
+                                size = {20}
+                                color = {theme.light.colors.primary}
+                            />
+                        </View>
                         <Text style = {[TextStyles.header ,styles.listText]} > Edit Profile</Text>
                     </View>
                     <FontAwesomeIcon 
@@ -72,11 +73,13 @@ export default function Settings({navigation}){
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>navigation.navigate(NAVIGATION.blockedUsers)} style = {styles.list}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
-                        <FontAwesomeIcon 
-                            icon={faLock}
-                            color = {theme.light.colors.primary}
-                            size = {20}
-                        />
+                        <View style = {styles.iconContainer}> 
+                            <FontAwesomeIcon 
+                                icon={faLock}
+                                color = {theme.light.colors.primary}
+                                size = {20}
+                            />
+                        </View>
                         <Text style = {[TextStyles.header ,styles.listText]} >Blocked Users</Text>
                     </View>
                     <FontAwesomeIcon 
@@ -86,12 +89,14 @@ export default function Settings({navigation}){
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.notificationSettings)} style = {styles.list}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
-                        <FontAwesomeIcon 
-                            icon={faBell}
-                            size = {20}
-                            color = {theme.light.colors.primary}
+                        <View style = {styles.iconContainer} > 
+                            <FontAwesomeIcon 
+                                icon={faBell}
+                                size = {20}
+                                color = {theme.light.colors.primary}
 
-                        />
+                            />
+                        </View>
                         <Text style = {[TextStyles.header ,styles.listText]} >Notification Settings</Text>
                     </View>
                     <FontAwesomeIcon 
@@ -132,14 +137,13 @@ export default function Settings({navigation}){
                     </View>
                     <View style = {styles.copyWriteContainer}> 
                         <Text style = {styles.copyRightText}> App Version 1.233.309 </Text>
-                        <Text style = {styles.copyRightText}> @Jatie, Inc. All rights reserved </Text>
+                        <Text style = {styles.copyRightText}> ©JatieVIP, Inc. All rights reserved </Text>
                     </View>
                 </View>
             </View>
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     contianer : {
@@ -167,7 +171,8 @@ const styles = StyleSheet.create({
         borderColor : theme.light.colors.primary,
         backgroundColor : theme.light.colors.primaryBg,
         borderRadius : 10,
-        padding : 10
+        padding : 10,
+        elevation : 2
     },
     upgradeText : [
         TextStyles.header, {
@@ -193,7 +198,7 @@ const styles = StyleSheet.create({
     },
     listText : {
         color : theme.light.colors.black,
-        fontSize : 18,
+        fontSize : 15,
         paddingLeft : 10
     },
     footer : {
@@ -215,6 +220,11 @@ const styles = StyleSheet.create({
     },
     copyRightText : {
         fontFamily : FontFamily.BrandonGrotesque_medium,
-        fontSize : 20
+        fontSize : 15
+    },
+    iconContainer : { 
+        padding : 10, 
+        backgroundColor : theme.light.colors.primaryBgLight, 
+        borderRadius : 100
     }
 })

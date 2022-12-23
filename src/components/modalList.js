@@ -1,6 +1,7 @@
 import React from "react"
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
+import {ms} from 'react-native-size-matters';
 import {TextStyles, theme} from '@/theme'
 import PropTypes from 'prop-types';
 
@@ -35,7 +36,7 @@ ModalList.propTypes = {
     onPress : PropTypes.func,
     iconColor : PropTypes.string,
     iconBg : PropTypes.string
-  };
+};
   
 ModalList.defaultProps = {
     title: 'No title',
@@ -54,7 +55,8 @@ const styles = StyleSheet.create({
     },
     text : {
         paddingLeft : 5,
-        fontSize : 20
+        fontSize : ms(15),
+        color : theme.light.colors.black
     },
     iconContainer: {
         padding : 10,

@@ -18,7 +18,7 @@ import {
     faUserPlus
   } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
-import { Icon, Badge } from '@/components';
+import { Icon, Badge, HorizontalLine } from '@/components';
 import {ModalDown, ModalList} from '@/components';
 import {NAVIGATION} from '@/constants'
 
@@ -27,11 +27,11 @@ export default function Followers({navigation}){
     const [open, setOpen] = useState(false);
     return(
         <View style = {styles.container}>
-            <StatusBar barStyle= 'dark-content' backgroundColor= 'transparent' />
             <View style ={{ padding : 5 }}>
               <Icon 
                   icon={faArrowLeft}
                   size = {20}
+                  color = {theme.light.colors.info}
                   onPress = {()=> navigation.goBack()}
               />
             </View>
@@ -85,6 +85,7 @@ export default function Followers({navigation}){
                   iconBg = {theme.light.colors.successBgLight}
                   onPress = {()=> Alert.alert("working")}
                 />
+                <HorizontalLine color = {theme.light.colors.infoBgLight} />
                 <ModalList 
                   title= "Report"
                   icon={faFlag}

@@ -4,12 +4,11 @@ import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {faArrowLeft, faCalendar, faClose} from '@fortawesome/free-solid-svg-icons';
-import { Icon, HorizontalLine, PopUp, Button } from '@/components';
+import { Icon, HorizontalLine, PopUp } from '@/components';
+import {EditViewModal} from '../../components/CropPictureModal';
 import DatePicker from 'react-native-date-picker';
 import Moment from 'moment';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { CropView } from 'react-native-image-crop-tools';
-
 
 export default function EditProfile({navigation}){
     const [date, setDate] = useState(new Date())
@@ -220,61 +219,12 @@ export default function EditProfile({navigation}){
                     </View>           
                 </TouchableOpacity>
             </PopUp>
-            <Modal  
-                visible = {openReplace}
-                transparent = {true}
-            >
-                <TouchableWithoutFeedback onPress={()=>setReplace(false)}> 
-                <View style = {styles.replaceContainer}>
-                    <View  style  = {styles.replaceContent}> 
-                        <Text style = {TextStyles.header}> Adjust Picture</Text>
-                        <View
-                            style = {{
-                                height : 500,
-                                backgroundColor : 'gray'
-                            }}
-                        />
-                    {/* <View style = {{
-                        width : "100%",
-                        height : 500
-                    }}> 
-                        <Image 
-                            source={{
-                                uri : "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000"
-                            }}
-                            style = {{
-                                width : 100,
-                                height : 100
-                            }}
-                        />
-                        <CropView
-                        sourceUrl={"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000"}
-                        style={{ height: 100, width: 100}}
-                        //   ref={cropViewRef}
-                        onImageCrop={(res) => console.warn(res)}
-                        keepAspectRatio
-                        aspectRatio={{width: 16, height: 9}}
-                        />
-                    </View>
-                    */}
-
-                        <View style = {{alignItems : 'center'}}> 
-                            <TouchableOpacity>  
-                                <View style= {[styles.btn, {backgroundColor : theme.light.colors.primary, width : 300}]}> 
-                                    <Text style = {[styles.btnTxt, {color : 'white'}]}> Crop & Close</Text>
-                                </View>           
-                            </TouchableOpacity>
-                            <TouchableOpacity>  
-                                <View style= {[styles.btn, { width : 300}]}> 
-                                    <Text style = {[styles.btnTxt, {color : theme.light.colors.primary}]}> Replace</Text>
-                                </View>           
-                            </TouchableOpacity>
-                        </View>
-                    </View>              
-                </View>
-                </TouchableWithoutFeedback>
-            </Modal>
-
+            <EditViewModal 
+                isVisible={openReplace}
+                sourceUrl = "https://tinyjpg.com/images/social/website.jpg"
+                
+            />
+        
         </View>
     )
 }
