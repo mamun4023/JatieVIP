@@ -4,14 +4,13 @@ import { FontFamily } from './Fonts';
 import { theme } from './theme';
 
 export const TextStyles = StyleSheet.create({
-  header : {
-    fontSize : 25,
-    fontFamily : FontFamily.Recoleta_bold
+  header: {
+    fontSize: 25,
+    fontFamily: FontFamily.Recoleta_bold,
   },
   title: {
-    fontSize: ms(32, 0.3),
+    fontSize: ms(15, 0.3),
     fontFamily: FontFamily.Recoleta_bold,
-    color: theme.light.colors.title,
   },
   text: {
     fontSize: ms(16, 0.3),
