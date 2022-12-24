@@ -50,14 +50,14 @@ const styles = StyleSheet.create({
   tab: {
     flexDirection: 'row',
     backgroundColor: theme.light.colors.infoBgLight,
-    padding: 10,
+    padding: ms(10),
     borderRadius: ms(40),
-    margin: 2,
+    margin: ms(2),
     alignItems: 'center',
   },
   count: {
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: ms(14, 0.3),
     color: theme.light.colors.title,
   },
 });

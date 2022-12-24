@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, Switch} from 'react-native';
 import {TextStyles, theme} from '@/theme'
 import {FontFamily} from '@/theme/Fonts';
-import {Icon, AppSwitch, HorizontalLine, Button} from '@/components';
+import {Icon, AppSwitch, HorizontalLine, Button, TopBackButton} from '@/components';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import { ms } from 'react-native-size-matters';
 
 export default function NotificationSettings({navigation}){
     const [isEnabled, setIsEnabled] = useState(false);
@@ -11,17 +12,9 @@ export default function NotificationSettings({navigation}){
     
     return(
         <View style = {styles.container}>
-            {/* <StatusBar barStyle= 'dark-content' backgroundColor= 'transparent' /> */}
-            <View style ={{ padding : 5 }}>
-              <Icon 
-                  icon={faArrowLeft}
-                  size = {20}
-                  color = {theme.light.colors.info}
-                  onPress = {()=> navigation.goBack()}
-              />
-            </View>
+            <TopBackButton onPress = {()=> navigation.goBack()}  />
             <View style = {styles.listHeader}> 
-                <Text style = {TextStyles.header}> Notification </Text>
+                <Text style = {[TextStyles.header, {color : 'black'}]}> Notification </Text>
                 <AppSwitch 
                     value={isEnabled}
                     onChange = {toggleSwitch}
@@ -72,8 +65,10 @@ export default function NotificationSettings({navigation}){
                 style={{
                     backgroundColor : theme.light.colors.primary,
                     alignItems : 'center',
-                    marginTop : 200,
-                    borderWidth : 0
+                    marginTop : ms(150),
+                    borderWidth : 0,
+                    // marginLeft : 10,
+                    // marginRight : 10
                 }}
                 textStyle={{
                     color : theme.light.colors.white
@@ -87,7 +82,6 @@ export default function NotificationSettings({navigation}){
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        padding : 15,
         backgroundColor : "white"
       },
       listHeader : {

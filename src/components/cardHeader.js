@@ -1,12 +1,8 @@
 import React from "react"
-import {
-    View,
-    Text,
-    Image,
-    StyleSheet 
-} from "react-native"
-import {TextStyles, theme} from '@/theme';
+import { View, Text, Image, StyleSheet} from "react-native"
+import {TextStyles} from '@/theme';
 import PropsType from 'prop-types';
+import {ms} from 'react-native-size-matters'
 
 export const CardHeader = ({fullName, userName, profilePic, time})=>{
     return(
@@ -19,8 +15,8 @@ export const CardHeader = ({fullName, userName, profilePic, time})=>{
                     }}
                 />
                 <View>
-                    <Text style = {[TextStyles.header, {fontSize : 15, color : 'black'}]} > {fullName} </Text>
-                    <Text style = {[TextStyles.header, {fontSize : 12}]}> {userName} </Text>
+                    <Text style = {[TextStyles.header, {fontSize : ms(15, 0.3), color : 'black'}]} > {fullName} </Text>
+                    <Text style = {[TextStyles.header, {fontSize : ms(12, 0.3)}]}> {userName} </Text>
                 </View>
             </View>
             <View style = {{ flexDirection : 'row' }}> 
@@ -42,12 +38,12 @@ const styles = StyleSheet.create({
     postHeader: {
         flexDirection : 'row',
         justifyContent : 'space-between',
-        padding : 10
+        padding : ms(10)
     },
     Image : {
-        width: 35,
-        height: 35,
+        width: ms(35),
+        height: ms(35),
         borderWidth: 2,
-        borderRadius: 75
+        borderRadius: 100
     },
 })

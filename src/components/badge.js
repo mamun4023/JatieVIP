@@ -2,6 +2,7 @@ import React from "react"
 import {View, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import { TextStyles, theme } from '@/theme';
+import {ms} from 'react-native-size-matters'
 
 export const Badge = ({count, size})=>{
     return(
@@ -23,7 +24,9 @@ Badge.prototype = {
 const styles = StyleSheet.create({
     container :  {
         backgroundColor : theme.light.colors.infoBgLight,
-        padding : 5,
+        padding : ms(5),
+        paddingLeft: ms(10),
+        paddingRight : ms(10),
         borderRadius : 100
-      }
+    }
 })

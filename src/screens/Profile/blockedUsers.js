@@ -4,44 +4,34 @@ import {
     Text, 
     StyleSheet, 
     FlatList, 
-    StatusBar, 
     Image, 
     Alert,
     TouchableOpacity
 } from 'react-native';
-import {
-    faEllipsis,
-    faArrowLeft,
-    faCheck
-
-  } from '@fortawesome/free-solid-svg-icons';
+import {faEllipsis, faCheck} from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
-import { Icon, Badge } from '@/components';
-import {ModalDown, ModalList} from '@/components';
+import {TopBackButton, Icon, Badge ,ModalDown, ModalList} from '@/components';
 import {NAVIGATION} from '@/constants'
+import {strings} from '@/localization'
+import { ms } from 'react-native-size-matters';
+import { FontFamily } from '@/theme/Fonts';
 
 
 export default function BlockedUsers({navigation}){
     const [open, setOpen] = useState(false);
     return(
         <View style = {styles.container}>
-            <StatusBar barStyle= 'dark-content' backgroundColor= 'transparent' />
-            <View style ={{ padding : 5 }}>
-              <Icon 
-                  icon={faArrowLeft}
-                  size = {20}
-                  onPress = {()=> navigation.goBack()}
-              />
-            </View>
+            <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
-                <Text style = {TextStyles.header}> Blocked Users </Text>
-                <Badge count={100} size = {18} />
+                <Text style = {[TextStyles.header, {color : "black", paddingRight : ms(8)}]}> {strings.profile.blockedUsers}</Text>
+                <Badge count={23} size = {ms(16)} />
             </View>
             <View>
                 <FlatList 
                     data={Data}
                     key = {(props)=>props.id}
                     initialNumToRender ={10}
+                    contentContainerStyle={{ paddingBottom: ms(100) }}
                     renderItem = {({item})=> {
                         return (
                             <View style = {styles.listContainer}>   
@@ -50,15 +40,16 @@ export default function BlockedUsers({navigation}){
                                     onPress = {()=> navigation.navigate(NAVIGATION.userProfile)}
                                 > 
                                     <Image source={{uri : item.image}} style = {styles.profileImage} />
-                                    <View> 
-                                        <Text style = {TextStyles.label}> {item.name} { " "} </Text> 
+                                    <View style = {styles.nameContainer}> 
+                                        <Text style = {styles.nameTxt}> {item.name} { " "} </Text> 
                                         <Text> {item.userName}  </Text>
                                     </View>
                                 </TouchableOpacity>
                                 <Icon 
-                                  icon={faEllipsis}
-                                  size = {20}
-                                  onPress = {()=> setOpen(true)}
+                                    icon={faEllipsis}
+                                    size = {ms(15)}
+                                    color = "gray"
+                                    onPress = {()=> setOpen(true)}
                                 />
                             </View>
                         )
@@ -66,14 +57,15 @@ export default function BlockedUsers({navigation}){
                 />
             </View>
             <ModalDown 
-              open={open} 
-              setOpen = {setOpen}
+                open={open} 
+                setOpen = {setOpen}
             > 
                 <ModalList 
-                  title= "Unblock"
-                  icon={faCheck}
-                  iconColor = {theme.light.colors.secondary}
-                  iconBg = {theme.light.colors.infoBgLight}
+                    title= {strings.profile.unblock}
+                    icon={faCheck}
+                    iconColor = {theme.light.colors.secondary}
+                    iconBg = {theme.light.colors.infoBgLight}
+                    onPress = {()=> Alert.alert("blocked")}
                 />
             </ModalDown>
         </View>
@@ -82,39 +74,46 @@ export default function BlockedUsers({navigation}){
 
 const styles = StyleSheet.create({
     container : {
-      flex : 1,
-      padding : 15,
-      backgroundColor : "white"
+        flex : 1,
+        backgroundColor : "white"
     },
     listHeader : {
-      paddingTop : 5,
-      paddingBottom : 5,         
-      flexDirection : 'row',
-      alignItems : 'center'
+        paddingTop : ms(5),
+        paddingBottom : ms(5),         
+        flexDirection : 'row',
+        alignItems : 'center'
     },
     listContainer : {
-      padding  : 2,
-      flexDirection : 'row',
-      justifyContent : 'space-between',
-      margin : 5,
-      alignItems : 'center'
+        padding  : ms(2),
+        paddingLeft : ms(8),
+        paddingRight : ms(12),
+        flexDirection : 'row',
+        justifyContent : 'space-between',
+        margin : ms(2),
+        alignItems : 'center'
     },
     list : {
-      flexDirection : "row",
-      alignItems : "center"
+        flexDirection : "row",
+        alignItems : "center"
     },
     profileImage : {
-      height : 50,
-      width : 50,
-      borderRadius : 100,
-      borderWidth : 1,
-      borderColor : 'gray'
+        height : ms(40),
+        width : ms(40),
+        borderRadius : 100,
+        borderWidth : 1,
+        borderColor : 'gray'
+    },
+    nameContainer : {
+        flexDirection : 'row',
+        alignItems : 'center',
+        justifyContent : 'center'
+    },
+    nameTxt : {
+        fontFamily : FontFamily.Recoleta_bold,
+        fontSize : ms(15, 0.3),
+        color : 'black' 
     }
 })
-
-
-
-
 
 
 const Data = [
@@ -180,6 +179,30 @@ const Data = [
     },
     {
         id : 11,
+        name : "Dusana Semanov",
+        userName : "@dusana",
+        image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
+    },
+    {
+        id : 12,
+        name : "Dusana Semanov",
+        userName : "@dusana",
+        image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
+    },
+    {
+        id : 13,
+        name : "Dusana Semanov",
+        userName : "@dusana",
+        image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
+    },
+    {
+        id : 14,
+        name : "Dusana Semanov",
+        userName : "@dusana",
+        image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
+    },
+    {
+        id : 15,
         name : "Dusana Semanov",
         userName : "@dusana",
         image : 'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, StatusBar } from 'react-native';
 import { faSliders, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
+import {ms, vs} from 'react-native-size-matters';
 import { TextStyles, theme } from '@/theme';
 import { NAVIGATION } from '@/constants';
 import MyStatus from './myStatus';
@@ -17,6 +18,7 @@ import { strings } from '@/localization';
 
 export function Profile({ navigation }) {
   const [status, setStatus] = useState('my_status');
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="transparent" />
@@ -29,24 +31,27 @@ export function Profile({ navigation }) {
             }}
           />
           <View>
-            <Text
-              style={[TextStyles.header, { color: theme.light.colors.text }]}
-            >
-              {' '}
-              Adam Voigt
-            </Text>
+            <Text style={[TextStyles.header, { color: theme.light.colors.text }]}> {' '}Adam Voigt</Text>
             <Text style={TextStyles.label}> @adamvoigt</Text>
           </View>
         </View>
         <View style={styles.iconContiner}>
           <Icon
             icon={faSliders}
-            size={20}
+            size={ms(20)}
             onPress={() => navigation.navigate(NAVIGATION.profileSetting)}
             style={styles.icon}
           />
-          <Icon icon={faSearch} size={20} style={styles.icon} />
-          <Icon icon={faBell} size={20} style={styles.icon} />
+          <Icon 
+            icon={faSearch} 
+            size={ms(20)} 
+            style={styles.icon} 
+          />
+          <Icon 
+            icon={faBell} 
+            size={ms(20)} 
+            style={styles.icon} 
+          />
           <View style={styles.bellAlert} />
         </View>
       </View>
@@ -83,31 +88,31 @@ export const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    padding: ms(10),
   },
   headerImageContainer: {
     flexDirection: 'row',
   },
   headerImage: {
-    width: 50,
-    height: 50,
+    width: ms(50),
+    height: vs(50),
     borderWidth: 2,
-    borderRadius: 75,
+    borderRadius: 100,
   },
   iconContiner: {
     flexDirection: 'row',
   },
   icon: {
-    margin: 10,
+    margin: ms(10),
   },
   bellAlert: {
-    height: 10,
-    width: 10,
+    height: ms(10),
+    width: ms(10),
     backgroundColor: 'red',
     position: 'absolute',
     borderRadius: 100,
-    left: 100,
-    top: 8,
+    left: ms(100),
+    top: ms(8),
   },
   feedContainer: {
     flex: 1,

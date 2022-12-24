@@ -1,15 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import { theme } from '@/theme'; 
-import { TextStyles } from '@/theme';
 import { Card, CardHeader, Icon } from '@/components';
-import {
-    faComment, 
-    faEllipsis,
-    faShareNodes,
-    faCircleUp,
-    faCircleDown,
-  } from '@fortawesome/free-solid-svg-icons';
+import {faCircleUp ,faCircleDown, faMessage} from '@fortawesome/free-solid-svg-icons';
+import {ms} from 'react-native-size-matters';
+import { FontFamily } from '@/theme/Fonts';
+
 export default function MyActivity(){
     return(
         <View>
@@ -17,23 +13,47 @@ export default function MyActivity(){
                 data={Data}
                 key = {(item)=> item.id}
                 renderItem = {({item})=>(
-                    <View style = {{margin : 10}} > 
+                    <View style = {{margin : ms(10)}} > 
                         <Card>
                             <CardHeader 
                                 fullName = {item.fullName}
                                 userName = {item.userName}
                                 profilePic = {item.profilePic}
-                                time = {10}
+                                time = {item.time}
                             />
                               <View style = {styles.activity}>
-                                <Icon 
-                                    icon={faCircleUp}
-                                    size = {15}
-                                    style = {[styles.icon, {
-                                    color : 'green'
-                                    }]}
-                                />
-                                <Text> Upvoted on Lisa post</Text>
+
+                                {item.status == "Upvoted"? 
+                                    <Icon 
+                                        icon={faCircleUp}
+                                        size = {ms(15)}
+                                        style = {[styles.icon, {
+                                            color : theme.light.colors.success
+                                        }]}
+                                    /> : null
+                                }
+                                {item.status == "Downvoted"? 
+                                    <Icon 
+                                        icon={faCircleDown}
+                                        size = {ms(15)}
+                                        style = {[styles.icon, {
+                                            color : theme.light.colors.error
+                                        }]}
+                                    />: null
+                                }
+                                {item.status == "Commented"? 
+                                    <Icon 
+                                        icon={faMessage}
+                                        size = {ms(15)}
+                                        style = {[styles.icon, {
+                                            color : theme.light.colors.info
+                                        }]}
+                                    />: null
+                                }
+                                <View style ={styles.textContainer}> 
+                                    <Text style = {styles.statsTxt}> {item.status} </Text>
+                                    <Text style = {styles.reactOnTxt}> {`${item.reactOn}'s post`} </Text>
+                                </View>
                             </View>
                         </Card>
                     </View>
@@ -46,8 +66,26 @@ export default function MyActivity(){
 const styles = StyleSheet.create({
     activity : {
         flexDirection : 'row',
-        padding : 10,
+        padding : ms(10),
         alignItems : 'center'
+    },
+    textContainer : {
+        flexDirection : 'row',
+        alignItems : "center",
+        justifyContent : "center"
+    },
+    statsTxt: {
+        fontFamily : FontFamily.BrandonGrotesque_medium,
+        fontSize : ms(15, 0.3),
+        paddingLeft : ms(5)
+        
+    },
+    reactOnTxt: {
+        color : theme.light.colors.info, 
+        textDecorationLine : 'underline',
+        fontFamily : FontFamily.BrandonGrotesque_medium,
+        fontSize : ms(15, 0.3)
+        
     }
 })
 
@@ -59,6 +97,7 @@ const Data = [
         userName : "@adam",
         profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
         status : 'Upvoted',
+        reactOn : "Liza Su's",
         time : 10,
     },
     {
@@ -67,7 +106,8 @@ const Data = [
         userName : "@adam",
         profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
         status : 'Downvoted',
-        time : 10,
+        reactOn : "Liza Su",
+        time : 20,
     },
     {
         id : 3,
@@ -75,7 +115,8 @@ const Data = [
         userName : "@adam",
         profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
         status : 'Commented',
-        time : 10,
+        reactOn : "Adam Trin",
+        time : 50,
     },
     {
         id : 4,
@@ -83,7 +124,8 @@ const Data = [
         userName : "@adam",
         profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
         status : 'Commented',
-        time : 10,
+        reactOn : "Peter Griffin",
+        time : 5,
     },
     {
         id : 5,
@@ -91,6 +133,7 @@ const Data = [
         userName : "@adam",
         profilePic : "https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=",
         status : 'Commented',
-        time : 10,
+        reactOn : "Emma Stone",
+        time : 33,
     }
 ]

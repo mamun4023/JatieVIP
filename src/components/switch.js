@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Switch} from 'react-native';
 import {theme} from '@/theme';
+import PropsType from 'prop-types';
 
-export const AppSwitch = ({ value, onChange })=>{
+export const AppSwitch = ({ value, onChange, style })=>{
     return(
         <View>
             <Switch
@@ -11,7 +12,13 @@ export const AppSwitch = ({ value, onChange })=>{
                 // ios_backgroundColor="#3e3e3e"
                 onValueChange={onChange}
                 value={value}
+                style = {style}
             />
         </View>
     )
+}
+
+AppSwitch.prototype = {
+    value : PropsType.string.isRequired,
+    onChange : PropsType.func.isRequired
 }

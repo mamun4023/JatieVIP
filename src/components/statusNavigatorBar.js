@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { theme, TextStyles } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import PropsType from 'prop-types';
-import { ms, vs } from 'react-native-size-matters';
+import { s, ms, vs } from 'react-native-size-matters';
 
 export function StatusNavigatorBar({
   status,
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: theme.light.colors.primaryBg,
-    margin: 10,
-    padding: 10,
+    margin: ms(10),
+    padding: ms(10),
     borderRadius: 10,
     height: ms(50),
     marginBottom: vs(20),
@@ -85,12 +85,12 @@ const styles = StyleSheet.create({
   ],
 
   statusNaivigator: {
-    width: 10,
-    height: 10,
+    width: ms(10),
+    height: ms(10),
     backgroundColor: theme.light.colors.primary,
     position: 'absolute',
-    top: 30,
-    left: 60,
+    top: ms(26),
+    left: ms(50),
     borderRadius: 50,
   },
 });

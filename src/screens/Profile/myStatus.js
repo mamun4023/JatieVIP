@@ -2,17 +2,25 @@ import React, {useState} from 'react';
 import { View, Alert, FlatList } from 'react-native';
 import { theme } from '@/theme';
 import {faTrash, faPen} from '@fortawesome/free-solid-svg-icons';
-import {ModalDown, ModalList, Card, CardHeader, CardFooter, CardBody} from '@/components'
+import {
+  ModalDown, 
+  ModalList, 
+  Card, 
+  CardHeader, 
+  CardFooter, 
+  CardBody
+} from '@/components';
+import {ms} from 'react-native-size-matters';
 
 export default function MyStatus() {
   const [open, setOpen] = useState(false)
   return (
         <View>
           <FlatList 
-            data={Data}
-            key = {(props)=> props.id}
-            renderItem = {({item})=> (
-                <View style = {{margin : 10}}> 
+              data={Data}
+              key = {(props)=> props.id}
+              renderItem = {({item})=> (
+                <View style = {{margin : ms(10)}}> 
                   <Card>
                     <CardHeader 
                       fullName = {item.fullName}
@@ -32,12 +40,11 @@ export default function MyStatus() {
                         commentPress = {()=> Alert.alert("Comment")}
                         sharePress = {()=> Alert.alert("share")}
                         morePress = {()=>setOpen(true)}
-                      />
+                    />
                   </Card>
                 </View>
-             )}
-          
-             />
+              )}
+            />
             <ModalDown 
               open={open}
               setOpen = {setOpen}
@@ -55,7 +62,7 @@ export default function MyStatus() {
                 iconColor= {theme.light.colors.secondary}
               />
             </ModalDown>
-          </View>
+        </View>
   );
 }
 
@@ -68,7 +75,7 @@ const Data = [
     like : 100,
     disLike : 30,
     comment : 20,
-    text : "Initiated by 2020 IEEE President Toshio Fukuda and the IEEE 2020 IEEE Board Ad Hoc Committee on Lifelong Learning and Continuing Education, the IEEE Academies are designed to teach in-demand technical concepts in a new way to IEEE members working in industry. The IEEE Academies are a new learning format at IEEE that will help members understand",
+    text : "Initiated by IEEE President Toshio Fukuda and the IEEE 2020 IEEE Board Ad Hoc Committee on Lifelong Learning and Continuing Education, the IEEE Academies are designed to teach in-demand technical concepts in a new way to IEEE members working in industry. The IEEE Academies are a new learning format at IEEE that will help members understand",
     time : '10'
   },
   {
