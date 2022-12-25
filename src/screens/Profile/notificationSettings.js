@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Switch} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {TextStyles, theme} from '@/theme'
 import {FontFamily} from '@/theme/Fonts';
-import {Icon, AppSwitch, HorizontalLine, Button, TopBackButton} from '@/components';
-import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
-import { ms } from 'react-native-size-matters';
+import {AppSwitch, HorizontalLine, Button, TopBackButton} from '@/components';
+import { ms, vs } from 'react-native-size-matters';
+import { strings } from '@/localization';
 
 export default function NotificationSettings({navigation}){
     const [isEnabled, setIsEnabled] = useState(false);
@@ -14,67 +14,72 @@ export default function NotificationSettings({navigation}){
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()}  />
             <View style = {styles.listHeader}> 
-                <Text style = {[TextStyles.header, {color : 'black'}]}> Notification </Text>
+                <Text style = {[TextStyles.header, {color : 'black'}]}> {strings.profile.notificatin} </Text>
                 <AppSwitch 
                     value={isEnabled}
                     onChange = {toggleSwitch}
                 />
             </View>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
-            <Text style = {styles.headerText} > From Members</Text>
+            <Text style = {styles.headerText} > {strings.profile.fromMembers}</Text>
             <View style = {styles.list}>
-                <Text style = {styles.listTxt}> Someone reacts to my post </Text>
+                <Text style = {styles.listTxt}> {strings.profile.reactTo} </Text>
                 <AppSwitch 
                     value={isEnabled}
                     onChange = {toggleSwitch}
                 />
             </View>
             <View style = {styles.list}>
-                <Text style = {styles.listTxt}> Someone comments on my post </Text>
+                <Text style = {styles.listTxt}> {strings.profile.commentsOn} </Text>
                 <AppSwitch 
                     value={isEnabled}
                     onChange = {toggleSwitch}
                 />
             </View>
             <View style = {styles.list}>
-                <Text style = {styles.listTxt}> Someone I'm following posts </Text>
+                <Text style = {styles.listTxt}> {strings.profile.ImFollowing} </Text>
                 <AppSwitch 
                     value={isEnabled}
                     onChange = {toggleSwitch}
                 />
             </View>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
-            <Text style = {styles.headerText} > From Jatie </Text>
+            <Text style = {styles.headerText} > {strings.profile.fromJatie} </Text>
             <View style = {styles.list}>
-                <Text style = {styles.listTxt}> Jatie posts </Text>
+                <Text style = {styles.listTxt}> {strings.profile.jatiePost} </Text>
                 <AppSwitch 
                     value={isEnabled}
                     onChange = {toggleSwitch}
                 />
             </View>
             <View style = {styles.list}>
-                <Text style = {styles.listTxt}> Jatie goes live </Text>
+                <Text style = {styles.listTxt}> {strings.profile.JatieLive} </Text>
                 <AppSwitch 
                     value={isEnabled}
                     onChange = {toggleSwitch}
                 />
             </View>
-        
+            <View style = {styles.list}>
+                <Text style = {styles.listTxt}> {strings.profile.beforeLive} </Text>
+                <AppSwitch 
+                    value={isEnabled}
+                    onChange = {toggleSwitch}
+                />
+            </View>
+
+            <View style = {{alignItems : 'center', marginTop : ms(150)}}> 
             <Button 
                 title="Save" 
                 style={{
                     backgroundColor : theme.light.colors.primary,
                     alignItems : 'center',
-                    marginTop : ms(150),
                     borderWidth : 0,
-                    // marginLeft : 10,
-                    // marginRight : 10
+                    width : '90%'
                 }}
                 textStyle={{
                     color : theme.light.colors.white
                 }} />
-
-       
+            </View>
         </View>
     )
 }
@@ -83,31 +88,29 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         backgroundColor : "white"
-      },
-      listHeader : {
-        paddingTop : 5,
-        paddingBottom : 5,         
+    },
+    listHeader : {
+        paddingTop : ms(5),
+        paddingBottom : ms(5),         
         flexDirection : 'row',
         alignItems : 'center',
         justifyContent : 'space-between'
-      },
-      headerText : {
+    },
+    headerText : {
         fontFamily : FontFamily.Recoleta_medium,
-        paddingTop: 10,
-        paddingBottom : 10,
-        fontSize : 20,
+        paddingTop: ms(10),
+        paddingBottom : ms(10),
+        fontSize : ms(18, 0.3),
         color : theme.light.colors.black
-      },
-
-      list : {
+    },
+    list : {
         flexDirection : 'row',
         justifyContent : 'space-between',
         alignItems : 'center',
-        marginBottom : 10,
-      
-      },
-      listTxt : {
+        marginBottom : vs(10),
+    },
+    listTxt : {
         fontFamily : FontFamily.BrandonGrotesque_medium,
-        fontSize : 20
-      }
+        fontSize : ms(16, 0.3)
+    }
 })

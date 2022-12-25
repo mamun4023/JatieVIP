@@ -61,7 +61,18 @@ export const en = {
     blockedUsers  : 'Blocked Users',
     notificationSettings : 'Notification Settings',
     appVersion : 'App Version 1.0.0',
-    copyRightText : '©JatieVIP, Inc. All rights reserved'
+    copyRightText : '©JatieVIP, Inc. All rights reserved',
+    notificatin : 'Notification',
+    fromMembers : 'From Members',
+    reactTo : 'Someone reacts to my post',
+    commentsOn : 'Someone comments on my post',
+    ImFollowing : "Someone I'm following posts",
+    fromJatie : 'From Jatie',
+    jatiePost : 'Jatie posts',
+    JatieLive : 'Jatie goes live',
+    beforeLive : 'One hour before Jatie goes live',
+    editProfile : 'Edit Profile',
+    profilePic : 'Profile Picture'
   },
   Welcome: {
     login: 'Login',

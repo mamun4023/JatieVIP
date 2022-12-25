@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View , Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View , Text, TouchableOpacity, Linking } from "react-native";
 import { faArrowRight, faLock, faUser} from '@fortawesome/free-solid-svg-icons';
 import {
     faFacebook,
@@ -149,8 +149,7 @@ const styles = StyleSheet.create({
         borderColor : theme.light.colors.primary,
         backgroundColor : theme.light.colors.primaryBg,
         borderRadius : 10,
-        padding : ms(10),
-        elevation : 2
+        padding : ms(10)
     },
     upgradeText : [
         TextStyles.header, {

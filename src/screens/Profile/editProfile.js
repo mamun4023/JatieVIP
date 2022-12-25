@@ -4,11 +4,15 @@ import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {faArrowLeft, faCalendar, faClose} from '@fortawesome/free-solid-svg-icons';
-import { Icon, HorizontalLine, PopUp } from '@/components';
+import { Icon, HorizontalLine, PopUp, Button } from '@/components';
 import {EditViewModal} from '../../components/CropPictureModal';
 import DatePicker from 'react-native-date-picker';
 import Moment from 'moment';
 import DropDownPicker from 'react-native-dropdown-picker';
+import {TopBackButton} from '@/components'
+import { ms, s, vs } from 'react-native-size-matters';
+import {strings} from '@/localization';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function EditProfile({navigation}){
     const [date, setDate] = useState(new Date())
@@ -22,22 +26,23 @@ export default function EditProfile({navigation}){
       {label: 'Male', value: 'Male'},
       {label: 'Female', value: 'Female'}
     ]);
+    const [locationListOpen, setLocationListOpen] = useState(false);
+    const [locationValue, setLocationValue] = useState(null);
+    const [location, setLocation] = useState([
+      {label: 'United State', value: 'United State'},
+      {label: 'United kingdom', value: 'United kingdom'},
+      {label: 'Australia', value: 'Australia'}
+    ]);
 
     
     return(
         <View style = {styles.container}>
-            <View style ={styles.header}>
-              <Icon 
-                  icon={faArrowLeft}
-                  size = {20}
-                  onPress = {()=> navigation.goBack()}
-                  style = {[styles.headerIcon]}
-              />
-              <Text style = {[styles.headerText, TextStyles.header]}>Edit Profile </Text>
-            </View>
+            <TopBackButton onPress = {()=> navigation.goBack()} />
+            <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.editProfile} </Text>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
-            <ScrollView style = {{flex : 1, padding : 15}}>
-                <Text style = {[styles.headerText, TextStyles.header, {fontSize : 20}]}>Profile Picture</Text>
+            
+            <ScrollView style = {{flex : 1, padding : 8}}>
+                <Text style = {styles.profileTxt}>{strings.profile.profilePic}</Text>
                 <View style = {{flexDirection : 'row', justifyContent : 'space-between', alignItems : "center"}}> 
                     <View>
                         <Image 
@@ -48,16 +53,17 @@ export default function EditProfile({navigation}){
                         />
                     </View>
                     <View style = {{flexDirection : 'row'}} >
-                        <TouchableOpacity onPress={()=> setReplace(true) }>  
-                            <View style= {[styles.btn, {backgroundColor : theme.light.colors.primary, marginRight : 10} ]}> 
-                                <Text style = {[styles.btnTxt, {color : 'white'}]}> Replace </Text>
-                            </View>           
-                        </TouchableOpacity>
-                        <TouchableOpacity>  
-                            <View style= {[styles.btn]}> 
-                                <Text style = {[styles.btnTxt, {color : theme.light.colors.primary}]}> Save </Text>
-                            </View>           
-                        </TouchableOpacity>
+                        <Button 
+                            title= "Replace"
+                            style={styles.replaceBtn}
+                        />
+                        <Button 
+                            title= "Remove"
+                            style={styles.removeBtn}
+                            textStyle = {{
+                              color : theme.light.colors.primary
+                            }}
+                        />
                     </View>
                 </View>
                 <View style = {styles.formContainer}>
@@ -99,7 +105,7 @@ export default function EditProfile({navigation}){
                                 modal
                                 mode='date'
                                 open={openDatePicker}
-                                locale = "fr"
+                                // locale = "fr"
                                 date={date}
                                 onConfirm={(date) => {
                                     setOpenDatePicker(false)
@@ -108,7 +114,11 @@ export default function EditProfile({navigation}){
                                 onCancel={() => {
                                     setOpenDatePicker(false)
                                 }}
+                                style = {{
+                                    borderColor : 'red'
+                                }}
                             />      
+                            
                     </View>
                     <View style = {styles.textFiledContainer}> 
                         <Text style = {[styles.textFieldLebel]}> Gender </Text>
@@ -116,20 +126,15 @@ export default function EditProfile({navigation}){
                             placeholder='Prefer Not to Say'
                             open={genderListOpen}
                             value={genderValue}
-                          
                             items={gender}
                             setOpen={setGenderListOpen}
                             setValue={setGenderValue}
                             setItems={setGender}
                             style={styles.textFiled}
+                            textStyle = {styles.dropListTxt}
                         />
                     </View>
-                    <View style = {styles.textFiledContainer}> 
-                        <Text style = {[styles.textFieldLebel]}> Location </Text>
-                        <TextInput
-                            style={styles.textFiled}
-                        />
-                    </View>
+                    
                     <View style = {styles.textFiledContainer}> 
                         <Text style = {[styles.textFieldLebel]}> User ID </Text>
                         <TextInput
@@ -137,26 +142,47 @@ export default function EditProfile({navigation}){
                         />
                     </View>
                     <View style = {styles.textFiledContainer}> 
+                        <Text style = {[styles.textFieldLebel]}> Location </Text>
+                        <DropDownPicker
+                            placeholder='Select location'
+                            open={locationListOpen}
+                            value={locationValue}
+                            items={location}
+                            setOpen={setLocationListOpen}
+                            setValue={setLocationValue}
+                            setItems={setLocation}
+                            style={styles.textFiled}
+                            textStyle = {styles.dropListTxt}
+                        />
+                    </View>
+                    <View style = {styles.textFiledContainer}> 
                         <Text style = {[styles.textFieldLebel]}> Login Phone </Text>
                         <TextInput
                             style={styles.textFiled}
                         />
-                        <Text> You used this phone number to Login your account</Text>
+                        <Text style = {styles.dropListTxt}> You used this phone number to Login your account</Text>
                         
                     </View>
                     <View style = {{marginTop : 20}} />            
                     <HorizontalLine color = "#eee" />
-                    <TouchableOpacity>  
-                        <View style= {[styles.btn, {backgroundColor : theme.light.colors.primary}]}> 
-                            <Text style = {[styles.btnTxt, {color : 'white'}]}> Save</Text>
-                        </View>           
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={()=> setOpenPopUp(true)}>  
-                        <View style= {styles.btn}> 
-                            <Text style = {[styles.btnTxt, {color : theme.light.colors.primary}]}> Close My Account</Text>
-                        </View>           
-                    </TouchableOpacity>
-                    
+                    <View>
+                        <Button 
+                            title="Save"
+                        />
+                    </View>
+                    <View style = {{marginTop : ms(10)}} > 
+                        <Button 
+                            title="Close My Account"
+                            style={{
+                                backgroundColor : 'white',
+                                borderWidth : 2,
+                                borderColor : theme.light.colors.primary
+                            }}
+                            textStyle = {{
+                                color : theme.light.colors.primary
+                            }}
+                        />
+                    </View> 
                </View>
                <View style = {styles.bottomTextContainer}> 
                     <Text style = {styles.bottomTextLebel}>You can't close your account while your subsription is still active.</Text>
@@ -235,31 +261,30 @@ const styles = StyleSheet.create({
         backgroundColor : theme.light.colors.white,
     },
     header : {
-        padding : 15,
+        padding : ms(15),
     },
     headerIcon: {
         color : theme.light.colors.info
     },
     headerText : {
-        marginTop : 10,
-        color : theme.light.colors.black
+        marginTop : vs(10),
+        color : theme.light.colors.black,
+        paddingLeft : ms(8)
+    },
+    profileTxt : {
+        fontFamily : FontFamily.Recoleta_bold,
+        color : 'black'
     },
     profileImage: {
-        width : 100,
-        height : 100,
+        width : s(100),
+        height : s(100),
         borderRadius : 100,
         borderWidth : 2,
         borderColor : theme.light.colors.primary,
-        marginTop : 10
-    },
-    removeBtn : {
-        color : 'red'
-    },
-    replaceBtn : {
-        color : 'red'
+        marginTop : vs(10)
     },
     formContainer : {
-        marginTop : 20,
+        marginTop : vs(20),
     },
     textFiledContainer : {
 
@@ -267,7 +292,7 @@ const styles = StyleSheet.create({
     textFieldLebel : {
         color : theme.light.colors.black,
         fontFamily : FontFamily.BrandonGrotesque_bold,
-        fontSize : 18
+        fontSize : ms(18, 0.3)
     },
     textFiled : {
         backgroundColor : "#eee",
@@ -277,6 +302,19 @@ const styles = StyleSheet.create({
         height : 45,
         fontFamily : FontFamily.BrandonGrotesque_regular,
         marginBottom : 15
+    },
+    replaceBtn: {
+        width : '38%',
+        marginLeft : 10,
+        elevation : 2
+    },
+    removeBtn : {
+        width : '38%',
+        marginLeft : 10,
+        backgroundColor : 'white',
+        borderWidth : 2,
+        borderColor : theme.light.colors.primary,
+        elevation : 2
     },
     btn : {
         marginTop : 10,
@@ -303,6 +341,9 @@ const styles = StyleSheet.create({
         padding : 10,
     },
 
+    dropListTxt : {
+        fontFamily : FontFamily.BrandonGrotesque_medium
+    },
     bottomTextContainer : {
         alignItems : 'center', 
         padding : 10,
