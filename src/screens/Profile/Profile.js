@@ -44,12 +44,14 @@ export function Profile({ navigation }) {
           />
           <Icon 
             icon={faSearch} 
-            size={ms(20)} 
+            size={ms(20)}
+            onPress = {()=> navigation.navigate(NAVIGATION.search)} 
             style={styles.icon} 
           />
           <Icon 
             icon={faBell} 
             size={ms(20)} 
+            onPress = {()=> navigation.navigate(NAVIGATION.notification)}
             style={styles.icon} 
           />
           <View style={styles.bellAlert} />

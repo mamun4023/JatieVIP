@@ -55,6 +55,7 @@ export const en = {
     block : 'Block',
     unblock : 'Unblock',
     settings : 'Settings',
+    vipMemberShip : 'VIP Membership',
     upgradeMembership : 'Upgrade to VIP Mebmership',
     upgradeLebel : 'Get the best out of JatieVIP',
     editProfile : 'Edit Profile',
@@ -63,6 +64,7 @@ export const en = {
     appVersion : 'App Version 1.0.0',
     copyRightText : '©JatieVIP, Inc. All rights reserved',
     notificatin : 'Notification',
+    notificatins : 'Notifications',
     fromMembers : 'From Members',
     reactTo : 'Someone reacts to my post',
     commentsOn : 'Someone comments on my post',
@@ -72,7 +74,21 @@ export const en = {
     JatieLive : 'Jatie goes live',
     beforeLive : 'One hour before Jatie goes live',
     editProfile : 'Edit Profile',
-    profilePic : 'Profile Picture'
+    profilePic : 'Profile Picture',
+    search : 'Search',
+    upgradeTo : 'Upgrade To',
+    vipMemberShip : 'VIP Membership',
+    benefits : 'Benefits',
+    benefit_1 : 'Access to all VIP Exclusive Content',
+    benefit_2 : 'Access to exclusive VIP Giveaways',
+    benefit_3 : 'Private message from Josh and Katie',
+    benefit_4 : 'VIP Member only feed',
+    benefit_5 : 'VIP only live streams and one-on-one' ,
+    searchUser : 'Search Users',
+    searchForUsers : 'Search for the users',
+    searchResult : 'Recent Searches & Results',
+    
+
   },
   Welcome: {
     login: 'Login',

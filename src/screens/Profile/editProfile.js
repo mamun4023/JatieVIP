@@ -12,7 +12,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {TopBackButton} from '@/components'
 import { ms, s, vs } from 'react-native-size-matters';
 import {strings} from '@/localization';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import ImagePicker from 'react-native-image-crop-picker';
 
 export default function EditProfile({navigation}){
     const [date, setDate] = useState(new Date())
@@ -33,6 +33,7 @@ export default function EditProfile({navigation}){
       {label: 'United kingdom', value: 'United kingdom'},
       {label: 'Australia', value: 'Australia'}
     ]);
+    const[closeAccount, setCloseAccount] = useState(false);
 
     
     return(
@@ -56,6 +57,7 @@ export default function EditProfile({navigation}){
                         <Button 
                             title= "Replace"
                             style={styles.replaceBtn}
+                            onPress = {()=> setReplace(true)}
                         />
                         <Button 
                             title= "Remove"
@@ -163,8 +165,8 @@ export default function EditProfile({navigation}){
                         <Text style = {styles.dropListTxt}> You used this phone number to Login your account</Text>
                         
                     </View>
-                    <View style = {{marginTop : 20}} />            
-                    <HorizontalLine color = "#eee" />
+                    <View style = {{marginTop : 50}} />            
+                    <HorizontalLine color = {theme.light.colors.infoBgLight} />
                     <View>
                         <Button 
                             title="Save"
@@ -181,45 +183,42 @@ export default function EditProfile({navigation}){
                             textStyle = {{
                                 color : theme.light.colors.primary
                             }}
+                            onPress = {()=> setOpenPopUp(true)}
                         />
                     </View> 
                </View>
-               <View style = {styles.bottomTextContainer}> 
-                    <Text style = {styles.bottomTextLebel}>You can't close your account while your subsription is still active.</Text>
-                    <TouchableOpacity onPress={()=> setSubscriptionPopup(true)}> 
-                        <Text style = {styles.bottomTextLink} > Manage your subscription</Text>
-                    </TouchableOpacity>
+                {closeAccount &&  <View style = {styles.bottomTextContainer}> 
+                        <Text style = {styles.bottomTextLebel}>You can't close your account while your subsription is still active.</Text>
+                        <TouchableOpacity onPress={()=> setSubscriptionPopup(true)}> 
+                            <Text style = {styles.bottomTextLink} > Manage your subscription</Text>
+                        </TouchableOpacity>
 
-                    {/* Pop up message */}
-                    <PopUp
-                        open = {subscriptionPopup}
-                        setOpen = {setSubscriptionPopup}
-                    >
-                        <TouchableOpacity onPress={()=> setSubscriptionPopup(false)}  style = {{padding : 20}} > 
-                            <FontAwesomeIcon 
-                                icon={faClose}
-                                size = {30}
-                                color = {theme.light.colors.primary}
+                        {/* Pop up message */}
+                        <PopUp
+                            open = {subscriptionPopup}
+                            setOpen = {setSubscriptionPopup}
+                        >
+                            <TouchableOpacity onPress={()=> setSubscriptionPopup(false)}  style = {{padding : 20}} > 
+                                <FontAwesomeIcon 
+                                    icon={faClose}
+                                    size = {30}
+                                    color = {theme.light.colors.primary}
+                                />
+                            </TouchableOpacity>
+                            <Text style = {[styles.errorTxt, {color : 'black'}]} > How do i cancel my subscription?</Text>
+                            <View style = {{alignItems : 'flex-start'}}> 
+                                <Text style = {styles.errorTxt}>1. Login to www.jativip.com</Text>
+                                <Text style = {styles.errorTxt} >2. Click 'Manage'</Text>
+                                <Text style = {styles.errorTxt}>3. Click 'Cancel Renewal'</Text>
+                            </View>
+                            <Button 
+                                title= "Ok"
                             />
-                        </TouchableOpacity>
-                        <Text style = {[styles.errorTxt, {color : 'black'}]} > How do i cancel my subscription?</Text>
-                        <View style = {{alignItems : 'flex-start'}}> 
-                            <Text style = {styles.errorTxt}>1. Login to www.jativip.com</Text>
-                            <Text style = {styles.errorTxt} >2. Click 'Manage'</Text>
-                            <Text style = {styles.errorTxt}>3. Click 'Cancel Renewal'</Text>
-                        </View>
-                        <TouchableOpacity>  
-                            <View style= {[styles.btn, {backgroundColor : theme.light.colors.primary, width : 300}]}> 
-                                <Text style = {[styles.btnTxt, {color : 'white'}]}> Ok</Text>
-                            </View>           
-                        </TouchableOpacity>
-                    </PopUp>
+                        </PopUp>
+                    </View>  
+                }    
 
-
-               </View>
-               
                <View style = {{marginBottom : 50}} />
-               
             </ScrollView>
           
             <PopUp
@@ -233,23 +232,38 @@ export default function EditProfile({navigation}){
                         color = {theme.light.colors.primary}
                     />
                 </TouchableOpacity>
-                <Text style = {TextStyles.label}> Are you sure want to close your Account? This action can't be undone.</Text>
-                <TouchableOpacity>  
-                    <View style= {[styles.btn, {backgroundColor : theme.light.colors.primary, width : 300}]}> 
-                        <Text style = {[styles.btnTxt, {color : 'white'}]}> No</Text>
-                    </View>           
-                </TouchableOpacity>
-                <TouchableOpacity>  
-                    <View style= {[styles.btn, { width : 300}]}> 
-                        <Text style = {[styles.btnTxt, {color : theme.light.colors.primary}]}> Yes</Text>
-                    </View>           
-                </TouchableOpacity>
+                <Text style = {[TextStyles.label, {textAlign : 'center'}]}> Are you sure want to close your Account? This action can't be undone.</Text>
+                <Button 
+                    title= "No"
+                    style={{
+                        marginTop : 20
+                    }}
+                    onPress = {()=> setOpenPopUp(false)}
+                />
+                <Button 
+                    title= "Yes"
+                    style={{
+                        marginTop : 10,
+                        backgroundColor : 'white',
+                        borderWidth : 2,
+                        borderColor : theme.light.colors.primary
+                    }}
+                    textStyle = {{
+                        color : theme.light.colors.primary
+                    }}
+                    onPress = {()=> {setCloseAccount(true); setOpenPopUp(false)}}
+                />
+              
             </PopUp>
-            <EditViewModal 
+            {/* <EditViewModal 
                 isVisible={openReplace}
                 sourceUrl = "https://tinyjpg.com/images/social/website.jpg"
                 
-            />
+            /> */}
+
+           
+
+
         
         </View>
     )
@@ -295,39 +309,26 @@ const styles = StyleSheet.create({
         fontSize : ms(18, 0.3)
     },
     textFiled : {
-        backgroundColor : "#eee",
+        backgroundColor : theme.light.colors.inputFiled,
         borderRadius : 10,
         borderWidth : 0,
-        padding : 10,
-        height : 45,
+        padding : ms(10),
+        height : vs(45),
         fontFamily : FontFamily.BrandonGrotesque_regular,
-        marginBottom : 15
+        marginBottom : vs(15)
     },
     replaceBtn: {
         width : '38%',
-        marginLeft : 10,
+        marginLeft : ms(10),
         elevation : 2
     },
     removeBtn : {
         width : '38%',
-        marginLeft : 10,
+        marginLeft : ms(10),
         backgroundColor : 'white',
         borderWidth : 2,
         borderColor : theme.light.colors.primary,
         elevation : 2
-    },
-    btn : {
-        marginTop : 10,
-        borderWidth : 0,
-        borderRadius : 10,
-        padding : 8,
-        alignItems : 'center',
-        borderWidth : 2,
-        borderColor : theme.light.colors.primary,
-    },
-    btnTxt : {
-        fontFamily : FontFamily.BrandonGrotesque_bold,
-        fontSize : 20
     },
     replaceContainer : {
         flex : 1,
@@ -338,7 +339,7 @@ const styles = StyleSheet.create({
     replaceContent: {
         backgroundColor : 'white',
         width : '100%',
-        padding : 10,
+        padding : ms(10),
     },
 
     dropListTxt : {
@@ -357,11 +358,11 @@ const styles = StyleSheet.create({
         color : theme.light.colors.primary,
         textDecorationLine : 'underline',
         fontFamily : FontFamily.BrandonGrotesque_medium,
-        fontSize : 20
+        fontSize : ms(20, 0.3)
     },
     errorTxt : {
         fontFamily : FontFamily.BrandonGrotesque_medium,
-        fontSize : 20
+        fontSize : ms(20, 0.3)
     }
 })
 

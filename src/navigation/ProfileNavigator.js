@@ -7,8 +7,13 @@ import Followers from '@/screens/Profile/followers';
 import Settings from '@/screens/Profile/settings';
 import UserProfile from '@/screens/Profile/userProfile';
 import EditProfile from '@/screens/Profile/editProfile';
+import Notification from '@/screens/Profile/notification';
+import Search from '@/screens/Profile/search';
 import NotificationSettings from '@/screens/Profile/notificationSettings';
 import BlockedUsers from '@/screens/Profile/blockedUsers';
+import UpgradeMembership from '@/screens/Profile/upgradeMembership';
+import MonthlyUpgradeSuccess from '@/screens/Profile/monthlyUpgradeSuccess';
+import CancelMemberShip from '@/screens/Profile/cancelMembership';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +56,29 @@ export function ProfileNavigator() {
         name= {NAVIGATION.blockedUsers}
         component={BlockedUsers}
       />
+      <Stack.Screen
+        name= {NAVIGATION.notification}
+        component={Notification}
+      />
+      <Stack.Screen
+        name= {NAVIGATION.search}
+        component={Search}
+      />
+      <Stack.Screen
+        name= {NAVIGATION.upgradeMembership}
+        component={UpgradeMembership}
+      />
+
+      <Stack.Screen
+        name= {NAVIGATION.monthlyUpgradeSuccess}
+        component={MonthlyUpgradeSuccess}
+      />
+      <Stack.Screen
+        name = {NAVIGATION.cancelMembership}
+        component = {CancelMemberShip}
+      />
+
+
 
     </Stack.Navigator>
   );

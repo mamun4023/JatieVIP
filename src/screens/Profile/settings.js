@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View , Text, TouchableOpacity, Linking } from "react-native";
-import { faArrowRight, faLock, faUser} from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faLock, faUser, faCrown} from '@fortawesome/free-solid-svg-icons';
 import {
     faFacebook,
     faTiktok,
@@ -23,7 +23,7 @@ export default function Settings({navigation}){
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.settings} </Text>
             <View style = {styles.body}>
-                <TouchableOpacity style = {styles.upgradeBox}>
+                <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.upgradeMembership)} style = {styles.upgradeBox}>
                     <View style = {{flexDirection : 'row',  justifyContent : 'space-between'}}> 
                         <View style = {{flexDirection : 'row'}}> 
                             <FontAwesomeIcon 
@@ -89,6 +89,23 @@ export default function Settings({navigation}){
                         color = {theme.light.colors.info}
                     />
                 </TouchableOpacity>
+                <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.notificationSettings)} style = {styles.list}>
+                    <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
+                        <View style = {styles.iconContainer} > 
+                            <FontAwesomeIcon 
+                                icon={faCrown}
+                                size = {ms(20)}
+                                color = {theme.light.colors.primary}
+                            />
+                        </View>
+                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.vipMemberShip}</Text>
+                    </View>
+                    <FontAwesomeIcon 
+                        icon={faArrowRight}
+                        color = {theme.light.colors.info}
+                    />
+                </TouchableOpacity>
+
 
                 <View style = {styles.footer}> 
                     <View style = {styles.socialContainer}>
