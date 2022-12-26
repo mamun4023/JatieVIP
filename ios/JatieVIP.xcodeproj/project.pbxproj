@@ -1,0 +1,1210 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* JatieVIPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* JatieVIPTests.m */; };
+		0190C26616519AC7A7B2BC1B /* libPods-JatieVIPCommonPods-JatieVIPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D239FC67D568AE9F2BC94A5A /* libPods-JatieVIPCommonPods-JatieVIPTests.a */; };
+		0B35362729487F55009B1CC4 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B35362629487F55009B1CC4 /* BootSplash.storyboard */; };
+		0BE752F82948A131003E42AA /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		0BE752F92948A131003E42AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		0BE752FD2948A131003E42AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		0BE752FE2948A131003E42AA /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B35362629487F55009B1CC4 /* BootSplash.storyboard */; };
+		0BE7530B2948A689003E42AA /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		0BE7530C2948A689003E42AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		0BE753102948A689003E42AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		0BE753112948A689003E42AA /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B35362629487F55009B1CC4 /* BootSplash.storyboard */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2D2F0FAA81544AD48C4BA82E /* Recoleta-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66CA798C1C394B98A23DAC8A /* Recoleta-Black.ttf */; };
+		326B097762A645688ACECE73 /* Recoleta-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A86DA44A242D88DD0C1BC /* Recoleta-Medium.ttf */; };
+		387B49EA8EC94DFF9716BB8B /* Recoleta-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 161A0BAB381A49D897A133AB /* Recoleta-Thin.ttf */; };
+		4C4C9D5530FBF7B89749B212 /* libPods-JatieVIPCommonPods-JatieVIPStaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB0318487D1ABB8327E22B9 /* libPods-JatieVIPCommonPods-JatieVIPStaging.a */; };
+		5C0E443350C04DCABB3522F0 /* BrandonGrotesque-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB4C1255746D451EBFC2FB77 /* BrandonGrotesque-ThinItalic.otf */; };
+		72A91A90E7B64AF6B1C9FB9D /* BrandonGrotesque-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 365FA88F413F4CAE8FCE37DB /* BrandonGrotesque-MediumItalic.otf */; };
+		75B9475F671E4C279C3F7800 /* BrandonGrotesque-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6F714FADECD94BFB9C525E44 /* BrandonGrotesque-Black.otf */; };
+		85DEDB145047ABF16DD22DDD /* libPods-JatieVIPCommonPods-JatieVIPDev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DFE238196BD158A6E64A2E /* libPods-JatieVIPCommonPods-JatieVIPDev.a */; };
+		877D066EC4AC4DE0B0FD1CFB /* BrandonGrotesque-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDC80FF2E87246E696DFD31B /* BrandonGrotesque-LightItalic.otf */; };
+		9AAE3D4D26A74506B0FFA598 /* Recoleta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5D6D3F684884F0F8E02EB25 /* Recoleta-SemiBold.ttf */; };
+		9E4BC4D2E3DC4FC09F6754B8 /* BrandonGrotesque-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A522AB3D3458474FA71A76AD /* BrandonGrotesque-Medium.otf */; };
+		B591AB09DE7E4D5BA144D6D2 /* Recoleta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29FCAB1F02C14E359CB1E64C /* Recoleta-Light.ttf */; };
+		BC6D0DFD8D83488E8CC225EB /* BrandonGrotesque-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EAEA88FD91234D14883E3B8B /* BrandonGrotesque-Bold.otf */; };
+		BD4592894E5F45E5A935AF49 /* BrandonGrotesque-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FCF678835649404A86BB025A /* BrandonGrotesque-RegularItalic.otf */; };
+		CCF72E0799F54F16B60462AA /* Recoleta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BBD4796F9F34EC392C52D1C /* Recoleta-Bold.ttf */; };
+		D1074DD5C6F04526942AE120 /* Recoleta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59718F5FBC4F4B5EA0F22C54 /* Recoleta-Regular.ttf */; };
+		D18D8ADF223A8BE8AF0DF604 /* libPods-JatieVIPCommonPods-JatieVIP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E72BF1377EEF9FFC7EACB3 /* libPods-JatieVIPCommonPods-JatieVIP.a */; };
+		DCDF128A0EFD436EAE96C4A1 /* BrandonGrotesque-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 965DA0119491402B81B92B98 /* BrandonGrotesque-Light.otf */; };
+		E0CFEF44C9FD42C4BFBD74CB /* BrandonGrotesque-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8377C8888121481C924C4A55 /* BrandonGrotesque-BoldItalic.otf */; };
+		F5BDE58CCECD4335811FBEFC /* BrandonGrotesque-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 663E97D2F6E64EBDBCA3F6E0 /* BrandonGrotesque-Regular.otf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = JatieVIP;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* JatieVIPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JatieVIPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* JatieVIPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JatieVIPTests.m; sourceTree = "<group>"; };
+		09B503B11A217C7B9DF5CDD4 /* Pods-JatieVIPCommonPods-JatieVIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIP.debug.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP.debug.xcconfig"; sourceTree = "<group>"; };
+		0B35362629487F55009B1CC4 /* BootSplash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BootSplash.storyboard; sourceTree = "<group>"; };
+		0BE753052948A131003E42AA /* JatieVIPDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JatieVIPDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BE753062948A131003E42AA /* JatieVIP dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JatieVIP dev-Info.plist"; path = "/Users/itech/Desktop/Live_Projects/reactnativetemplateapp/ios/JatieVIP dev-Info.plist"; sourceTree = "<absolute>"; };
+		0BE753182948A689003E42AA /* JatieVIPStaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JatieVIPStaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BE753192948A689003E42AA /* JatieVIP staging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JatieVIP staging-Info.plist"; path = "/Users/itech/Desktop/Live_Projects/reactnativetemplateapp/ios/JatieVIP staging-Info.plist"; sourceTree = "<absolute>"; };
+		13B07F961A680F5B00A75B9A /* JatieVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JatieVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = JatieVIP/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = JatieVIP/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = JatieVIP/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = JatieVIP/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = JatieVIP/main.m; sourceTree = "<group>"; };
+		161A0BAB381A49D897A133AB /* Recoleta-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Thin.ttf"; path = "../src/assets/fonts/Recoleta-Thin.ttf"; sourceTree = "<group>"; };
+		29FCAB1F02C14E359CB1E64C /* Recoleta-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Light.ttf"; path = "../src/assets/fonts/Recoleta-Light.ttf"; sourceTree = "<group>"; };
+		365FA88F413F4CAE8FCE37DB /* BrandonGrotesque-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-MediumItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-MediumItalic.otf"; sourceTree = "<group>"; };
+		3E2A86DA44A242D88DD0C1BC /* Recoleta-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Medium.ttf"; path = "../src/assets/fonts/Recoleta-Medium.ttf"; sourceTree = "<group>"; };
+		59718F5FBC4F4B5EA0F22C54 /* Recoleta-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Regular.ttf"; path = "../src/assets/fonts/Recoleta-Regular.ttf"; sourceTree = "<group>"; };
+		663E97D2F6E64EBDBCA3F6E0 /* BrandonGrotesque-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Regular.otf"; path = "../src/assets/fonts/BrandonGrotesque-Regular.otf"; sourceTree = "<group>"; };
+		66CA798C1C394B98A23DAC8A /* Recoleta-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Black.ttf"; path = "../src/assets/fonts/Recoleta-Black.ttf"; sourceTree = "<group>"; };
+		6F714FADECD94BFB9C525E44 /* BrandonGrotesque-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Black.otf"; path = "../src/assets/fonts/BrandonGrotesque-Black.otf"; sourceTree = "<group>"; };
+		71E72BF1377EEF9FFC7EACB3 /* libPods-JatieVIPCommonPods-JatieVIP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JatieVIPCommonPods-JatieVIP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75E4315B120AEE012AE7F4B6 /* Pods-JatieVIPCommonPods-JatieVIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIP.release.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP.release.xcconfig"; sourceTree = "<group>"; };
+		7EB0318487D1ABB8327E22B9 /* libPods-JatieVIPCommonPods-JatieVIPStaging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JatieVIPCommonPods-JatieVIPStaging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8377C8888121481C924C4A55 /* BrandonGrotesque-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-BoldItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-BoldItalic.otf"; sourceTree = "<group>"; };
+		965DA0119491402B81B92B98 /* BrandonGrotesque-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Light.otf"; path = "../src/assets/fonts/BrandonGrotesque-Light.otf"; sourceTree = "<group>"; };
+		987F38B9CCF5940903AEA11C /* Pods-JatieVIPCommonPods-JatieVIPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPTests.release.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests.release.xcconfig"; sourceTree = "<group>"; };
+		98E73A59546B0A452F660E84 /* Pods-JatieVIPCommonPods-JatieVIPStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPStaging.release.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging.release.xcconfig"; sourceTree = "<group>"; };
+		9BBD4796F9F34EC392C52D1C /* Recoleta-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-Bold.ttf"; path = "../src/assets/fonts/Recoleta-Bold.ttf"; sourceTree = "<group>"; };
+		A3807EA288A3A00756057B9B /* Pods-JatieVIPCommonPods-JatieVIPDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPDev.debug.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev.debug.xcconfig"; sourceTree = "<group>"; };
+		A522AB3D3458474FA71A76AD /* BrandonGrotesque-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Medium.otf"; path = "../src/assets/fonts/BrandonGrotesque-Medium.otf"; sourceTree = "<group>"; };
+		BB4C1255746D451EBFC2FB77 /* BrandonGrotesque-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-ThinItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-ThinItalic.otf"; sourceTree = "<group>"; };
+		C295B2F8FCD38BAA77482DF1 /* Pods-JatieVIPCommonPods-JatieVIPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPTests.debug.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C3AAEF709C5023CCB9D5D810 /* Pods-JatieVIPCommonPods-JatieVIPStaging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPStaging.debug.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging.debug.xcconfig"; sourceTree = "<group>"; };
+		D239FC67D568AE9F2BC94A5A /* libPods-JatieVIPCommonPods-JatieVIPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JatieVIPCommonPods-JatieVIPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3EBEB809B458996436A301D /* Pods-JatieVIPCommonPods-JatieVIPDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JatieVIPCommonPods-JatieVIPDev.release.xcconfig"; path = "Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev.release.xcconfig"; sourceTree = "<group>"; };
+		D5D6D3F684884F0F8E02EB25 /* Recoleta-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Recoleta-SemiBold.ttf"; path = "../src/assets/fonts/Recoleta-SemiBold.ttf"; sourceTree = "<group>"; };
+		DDC80FF2E87246E696DFD31B /* BrandonGrotesque-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-LightItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-LightItalic.otf"; sourceTree = "<group>"; };
+		E4DFE238196BD158A6E64A2E /* libPods-JatieVIPCommonPods-JatieVIPDev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JatieVIPCommonPods-JatieVIPDev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAEA88FD91234D14883E3B8B /* BrandonGrotesque-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-Bold.otf"; path = "../src/assets/fonts/BrandonGrotesque-Bold.otf"; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FCF678835649404A86BB025A /* BrandonGrotesque-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BrandonGrotesque-RegularItalic.otf"; path = "../src/assets/fonts/BrandonGrotesque-RegularItalic.otf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0190C26616519AC7A7B2BC1B /* libPods-JatieVIPCommonPods-JatieVIPTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BE752FA2948A131003E42AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85DEDB145047ABF16DD22DDD /* libPods-JatieVIPCommonPods-JatieVIPDev.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BE7530D2948A689003E42AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C4C9D5530FBF7B89749B212 /* libPods-JatieVIPCommonPods-JatieVIPStaging.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D18D8ADF223A8BE8AF0DF604 /* libPods-JatieVIPCommonPods-JatieVIP.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* JatieVIPTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* JatieVIPTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = JatieVIPTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* JatieVIP */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				13B07FB71A68108700A75B9A /* main.m */,
+				0B35362629487F55009B1CC4 /* BootSplash.storyboard */,
+			);
+			name = JatieVIP;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				71E72BF1377EEF9FFC7EACB3 /* libPods-JatieVIPCommonPods-JatieVIP.a */,
+				E4DFE238196BD158A6E64A2E /* libPods-JatieVIPCommonPods-JatieVIPDev.a */,
+				7EB0318487D1ABB8327E22B9 /* libPods-JatieVIPCommonPods-JatieVIPStaging.a */,
+				D239FC67D568AE9F2BC94A5A /* libPods-JatieVIPCommonPods-JatieVIPTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* JatieVIP */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* JatieVIPTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				0BE753062948A131003E42AA /* JatieVIP dev-Info.plist */,
+				0BE753192948A689003E42AA /* JatieVIP staging-Info.plist */,
+				DB3CA0689FE0484899593AA2 /* Resources */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* JatieVIP.app */,
+				00E356EE1AD99517003FC87E /* JatieVIPTests.xctest */,
+				0BE753052948A131003E42AA /* JatieVIPDev.app */,
+				0BE753182948A689003E42AA /* JatieVIPStaging.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				09B503B11A217C7B9DF5CDD4 /* Pods-JatieVIPCommonPods-JatieVIP.debug.xcconfig */,
+				75E4315B120AEE012AE7F4B6 /* Pods-JatieVIPCommonPods-JatieVIP.release.xcconfig */,
+				A3807EA288A3A00756057B9B /* Pods-JatieVIPCommonPods-JatieVIPDev.debug.xcconfig */,
+				D3EBEB809B458996436A301D /* Pods-JatieVIPCommonPods-JatieVIPDev.release.xcconfig */,
+				C3AAEF709C5023CCB9D5D810 /* Pods-JatieVIPCommonPods-JatieVIPStaging.debug.xcconfig */,
+				98E73A59546B0A452F660E84 /* Pods-JatieVIPCommonPods-JatieVIPStaging.release.xcconfig */,
+				C295B2F8FCD38BAA77482DF1 /* Pods-JatieVIPCommonPods-JatieVIPTests.debug.xcconfig */,
+				987F38B9CCF5940903AEA11C /* Pods-JatieVIPCommonPods-JatieVIPTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB3CA0689FE0484899593AA2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66CA798C1C394B98A23DAC8A /* Recoleta-Black.ttf */,
+				9BBD4796F9F34EC392C52D1C /* Recoleta-Bold.ttf */,
+				29FCAB1F02C14E359CB1E64C /* Recoleta-Light.ttf */,
+				3E2A86DA44A242D88DD0C1BC /* Recoleta-Medium.ttf */,
+				59718F5FBC4F4B5EA0F22C54 /* Recoleta-Regular.ttf */,
+				D5D6D3F684884F0F8E02EB25 /* Recoleta-SemiBold.ttf */,
+				161A0BAB381A49D897A133AB /* Recoleta-Thin.ttf */,
+				6F714FADECD94BFB9C525E44 /* BrandonGrotesque-Black.otf */,
+				EAEA88FD91234D14883E3B8B /* BrandonGrotesque-Bold.otf */,
+				8377C8888121481C924C4A55 /* BrandonGrotesque-BoldItalic.otf */,
+				965DA0119491402B81B92B98 /* BrandonGrotesque-Light.otf */,
+				DDC80FF2E87246E696DFD31B /* BrandonGrotesque-LightItalic.otf */,
+				A522AB3D3458474FA71A76AD /* BrandonGrotesque-Medium.otf */,
+				365FA88F413F4CAE8FCE37DB /* BrandonGrotesque-MediumItalic.otf */,
+				663E97D2F6E64EBDBCA3F6E0 /* BrandonGrotesque-Regular.otf */,
+				FCF678835649404A86BB025A /* BrandonGrotesque-RegularItalic.otf */,
+				BB4C1255746D451EBFC2FB77 /* BrandonGrotesque-ThinItalic.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* JatieVIPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "JatieVIPTests" */;
+			buildPhases = (
+				0D57A114C37D53116715879C /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				2F6A35F3782004B3EEA5F5CD /* [CP] Embed Pods Frameworks */,
+				FA5CA4E616C9F235CCF8B75F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = JatieVIPTests;
+			productName = JatieVIPTests;
+			productReference = 00E356EE1AD99517003FC87E /* JatieVIPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0BE752F42948A131003E42AA /* JatieVIPDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BE753022948A131003E42AA /* Build configuration list for PBXNativeTarget "JatieVIPDev" */;
+			buildPhases = (
+				1F61834A4669F1087D999C7A /* [CP] Check Pods Manifest.lock */,
+				0BE752F62948A131003E42AA /* Start Packager */,
+				0BE752F72948A131003E42AA /* Sources */,
+				0BE752FA2948A131003E42AA /* Frameworks */,
+				0BE752FC2948A131003E42AA /* Resources */,
+				0BE752FF2948A131003E42AA /* Bundle React Native code and images */,
+				E46B950958B6D6FA6EB6E77D /* [CP] Embed Pods Frameworks */,
+				EDA3EA7143390C2669CA3F06 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JatieVIPDev;
+			productName = JatieVIP;
+			productReference = 0BE753052948A131003E42AA /* JatieVIPDev.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0BE753072948A689003E42AA /* JatieVIPStaging */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BE753152948A689003E42AA /* Build configuration list for PBXNativeTarget "JatieVIPStaging" */;
+			buildPhases = (
+				ACE71F8C457F01B097FB97CF /* [CP] Check Pods Manifest.lock */,
+				0BE753092948A689003E42AA /* Start Packager */,
+				0BE7530A2948A689003E42AA /* Sources */,
+				0BE7530D2948A689003E42AA /* Frameworks */,
+				0BE7530F2948A689003E42AA /* Resources */,
+				0BE753122948A689003E42AA /* Bundle React Native code and images */,
+				5BE9283075DE8DABEA2830EC /* [CP] Embed Pods Frameworks */,
+				0BF4C7DD204AF9009148120B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JatieVIPStaging;
+			productName = JatieVIP;
+			productReference = 0BE753182948A689003E42AA /* JatieVIPStaging.app */;
+			productType = "com.apple.product-type.application";
+		};
+		13B07F861A680F5B00A75B9A /* JatieVIP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "JatieVIP" */;
+			buildPhases = (
+				B5893E0A1C8839BA5077482D /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				7E801F6457A10B7FFF8C8890 /* [CP] Embed Pods Frameworks */,
+				5CCE447D219AEFAE74DDDFD1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JatieVIP;
+			productName = JatieVIP;
+			productReference = 13B07F961A680F5B00A75B9A /* JatieVIP.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "JatieVIP" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* JatieVIP */,
+				00E356ED1AD99517003FC87E /* JatieVIPTests */,
+				0BE752F42948A131003E42AA /* JatieVIPDev */,
+				0BE753072948A689003E42AA /* JatieVIPStaging */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BE752FC2948A131003E42AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BE752FD2948A131003E42AA /* Images.xcassets in Resources */,
+				0BE752FE2948A131003E42AA /* BootSplash.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BE7530F2948A689003E42AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BE753102948A689003E42AA /* Images.xcassets in Resources */,
+				0BE753112948A689003E42AA /* BootSplash.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0B35362729487F55009B1CC4 /* BootSplash.storyboard in Resources */,
+				2D2F0FAA81544AD48C4BA82E /* Recoleta-Black.ttf in Resources */,
+				CCF72E0799F54F16B60462AA /* Recoleta-Bold.ttf in Resources */,
+				B591AB09DE7E4D5BA144D6D2 /* Recoleta-Light.ttf in Resources */,
+				326B097762A645688ACECE73 /* Recoleta-Medium.ttf in Resources */,
+				D1074DD5C6F04526942AE120 /* Recoleta-Regular.ttf in Resources */,
+				9AAE3D4D26A74506B0FFA598 /* Recoleta-SemiBold.ttf in Resources */,
+				387B49EA8EC94DFF9716BB8B /* Recoleta-Thin.ttf in Resources */,
+				75B9475F671E4C279C3F7800 /* BrandonGrotesque-Black.otf in Resources */,
+				BC6D0DFD8D83488E8CC225EB /* BrandonGrotesque-Bold.otf in Resources */,
+				E0CFEF44C9FD42C4BFBD74CB /* BrandonGrotesque-BoldItalic.otf in Resources */,
+				DCDF128A0EFD436EAE96C4A1 /* BrandonGrotesque-Light.otf in Resources */,
+				877D066EC4AC4DE0B0FD1CFB /* BrandonGrotesque-LightItalic.otf in Resources */,
+				9E4BC4D2E3DC4FC09F6754B8 /* BrandonGrotesque-Medium.otf in Resources */,
+				72A91A90E7B64AF6B1C9FB9D /* BrandonGrotesque-MediumItalic.otf in Resources */,
+				F5BDE58CCECD4335811FBEFC /* BrandonGrotesque-Regular.otf in Resources */,
+				BD4592894E5F45E5A935AF49 /* BrandonGrotesque-RegularItalic.otf in Resources */,
+				5C0E443350C04DCABB3522F0 /* BrandonGrotesque-ThinItalic.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		0BE752F62948A131003E42AA /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0BE752FF2948A131003E42AA /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		0BE753092948A689003E42AA /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0BE753122948A689003E42AA /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		0BF4C7DD204AF9009148120B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0D57A114C37D53116715879C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JatieVIPCommonPods-JatieVIPTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F61834A4669F1087D999C7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JatieVIPCommonPods-JatieVIPDev-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F6A35F3782004B3EEA5F5CD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BE9283075DE8DABEA2830EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPStaging/Pods-JatieVIPCommonPods-JatieVIPStaging-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CCE447D219AEFAE74DDDFD1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E801F6457A10B7FFF8C8890 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIP/Pods-JatieVIPCommonPods-JatieVIP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACE71F8C457F01B097FB97CF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JatieVIPCommonPods-JatieVIPStaging-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5893E0A1C8839BA5077482D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JatieVIPCommonPods-JatieVIP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E46B950958B6D6FA6EB6E77D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDA3EA7143390C2669CA3F06 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPDev/Pods-JatieVIPCommonPods-JatieVIPDev-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA5CA4E616C9F235CCF8B75F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JatieVIPCommonPods-JatieVIPTests/Pods-JatieVIPCommonPods-JatieVIPTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* JatieVIPTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BE752F72948A131003E42AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BE752F82948A131003E42AA /* AppDelegate.mm in Sources */,
+				0BE752F92948A131003E42AA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0BE7530A2948A689003E42AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BE7530B2948A689003E42AA /* AppDelegate.mm in Sources */,
+				0BE7530C2948A689003E42AA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* JatieVIP */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C295B2F8FCD38BAA77482DF1 /* Pods-JatieVIPCommonPods-JatieVIPTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JatieVIPTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JatieVIP.app/JatieVIP";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 987F38B9CCF5940903AEA11C /* Pods-JatieVIPCommonPods-JatieVIPTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = JatieVIPTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JatieVIP.app/JatieVIP";
+			};
+			name = Release;
+		};
+		0BE753032948A131003E42AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3807EA288A3A00756057B9B /* Pods-JatieVIPCommonPods-JatieVIPDev.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "JatieVIP dev-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airlystudio.jatievipDev;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		0BE753042948A131003E42AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3EBEB809B458996436A301D /* Pods-JatieVIPCommonPods-JatieVIPDev.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "JatieVIP dev-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airlystudio.jatievipDev;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		0BE753162948A689003E42AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3AAEF709C5023CCB9D5D810 /* Pods-JatieVIPCommonPods-JatieVIPStaging.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "JatieVIP staging-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airlystudio.jatievipStaging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		0BE753172948A689003E42AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98E73A59546B0A452F660E84 /* Pods-JatieVIPCommonPods-JatieVIPStaging.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "JatieVIP staging-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airlystudio.jatievipStaging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09B503B11A217C7B9DF5CDD4 /* Pods-JatieVIPCommonPods-JatieVIP.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				INFOPLIST_FILE = JatieVIP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airlystudio.jatievip;
+				PRODUCT_NAME = JatieVIP;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75E4315B120AEE012AE7F4B6 /* Pods-JatieVIPCommonPods-JatieVIP.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				INFOPLIST_FILE = JatieVIP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airlystudio.jatievip;
+				PRODUCT_NAME = JatieVIP;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "JatieVIPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0BE753022948A131003E42AA /* Build configuration list for PBXNativeTarget "JatieVIPDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BE753032948A131003E42AA /* Debug */,
+				0BE753042948A131003E42AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0BE753152948A689003E42AA /* Build configuration list for PBXNativeTarget "JatieVIPStaging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BE753162948A689003E42AA /* Debug */,
+				0BE753172948A689003E42AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "JatieVIP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "JatieVIP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}

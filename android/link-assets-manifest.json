@@ -1,0 +1,73 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-Black.otf",
+      "sha1": "0217e9d4487aeaafaa779c97ea93d641e570a36f"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-Bold.otf",
+      "sha1": "a9b9dae4568883ef65d130a8237343185d463f2a"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-BoldItalic.otf",
+      "sha1": "23b3c5e6c7a740e7199a139c2879b1b63eacb8ca"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-Light.otf",
+      "sha1": "a8231e2776ee4f0c9834d77f4163a64912e84f89"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-LightItalic.otf",
+      "sha1": "ca09ddade8f42775006857a9bb6b5879d0d4ca10"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-Medium.otf",
+      "sha1": "22eba8bb6e2181a8dd6580fa6f785fba76a97331"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-MediumItalic.otf",
+      "sha1": "4038ee844879d19e11c21cfa289b9d3e0ade0680"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-Regular.otf",
+      "sha1": "e8acc9022336f58bb5ee2e2d4d98b51bebf45990"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-RegularItalic.otf",
+      "sha1": "671d38680ff1ea4f76f73a64a6ae06a4774cbd34"
+    },
+    {
+      "path": "src/assets/fonts/BrandonGrotesque-ThinItalic.otf",
+      "sha1": "f46fd0a2e64d48c44f235179e0efc8fa8da26a6f"
+    },
+    {
+      "path": "src/assets/fonts/Recoleta-Black.ttf",
+      "sha1": "f076bb7f7b3c48e29410b3ddf1c3a22e8d0536a2"
+    },
+    {
+      "path": "src/assets/fonts/Recoleta-Bold.ttf",
+      "sha1": "119edd0ff6b1d77ec85aa8ac177e1e2783048412"
+    },
+    {
+      "path": "src/assets/fonts/Recoleta-Light.ttf",
+      "sha1": "cbec329a473fd35dd479b98861a5492380388eed"
+    },
+    {
+      "path": "src/assets/fonts/Recoleta-Medium.ttf",
+      "sha1": "1b810ed984ced65a641f8a6bee4c2aeaa3660a40"
+    },
+    {
+      "path": "src/assets/fonts/Recoleta-Regular.ttf",
+      "sha1": "087741250ab835db4e5215f223bf141dac3a9d55"
+    },
+    {
+      "path": "src/assets/fonts/Recoleta-SemiBold.ttf",
+      "sha1": "42035147d96ac35a0bfefd75c32a0b76bc51e9e2"
+    },
+    {
+      "path": "src/assets/fonts/Recoleta-Thin.ttf",
+      "sha1": "3d4e2f3c3622e4641be3ba6d45cb1fbe36666e47"
+    }
+  ]
+}
