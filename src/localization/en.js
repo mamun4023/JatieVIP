@@ -87,7 +87,13 @@ export const en = {
     searchUser : 'Search Users',
     searchForUsers : 'Search for the users',
     searchResult : 'Recent Searches & Results',
-    
+    unreadOnly : 'Unread Only',
+    youAreVIP : 'You are a VIP Member',
+    adminTools : 'Admin Tools',
+    manageReports : 'Manage Reports',
+    userManagement : 'User Management',
+    analytics : 'Analytics',
+    bannedUsers : 'Banned Users'
 
   },
   Welcome: {

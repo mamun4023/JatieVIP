@@ -14,6 +14,13 @@ import BlockedUsers from '@/screens/Profile/blockedUsers';
 import UpgradeMembership from '@/screens/Profile/upgradeMembership';
 import MonthlyUpgradeSuccess from '@/screens/Profile/monthlyUpgradeSuccess';
 import CancelMemberShip from '@/screens/Profile/cancelMembership';
+import AdminTools from '@/screens/Profile/adminTools';
+import ManageReports from '@/screens/Profile/manageReports';
+import BannedUsers from '@/screens/Profile/bannedUsers';
+import ManageReportOnMessage from '@/screens/Profile/manageReportOnMessage';
+import ManageReportOnPost from '@/screens/Profile/manageReportOnPost';
+import ManageReportOnProfile from '@/screens/Profile/manageReportOnProfile';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +83,30 @@ export function ProfileNavigator() {
       <Stack.Screen
         name = {NAVIGATION.cancelMembership}
         component = {CancelMemberShip}
+      />
+      <Stack.Screen
+        name = {NAVIGATION.adminTools}
+        component = {AdminTools}
+      />
+      <Stack.Screen
+        name = {NAVIGATION.manageReports}
+        component = {ManageReports}
+      />
+      <Stack.Screen
+        name = {NAVIGATION.bannedUsers}
+        component = {BannedUsers}
+      />
+      <Stack.Screen
+        name = {NAVIGATION.manageReportOnMessage}
+        component = {ManageReportOnMessage}
+      />
+      <Stack.Screen
+        name = {NAVIGATION.manageReportOnPost}
+        component = {ManageReportOnPost}
+      />
+      <Stack.Screen
+        name = {NAVIGATION.manageReportOnProfile}
+        component = {ManageReportOnProfile}
       />
 
 

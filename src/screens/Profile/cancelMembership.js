@@ -104,35 +104,35 @@ const styles = StyleSheet.create({
     body :{
         flex : 1,
         backgroundColor : theme.light.colors.primaryBgLight,
-        padding : 10
+        padding : ms(10)
     },
     card : {
         backgroundColor : theme.light.colors.white,
         margin : ms(8),
         borderRadius : 10,
-        padding : 10,
+        padding : ms(10),
         elevation : 1
     },
     iconContainer : {
         backgroundColor : theme.light.colors.successBg,
         borderRadius : 100,
-        padding : 8
+        padding : ms(8)
     },
     list :{
         flexDirection : 'row',
         alignItems : 'center',
-        padding : 5,
+        padding : ms(5),
     },
     listText : {
         fontFamily : FontFamily.BrandonGrotesque_medium,
-        fontSize : 16
+        fontSize : ms(16, 0.3)
     },
     btnContainer : {
         alignItems : 'center'
     },
     footerTxtContainer : {
         alignItems : 'center',
-        padding : 10,
+        padding : ms(10),
     },
     footerTxt :{
         fontFamily : FontFamily.BrandonGrotesque_medium,

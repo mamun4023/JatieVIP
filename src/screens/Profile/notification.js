@@ -11,8 +11,6 @@ import {NAVIGATION} from '@/constants/navigation';
 import {strings} from '@/localization';
 
 
-
-
 export default function Notification({navigation}){
     const [read, setRead] = useState(false)
 
@@ -48,14 +46,16 @@ export default function Notification({navigation}){
                     />
                 </View>
                 <View style = {styles.switchContainer}>
-                    <Text style = {TextStyles.text}> Unread Only</Text>
+                    <Text style = {[TextStyles.label, {fontSize : ms(12,0.3)}]}> {strings.profile.unreadOnly}  </Text>
                     <AppSwitch 
                         value = {read}
                         onChange = {()=> setRead(prev => !prev)}
+                        style={{ transform: [{ scaleX:  ms(1, 0.01) }, { scaleY: ms(1, 0.01) }] }}
+
                     />
                 </View>
             </View>
-            <View style ={{marginTop : 10}} />
+            <View style ={{marginTop : ms(10)}} />
             <HorizontalLine />
 
             <View style = {styles.notifyContainer}>
@@ -116,7 +116,6 @@ export default function Notification({navigation}){
 }
 
 
-
 const styles = StyleSheet.create({
     container : {
         flex : 1,
@@ -126,7 +125,6 @@ const styles = StyleSheet.create({
         flexDirection : 'row',
         justifyContent : 'space-between',
         padding : ms(10),
-        // backgroundColor : 'gray'
     },
     left:{
         flexDirection : 'row',
@@ -162,16 +160,13 @@ const styles = StyleSheet.create({
         fontFamily : FontFamily.BrandonGrotesque_medium,
         fontSize : ms(15, 0.3),
         paddingLeft : ms(5)
-        
     },
     reactOnTxt: {
         color : theme.light.colors.info, 
         textDecorationLine : 'underline',
         fontFamily : FontFamily.BrandonGrotesque_medium,
         fontSize : ms(15, 0.3)
-        
     }
-
 })
 
 

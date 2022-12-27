@@ -3,66 +3,45 @@ import { TextStyles, theme } from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
 import {faBell} from '@fortawesome/free-regular-svg-icons'
-import {faSearch, faEllipsis} from '@fortawesome/free-solid-svg-icons';
-import { HorizontalLine, Icon, TextField, TopBackButton } from '@/components';
+import {faSearch, faEllipsis, faCheck} from '@fortawesome/free-solid-svg-icons';
+import { HorizontalLine, Icon, TextField, TopBackButton, Badge, ModalDown, ModalList } from '@/components';
 import { ms, vs } from 'react-native-size-matters';
 import {NAVIGATION} from '@/constants/navigation';
 import {strings} from '@/localization';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 export default function Notification({navigation}){
-    const [searchListOpen, setSearchListOpen]= useState(false)
+    const [open, setOpen]= useState(false)
  
     return(
         <View style = {styles.container}>
-            <View style = {styles.header}>
-                <View style = {styles.left}> 
-                    <TopBackButton onPress = {()=> navigation.goBack()} />
-                     <Text style = {[TextStyles.header, {color : theme.light.colors.black}]}> {strings.profile.search} </Text>   
-                </View>
-                <View style = {styles.right}> 
-                    <Icon 
-                        icon = {faSearch}
-                        color = {theme.light.colors.primary}
-                        size = {ms(20)}
-                    />
-                     <Icon 
-                        icon = {faBell}
-                        color = {theme.light.colors.black}
-                        size = {ms(20)}
-                        onPress = {()=> navigation.navigate(NAVIGATION.notification)}
-                        style = {{marginLeft : ms(10)}}
-                    />
-                </View>
+            <TopBackButton onPress = {()=> navigation.goBack()} />
+            <View style = {styles.listHeader}> 
+                <Text style = {[TextStyles.header, {color : "black", paddingRight : ms(8)}]}> {strings.profile.bannedUsers}</Text>
+                <Badge count={23} size = {ms(16)} />
             </View>
+
             <View style = {styles.searchBox}> 
                 <TextField 
                     style={{
-                        paddingRight : ms(80)
+                        paddingLeft : ms(40)
                     }}
                     placeholder = {strings.profile.searchUser}
-                    onFocus = {()=> setSearchListOpen(true)}
+                 
                 />
                 <View style = {styles.moreIcon}> 
                     <Icon 
-                        icon = {faEllipsis}
+                        icon = {faSearch}
+                        color = {theme.light.colors.secondary}
                        
                     />
                 </View>
             </View>
             <HorizontalLine />
 
-            {!searchListOpen && <View style = {styles.searchBody}> 
-                <FontAwesomeIcon 
-                    icon={faSearch}
-                    size = {30}
-                    color = {theme.light.colors.primary}
-                />
-                <Text style = {styles.searchTxt}> {strings.profile.searchForUsers}</Text>
-            </View>}
-            {searchListOpen && 
+
             <View style = {styles.searchList}> 
-                <Text style = {styles.searchTxt} > {strings.profile.searchResult}</Text>
+                
                 <View>
                 <FlatList 
                     data={Data}
@@ -74,7 +53,7 @@ export default function Notification({navigation}){
                             <View style = {styles.listContainer}>   
                                 <TouchableOpacity 
                                     style = {styles.list}
-                                    // onPress = {()=> navigation.navigate(NAVIGATION.userProfile)}
+                                
                                 > 
                                     <Image source={{uri : item.image}} style = {styles.profileImage} />
                                     <View style = {styles.nameContainer}> 
@@ -82,12 +61,31 @@ export default function Notification({navigation}){
                                         <Text> {item.userName}  </Text>
                                     </View>
                                 </TouchableOpacity>
+                                <Icon 
+                                    icon={faEllipsis}
+                                    size = {ms(15)}
+                                    color = "gray"
+                                    onPress = {()=> setOpen(true)}
+                                />
                             </View>
                         )
                     } }
                 />
                 </View>
-            </View>}
+            </View>
+
+            <ModalDown 
+                open = {open}
+                setOpen = {setOpen}
+            >
+                <ModalList 
+                    title='Unban'
+                    icon={faCheck}
+                    iconColor = {theme.light.colors.info}
+                    iconBg = {theme.light.colors.infoBgLight}
+
+                />
+            </ModalDown>
          
         </View>
     )
@@ -126,7 +124,7 @@ const styles = StyleSheet.create({
     },
     moreIcon : {
         position : 'absolute',
-        right : ms(10),
+        left : ms(10),
         top : ms(30)
     },
     searchBody :{

@@ -17,6 +17,6 @@ const styles = StyleSheet.create({
         width : '100%',
         backgroundColor : theme.light.colors.white,
         borderRadius : 10,
-        elevation : 8
+        elevation : 2
     }
 })

@@ -1,13 +1,6 @@
 import React from "react";
 import { StyleSheet, View , Text, TouchableOpacity, Linking } from "react-native";
-import { faArrowRight, faLock, faUser, faCrown, faEllipsis, faSliders} from '@fortawesome/free-solid-svg-icons';
-import {
-    faFacebook,
-    faTiktok,
-    faSnapchat,
-    faYoutube,
-    faInstagram,
-  } from '@fortawesome/free-brands-svg-icons';
+import { faArrowRight, faLock, faUser, faChartColumn, faBan, faPeopleRoof, faFile} from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from "@/theme";
 import { FontFamily} from "@/theme/Fonts";
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -17,40 +10,23 @@ import { NAVIGATION } from "@/constants";
 import {ms, vs} from 'react-native-size-matters';
 import {Icon, TopBackButton} from '@/components';
 
-export default function Settings({navigation}){
+export default function AdminTools({navigation}){
     return(
         <View style = {styles.contianer}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
-            <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.settings} </Text>
+            <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.adminTools} </Text>
             <View style = {styles.body}>
-                <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.upgradeMembership)} style = {styles.upgradeBox}>
-                    <View style = {{flexDirection : 'row',  justifyContent : 'space-between'}}> 
-                        <View style = {{flexDirection : 'row'}}> 
-                            <FontAwesomeIcon 
-                                icon={faBell}
-                                color = {theme.light.colors.primary}
-                            />
-                            <Text style = {styles.upgradeText}> {strings.profile.upgradeMembership} </Text>
-                        </View>
-                        <View>
-                            <FontAwesomeIcon 
-                                icon={faArrowRight}
-                                color = {theme.light.colors.info}
-                            />
-                        </View>
-                    </View>
-                    <Text style = {styles.lebelText}>{strings.profile.upgradeLebel}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style = {styles.list} onPress = {()=> navigation.navigate(NAVIGATION.editProfile)}>
+              
+                <TouchableOpacity style = {styles.list} onPress = {()=> navigation.navigate(NAVIGATION.manageReports)}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer}> 
                             <FontAwesomeIcon 
-                                icon={faUser}
+                                icon={faFile}
                                 size = {ms(20)}
                                 color = {theme.light.colors.primary}
                             />
                         </View>
-                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.editProfile}</Text>
+                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.manageReports}</Text>
                     </View>
                     <FontAwesomeIcon 
                         icon={faArrowRight}
@@ -61,12 +37,12 @@ export default function Settings({navigation}){
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer}> 
                             <FontAwesomeIcon 
-                                icon={faLock}
+                                icon={faPeopleRoof}
                                 color = {theme.light.colors.primary}
                                 size = {ms(20)}
                             />
                         </View>
-                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.blockedUsers}</Text>
+                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.userManagement}</Text>
                     </View>
                     <FontAwesomeIcon 
                         icon={faArrowRight}
@@ -77,85 +53,34 @@ export default function Settings({navigation}){
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer} > 
                             <FontAwesomeIcon 
-                                icon={faBell}
+                                icon={faChartColumn}
                                 size = {ms(20)}
                                 color = {theme.light.colors.primary}
                             />
                         </View>
-                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.notificationSettings}</Text>
+                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.analytics}</Text>
                     </View>
                     <FontAwesomeIcon 
                         icon={faArrowRight}
                         color = {theme.light.colors.info}
                     />
                 </TouchableOpacity>
-                {/* <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.notificationSettings)} style = {styles.list}>
+                <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.bannedUsers)} style = {styles.list}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer} > 
                             <FontAwesomeIcon 
-                                icon={faCrown}
+                                icon={faBan}
                                 size = {ms(20)}
                                 color = {theme.light.colors.primary}
                             />
                         </View>
-                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.vipMemberShip}</Text>
-                    </View>
-                    <FontAwesomeIcon 
-                        icon={faArrowRight}
-                        color = {theme.light.colors.info}
-                    />
-                </TouchableOpacity> */}
-                <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.adminTools)} style = {styles.list}>
-                    <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
-                        <View style = {styles.iconContainer} > 
-                            <FontAwesomeIcon 
-                                icon={faSliders}
-                                size = {ms(20)}
-                                color = {theme.light.colors.primary}
-                            />
-                        </View>
-                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.adminTools}</Text>
+                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.bannedUsers}</Text>
                     </View>
                     <FontAwesomeIcon 
                         icon={faArrowRight}
                         color = {theme.light.colors.info}
                     />
                 </TouchableOpacity>
-
-
-                <View style = {styles.footer}> 
-                    <View style = {styles.socialContainer}>
-                        <Icon
-                            icon={faFacebook}
-                            size={ms(25)}
-                            style = {styles.socialIcon}
-                        />
-                        <Icon
-                            icon={faTiktok}
-                            size={ms(25)}
-                            style = {styles.socialIcon}
-                        />
-                        <Icon
-                            icon={faSnapchat}
-                            size={ms(25)}
-                            style = {styles.socialIcon}
-                        />
-                        <Icon
-                            icon={faYoutube}
-                            size={ms(25)}
-                            style = {styles.socialIcon}
-                        />
-                        <Icon
-                            icon={faInstagram}
-                            size={ms(25)}
-                            style = {styles.socialIcon}
-                        />
-                    </View>
-                    <View style = {styles.copyWriteContainer}> 
-                        <Text style = {styles.copyRightText}> {strings.profile.appVersion} </Text>
-                        <Text style = {styles.copyRightText}>{strings.profile.copyRightText} </Text>
-                    </View>
-                </View>
             </View>
         </View>
     )

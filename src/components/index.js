@@ -17,3 +17,4 @@ export {CardFooter} from '@/components/cardFooter';
 export {PopUp} from '@/components/popUp';
 export {AppSwitch} from '@/components/switch';
 export {TopBackButton} from '@/components/topBackButton';
+export {CommentCard} from '@/components/commentCard';

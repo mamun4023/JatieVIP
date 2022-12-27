@@ -34,6 +34,30 @@ export default function EditProfile({navigation}){
       {label: 'Australia', value: 'Australia'}
     ]);
     const[closeAccount, setCloseAccount] = useState(false);
+    const [replageImage, setReplageImage] = useState('https://t4.ftcdn.net/jpg/00/88/53/89/360_F_88538986_5Bi4eJ667pocsO3BIlbN4fHKz8yUFSuA.jpg')
+
+    const PickFromCamera = ()=>{
+        ImagePicker.openCamera({
+            width: 300,
+            height: 400,
+            cropping: true,
+          }).then(image => {
+            console.log(image);
+            setReplace(image.path)
+          });
+    }
+
+    const SelectFromGallery = ()=>{
+        ImagePicker.openPicker({
+            width: 300,
+            height: 400,
+            cropping: true,
+            freeStyleCropEnabled : true,
+            cropperCircleOverlay : true
+          }).then(image => {
+            console.log(image);
+          });
+    }
 
     
     return(
@@ -48,7 +72,7 @@ export default function EditProfile({navigation}){
                     <View>
                         <Image 
                             source={{
-                                uri : 'https://t4.ftcdn.net/jpg/00/88/53/89/360_F_88538986_5Bi4eJ667pocsO3BIlbN4fHKz8yUFSuA.jpg'
+                                uri : replageImage
                             }}
                             style = {styles.profileImage}
                         />
@@ -253,17 +277,33 @@ export default function EditProfile({navigation}){
                     }}
                     onPress = {()=> {setCloseAccount(true); setOpenPopUp(false)}}
                 />
-              
             </PopUp>
-            {/* <EditViewModal 
-                isVisible={openReplace}
-                sourceUrl = "https://tinyjpg.com/images/social/website.jpg"
+
+        {/* Replace Popup */}
+        {openReplace &&  
+            <PopUp
+                open = {openReplace}
+                setOpen = {setReplace}
+            >
                 
-            /> */}
-
-           
-
-
+                    <Button 
+                        title= "Pickup From Camara"
+                        style={{
+                            margin : 5
+                        }}
+                        onPress = {PickFromCamera}
+                    />
+                    <Button 
+                        title= "Select From Gallery"
+                        style={{
+                            margin : 5
+                        }}
+                        onPress = {SelectFromGallery}
+                    />
+                
+                
+            </PopUp>}
+         
         
         </View>
     )
