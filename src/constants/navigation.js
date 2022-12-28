@@ -21,4 +21,8 @@ export const NAVIGATION = {
   signUp: 'SignUp',
   addProfilePicture: 'AddProfilePicture',
   adjustPicture: 'AdjustPicture',
+
+  //Exclusive
+
+  exclusiveThumbnail: 'ExclusiveThumbnail', //onPress thumbnail navigator
 };
