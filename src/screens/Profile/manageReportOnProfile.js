@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
-import {HorizontalLine, ModalDown, ModalList, HeaderTab, Icon, TopBackButton, CardHeader, Card, CardBody, CardFooter, CommentCard} from '@/components'
+import {HorizontalLine, ModalDown, ModalList, HeaderTab, Icon, TopBackButton, CardHeader, Card, CardBody, CardFooter, CommentCard, PopUp, Button} from '@/components'
 import {ms, vs} from 'react-native-size-matters'
 import {
     faSearch, 
@@ -32,6 +32,8 @@ import { strings } from '@/localization';
 export default function ManageReportOnMessage({navigation}){
     const [openMore, setOpenMore] = useState(false)
     const [openEdit, setOpenEdit] = useState(false)
+    const [openBan, setOpenBan] = useState(false);
+
     return(
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
@@ -53,10 +55,6 @@ export default function ManageReportOnMessage({navigation}){
                 </View>
             </View>
             <View style = {styles.body}>
-
-
-
-
 
 
             <View style = {styles.headerContainer}> 
@@ -185,10 +183,15 @@ export default function ManageReportOnMessage({navigation}){
                         iconBg = {theme.light.colors.infoBgLight}
                         />
                         <ModalList 
-                        title= "Ban"
-                        icon={faFlag}
-                        iconColor = {theme.light.colors.secondary}
-                        iconBg = {theme.light.colors.infoBgLight}
+                            title= "Ban"
+                            icon={faFlag}
+                            iconColor = {theme.light.colors.secondary}
+                            iconBg = {theme.light.colors.infoBgLight}
+                            onPress = {()=> {
+                                setOpenBan(true),
+                                setOpenMore(false)
+
+                            }}
                         />
                 </ModalDown>
             }
@@ -212,13 +215,53 @@ export default function ManageReportOnMessage({navigation}){
               </ModalDown>
             }
 
+            <PopUp
+                open = {openBan}
+                setOpen = {setOpenBan}
+            >
+                <View>
+                    <Text style = {[TextStyles.header,{color : 'black'}]} >Are you sure want to ban this user?</Text>
+                    <View style ={{flexDirection : 'row'}}>
+                        <Image 
+                            source={{
+                                uri : "https://media.istockphoto.com/id/1270067126/photo/smiling-indian-man-looking-at-camera.jpg?s=612x612&w=0&k=20&c=ovIQ5GPurLd3mOUj82jB9v-bjGZ8updgy1ACaHMeEC0="
+                            }}
+                            style = {{
+                                height : 40,
+                                width : 40,
+                                borderRadius : 100
+                            }}
+                        />
+                        <View> 
+                            <Text style = {[TextStyles.header, {color :'black', fontSize : 18}]} > Adam </Text>
+                            <Text> @adam</Text>
+                            <Text style = {{backgroundColor : '#eee', borderRadius : 10, padding : 2}} > Free Member </Text> 
+                        </View>
+                    </View>
+                    <View> 
+                        <Button 
+                            title= "Yes Ban"
+                            style={{
+                                marginTop : 10,
+                                backgroundColor : 'white',
+                                borderWidth : 2,
+                                borderColor : theme.light.colors.primary
+                            }}
+                            textStyle = {{
+                                color : theme.light.colors.primary
+                            }}
+                        />
+                        <Button 
+                            title= "No,don't ban"
+                            style={{
+                                marginTop : 10
+                            }}
+                        />
 
+                    </View>
 
-
-
-
-
-
+                </View>
+            </PopUp>
 
                 
             </View>

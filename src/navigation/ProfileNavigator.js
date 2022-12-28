@@ -20,7 +20,7 @@ import BannedUsers from '@/screens/Profile/bannedUsers';
 import ManageReportOnMessage from '@/screens/Profile/manageReportOnMessage';
 import ManageReportOnPost from '@/screens/Profile/manageReportOnPost';
 import ManageReportOnProfile from '@/screens/Profile/manageReportOnProfile';
-
+import ManageReportOnPostAllComments from '@/screens/Profile/manageReportOnPost AllComments';
 
 const Stack = createNativeStackNavigator();
 
@@ -107,6 +107,10 @@ export function ProfileNavigator() {
       <Stack.Screen
         name = {NAVIGATION.manageReportOnProfile}
         component = {ManageReportOnProfile}
+      />
+      <Stack.Screen
+        name = {NAVIGATION.manageReportOnPostAllComments}
+        component = {ManageReportOnPostAllComments}
       />
 
 

@@ -23,7 +23,7 @@ export default function Settings({navigation}){
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.settings} </Text>
             <View style = {styles.body}>
-                <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.upgradeMembership)} style = {styles.upgradeBox}>
+                {/* <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.upgradeMembership)} style = {styles.upgradeBox}>
                     <View style = {{flexDirection : 'row',  justifyContent : 'space-between'}}> 
                         <View style = {{flexDirection : 'row'}}> 
                             <FontAwesomeIcon 
@@ -40,7 +40,7 @@ export default function Settings({navigation}){
                         </View>
                     </View>
                     <Text style = {styles.lebelText}>{strings.profile.upgradeLebel}</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <TouchableOpacity style = {styles.list} onPress = {()=> navigation.navigate(NAVIGATION.editProfile)}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer}> 
@@ -123,7 +123,7 @@ export default function Settings({navigation}){
                 </TouchableOpacity>
 
 
-                <View style = {styles.footer}> 
+                {/* <View style = {styles.footer}> 
                     <View style = {styles.socialContainer}>
                         <Icon
                             icon={faFacebook}
@@ -155,7 +155,7 @@ export default function Settings({navigation}){
                         <Text style = {styles.copyRightText}> {strings.profile.appVersion} </Text>
                         <Text style = {styles.copyRightText}>{strings.profile.copyRightText} </Text>
                     </View>
-                </View>
+                </View> */}
             </View>
         </View>
     )

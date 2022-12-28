@@ -22,6 +22,7 @@ export const NAVIGATION = {
   bannedUsers : 'BannedUsers',
   manageReportOnMessage : 'ManageReportOnMessage',
   manageReportOnPost : 'ManageReportOnPost',
+  manageReportOnPostAllComments : 'ManageReportOnPostAllComments',
   manageReportOnProfile : 'ManageReportOnProfile',
   message: 'Message',
   exclusive: 'Exclusive',

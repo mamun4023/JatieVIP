@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, View , Text, TouchableOpacity, Linking, FlatList } from "react-native";
+import { StyleSheet, View , Text, TouchableOpacity, FlatList } from "react-native";
 import { TextStyles, theme } from "@/theme";
 import { FontFamily} from "@/theme/Fonts";
 import { strings } from "@/localization";
-import {ms} from 'react-native-size-matters';
+import {ms, vs} from 'react-native-size-matters';
 import {CardHeader, TopBackButton} from '@/components';
 import { NAVIGATION } from "@/constants";
 
@@ -13,43 +13,42 @@ export default function ManageReports({navigation}){
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.manageReports} </Text>
             <View style = {styles.body}>
-            <FlatList 
-                data={Data}
-                key = {(item)=> item.id}
-                renderItem = {({item})=>(
-                    <TouchableOpacity 
-                        style = {{backgroundColor : 'white', marginTop : 3}}
-                        onPress = {()=> {
-                            if(item.reportOn == 'post'){
-                                navigation.navigate(NAVIGATION.manageReportOnPost)
-                            }
-                            if(item.reportOn == 'message'){
-                                navigation.navigate(NAVIGATION.manageReportOnMessage)
-                            }
-                            if(item.reportOn == 'profile'){
-                                navigation.navigate(NAVIGATION.manageReportOnProfile)
-                            }
-                        }}
-                    > 
-                            <CardHeader 
-                                fullName = {item.fullName}
-                                userName = {item.userName}
-                                profilePic = {item.profilePic}
-                                time = {item.time}
-                            />
-                            <View style = {styles.activity}>
-                                <View style ={styles.textContainer}> 
-                                    <Text style = {styles.statsTxt}> Reported </Text>
-                                    <Text style = {styles.reactOnTxt}> {`this ${item.reportOn}`} </Text>
+                <FlatList 
+                    data={Data}
+                    key = {(item)=> item.id}
+                    renderItem = {({item})=>(
+                        <TouchableOpacity 
+                            style = {styles.list}
+                            onPress = {()=> {
+                                if(item.reportOn == 'post'){
+                                    navigation.navigate(NAVIGATION.manageReportOnPost)
+                                }
+                                if(item.reportOn == 'message'){
+                                    navigation.navigate(NAVIGATION.manageReportOnMessage)
+                                }
+                                if(item.reportOn == 'profile'){
+                                    navigation.navigate(NAVIGATION.manageReportOnProfile)
+                                }
+                            }}
+                        > 
+                                <CardHeader 
+                                    fullName = {item.fullName}
+                                    userName = {item.userName}
+                                    profilePic = {item.profilePic}
+                                    time = {item.time}
+                                />
+                                <View style = {styles.activity}>
+                                    <View style ={styles.textContainer}> 
+                                        <Text style = {styles.statsTxt}> {strings.profile.reported} </Text>
+                                        <Text style = {styles.reactOnTxt}> {`this ${item.reportOn}`} </Text>
+                                    </View>
+                                    <View style = {styles.reasonContainer}> 
+                                        <Text style = {styles.reasonTxt}>{strings.profile.reason} Explicit Content  </Text>
+                                    </View>
                                 </View>
-                                <View style = {styles.reasonContainer}> 
-                                    <Text style = {styles.reasonTxt}>Reason : Explicit Content  </Text>
-                                </View>
-                            </View>
-                        
-                    </TouchableOpacity>
-                )}
-            />
+                        </TouchableOpacity>
+                    )}
+                />
             </View>
         </View>
     )
@@ -69,7 +68,11 @@ const styles = StyleSheet.create({
     body:{
         flex : 1,
         backgroundColor : theme.light.colors.primaryBgLight,
-        // padding : ms(10),
+    },
+    list : {
+        backgroundColor : theme.light.colors.white, 
+        marginTop : vs(3),
+        borderColor : theme.light.colors.primary
     },
     activity : {
         flexDirection : 'row',
@@ -96,11 +99,12 @@ const styles = StyleSheet.create({
     reasonContainer : {
         backgroundColor : "#eee",
         borderRadius : 10,
-        padding : 3,
-        marginLeft : 10
+        padding : ms(3),
+        marginLeft : ms(10)
     },
     reasonTxt : {
-        fontFamily : FontFamily.Recoleta_medium
+        fontFamily : FontFamily.Recoleta_medium,
+        fontSize : ms(10,0.3)
     }
 })
 

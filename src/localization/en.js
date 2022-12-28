@@ -93,7 +93,10 @@ export const en = {
     manageReports : 'Manage Reports',
     userManagement : 'User Management',
     analytics : 'Analytics',
-    bannedUsers : 'Banned Users'
+    bannedUsers : 'Banned Users',
+    reported : 'Reported',
+    reason : 'Reasion :',
+    ban : 'Ban'
 
   },
   Welcome: {
