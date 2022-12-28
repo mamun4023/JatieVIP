@@ -5,11 +5,11 @@ export const NAVIGATION = {
   enterOtp: 'EnterOtp',
   setupUserId: 'SetupUserId',
   profile: 'Profile',
-  followers : 'Followers',
-  following : 'Following',
-  profileSetting : 'ProfileSetting',
-  userProfile : 'UserProfile',
-  editProfile : "EditProfile",
+  followers: 'Followers',
+  following: 'Following',
+  profileSetting: 'ProfileSetting',
+  userProfile: 'UserProfile',
+  editProfile: 'EditProfile',
   message: 'Message',
   exclusive: 'Exclusive',
   giveaway: 'Giveaway',
@@ -25,4 +25,5 @@ export const NAVIGATION = {
   //Exclusive
 
   exclusiveThumbnail: 'ExclusiveThumbnail', //onPress thumbnail navigator
+  adminExclusivePost: 'AdminExclusivePost', // onPress post on exclusive content
 };
