@@ -2,7 +2,7 @@ import { useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { login, TYPES } from '@/actions/UserActions';
+import { login, TYPES, ChooseUser } from '@/actions/UserActions';
 import { Button, ErrorView, TextField } from '@/components';
 import { strings } from '@/localization';
 import { styles } from '@/screens/Login/Login.styles';
@@ -13,6 +13,7 @@ import { Logo } from '@/assets';
 import { TextStyles, theme } from '@/theme';
 import { navigationRef } from '@/navigation/RootNavigation';
 import { NAVIGATION } from '@/constants';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 export function Login() {
   const dispatch = useDispatch();
@@ -30,7 +31,20 @@ export function Login() {
   const handleSubmit = () => {
     // dispatch(login(username, password));
     navigationRef.navigate(NAVIGATION.enterOtp);
+    dispatch(ChooseUser(selectedValue))
   };
+
+  // testing purpose code
+  const [userListOpen, setUserListOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(null);
+  const [user, setUser] = useState([
+    {label: 'Free', value: 'Free'},
+    {label: 'Admin', value: 'Admin'},
+    {label: 'VIP', value: 'VIP'}
+  ]);
+
+ 
+  console.log(selectedValue)
 
   return (
     <View style={styles.container}>
@@ -47,8 +61,21 @@ export function Login() {
         value={mobileNumber}
         keyboardType="phone-pad"
       />
-
       <ErrorView errors={errors} />
+
+      {/* only for testing purpose code */}
+      <DropDownPicker
+          placeholder='User Type'
+          open={userListOpen}
+          value={selectedValue}
+          items={user}
+          setOpen={setUserListOpen}
+          setValue={setSelectedValue}
+          setItems={setUser}
+          style={styles.textFiled}
+          textStyle = {styles.dropListTxt}
+      />               
+      
       <Button
         onPress={handleSubmit}
         style={styles.submitButton}

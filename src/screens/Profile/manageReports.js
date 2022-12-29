@@ -7,7 +7,10 @@ import {ms, vs} from 'react-native-size-matters';
 import {CardHeader, TopBackButton} from '@/components';
 import { NAVIGATION } from "@/constants";
 
+
 export default function ManageReports({navigation}){
+
+   
     return(
         <View style = {styles.contianer}>
             <TopBackButton onPress = {()=> navigation.goBack()} />

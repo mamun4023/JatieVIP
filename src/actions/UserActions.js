@@ -45,3 +45,39 @@ export const logout = () => async dispatch => {
     dispatch(clearStore());
   }
 };
+
+
+// just for development 
+const adminUserRequest = (data)=>{
+  return {
+    type : 'Admin',
+    payload : data
+  }
+}
+const FreeUserRequest = (data)=>{
+  return {
+    type : 'Free',
+    payload : data
+  }
+}
+const VipUesrRequest = (data)=>{
+  return {
+    type : 'VIP',
+    payload : data
+  }
+}
+
+export const ChooseUser = (data)=>{
+   return (dispatch)=>{
+      if(data ==  'Admin'){
+        dispatch(adminUserRequest(data))
+      }
+      if(data == 'Free'){
+        dispatch(FreeUserRequest(data))
+      }
+
+      if(data == 'VIP'){
+        dispatch(VipUesrRequest(data))
+      }
+   }
+}

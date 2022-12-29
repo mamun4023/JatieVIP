@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, legacy_createStore } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import { storage } from '@/storage';
@@ -10,7 +10,7 @@ const persistConfig = {
   blacklist: ['error', 'status'],
 };
 
-export const store = createStore(
+export const store = legacy_createStore(
   persistReducer(persistConfig, rootReducer),
   applyMiddleware(thunk)
 );

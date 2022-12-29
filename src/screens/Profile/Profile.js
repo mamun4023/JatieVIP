@@ -15,9 +15,12 @@ import {
   HorizontalLine,
 } from '@/components';
 import { strings } from '@/localization';
+import {useSelector} from 'react-redux';
 
 export function Profile({ navigation }) {
+  const userType = useSelector(state => state.userType)
   const [status, setStatus] = useState('my_status');
+  
 
   return (
     <View style={styles.container}>
