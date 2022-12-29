@@ -25,5 +25,6 @@ export const NAVIGATION = {
   //Exclusive
 
   exclusiveThumbnail: 'ExclusiveThumbnail', //onPress thumbnail navigator
-  adminExclusivePost: 'AdminExclusivePost', // onPress post on exclusive content
+  adminExclusivePost: 'AdminExclusivePost', //onPress post on exclusive content
+  adminPostOption: 'AdminPostOption', //onPress admin post option
 };
