@@ -44,7 +44,7 @@ export function Login() {
   ]);
 
  
-  console.log(selectedValue)
+  // console.log(selectedValue)
 
   return (
     <View style={styles.container}>

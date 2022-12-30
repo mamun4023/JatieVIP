@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, StatusBar } from 'react-native';
-import { faSliders, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSliders, faSearch, faArrowRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import {ms, vs} from 'react-native-size-matters';
 import { TextStyles, theme } from '@/theme';
@@ -15,9 +15,11 @@ import {
   HorizontalLine,
 } from '@/components';
 import { strings } from '@/localization';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {ChooseUser, logout} from '@/actions/UserActions'
 
 export function Profile({ navigation }) {
+  const dispatch = useDispatch();
   const userType = useSelector(state => state.userType)
   const [status, setStatus] = useState('my_status');
   
@@ -58,6 +60,13 @@ export function Profile({ navigation }) {
             style={styles.icon} 
           />
           <View style={styles.bellAlert} />
+          <Icon 
+            icon={faRightFromBracket} 
+            size={ms(20)}
+            color = {theme.light.colors.secondary} 
+            onPress = {()=> dispatch(logout())}
+            style={styles.icon} 
+          />
         </View>
       </View>
       <HeaderTab

@@ -1,27 +1,28 @@
-import { useTheme } from '@react-navigation/native';
-import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, Image, FlatList, Modal, TouchableOpacity, TouchableWithoutFeedback, StatusBar } from 'react-native';
 import { Config } from 'react-native-config';
 import { getUser } from '@/selectors/UserSelectors';
 import { strings } from '@/localization';
 import {theme, TextStyles} from  '@/theme';
-import {ms} from 'react-native-size-matters';
-import { Button, Icon } from '@/components';
-import {faChevronDown, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {ms, vs} from 'react-native-size-matters';
+import { AppSwitch, Card, CardBody, CardFooter, CardHeader, HorizontalLine, Icon, ModalDown, ModalList, ShareFeed, StatusNavigatorBar } from '@/components';
+import {faCheck, faChevronDown, faFlag, faMessage, faPen, faPersonCirclePlus, faSearch, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons';
-import {ChooseUser, logout} from '@/actions/UserActions'
 import {useSelector, useDispatch} from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { FontFamily } from '@/theme/Fonts';
 
-export function Home() {
-
-  const user = useSelector(state => state.userType);
-  const dispatch = useDispatch();
-  
-  console.log( "userType",  user)
- 
+export function Home({navigation}) {
+  const userType = useSelector(state => state.userType);
+  const [vipArea, setVipArea] = useState('news_feed')
+  const [open, setOpen] = useState(false)
+  const [recentFilterOpen, setRecentFilterOpen] = useState(false);
+  const [sortBy, setSortBy] = useState('recent')
+  const [follwingSwitch, setFollowingSwtich] = useState(false)
 
   return (
     <View style={styles.container}>
+      <StatusBar  barStyle= 'dark-content' backgroundColor= 'transparent'  />
       <View  style = {styles.header}>
         <View style = {styles.left}>
           <View>
@@ -39,28 +40,164 @@ export function Home() {
                   <Text> Recent </Text>
                   <Icon 
                     icon = {faChevronDown}
+                    onPress = {()=> setRecentFilterOpen(true)}
                   />
                 </View>
-                <Text> Following </Text>
+                <View style = {styles.recent}> 
+                  <Text> Following Only </Text>
+                  <AppSwitch 
+                    value = {follwingSwitch}
+                    onChange = {setFollowingSwtich}
+                  />
+                </View>
               </View>
           </View>
         </View>
         <View style = {styles.right}>
           <Icon 
             icon = {faSearch}
+            size = {ms(20)}
           />
           <Icon 
             icon = {faBell}
+            size = {ms(20)}
+            style = {{marginLeft : ms(10)}}
           />
         </View>
       </View>
 
-      <Button
-        title="logout"
-        onPress = {()=> dispatch(logout())}
+      {/* recent filter list */}
+      <Modal
+        visible = {recentFilterOpen}
+        transparent = {true}
+        animationType = "fade"
+      >
+        <TouchableWithoutFeedback onPress = {()=> setRecentFilterOpen(false)}> 
+        
+        <View style = {{
+          flex : 1,
+          backgroundColor : theme.light.colors.primaryBgLight
+        }}>
+        
+        <View  style = {{
+          backgroundColor : 'white',
+          padding : ms(20),
+          marginTop : vs(60),
+          elevation : 8
+        }}>
+
+          <View>
+            <Text style = {TextStyles.label}>Sort by Feed </Text>
+          </View>
+          
+          <TouchableOpacity style = {styles.recentList}>
+             {sortBy == 'recent'? <FontAwesomeIcon 
+                icon={faCheck}
+              /> : <Text> {"   "}</Text>
+             } 
+            <Text style = {styles.recentListTxt}> Recent </Text> 
+          </TouchableOpacity>  
+
+          <TouchableOpacity style = {styles.recentList}> 
+            {sortBy == 'today'? <FontAwesomeIcon 
+                icon={faCheck}
+              /> : <Text> {"   "}</Text>
+             } 
+            <Text style = {styles.recentListTxt}> Popular Today </Text>  
+          </TouchableOpacity> 
+          <TouchableOpacity style = {styles.recentList}> 
+            {sortBy == 'week'? <FontAwesomeIcon 
+                icon={faCheck}
+              /> : <Text> {"   "}</Text>
+             } 
+            <Text style = {styles.recentListTxt}> Popular This Week </Text>
+          </TouchableOpacity>  
+          <TouchableOpacity style = {styles.recentList}>
+            {sortBy == 'month'? <FontAwesomeIcon 
+                icon={faCheck}
+              /> : <Text> {"   "}</Text>
+             }  
+            <Text style = {styles.recentListTxt}> Popular this Month </Text>
+          </TouchableOpacity>   
+        </View>
+        </View>
+        </TouchableWithoutFeedback>
+      </Modal>
+
+
+      <StatusNavigatorBar 
+          title1 = "News Feed"
+          title2 = "VIP Area"
+          key1 = "vip_area"
+          key2 = "news_feed"
+          status = {vipArea}
+          setStatus = {setVipArea}
+          showLock = {true}
       />
-      
-      
+      <HorizontalLine />
+      <ShareFeed />
+
+      {/* feed list */}
+      <View style = {styles.feedContainer}>
+        <FlatList 
+          data={Data}
+          keyExtractor = {(item)=> item.id}
+          renderItem = {({item})=>(
+              <View style = {{margin : 8}}>
+                  <Card>
+                     <CardHeader 
+                        fullName = {item.name}
+                        userName = {item.userName}
+                        profilePic = {item.image}
+                     />
+                     <CardBody text = {item.text} />
+                     <CardFooter 
+                        likeCount={10}
+                        disLikeCount = {1}
+                        commentCount = {5}
+                        morePress = {()=> setOpen(true)}  
+                     />
+                  </Card>
+              </View>
+          )}
+        /> 
+      </View>
+
+      {/*  Slide up for follow, edit , review  */}
+      <ModalDown
+        open = {open}
+        setOpen = {setOpen}
+      >
+        <ModalList 
+          title= {strings.profile.follow}
+          icon={faUserPlus}
+          iconColor = {theme.light.colors.primary}
+          iconBg = {theme.light.colors.primaryBgLight}           
+        />
+        <ModalList 
+          title= {strings.profile.sendPrivateMessage}
+          icon={faMessage}
+          iconColor = {theme.light.colors.success}
+          iconBg = {theme.light.colors.successBgLight}   
+        />
+        <HorizontalLine color = {theme.light.colors.infoBgLight} />
+        <ModalList 
+          title= {strings.profile.report}
+          icon={faFlag}
+          iconColor = {theme.light.colors.secondary}
+          iconBg = {theme.light.colors.infoBgLight}          
+        />
+        <ModalList 
+          title= {strings.profile.block}
+          icon={faXmark}
+          iconColor = {theme.light.colors.secondary}
+          iconBg = {theme.light.colors.infoBgLight}
+        />
+      </ModalDown>
+
+      {/* Recent filter list */}
+     
+
     </View>
   );
 }
@@ -74,8 +211,7 @@ const styles = StyleSheet.create({
   header : {
     flexDirection : 'row',
     justifyContent : 'space-between',
-    // backgroundColor : 'gray',
-    // padding : ms(10)
+    marginBottom :  vs(10)
   },
   left: {
     flexDirection : 'row',
@@ -85,7 +221,8 @@ const styles = StyleSheet.create({
   right : {
     flexDirection : 'row',
     justifyContent : 'space-evenly',
-    alignItems : 'center'
+    alignItems : 'center',
+    padding : ms(10)
   },
   nameTxt : [
     TextStyles.header, {
@@ -94,10 +231,58 @@ const styles = StyleSheet.create({
   ],
   userPic : {
     width : ms(50), 
-    height : 50,
+    height : ms(50),
     borderRadius : 100
   },
   filterContainer : {
-    flexDirection : 'row'
+    flexDirection : 'row',
+    position : 'absolute',
+    top : ms(25)
+  },
+  recent :{
+    flexDirection : 'row',
+    alignItems : 'center'
+  },
+  feedContainer : {
+    flex : 1,
+    backgroundColor : theme.light.colors.primaryBgLight
+  },
+  recentList :{
+    padding : 5,
+    flexDirection : 'row',
+    alignItems : 'center',
+  },
+  recentListTxt : {
+    marginLeft : ms(10),
+    fontFamily : FontFamily.Recoleta_medium
   }
 });
+
+
+
+const Data = [
+  {
+    id : 1,
+    name : "Adam Halt",
+    userName : "@adam",
+    image : 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
+    time : '2',
+    text : "We hope you love the products we recommend! All of them were independently seelcted by our editors. Some may have been sent as samples, but all opinions and reviews are our own. Just so you know"
+  },
+  {
+    id : 2,
+    name : "Suli Keya",
+    userName : "@suli",
+    image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTogJpc_o9afOD0CxRPp4t3xRVAvMeu06_e3H9yZ-t--w&s',
+    time : '2',
+    text : "We hope you love the products we recommend! All of them were independently seelcted by our editors. Some may have been sent as samples, but all opinions and reviews are our own. Just so you know"
+  },
+  {
+    id : 3,
+    name : "Neail Noa",
+    userName : "@neail",
+    image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcZYM5Jpcc7j3fxx_KjA6gHwKP5CbGHPk2ZYMixN5KYQ&s',
+    time : '2',
+    text : "We hope you love the products we recommend! All of them were independently seelcted by our editors. Some may have been sent as samples, but all opinions and reviews are our own. Just so you know"
+  }
+]

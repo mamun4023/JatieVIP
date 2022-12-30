@@ -4,6 +4,8 @@ import { theme, TextStyles } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import PropsType from 'prop-types';
 import { s, ms, vs } from 'react-native-size-matters';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 export function StatusNavigatorBar({
   status,
@@ -12,6 +14,7 @@ export function StatusNavigatorBar({
   title2,
   key1,
   key2,
+  showLock
 }) {
   return (
     <View style={styles.statusContainer}>
@@ -50,6 +53,11 @@ export function StatusNavigatorBar({
         >
           {' '}
           {title2}{' '}
+          {showLock? 
+          <FontAwesomeIcon 
+            icon={faLock}
+            color = {status != key2?theme.light.colors.primaryInactive : theme.light.colors.primary}
+          />: null}
         </Text>
       </View>
     </View>
