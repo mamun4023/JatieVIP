@@ -149,6 +149,9 @@ export function Home({navigation}) {
                         fullName = {item.name}
                         userName = {item.userName}
                         profilePic = {item.image}
+                        time = {10}
+                        isOfficial = {true}
+                        showPin = {true}
                      />
                      <CardBody text = {item.text} />
                      <CardFooter 
