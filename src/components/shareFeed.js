@@ -6,6 +6,7 @@ import PropsType from 'prop-types';
 import { theme, TextStyles } from '@/theme';
 import { faArrowRight, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { vs, ms } from 'react-native-size-matters';
+import { FontFamily } from '@/theme/Fonts';
 
 export const ShareFeed = () => {
   return (
@@ -13,16 +14,16 @@ export const ShareFeed = () => {
         <View style={styles.feedIconContainer}>
           <Icon 
             icon={faNewspaper} 
-            size={ms(30)} 
+            size={ms(18)} 
             style={styles.feedIcon} 
           />
         </View>
         <View style={{
             position: 'absolute',
-            left: '25%',
+            left: '18%',
           }}
         >
-          <Text style={[TextStyles.label, { color: 'black' }]}>
+          <Text style={styles.feedTitle}>
             {strings.profile.feedTitle}
           </Text>
           <View
@@ -30,18 +31,17 @@ export const ShareFeed = () => {
               flexDirection : 'row',
               alignItems : 'center',
               justifyContent : 'space-between'
-
             }}
           >
-          <Text> {strings.profile.feedLebel} </Text>
-          <Icon
-            icon={faArrowRight}
-            size={ms(15)}
-            color = "gray"
-            style = {{
-              marginLeft : ms(110)
-            }}
-          />
+            <Text style = {styles.feedLebel}>{strings.profile.feedLebel} </Text>
+            <Icon
+              icon={faArrowRight}
+              size={ms(14)}
+              color = {theme.light.colors.info}
+              style = {{
+                marginLeft : ms(110)
+              }}
+            />
         </View>
       </View>
     </View>
@@ -52,12 +52,12 @@ const styles = StyleSheet.create({
   feedContainer: {
     elevation: 8,
     width: '100%',
-    height: vs(90),
+    height: vs(80),
     backgroundColor: theme.light.colors.white,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: vs(20),
+    padding: ms(8),
   },
   feedIconContainer: {
     backgroundColor: theme.light.colors.primaryBg,
@@ -67,4 +67,14 @@ const styles = StyleSheet.create({
   feedIcon: {
     color: theme.light.colors.primary,
   },
+  feedTitle : {
+    fontFamily : FontFamily.Recoleta_bold,
+    fontSize : ms(14, 0.3),
+    color : theme.light.colors.black
+  },
+  feedLebel :{
+    fontFamily : FontFamily.BrandonGrotesque_regular,
+    fontSize : ms(18, 0.3)
+
+  }
 });

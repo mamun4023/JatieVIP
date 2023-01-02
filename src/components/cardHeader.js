@@ -25,9 +25,9 @@ export const CardHeader = ({
                         uri : profilePic
                     }}
                 />
-                <View>
-                    <Text style = {[TextStyles.header, {fontSize : ms(15, 0.3), color : 'black'}]} > {fullName} </Text>
-                    <Text style = {[TextStyles.header, {fontSize : ms(12, 0.3)}]}> {userName} </Text>
+                <View style = {{paddingLeft : ms(5)}}>
+                    <Text style = {styles.fullNameTxt} > {fullName} </Text>
+                    <Text style = {styles.userNameTxt}> {userName} </Text>
                 </View>
                 {isOfficial? 
                     <View>  
@@ -38,12 +38,13 @@ export const CardHeader = ({
             </View>
             <View style = {{ flexDirection : 'row' }}>
                
-                <Text style = {styles.timeTxt}> {time} mins ago</Text>
+                <Text style = {[styles.timeTxt, {paddingRight : showPin?40 : 0}]}> {time} mins ago</Text>
                 {showPin? 
                     <TouchableOpacity style = {styles.pinIcon}> 
                         <FontAwesomeIcon 
                             icon = {faThumbTack}
                             color = {theme.light.colors.primary}
+                            size = {ms(13)}
                         /> 
                     </TouchableOpacity>
                 : null}
@@ -67,24 +68,37 @@ const styles = StyleSheet.create({
         padding : ms(10)
     },
     Image : {
-        width: ms(35),
-        height: ms(35),
+        width: ms(45),
+        height: ms(45),
         borderWidth: 2,
-        borderRadius: 100
+        borderRadius: 100,
+        marginTop : ms(-5)
+    },
+    fullNameTxt :{
+        fontFamily : FontFamily.Recoleta_bold,
+        fontSize : ms(14, 0.3), 
+        color : theme.light.colors.black
+    },
+    userNameTxt :{
+        fontFamily : FontFamily.Recoleta_regular,
+        fontSize : ms(12, 0.3),
+        color : theme.light.colors.secondary
     },
     officialTxt : {
+        fontFamily : FontFamily.BrandonGrotesque_bold,
         backgroundColor : theme.light.colors.primaryBg,
         borderRadius : 10,
-        padding : 2,
-        fontSize : 12,
-        marginLeft : 5
+        padding : ms(2),
+        fontSize : ms(11, 0.3),
+        marginLeft : ms(5)
     },
     timeTxt : {
-        paddingRight : 40
+        fontFamily : FontFamily.Recoleta_regular,
+        fontSize : ms(12, 0.3)
     },
     pinIcon : {
         backgroundColor : theme.light.colors.primaryBg,
-        padding : 5,
+        padding : ms(5),
         borderRadius : 100,
         justifyContent : 'center',
         position : 'absolute',

@@ -36,7 +36,7 @@ export function StatusNavigatorBar({
         {status == key1 ? (
           <View style={styles.statusNaivigator} />
         ) : (
-          <View style={[styles.statusNaivigator, { left: 235 }]} />
+          <View style={[styles.statusNaivigator, { left: ms(200) }]} />
         )}
       </View>
       <View style={styles.status}>
@@ -79,26 +79,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: theme.light.colors.primaryBg,
     margin: ms(10),
-    padding: ms(10),
-    borderRadius: 10,
+    padding: ms(9),
+    borderRadius: 8,
     height: ms(50),
     marginBottom: vs(20),
   },
-  statusText: [
-    TextStyles.header,
-    {
-      color: theme.light.colors.primary,
-      fontSize: ms(20),
+  statusText: {
+    color: theme.light.colors.primary,
+    fontSize: ms(18, 0.3),
+    fontFamily : FontFamily.Recoleta_bold
     },
-  ],
 
   statusNaivigator: {
-    width: ms(10),
-    height: ms(10),
+    width: ms(6),
+    height: ms(6),
     backgroundColor: theme.light.colors.primary,
     position: 'absolute',
     top: ms(26),
-    left: ms(50),
+    left: ms(40),
     borderRadius: 50,
   },
 });

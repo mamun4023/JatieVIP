@@ -11,7 +11,7 @@ export const TopBackButton = ({onPress})=>{
         <View style ={{ padding : ms(5) }}>
             <Icon 
                 icon={faArrowLeft}
-                size = {20}
+                size = {ms(20)}
                 color = {theme.light.colors.info}
                 onPress = {onPress}
               />

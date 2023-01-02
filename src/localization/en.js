@@ -7,6 +7,15 @@ export const en = {
     header: 'Home',
     message: 'Welcome',
     variant: 'App variant: ',
+    seeAllComments : 'See All Comments...',
+    newFeed : 'News Feed',
+    vipArea : 'VIP Area',
+    recent : 'Recent',
+    followingOnly : 'Following Only',
+    sortByFeed : 'Sort By Feed',
+    popularToday : 'Popular Today',
+    popularThisWeek : 'Popular This Week',
+    popularThisMonth : 'Popular this Month'
   },
   login: {
     username: 'Username',

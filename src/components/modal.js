@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {theme} from '@/theme'
+import { ms } from "react-native-size-matters";
 
 export function ModalDown({open, setOpen, height, children}){
     return(
@@ -45,6 +46,6 @@ const styles = StyleSheet.create({
     backgroundColor : theme.light.colors.white,
     position : 'absolute',
     bottom : 0,
-    padding : 10
+    padding : ms(10)
    } 
 })

@@ -1,9 +1,9 @@
 import React from "react";
 import {View, Text, StyleSheet, Image} from 'react-native';
-import {CardBody, Icon} from '@/components';
+import {CardBody, CardHeader, Icon} from '@/components';
 import {theme, TextStyles} from '@/theme';
 import {ms, vs} from 'react-native-size-matters';
-import {faEllipsis, faCircleUp, faCircleDown, faShare} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsis, faCircleUp, faCircleDown, faShare, faReply} from '@fortawesome/free-solid-svg-icons';
 import PropsType from 'prop-types';
 
 export const CommentCard = ({
@@ -15,29 +15,36 @@ export const CommentCard = ({
     likeCount,
     likePress,
     disLikeCount,
-    disLikePress  
+    disLikePress,
+    morePress  
 })=>{
     return(
         <View>
             <View> 
                 <View style = {styles.leftBorder}>
-                <View style = {styles.header}>
-                    <View style = {styles.left}>
-                        <View>
+                {/* <View style = {styles.header}> */}
+                    {/* <View style = {styles.left}> */}
+                        {/* <View>
                             <Image 
                                 source={{uri : imageUrl}}
                                 style = {styles.profilePic}
                             />
-                        </View>
-                        <View>
+                        </View> */}
+                        {/* <View>
                             <Text style = {styles.nameTxt}> {name} </Text>
                             <Text> {userName} </Text>
-                        </View>
-                    </View>
-                    <View style = {styles.right}> 
+                        </View> */}
+                    {/* </View> */}
+                    {/* <View style = {styles.right}> 
                         <Text> Edited - {time} mins ago </Text>
-                    </View>
-                </View>
+                    </View> */}
+                {/* </View> */}
+                <CardHeader 
+                    fullName =  {name}
+                    userName = {userName}
+                    profilePic = {imageUrl}
+                    time = {time}
+                />
                
                 <View style = {styles.body}>
                     <CardBody text = {commentTxt} />
@@ -54,7 +61,7 @@ export const CommentCard = ({
                 <Icon 
                     icon={faCircleUp}
                     size = {ms(15)}
-                    // onPress = {likePress}
+                    onPress = {likePress}
                     style = {[styles.icon, {
                     color : theme.light.colors.success
                 }]}
@@ -62,15 +69,15 @@ export const CommentCard = ({
                     <Icon 
                         icon={faCircleDown}
                         size = {ms(15)}
-                        // onPress = {disLikePress}
+                        onPress = {disLikePress}
                         style = {[styles.icon, {
                         color : theme.light.colors.error
                         }]}
                     /><Text>{disLikeCount} </Text>
                      <Icon 
-                        icon={faShare}
+                        icon={faReply}
                         size = {ms(15)}
-                        // onPress = {disLikePress}
+                        onPress = {disLikePress}
                         style = {[styles.icon, {
                         color : theme.light.colors.info
                         }]}
@@ -83,8 +90,8 @@ export const CommentCard = ({
                         
                         <Icon 
                           icon={faEllipsis}
-                          size = {15}
-                        //   onPress = {morePress}
+                          size = {ms(15)}
+                          onPress = {morePress}
                           style = {[styles.icon, {
                             color : 'gray'
                           }]}
@@ -146,9 +153,6 @@ const styles = StyleSheet.create({
             fontSize : 15
         } 
     ],
-
-
-    
 })
 
 

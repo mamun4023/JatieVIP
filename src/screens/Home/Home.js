@@ -5,12 +5,30 @@ import { getUser } from '@/selectors/UserSelectors';
 import { strings } from '@/localization';
 import {theme, TextStyles} from  '@/theme';
 import {ms, vs} from 'react-native-size-matters';
-import { AppSwitch, Card, CardBody, CardFooter, CardHeader, HorizontalLine, Icon, ModalDown, ModalList, ShareFeed, StatusNavigatorBar } from '@/components';
-import {faCheck, faChevronDown, faFlag, faMessage, faPen, faPersonCirclePlus, faSearch, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
+import { 
+  AppSwitch, 
+  Card, 
+  CardBody, 
+  CardFooter, 
+  CardHeader, 
+  CommentCard, 
+  CommentContainer, 
+  HorizontalLine, 
+  Icon, 
+  ModalDown,
+  ModalList, 
+  ShareFeed, 
+  StatusNavigatorBar, 
+  VerticalLine 
+
+} from '@/components';
+import {faCheck, faChevronDown, faFlag, faMessage, faSearch, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons';
 import {useSelector, useDispatch} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { FontFamily } from '@/theme/Fonts';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Video from 'react-native-video';
 
 export function Home({navigation}) {
   const userType = useSelector(state => state.userType);
@@ -21,7 +39,7 @@ export function Home({navigation}) {
   const [follwingSwitch, setFollowingSwtich] = useState(false)
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar  barStyle= 'dark-content' backgroundColor= 'transparent'  />
       <View  style = {styles.header}>
         <View style = {styles.left}>
@@ -34,17 +52,22 @@ export function Home({navigation}) {
              />
           </View>
           <View>
-              <Text style = {styles.nameTxt}> News Feeds</Text>
+              <Text style = {styles.nameTxt}> {strings.home.newFeed}</Text>
               <View style = {styles.filterContainer}> 
-                <View style = {styles.recent}> 
-                  <Text> Recent </Text>
-                  <Icon 
+                <TouchableOpacity 
+                  style = {styles.recent}
+                  onPress = {()=> setRecentFilterOpen(true)}
+                > 
+                  <Text style = {styles.recentTxt} > {strings.home.recent} </Text>
+                  <FontAwesomeIcon 
                     icon = {faChevronDown}
-                    onPress = {()=> setRecentFilterOpen(true)}
+                    size = {ms(14)}
+                    color = {theme.light.colors.secondary}
                   />
-                </View>
+                </TouchableOpacity>
+                <VerticalLine />
                 <View style = {styles.recent}> 
-                  <Text> Following Only </Text>
+                  <Text style = {styles.recentTxt}> {strings.home.followingOnly} </Text>
                   <AppSwitch 
                     value = {follwingSwitch}
                     onChange = {setFollowingSwtich}
@@ -56,11 +79,11 @@ export function Home({navigation}) {
         <View style = {styles.right}>
           <Icon 
             icon = {faSearch}
-            size = {ms(20)}
+            size = {ms(22)}
           />
           <Icon 
             icon = {faBell}
-            size = {ms(20)}
+            size = {ms(22)}
             style = {{marginLeft : ms(10)}}
           />
         </View>
@@ -73,61 +96,47 @@ export function Home({navigation}) {
         animationType = "fade"
       >
         <TouchableWithoutFeedback onPress = {()=> setRecentFilterOpen(false)}> 
-        
-        <View style = {{
-          flex : 1,
-          backgroundColor : theme.light.colors.primaryBgLight
-        }}>
-        
-        <View  style = {{
-          backgroundColor : 'white',
-          padding : ms(20),
-          marginTop : vs(60),
-          elevation : 8
-        }}>
-
-          <View>
-            <Text style = {TextStyles.label}>Sort by Feed </Text>
+          <View style = {styles.sortModalContainer}>
+            <View  style = {styles.sortByContainer}>
+              <View>
+                <Text style = {TextStyles.label}> {strings.home.sortByFeed} </Text>
+              </View>
+              <TouchableOpacity 
+                style = {styles.recentList}
+                onPress = {()=> setSortBy('recent')}  
+              >
+                {sortBy == 'recent'? CheckIcon : <Text> {"   "}</Text>} 
+                <Text style = {styles.recentListTxt}> {strings.home.recent} </Text> 
+              </TouchableOpacity>  
+              <TouchableOpacity 
+                style = {styles.recentList}
+                onPress = {()=> setSortBy('today')} 
+              > 
+                {sortBy == 'today'? CheckIcon : <Text> {"   "}</Text>} 
+                <Text style = {styles.recentListTxt}> {strings.home.popularToday} </Text>  
+              </TouchableOpacity> 
+              <TouchableOpacity 
+                style = {styles.recentList}
+                onPress = {()=> setSortBy('week')}
+              > 
+                {sortBy == 'week'? CheckIcon : <Text> {"   "}</Text>} 
+                <Text style = {styles.recentListTxt}> {strings.home.popularThisWeek} </Text>
+              </TouchableOpacity>  
+              <TouchableOpacity 
+                style = {styles.recentList}
+                onPress = {()=> setSortBy('month')}
+              >
+                {sortBy == 'month'? CheckIcon : <Text> {"   "}</Text>}  
+                <Text style = {styles.recentListTxt}> {strings.home.popularThisMonth} </Text>
+              </TouchableOpacity>   
+            </View>
           </View>
-          
-          <TouchableOpacity style = {styles.recentList}>
-             {sortBy == 'recent'? <FontAwesomeIcon 
-                icon={faCheck}
-              /> : <Text> {"   "}</Text>
-             } 
-            <Text style = {styles.recentListTxt}> Recent </Text> 
-          </TouchableOpacity>  
-
-          <TouchableOpacity style = {styles.recentList}> 
-            {sortBy == 'today'? <FontAwesomeIcon 
-                icon={faCheck}
-              /> : <Text> {"   "}</Text>
-             } 
-            <Text style = {styles.recentListTxt}> Popular Today </Text>  
-          </TouchableOpacity> 
-          <TouchableOpacity style = {styles.recentList}> 
-            {sortBy == 'week'? <FontAwesomeIcon 
-                icon={faCheck}
-              /> : <Text> {"   "}</Text>
-             } 
-            <Text style = {styles.recentListTxt}> Popular This Week </Text>
-          </TouchableOpacity>  
-          <TouchableOpacity style = {styles.recentList}>
-            {sortBy == 'month'? <FontAwesomeIcon 
-                icon={faCheck}
-              /> : <Text> {"   "}</Text>
-             }  
-            <Text style = {styles.recentListTxt}> Popular this Month </Text>
-          </TouchableOpacity>   
-        </View>
-        </View>
         </TouchableWithoutFeedback>
       </Modal>
 
-
       <StatusNavigatorBar 
-          title1 = "News Feed"
-          title2 = "VIP Area"
+          title1 = {strings.home.newFeed}
+          title2 = {strings.home.vipArea}
           key1 = "vip_area"
           key2 = "news_feed"
           status = {vipArea}
@@ -154,6 +163,29 @@ export function Home({navigation}) {
                         showPin = {true}
                      />
                      <CardBody text = {item.text} />
+
+                     {/* comments  */}
+                     {/* <CommentContainer > 
+                        <CommentCard 
+
+                        />
+                     </CommentContainer> */}
+                     {/* <View style = {{width : '100%', height : 300}}> 
+                     {item.video? 
+                    <Video 
+                      source={{uri: item.video}}   // Can be a URL or a local file.
+                      controls = {true}
+                      poster = "https://img.freepik.com/free-icon/rounded-play-button_318-9366.jpg?w=2000"
+                      paused = {true}
+
+                      style={{
+                        height : 300,
+                        width : '100%',
+                        position : 'absolute'
+                      }} 
+                      />: null}
+                    </View> */}
+
                      <CardFooter 
                         likeCount={10}
                         disLikeCount = {1}
@@ -201,10 +233,17 @@ export function Home({navigation}) {
       {/* Recent filter list */}
      
 
-    </View>
+    </SafeAreaView>
   );
 }
 
+
+const CheckIcon = (
+  <FontAwesomeIcon 
+    icon={faCheck}
+    color = {theme.light.colors.primary}
+  /> 
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -229,12 +268,16 @@ const styles = StyleSheet.create({
   },
   nameTxt : [
     TextStyles.header, {
-      color : theme.light.colors.black
+      color : theme.light.colors.black,
     }
   ],
+  recentTxt :{
+    fontFamily : FontFamily.Recoleta_medium,
+    fontSize : ms(12, 0.3)
+  },
   userPic : {
-    width : ms(50), 
-    height : ms(50),
+    width : ms(61), 
+    height : ms(66),
     borderRadius : 100
   },
   filterContainer : {
@@ -250,6 +293,16 @@ const styles = StyleSheet.create({
     flex : 1,
     backgroundColor : theme.light.colors.primaryBgLight
   },
+  sortModalContainer : {
+    flex : 1,
+    backgroundColor : theme.light.colors.primaryBg
+  },
+  sortByContainer :{
+    backgroundColor : theme.light.colors.white,
+    padding : ms(20),
+    marginTop : vs(60),
+    elevation : 8
+  },
   recentList :{
     padding : 5,
     flexDirection : 'row',
@@ -257,8 +310,10 @@ const styles = StyleSheet.create({
   },
   recentListTxt : {
     marginLeft : ms(10),
-    fontFamily : FontFamily.Recoleta_medium
-  }
+    fontFamily : FontFamily.Recoleta_medium,
+    color : theme.light.colors.black
+  },
+
 });
 
 
@@ -270,7 +325,16 @@ const Data = [
     userName : "@adam",
     image : 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
     time : '2',
-    text : "We hope you love the products we recommend! All of them were independently seelcted by our editors. Some may have been sent as samples, but all opinions and reviews are our own. Just so you know"
+    text : "We hope you love the products we recommend! All of them were independently seelcted by our editors. Some may have been sent as samples, but all opinions and reviews are our own. Just so you know",
+    video : "https://media.istockphoto.com/id/951326868/video/woman-kayaking-in-halong-bay.mp4?s=mp4-640x640-is&k=20&c=9Aq68HcOGvc_Ce80p0DyfIcj3y55hUojTTrC0l4MHPw=",
+    comments : {
+        id : 1,
+        name : 'halt',
+        userName : '@halt',
+        profilePic : '',
+        time : '10',
+        commentTxt : "This is beautiful"
+      }
   },
   {
     id : 2,
@@ -278,6 +342,7 @@ const Data = [
     userName : "@suli",
     image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTogJpc_o9afOD0CxRPp4t3xRVAvMeu06_e3H9yZ-t--w&s',
     time : '2',
+    video: null,
     text : "We hope you love the products we recommend! All of them were independently seelcted by our editors. Some may have been sent as samples, but all opinions and reviews are our own. Just so you know"
   },
   {
@@ -286,6 +351,7 @@ const Data = [
     userName : "@neail",
     image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcZYM5Jpcc7j3fxx_KjA6gHwKP5CbGHPk2ZYMixN5KYQ&s',
     time : '2',
+    video: null,
     text : "We hope you love the products we recommend! All of them were independently seelcted by our editors. Some may have been sent as samples, but all opinions and reviews are our own. Just so you know"
   }
 ]
