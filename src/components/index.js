@@ -21,3 +21,5 @@ export {TopBackButton} from '@/components/topBackButton';
 export {CommentContainer} from '@/components/commentContainer';
 export {CommentCard} from '@/components/commentCard';
 export {CommentInput} from '@/components/commentInput';
+export {AppVideoPlayer} from '@/components/VideoPlayer';
+export {AppImageViewer} from '@/components/ImageViewer';
