@@ -12,6 +12,8 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import { FlatList } from 'react-native-gesture-handler';
+import { ms, vs } from 'react-native-size-matters';
+import { strings } from '@/localization';
 
 export default function Thubmnail({ navigation }) {
   return (
@@ -19,11 +21,13 @@ export default function Thubmnail({ navigation }) {
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
-          size={20}
+          size={ms(20)}
           onPress={() => navigation.goBack()}
           style={[styles.headerIcon]}
         />
-        <Text style={[styles.headerText, TextStyles.header]}>Exclusive </Text>
+        <Text style={[styles.headerText, TextStyles.header]}>
+          {strings.exclusive.header}
+        </Text>
       </View>
       <ScrollView>
         <View style={styles.postContainer}>
@@ -34,7 +38,7 @@ export default function Thubmnail({ navigation }) {
                 {
                   fontFamily: FontFamily.BrandonGrotesque_bold,
                   textAlign: 'justify',
-                  color: 'black',
+                  color: { color: theme.light.colors.black },
                 },
               ]}
             >
@@ -118,7 +122,7 @@ export const infoBox = (text, link) => {
           {
             fontFamily: FontFamily.BrandonGrotesque_regular,
             textAlign: 'justify',
-            color: 'black',
+            color: theme.light.colors.black,
           },
         ]}
       >
@@ -177,6 +181,11 @@ const Data = {
       photoLink:
         'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
     },
+    {
+      pID: 3,
+      photoLink:
+        'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
+    },
   ],
   text: 'Starting an argument then having bad period cramps *Pranks on Wife',
   description:
@@ -189,13 +198,13 @@ const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.white,
   },
   header: {
-    padding: 15,
+    padding: ms(15),
   },
   headerIcon: {
     color: theme.light.colors.info,
   },
   headerText: {
-    marginTop: 10,
+    marginTop: vs(10),
     color: theme.light.colors.black,
   },
 
@@ -203,35 +212,36 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    padding: 20,
+    padding: ms(20),
   },
   description: {
-    padding: 20,
+    padding: ms(20),
   },
   info: {
-    paddingLeft: 20,
+    paddingLeft: ms(20),
   },
   videoContainer: {
     width: '100%',
-    marginBottom: 10,
+    marginBottom: vs(10),
   },
   photoContainer: {
     width: '100%',
-    marginBottom: 10,
+    marginBottom: vs(10),
+    resizeMode: 'contain',
   },
   photo: {
-    height: 250,
+    height: vs(180),
   },
   thumbnailImage: {
-    height: 210,
+    height: vs(180),
   },
   movefit: {
-    paddingBottom: 20,
+    paddingBottom: ms(20),
   },
   jatieBrand: {
-    paddingTop: 20,
+    paddingTop: ms(20),
   },
   jatieBeauty: {
-    paddingBottom: 20,
+    paddingBottom: ms(20),
   },
 });
