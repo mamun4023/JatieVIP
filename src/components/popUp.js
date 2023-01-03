@@ -1,5 +1,3 @@
-
-
 import React from "react"
 import {
     View, 
@@ -9,6 +7,8 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {theme} from '@/theme'
+import { ms } from "react-native-size-matters";
+
 
 export function PopUp({open, setOpen, height, children}){
     return(
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor : theme.light.colors.white,
     top : "30%",
     alignItems : 'center',
-    padding : 10,
+    padding : ms(10),
     borderRadius : 10,
    } 
 })

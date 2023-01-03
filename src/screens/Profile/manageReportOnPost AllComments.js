@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import {strings} from '@/localization';
-import {HorizontalLine, TopBackButton, CardHeader, Card, CardBody, CardFooter, CommentCard, TextField, Icon} from '@/components'
+import {HorizontalLine, TopBackButton, CardHeader, Card, CardBody, CardFooter, CommentCard, TextField, Icon, CommentInput} from '@/components'
 import {ms} from 'react-native-size-matters'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -47,7 +47,9 @@ export default function ManageReportOnPostAllComments({navigation}){
                         </View>
                     )}
                 />
-                <View 
+
+                <CommentInput />
+                {/* <View 
                     style = {{ 
                         position : 'absolute', 
                         bottom : -15,
@@ -77,7 +79,7 @@ export default function ManageReportOnPostAllComments({navigation}){
                             color = {theme.light.colors.primary}
                         />
                     </TouchableOpacity>
-                </View>
+                </View> */}
             </View>
         </View>
     )

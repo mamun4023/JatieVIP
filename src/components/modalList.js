@@ -49,17 +49,17 @@ const styles = StyleSheet.create({
     },
     list : {
         flexDirection : 'row',
-        padding : 10,
+        padding : ms(10),
         alignItems : 'center',
         borderRadius : 10,
     },
     text : {
-        paddingLeft : 5,
-        fontSize : ms(15),
+        paddingLeft : ms(5),
+        fontSize : ms(16),
         color : theme.light.colors.black
     },
     iconContainer: {
-        padding : 10,
+        padding : ms(10),
         borderRadius : 100,
     }
 })

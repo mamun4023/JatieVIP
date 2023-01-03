@@ -10,7 +10,8 @@ import {
     Card,
     CardBody, 
     CardFooter, 
-    CommentCard
+    CommentCard,
+    CommentContainer
 } from '@/components';
 import {ms} from 'react-native-size-matters';
 
@@ -48,36 +49,21 @@ export default function ManageReportOnMessage({navigation}){
                         time = {Data.time}
                     />
                     <CardBody text = "Hey guys ! I'm glad to be a member here How's everyone's day going? I just finished a workout and I'm totally wiped out" />
-                    
-                    <View style = {styles.commentContainer}>
-                            <CommentCard 
-                                name = "Adam"
-                                userName = "adam"
-                                imageUrl = "https://media.istockphoto.com/id/1270067126/photo/smiling-indian-man-looking-at-camera.jpg?s=612x612&w=0&k=20&c=ovIQ5GPurLd3mOUj82jB9v-bjGZ8updgy1ACaHMeEC0="
-                                time = {10}
-                                commentTxt = "Wonderful"
-                                likeCount = {10}
-                                // likePress = {}
-                                disLikeCount = {20}
-                                // disLikePress = {}
-                            />
-                            <TouchableOpacity 
-                                style = {{
-                                    flexDirection : 'row',
-                                    alignItems : 'center',
-                                    padding : 10
-                                }}
-                                onPress = {()=>navigation.navigate(NAVIGATION.manageReportOnPostAllComments)}        
-                            >
-                                <FontAwesomeIcon 
-                                    icon = {faChevronDown}
-                                    color = {theme.light.colors.info}
-
-                                />
-                                <Text style = {styles.seeAllTxt}> See All comments...</Text>
-                        </TouchableOpacity>
-                    </View>
-
+                    <CommentContainer
+                        seeAllPress={()=>navigation.navigate(NAVIGATION.manageReportOnPostAllComments)}
+                    > 
+                        <CommentCard 
+                            name = "Adam"
+                            userName = "@adam"
+                            imageUrl = "https://media.istockphoto.com/id/1270067126/photo/smiling-indian-man-looking-at-camera.jpg?s=612x612&w=0&k=20&c=ovIQ5GPurLd3mOUj82jB9v-bjGZ8updgy1ACaHMeEC0="
+                            time = {10}
+                            commentTxt = "Wonderful"
+                            likeCount = {10}
+                            // likePress = {}
+                            disLikeCount = {20}
+                            // disLikePress = {}
+                        />
+                    </CommentContainer>
                     <CardFooter 
                         likeCount={32}
                         disLikeCount = {3}
@@ -135,13 +121,6 @@ const styles = StyleSheet.create({
         elevation : 2,
         padding : ms(8)
     },
-    commentContainer : {
-        width : '100%',
-    },
-    seeAllTxt : {
-        color : theme.light.colors.info
-    }
-
 })
 
 

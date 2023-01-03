@@ -1,9 +1,15 @@
 export const NAVIGATION = {
   welcome: 'Welcome',
-  home: 'Home',
   login: 'Login',
   enterOtp: 'EnterOtp',
   setupUserId: 'SetupUserId',
+
+  // home navigation strings
+  home: 'Home',
+  comments : 'Comments',
+
+  
+  // profle 
   profile: 'Profile',
   followers : 'Followers',
   following : 'Following',
@@ -37,7 +43,6 @@ export const NAVIGATION = {
   adjustPicture: 'AdjustPicture',
 
   //Exclusive
-
   exclusiveThumbnail: 'ExclusiveThumbnail', //onPress thumbnail navigator
   adminExclusivePost: 'AdminExclusivePost', //onPress post on exclusive content
   adminPostOption: 'AdminPostOption', //onPress admin post option

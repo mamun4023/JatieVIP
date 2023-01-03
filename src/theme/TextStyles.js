@@ -5,7 +5,7 @@ import { theme } from './theme';
 
 export const TextStyles = StyleSheet.create({
   header: {
-    fontSize: 25,
+    fontSize: ms(24, 0.3),
     fontFamily: FontFamily.Recoleta_bold,
   },
   title: {
