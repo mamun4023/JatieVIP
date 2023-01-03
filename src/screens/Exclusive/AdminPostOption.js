@@ -5,24 +5,29 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import { useState } from 'react';
+import { ms, vs } from 'react-native-size-matters';
+import { strings } from '@/localization';
 export default function AdminPostOption({ navigation }) {
   return (
     <View style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
-          size={20}
+          size={ms(20)}
           onPress={() => navigation.goBack()}
           style={[styles.headerIcon]}
         />
         <Text style={[styles.headerText, TextStyles.header]}>
-          Post an Exclusive Content{' '}
+          {strings.exclusive.adminPostHeader}{' '}
         </Text>
       </View>
 
-      <View style={styles.postContainer}>{AdminSwitch("For VIP's Only")}</View>
+      <View style={styles.postContainer}>{AdminSwitch('For VIPs Only')}</View>
       <View style={styles.PostButtonContainer}>
-        <Button style={styles.PostButton} title={'Post'} />
+        <Button
+          style={styles.PostButton}
+          title={strings.exclusive.postButton}
+        />
       </View>
     </View>
   );
@@ -38,9 +43,9 @@ const AdminSwitch = text => {
           style={[
             TextStyles.text,
             {
-              fontFamily: FontFamily.BrandonGrotesque_bold,
+              fontFamily: FontFamily.Recoleta_medium,
               textAlign: 'justify',
-              color: theme.light.colors.secondary,
+              color: theme.light.colors.black,
             },
           ]}
         >
@@ -48,8 +53,13 @@ const AdminSwitch = text => {
         </Text>
       </View>
       <Switch
-        trackColor={{ false: '#767577', true: '#81b0ff' }}
-        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+        trackColor={{
+          false: theme.light.colors.infoBgLight,
+          true: theme.light.colors.infoBg,
+        }}
+        thumbColor={
+          isEnabled ? theme.light.colors.info : theme.light.colors.secondary
+        }
         ios_backgroundColor="#3e3e3e"
         onValueChange={toggleSwitch}
         value={isEnabled}
@@ -64,10 +74,13 @@ const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.white,
   },
   header: {
-    padding: 15,
+    padding: ms(15),
+  },
+  headerIcon: {
+    color: theme.light.colors.info,
   },
   headerText: {
-    marginTop: 10,
+    marginTop: vs(10),
     color: theme.light.colors.black,
   },
   postContainer: {
@@ -80,15 +93,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: theme.light.colors.infoBgLight,
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: vs(20),
+    marginBottom: vs(20),
   },
   Switch: {
-    margin: 20,
+    margin: ms(20),
   },
 
   PostButtonContainer: {
-    margin: 10,
+    margin: ms(10),
   },
 
   //BottomLayout of file upload
@@ -103,24 +116,24 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flexDirection: 'row',
-    marginLeft: 10,
+    marginLeft: ms(10),
     borderRightWidth: 1,
     borderColor: theme.light.colors.infoBgLight,
   },
   icon: {
-    margin: 10,
+    margin: ms(10),
     color: theme.light.colors.secondary,
   },
   ButtonContainer: {
-    margin: 10,
+    margin: ms(10),
     borderWidth: 0,
     borderRadius: 10,
-    padding: 8,
+    padding: ms(8),
     alignItems: 'center',
     borderWidth: 2,
     borderColor: theme.light.colors.primary,
     position: 'relative',
     backgroundColor: theme.light.colors.primary,
-    width: 120,
+    width: ms(120),
   },
 });

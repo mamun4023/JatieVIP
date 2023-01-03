@@ -23,10 +23,14 @@ import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { NAVIGATION } from '@/constants';
 import { Logo } from '@/assets';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { ms } from 'react-native-size-matters';
+import { strings } from '@/localization';
 
 export function Exclusive({ navigation }) {
   const [open, setOpen] = useState(false);
   const { colors } = useTheme();
+  const userType = useSelector(state => state.userType);
 
   return (
     <View style={styles.container}>
@@ -38,18 +42,23 @@ export function Exclusive({ navigation }) {
               style={[TextStyles.header, { color: theme.light.colors.text }]}
             >
               {' '}
-              Exclusive
+              {strings.exclusive.header}
             </Text>
             <View style={styles.recentContiner}>
-              <Text style={TextStyles.label}>Recent</Text>
-              <Icon icon={faAngleDown} size={20} style={styles.recentIcon} />
+              <Text style={TextStyles.label}>{strings.exclusive.recent}</Text>
+              <Icon
+                icon={faAngleDown}
+                size={ms(20)}
+                TextStyles
+                style={styles.recentIcon}
+              />
             </View>
           </View>
         </View>
 
         <View style={styles.iconContiner}>
-          <Icon icon={faSearch} size={20} style={styles.icon} />
-          <Icon icon={faBell} size={20} style={styles.icon} />
+          <Icon icon={faSearch} size={ms(20)} style={styles.icon} />
+          <Icon icon={faBell} size={ms(20)} style={styles.icon} />
         </View>
       </View>
 
@@ -72,17 +81,19 @@ export function Exclusive({ navigation }) {
 
                   {/* Admin */}
 
-                  <Icon
-                    icon={faEllipsis}
-                    size={15}
-                    onPress={() => setOpen(true)}
-                    style={[
-                      styles.icon,
-                      {
-                        color: 'black',
-                      },
-                    ]}
-                  />
+                  {userType.user == 'Admin' && (
+                    <Icon
+                      icon={faEllipsis}
+                      size={15}
+                      onPress={() => setOpen(true)}
+                      style={[
+                        styles.icon,
+                        {
+                          color: theme.light.colors.black,
+                        },
+                      ]}
+                    />
+                  )}
                 </View>
                 <CardBody text={item.text} />
                 <View style={styles.thumbnailContainer}>
@@ -122,15 +133,19 @@ export function Exclusive({ navigation }) {
 
       {/* Admin Button */}
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate(NAVIGATION.adminExclusivePost)}
-        style={[
-          styles.btn,
-          { backgroundColor: theme.light.colors.primary, width: 150 },
-        ]}
-      >
-        <Text style={[styles.btnTxt, { color: 'white' }]}>+ Exclusive</Text>
-      </TouchableOpacity>
+      {userType.user == 'Admin' && (
+        <TouchableOpacity
+          onPress={() => navigation.navigate(NAVIGATION.adminExclusivePost)}
+          style={[
+            styles.btn,
+            { backgroundColor: theme.light.colors.primary, width: 150 },
+          ]}
+        >
+          <Text style={[styles.btnTxt, { color: theme.light.colors.white }]}>
+            + Exclusive
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

@@ -17,18 +17,20 @@ import {
 import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import { NAVIGATION } from '@/constants';
+import { ms, vs } from 'react-native-size-matters';
+import { strings } from '@/localization';
 export default function AdminExclusivePost({ navigation }) {
   return (
     <View style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
-          size={20}
+          size={ms(20)}
           onPress={() => navigation.goBack()}
           style={[styles.headerIcon]}
         />
         <Text style={[styles.headerText, TextStyles.header]}>
-          Post an Exclusive Content{' '}
+          {strings.exclusive.adminPostHeader}{' '}
         </Text>
       </View>
       <HorizontalLine />
@@ -41,11 +43,11 @@ export default function AdminExclusivePost({ navigation }) {
                 {
                   fontFamily: FontFamily.BrandonGrotesque_bold,
                   textAlign: 'justify',
-                  color: 'black',
+                  color: theme.light.colors.black,
                 },
               ]}
             >
-              Title
+              {strings.exclusive.title}
             </Text>
           </View>
           <View style={styles.TextBox}>
@@ -56,7 +58,7 @@ export default function AdminExclusivePost({ navigation }) {
                   {
                     fontFamily: FontFamily.BrandonGrotesque_regular,
                     textAlign: 'justify',
-                    color: 'black',
+                    color: theme.light.colors.black,
                   },
                 ]}
               >
@@ -72,7 +74,7 @@ export default function AdminExclusivePost({ navigation }) {
                   {
                     fontFamily: FontFamily.BrandonGrotesque_regular,
                     textAlign: 'justify',
-                    color: 'black',
+                    color: theme.light.colors.black,
                   },
                 ]}
               >
@@ -87,8 +89,8 @@ export default function AdminExclusivePost({ navigation }) {
 
       <View style={styles.BottomFileContainer}>
         <View style={styles.iconContainer}>
-          <Icon icon={faImage} size={20} style={styles.icon} />
-          <Icon icon={faVideoCamera} size={20} style={styles.icon} />
+          <Icon icon={faImage} size={ms(20)} style={styles.icon} />
+          <Icon icon={faVideoCamera} size={ms(20)} style={styles.icon} />
         </View>
         <TouchableOpacity
           onPress={() => navigation.navigate(NAVIGATION.adminPostOption)}
@@ -100,11 +102,11 @@ export default function AdminExclusivePost({ navigation }) {
                 {
                   fontFamily: FontFamily.BrandonGrotesque_bold,
                   textAlign: 'justify',
-                  color: 'white',
+                  color: theme.light.colors.white,
                 },
               ]}
             >
-              Next
+              {strings.exclusive.nextButton}
             </Text>
           </View>
         </TouchableOpacity>
@@ -200,34 +202,37 @@ const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.white,
   },
   header: {
-    padding: 15,
+    padding: ms(15),
+  },
+  headerIcon: {
+    color: theme.light.colors.info,
   },
   headerText: {
-    marginTop: 10,
+    marginTop: vs(10),
     color: theme.light.colors.black,
   },
   postContainer: {
     flex: 1,
   },
   title: {
-    padding: 10,
+    padding: ms(10),
   },
   InputTextBox: {
-    paddingLeft: 10,
+    paddingLeft: ms(10),
     borderWidth: 1,
     borderRadius: 8,
     borderColor: theme.light.colors.infoBgLight,
     backgroundColor: theme.light.colors.inputFiled,
   },
   TextBox: {
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 10,
+    marginLeft: ms(10),
+    marginRight: vs(10),
+    marginBottom: vs(10),
   },
   TextBoxDEsc: {
     width: '100%',
-    height: 300,
-    padding: 8,
+    height: vs(300),
+    padding: ms(8),
     borderWidth: 1,
     borderColor: theme.light.colors.infoBgLight,
   },
@@ -244,8 +249,8 @@ const styles = StyleSheet.create({
   BottomVideoContainer: {
     width: '100%',
     flexDirection: 'row',
-    marginBottom: 10,
-    paddingTop: 10,
+    marginBottom: vs(10),
+    paddingTop: ms(10),
     borderTopWidth: 1,
     borderColor: theme.light.colors.infoBgLight,
   },
@@ -253,15 +258,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     flexDirection: 'row',
-    marginLeft: 10,
-    marginRight: 10,
-    height: 120,
+    marginLeft: ms(10),
+    marginRight: ms(10),
+    height: ms(120),
     alignItems: 'center',
   },
   thumbnail: {
     flex: 1,
-    width: 100,
-    height: 100,
+    width: ms(100),
+    height: vs(100),
     borderWidth: 1,
     borderRadius: 8,
     borderColor: theme.light.colors.infoBgLight,
@@ -278,27 +283,28 @@ const styles = StyleSheet.create({
     borderColor: theme.light.colors.infoBgLight,
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   iconContainer: {
     flexDirection: 'row',
-    marginLeft: 10,
+    marginLeft: ms(10),
     borderRightWidth: 1,
     borderColor: theme.light.colors.infoBgLight,
   },
   icon: {
-    margin: 10,
+    margin: ms(10),
     color: theme.light.colors.secondary,
   },
   ButtonContainer: {
-    margin: 10,
+    margin: ms(10),
     borderWidth: 0,
     borderRadius: 10,
-    padding: 8,
+    padding: ms(8),
     alignItems: 'center',
     borderWidth: 2,
     borderColor: theme.light.colors.primary,
     position: 'relative',
     backgroundColor: theme.light.colors.primary,
-    width: 120,
+    width: ms(120),
   },
 });

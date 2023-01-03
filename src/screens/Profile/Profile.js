@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, StatusBar } from 'react-native';
-import { faSliders, faSearch, faArrowRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSliders,
+  faSearch,
+  faArrowRight,
+  faRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
-import {ms, vs} from 'react-native-size-matters';
+import { ms, vs } from 'react-native-size-matters';
 import { TextStyles, theme } from '@/theme';
 import { NAVIGATION } from '@/constants';
 import MyStatus from './myStatus';
@@ -15,14 +20,13 @@ import {
   HorizontalLine,
 } from '@/components';
 import { strings } from '@/localization';
-import {useSelector, useDispatch} from 'react-redux';
-import {ChooseUser, logout} from '@/actions/UserActions'
+import { useSelector, useDispatch } from 'react-redux';
+import { ChooseUser, logout } from '@/actions/UserActions';
 
 export function Profile({ navigation }) {
   const dispatch = useDispatch();
-  const userType = useSelector(state => state.userType)
+  const userType = useSelector(state => state.userType);
   const [status, setStatus] = useState('my_status');
-  
 
   return (
     <View style={styles.container}>
@@ -36,7 +40,12 @@ export function Profile({ navigation }) {
             }}
           />
           <View>
-            <Text style={[TextStyles.header, { color: theme.light.colors.text }]}> {' '}Adam Voigt</Text>
+            <Text
+              style={[TextStyles.header, { color: theme.light.colors.text }]}
+            >
+              {' '}
+              Adam Voigt
+            </Text>
             <Text style={TextStyles.label}> @adamvoigt</Text>
           </View>
         </View>
@@ -47,25 +56,25 @@ export function Profile({ navigation }) {
             onPress={() => navigation.navigate(NAVIGATION.profileSetting)}
             style={styles.icon}
           />
-          <Icon 
-            icon={faSearch} 
+          <Icon
+            icon={faSearch}
             size={ms(20)}
-            onPress = {()=> navigation.navigate(NAVIGATION.search)} 
-            style={styles.icon} 
+            onPress={() => navigation.navigate(NAVIGATION.search)}
+            style={styles.icon}
           />
-          <Icon 
-            icon={faBell} 
-            size={ms(20)} 
-            onPress = {()=> navigation.navigate(NAVIGATION.notification)}
-            style={styles.icon} 
+          <Icon
+            icon={faBell}
+            size={ms(20)}
+            onPress={() => navigation.navigate(NAVIGATION.notification)}
+            style={styles.icon}
           />
           <View style={styles.bellAlert} />
-          <Icon 
-            icon={faRightFromBracket} 
+          <Icon
+            icon={faRightFromBracket}
             size={ms(20)}
-            color = {theme.light.colors.secondary} 
-            onPress = {()=> dispatch(logout())}
-            style={styles.icon} 
+            color={theme.light.colors.secondary}
+            onPress={() => dispatch(logout())}
+            style={styles.icon}
           />
         </View>
       </View>

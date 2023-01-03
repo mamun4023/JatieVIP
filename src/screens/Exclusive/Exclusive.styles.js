@@ -1,22 +1,23 @@
 import { theme } from '@/theme';
 import { StyleSheet } from 'react-native';
 import { FontFamily } from '@/theme/Fonts';
+import { ms, vs } from 'react-native-size-matters';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: { color: theme.light.colors.white },
   },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    padding: ms(10),
   },
   headerImageContainer: {
     flexDirection: 'row',
   },
   headerImage: {
-    width: 50,
-    height: 50,
+    width: ms(50),
+    height: vs(50),
     borderWidth: 2,
     borderRadius: 75,
   },
@@ -24,11 +25,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   icon: {
-    margin: 10,
+    margin: ms(10),
   },
   recentContiner: {
     flexDirection: 'row',
-    padding: 5,
+    padding: ms(4),
   },
   recentIcon: {
     marginLeft: 5,
@@ -40,31 +41,34 @@ export const styles = StyleSheet.create({
   },
   thumbnailContainer: {
     width: '100%',
-    height: 200,
+    height: vs(180),
   },
   thumbnailImage: {
-    padding: 100,
+    width: '100%',
+    height: vs(180),
+    padding: ms(80),
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
   },
   formContainer: {
     borderRadius: 5,
-    padding: 20,
+    padding: ms(20),
     width: '100%',
   },
   submitButton: {
-    marginTop: 20,
+    marginTop: vs(20),
   },
   // Admin
+
   editContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   btn: {
-    marginTop: 10,
+    marginTop: vs(10),
     borderWidth: 0,
     borderRadius: 10,
-    padding: 8,
+    padding: ms(8),
     alignItems: 'center',
     borderWidth: 2,
     borderColor: theme.light.colors.primary,
