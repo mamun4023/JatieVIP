@@ -7,6 +7,7 @@ export const en = {
     header: 'Home',
     message: 'Welcome',
     variant: 'App variant: ',
+    comments : 'Comments',
     seeAllComments : 'See All Comments...',
     newFeed : 'News Feed',
     vipArea : 'VIP Area',
@@ -15,7 +16,9 @@ export const en = {
     sortByFeed : 'Sort By Feed',
     popularToday : 'Popular Today',
     popularThisWeek : 'Popular This Week',
-    popularThisMonth : 'Popular this Month'
+    popularThisMonth : 'Popular this Month',
+    typeComment : 'Type your comment here',
+    replyTo : 'Reply to',
   },
   login: {
     username: 'Username',

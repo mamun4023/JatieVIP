@@ -5,6 +5,8 @@ import { theme } from '@/theme';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { ms, vs } from 'react-native-size-matters';
+import { strings } from '@/localization';
+import { FontFamily } from '@/theme/Fonts';
 
 export const CommentInput = ({value, onPress})=>{
     return(
@@ -12,7 +14,7 @@ export const CommentInput = ({value, onPress})=>{
                 <TextField 
                     style={styles.textFiled}
                     value = {value}
-                    placeholder = "Type your comment here"
+                    placeholder = {strings.home.typeComment}
                 />
                 <TouchableOpacity  
                     style = {styles.iconContainer}
@@ -30,8 +32,7 @@ export const CommentInput = ({value, onPress})=>{
 
 const styles = StyleSheet.create({
     container : {
-        position : 'absolute', 
-        bottom : -15,
+        // bottom : ms(-15),
         width : '100%'
     },
     textFiled : {
