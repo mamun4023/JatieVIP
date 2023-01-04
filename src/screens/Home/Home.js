@@ -1,14 +1,32 @@
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, Image, FlatList, Modal, TouchableOpacity, TouchableWithoutFeedback, StatusBar, Alert } from 'react-native';
 import { Config } from 'react-native-config';
 import { getUser } from '@/selectors/UserSelectors';
 import { strings } from '@/localization';
 import {theme, TextStyles} from  '@/theme';
 import {ms, vs} from 'react-native-size-matters';
-
+import {faCheck, faChevronDown, faFlag, faMessage, faSearch, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
+import {faBell} from '@fortawesome/free-regular-svg-icons';
+import {useSelector, useDispatch} from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { FontFamily } from '@/theme/Fonts';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import VideoPlayer from 'react-native-video-controls';
+import { NAVIGATION } from '@/constants';
+import { 
+  Text, 
+  View, 
+  StyleSheet, 
+  Image, 
+  FlatList, 
+  Modal, 
+  TouchableOpacity, 
+  TouchableWithoutFeedback, 
+  StatusBar,
+} from 'react-native';
 import { 
   AppImageViewer,
   AppSwitch, 
+  AppVideoPlayer, 
   Card, 
   CardBody, 
   CardFooter, 
@@ -22,18 +40,8 @@ import {
   ShareFeed, 
   StatusNavigatorBar, 
   VerticalLine 
-
 } from '@/components';
-import {faCheck, faChevronDown, faFlag, faMessage, faSearch, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
-import {faBell} from '@fortawesome/free-regular-svg-icons';
-import {useSelector, useDispatch} from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { FontFamily } from '@/theme/Fonts';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import VideoPlayer from 'react-native-video-controls';
 
-import { NAVIGATION } from '@/constants';
-import ImageViewer from 'react-native-image-zoom-viewer';
 
 export function Home({navigation}) {
   const userType = useSelector(state => state.userType);
@@ -42,7 +50,8 @@ export function Home({navigation}) {
   const [recentFilterOpen, setRecentFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState('recent')
   const [follwingSwitch, setFollowingSwtich] = useState(false);
-  const [showImageView, setShowImageView] = useState(false)
+  const [showImageView, setShowImageView] = useState(false);
+  const [feedImages, setFeedImages] = useState([])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -183,71 +192,39 @@ export function Home({navigation}) {
                           time = {item.comments.time}
                           likeCount = {10}
                           disLikeCount = {3}
-                          
-
                         />
                      </CommentContainer>
                      : null }
-                     
-                     {item.video? 
-                     
-                        <VideoPlayer 
-                            source={{uri: item.video}}
-                            navigator={null}
-                            toggleResizeModeOnFullscreen = {true}
-                            tapAnywhereToPause = {true}
-                            disableBack
-                            onEnterFullscreen = {()=> console.log("working")}
-                            style = {{
-                              height : ms(200)
-                            }}
-                            poster= "https://e7.pngegg.com/pngimages/244/695/png-clipart-play-icon-video-player-information-play-icon-miscellaneous-angle-thumbnail.png"
-                            paused = {true}
-                          /> : 
-                      null}
-
-                      
-                    
-                        {/* <Text onPress={()=> setShowImageView(true)} > Click </Text> */}
+                
+                      {item.video? 
+                        <AppVideoPlayer 
+                          url={item.video}
+                        /> : null
+                      }
                         <TouchableOpacity 
                           style = {{flexDirection : 'row', justifyContent : 'center'}}
-                          onPress = {()=> setShowImageView(true)}  
+                          onPress = {()=> {setShowImageView(true), setFeedImages(item.feedImages)}}  
                         > 
-                        {
-                          item.feedImages.map(data =>
-                            <View 
-                              key={data.id}
-                              style = {{
-                                flex : 1,
-                                // flexGrow : 1,
-                                // flexWrap : 'wrap'
-                              }}
-                            >
-                              <Image 
-                                source={{
-                                  uri : data.url
-                                }}
-                                style = {{
-                                  height : 200,
-                                  width : '100%',
-                                  // margin : 3
-                                }}
-                              />
-                               
-                            
-                            </View>
-                            )
-                        }
-                            <AppImageViewer 
-                                 visible={showImageView}
-                                 setVisible = {()=>setShowImageView(false)}
-                                 images = {item.feedImages}
-                        
-                              />
+                          {
+                            item.feedImages.map(data =>
+                              <View 
+                                key={data.id}
+                                style = {{flex : 1}}
+                              >
+                                <Image 
+                                  source={{
+                                    uri : data.url
+                                  }}
+                                  style = {{
+                                    height : 200,
+                                    width : '100%',
+                                  }}
+                                />
+                              </View>
+                              )
+                          }
                         </TouchableOpacity>
-                        
-                      
-                   
+            
                      <CardFooter 
                         likeCount={10}
                         disLikeCount = {1}
@@ -259,6 +236,13 @@ export function Home({navigation}) {
           )}
         /> 
       </View>
+
+      {/*  image view modal */}
+      <AppImageViewer 
+          visible={showImageView}
+          setVisible = {()=>setShowImageView(false)}
+          images = {feedImages}             
+      />
 
       {/*  Slide up for follow, edit , review  */}
       <ModalDown
@@ -291,14 +275,9 @@ export function Home({navigation}) {
           iconBg = {theme.light.colors.infoBgLight}
         />
       </ModalDown>
-
-      {/* Recent filter list */}
-     
-
     </SafeAreaView>
   );
 }
-
 
 const CheckIcon = (
   <FontAwesomeIcon 
@@ -379,8 +358,7 @@ const styles = StyleSheet.create({
     marginLeft : ms(10),
     fontFamily : FontFamily.Recoleta_semibold,
     color : theme.light.colors.black
-  },
-
+  }
 
 });
 

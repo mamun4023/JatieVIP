@@ -1,27 +1,65 @@
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React, {useState} from "react"
-import { View, Text, StyleSheet } from "react-native"
-import Video from "react-native-video";
-import VideoPlayer from "react-native-video-controls"
+import { View, Modal, Text, StyleSheet } from "react-native"
+import { ms } from "react-native-size-matters"
+import VideoPlayer from "react-native-video-controls";
 
 export const AppVideoPlayer = ({url})=>{
+    const [openFullScreen, setFullScreen]= useState(false);
+    const [pause, setPause] = useState(true)
     return (
-        <View >
-            <VideoPlayer 
-                source={{uri: 'https://media.istockphoto.com/id/951326868/video/woman-kayaking-in-halong-bay.mp4?s=mp4-640x640-is&k=20&c=9Aq68HcOGvc_Ce80p0DyfIcj3y55hUojTTrC0l4MHPw='}}   // Can be a URL or a local file.
-                      // controls = {true}
-                      // poster = "https://img.freepik.com/free-icon/rounded-play-button_318-9366.jpg?w=2000"
-                      // paused = {true}
-                      
-
-                      // style={{
-                      //   height : 300,
-                      //   width : '100%',
-                      //   position : 'absolute'
-                      // }} 
-                />
-
-                <Text> Vide play</Text>
-        </View>
+         
+            <View> 
+               {openFullScreen && <Modal 
+                    visible = {openFullScreen}
+                    transparent = {true}
+                > 
+                    <VideoPlayer 
+                        source={{uri: url}} 
+                        navigator={null}
+                        toggleResizeModeOnFullscreen = {true}
+                        tapAnywhereToPause = {true}
+                        disableBack
+                        onEnterFullscreen = {()=> setFullScreen(prev=> !prev)}
+                        style = {{
+                            height : ms(200)
+                        }}
+                        // poster= "https://e7.pngegg.com/pngimages/244/695/png-clipart-play-icon-video-player-information-play-icon-miscellaneous-angle-thumbnail.png"
+                        paused = {true}
+                        playIcon = {<FontAwesomeIcon  icon={faPlay} />}
+                    />
+                </Modal>
+                } 
+                <View>
+                    <VideoPlayer 
+                        source={{uri: url}} 
+                        navigator={null}
+                        toggleResizeModeOnFullscreen = {true}
+                        tapAnywhereToPause = {true}
+                        disableBack
+                        onEnterFullscreen = {()=> setFullScreen(prev=> !prev)}
+                        style = {{
+                            height : ms(200)
+                        }}
+                        // poster= "https://e7.pngegg.com/pngimages/244/695/png-clipart-play-icon-video-player-information-play-icon-miscellaneous-angle-thumbnail.png"
+                        paused = {pause}
+                        onPress={()=> setPause(prev => !prev)}
+                   
+                        resizeMode="cover"
+                        repeat
+                        customStyles = {{
+                            playIcon : {
+                                width : 100,
+                                height : 100,
+                                color : 'red'
+                            }
+                        }}
+                        playIcon = {true}
+                    />
+                </View>
+            </View>
+        
     )
 }
 
