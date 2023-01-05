@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NAVIGATION } from '@/constants';
 import { Home } from '@/screens';
 import Comments from '@/screens/Home/comments';
+import Post from '@/screens/Home/Post';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ export function HomeNavigator() {
     >
       <Stack.Screen name={NAVIGATION.home} component={Home} />
       <Stack.Screen name={NAVIGATION.comments} component={Comments} />
+      <Stack.Screen name= {NAVIGATION.post} component = {Post} />
     </Stack.Navigator>
   );
 }

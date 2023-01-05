@@ -8,7 +8,7 @@ import { faArrowRight, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { vs, ms } from 'react-native-size-matters';
 import { FontFamily } from '@/theme/Fonts';
 
-export const ShareFeed = () => {
+export const ShareFeed = ({onPress}) => {
   return (
     <View style={styles.feedContainer}>
         <View style={styles.feedIconContainer}>
@@ -38,6 +38,7 @@ export const ShareFeed = () => {
               icon={faArrowRight}
               size={ms(14)}
               color = {theme.light.colors.info}
+              onPress = {onPress}
               style = {{
                 marginLeft : ms(110)
               }}

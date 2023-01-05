@@ -8,7 +8,7 @@ import {ms} from 'react-native-size-matters';
 
 export const TopBackButton = ({onPress})=>{
     return(
-        <View style ={{ padding : ms(5) }}>
+        <View style ={{ padding : ms(9) }}>
             <Icon 
                 icon={faArrowLeft}
                 size = {ms(20)}

@@ -23,3 +23,4 @@ export {CommentCard} from '@/components/commentCard';
 export {CommentInput} from '@/components/commentInput';
 export {AppVideoPlayer} from '@/components/VideoPlayer';
 export {AppImageViewer} from '@/components/ImageViewer';
+export {SeeSchedulePost} from '@/components/seeSchedulePost';

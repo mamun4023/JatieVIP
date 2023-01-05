@@ -9,7 +9,6 @@ export const AppVideoPlayer = ({url})=>{
     const [openFullScreen, setFullScreen]= useState(false);
     const [pause, setPause] = useState(true)
     return (
-         
             <View> 
                {openFullScreen && <Modal 
                     visible = {openFullScreen}
@@ -59,7 +58,6 @@ export const AppVideoPlayer = ({url})=>{
                     />
                 </View>
             </View>
-        
     )
 }
 

@@ -19,6 +19,11 @@ export const en = {
     popularThisMonth : 'Popular this Month',
     typeComment : 'Type your comment here',
     replyTo : 'Reply to',
+    shareToFeed : 'Share To Feed',
+    whatOnYourMind : "What's on your mind?",
+    shareToVipOnly : 'Share to VIP Only',
+    post : 'post',
+    seeSchedulePost : 'See Schedule posts'
   },
   login: {
     username: 'Username',

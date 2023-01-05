@@ -7,6 +7,8 @@ export const NAVIGATION = {
   // home navigation strings
   home: 'Home',
   comments : 'Comments',
+  post : "Post",
+  
 
   
   // profle 
