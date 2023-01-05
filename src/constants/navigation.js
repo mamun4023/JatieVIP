@@ -8,8 +8,7 @@ export const NAVIGATION = {
   home: 'Home',
   comments : 'Comments',
   post : "Post",
-  
-
+  postOptions : "PostOptions",
   
   // profle 
   profile: 'Profile',

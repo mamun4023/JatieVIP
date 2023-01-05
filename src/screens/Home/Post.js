@@ -6,12 +6,16 @@ import { TextStyles, theme } from "@/theme";
 import { color } from "react-native-reanimated";
 import { FontFamily } from "@/theme/Fonts";
 import { ms } from "react-native-size-matters";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { faImage, faVideo } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
+import { NAVIGATION } from "@/constants";
 
 
 export default function Post({navigation}){
+    const userType = useSelector(state => state.userType);
     const [postTxt, setPostTxt] = useState("")
     const [vipOnly, setVipOnly] = useState(false)
+    
     return(
         <SafeAreaView style = {styles.container}>
             <View style = {styles.headerContainer}> 
@@ -21,7 +25,6 @@ export default function Post({navigation}){
             <HorizontalLine 
                 color = {theme.light.colors.primaryBg}
             />
-
             <View style = {styles.txtInputContainer}>
                 <TextInput 
                     placeholder = {strings.home.whatOnYourMind}
@@ -30,7 +33,6 @@ export default function Post({navigation}){
                     multiline
                     numberOfLines={6}
                     style = {styles.txtInput}
-                
                 />
             </View>
             <HorizontalLine 
@@ -45,25 +47,58 @@ export default function Post({navigation}){
                            size = {ms(22)}
                            color = {theme.light.colors.secondary}
                            style = {{marginRight : ms(10)}}
-                        
                         />
-                        <View style = {styles.verticalBar} />
-                        <Text style = {styles.onlyTxt}> {strings.home.shareToVipOnly} </Text>
-                        <AppSwitch  
-                            value = {vipOnly}
-                            onChange = {()=> setVipOnly(prev => !prev)}
-                        />
+
+                        {/* show only for VIP user */}
+                        {userType.user == strings.userType.vip &&  
+                            <> 
+                                <View style = {styles.verticalBar} />
+                                <Text style = {styles.onlyTxt}> {strings.home.shareToVipOnly} </Text>
+                                <AppSwitch  
+                                    value = {vipOnly}
+                                    onChange = {()=> setVipOnly(prev => !prev)}
+                                />
+                            </>
+                        }
+                        {/* show only for admin */}
+                        {userType.user == strings.userType.admin &&  
+                            <> 
+                                <View style = {styles.verticalBar} />
+                                <Icon 
+                                    icon = {faVideo}
+                                    size = {ms(22)}
+                                    color = {theme.light.colors.secondary}
+                                    style = {{marginRight : ms(10)}}
+                                />
+                            </>
+                        }
+
                     </View>
                 </View> 
                 <View style = {styles.right}>
-                    <Button 
-                        title= {strings.home.post}
-                        style={ {
-                            opacity : postTxt.length? 1 :  0.4,
-                            width  : ms(100)
-                        }}
-                        disabled={postTxt.length? false : true }
-                    />
+                    {/* show only for Free and vip user */}
+                    {userType.user == (strings.userType.free || strings.userType.vip) && 
+                        <Button 
+                            title= {strings.home.post}
+                            style={ {
+                                opacity : postTxt.length? 1 :  0.4,
+                                width  : ms(100)
+                            }}
+                            disabled={postTxt.length? false : true }
+                        />
+                    }
+                    {/* show only for Admin */}
+                    {userType.user == strings.userType.admin && 
+                        <Button 
+                            title= {strings.home.next}
+                            onPress = {()=> navigation.navigate(NAVIGATION.postOptions)}
+                            style={ {
+                                opacity : postTxt.length? 1 :  0.4,
+                                width  : ms(100)
+                            }}
+                            disabled={postTxt.length? false : true }
+                        />
+                    }
                 </View>
             </View>
         </SafeAreaView>

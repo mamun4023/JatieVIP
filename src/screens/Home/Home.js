@@ -45,10 +45,10 @@ import {
 
 export function Home({navigation}) {
   const userType = useSelector(state => state.userType);
-  const [vipArea, setVipArea] = useState('news_feed')
+  const [vipArea, setVipArea] = useState(strings.home.vipArea)
   const [open, setOpen] = useState(false)
   const [recentFilterOpen, setRecentFilterOpen] = useState(false);
-  const [sortBy, setSortBy] = useState('recent')
+  const [sortBy, setSortBy] = useState(strings.sortBy.recent)
   const [follwingSwitch, setFollowingSwtich] = useState(false);
   const [showImageView, setShowImageView] = useState(false);
   const [feedImages, setFeedImages] = useState([])
@@ -106,18 +106,18 @@ export function Home({navigation}) {
       <StatusNavigatorBar 
           title1 = {strings.home.newFeed}
           title2 = {strings.home.vipArea}
-          key1 = "vip_area"
-          key2 = "news_feed"
+          key1 = {strings.home.vipArea}
+          key2 = {strings.home.newFeed}
           status = {vipArea}
           setStatus = {setVipArea}
-          showLock = {userType.user == 'Free'?true : false}
+          showLock = {userType.user == `${strings.userType.free}`?true : false}
       />
       <HorizontalLine />
       <ShareFeed onPress={()=> navigation.navigate(NAVIGATION.post)} />
-
+              
       {/* feed list */}
       <View style = {styles.feedContainer}>
-        {userType.user == 'Admin' &&  
+        {userType.user == `${strings.userType.admin}` &&  
           <SeeSchedulePost 
                 title= {strings.home.seeSchedulePost}
                 // onPress={}
@@ -211,30 +211,30 @@ export function Home({navigation}) {
               </View>
               <TouchableOpacity 
                 style = {styles.recentList}
-                onPress = {()=> setSortBy('recent')}  
+                onPress = {()=> setSortBy(strings.sortBy.recent)}  
               >
-                {sortBy == 'recent'? CheckIcon : <Text> {"   "}</Text>} 
+                {sortBy == `${strings.sortBy.recent}`? CheckIcon : <Text> {"   "}</Text>} 
                 <Text style = {styles.recentListTxt}> {strings.home.recent} </Text> 
               </TouchableOpacity>  
               <TouchableOpacity 
                 style = {styles.recentList}
-                onPress = {()=> setSortBy('today')} 
+                onPress = {()=> setSortBy(strings.sortBy.today)} 
               > 
-                {sortBy == 'today'? CheckIcon : <Text> {"   "}</Text>} 
+                {sortBy == `${strings.sortBy.today}`? CheckIcon : <Text> {"   "}</Text>} 
                 <Text style = {styles.recentListTxt}> {strings.home.popularToday} </Text>  
               </TouchableOpacity> 
               <TouchableOpacity 
                 style = {styles.recentList}
-                onPress = {()=> setSortBy('week')}
+                onPress = {()=> setSortBy(strings.sortBy.week)}
               > 
-                {sortBy == 'week'? CheckIcon : <Text> {"   "}</Text>} 
+                {sortBy == `${strings.sortBy.week}`? CheckIcon : <Text> {"   "}</Text>} 
                 <Text style = {styles.recentListTxt}> {strings.home.popularThisWeek} </Text>
               </TouchableOpacity>  
               <TouchableOpacity 
                 style = {styles.recentList}
-                onPress = {()=> setSortBy('month')}
+                onPress = {()=> setSortBy(strings.sortBy.month)}
               >
-                {sortBy == 'month'? CheckIcon : <Text> {"   "}</Text>}  
+                {sortBy == `${strings.sortBy.month}`? CheckIcon : <Text> {"   "}</Text>}  
                 <Text style = {styles.recentListTxt}> {strings.home.popularThisMonth} </Text>
               </TouchableOpacity>   
             </View>
