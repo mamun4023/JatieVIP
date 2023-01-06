@@ -3,6 +3,11 @@ export const en = {
     loading: 'Loading',
     connectionError: 'Connection error',
   },
+  userType : {
+    free : "Free",
+    vip : 'VIP',
+    admin : 'Admin'
+  },
   home: {
     header: 'Home',
     message: 'Welcome',
@@ -19,7 +24,35 @@ export const en = {
     popularThisMonth: 'Popular this Month',
     typeComment: 'Type your comment here',
     replyTo: 'Reply to',
+    shareToFeed : 'Share To Feed',
+    whatOnYourMind : "What's on your mind?",
+    shareToVipOnly : 'Share to VIP Only',
+    post : 'post',
+    next : 'Next',
+    postOptions : 'Post Options',
+    schedulePost : 'Schedule Post',
+    seeSchedulePost : 'See Schedule posts',
+    forVIPsOnly : 'For VIPs Only',
+    pinThisPost : 'Pin this post',
+    goingLive : 'Going Live',
+    goingLiveLebel : 'If you enable this, users will get notifications before the event',
+    thisIsAnAd : 'This is an Ad',
+    adLebel : 'If selected, users will see this as an Ad. Reactions & comments will be disabled.',
+    publishingDate : 'Publishing Date',
+    ExpirationDate : 'Expiration Date',
+    selectTimeAndDate : 'Select Date & Time',
+    scheduledPost : 'Scheduled Posts',
+    learMore : 'Learn More',
+    sponsordPost : 'Sponsored Post'
   },
+  sortBy : {
+    recent : 'Recent',
+    today : 'Today',
+    week : 'Week',
+    month : 'Month'
+  },
+
+
   login: {
     username: 'Username',
     usernameHint: 'Enter your username',
@@ -109,6 +142,9 @@ export const en = {
     reported: 'Reported',
     reason: 'Reasion :',
     ban: 'Ban',
+    upvoted : 'Upvoted',
+    downVoted : 'Downvoted',
+    commented : 'Commented'
   },
   Welcome: {
     login: 'Login',
@@ -190,4 +226,8 @@ export const en = {
     usOnly: 'US-only',
     post: 'Post',
   },
+  operations : {
+    remove : 'Remove',
+    edit : 'Edit'
+  }
 };
