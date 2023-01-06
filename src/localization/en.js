@@ -149,4 +149,45 @@ export const en = {
     postButton: 'Post',
     exclusiveButton: '+ Exclusive',
   },
+  giveaway: {
+    header: 'Giveaway',
+    active: 'Active',
+    past: 'Past',
+    EndsIn: 'Ends in',
+    learnMore: 'Learn More',
+    title: 'Summer 2023 Giveaway',
+
+    //onPress learn more
+    expires: 'Expires in',
+    joinThisGiveaway: 'Join This Giveaway',
+    withdrawFromThisGiveaway: 'Withdraw from this Giveaway',
+    winners: 'Winners',
+    byJoining: 'By joining you are agreeing to the ',
+    termsAndConsition: 'Giveaway Terms & Conitions',
+    onlyUS:
+      "Unfortunately, you can't join this giveaway. The prize ships only to US addresses",
+    winner: 'Winner',
+    winners: 'Winners',
+
+    //Admin
+    newGiveaway: '+ New Giveaway',
+    seeAllParticipants: 'See All Participants',
+    editGiveaway: 'Edit Giveaway',
+    endNow: 'End Now',
+    removeThisGiveaway: 'Remove this Giveaway',
+    participants: 'Participants',
+    deletePost: 'Delete Post',
+    ban: 'Ban',
+    createGiveaway: 'Create A Giveaway',
+    next: 'Next',
+    minus: '-',
+    //Admin Giveaway options
+    giveawayOption: 'Giveaway Options',
+    startDate: 'Start Date',
+    endDate: 'End Date',
+    numberOfWinners: 'Number of Winners',
+    forVIPsOnly: 'For VIPs Only',
+    usOnly: 'US-only',
+    post: 'Post',
+  },
 };
