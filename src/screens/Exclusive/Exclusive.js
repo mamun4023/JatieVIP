@@ -142,7 +142,7 @@ export function Exclusive({ navigation }) {
           ]}
         >
           <Text style={[styles.btnTxt, { color: theme.light.colors.white }]}>
-            + Exclusive
+            {strings.exclusive.exclusiveButton}
           </Text>
         </TouchableOpacity>
       )}
