@@ -38,7 +38,7 @@ export const CardHeader = ({
             </View>
             <View style = {{ flexDirection : 'row' }}>
                
-                <Text style = {[styles.timeTxt, {paddingRight : showPin?40 : 0}]}> {time} mins ago</Text>
+                {time? <Text style = {[styles.timeTxt, {paddingRight : showPin?40 : 0}]}> {time} mins ago</Text>  : null} 
                 {showPin? 
                     <TouchableOpacity style = {styles.pinIcon}> 
                         <FontAwesomeIcon 

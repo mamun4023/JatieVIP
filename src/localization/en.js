@@ -41,6 +41,9 @@ export const en = {
     publishingDate : 'Publishing Date',
     ExpirationDate : 'Expiration Date',
     selectTimeAndDate : 'Select Date & Time',
+    scheduledPost : 'Scheduled Posts',
+    learMore : 'Learn More',
+    sponsordPost : 'Sponsored Post'
 
   },
   sortBy : {
@@ -137,7 +140,10 @@ export const en = {
     bannedUsers : 'Banned Users',
     reported : 'Reported',
     reason : 'Reasion :',
-    ban : 'Ban'
+    ban : 'Ban',
+    upvoted : 'Upvoted',
+    downVoted : 'Downvoted',
+    commented : 'Commented'
 
   },
   Welcome: {
@@ -170,4 +176,8 @@ export const en = {
     adjustPicture: 'Adjust Picture',
     cropAndClose: 'Crop & Close',
   },
+  operations : {
+    remove : 'Remove',
+    edit : 'Edit'
+  }
 };

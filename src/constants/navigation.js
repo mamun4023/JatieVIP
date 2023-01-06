@@ -9,6 +9,7 @@ export const NAVIGATION = {
   comments : 'Comments',
   post : "Post",
   postOptions : "PostOptions",
+  scheduledPost : 'ScheduledPost',
   
   // profle 
   profile: 'Profile',
