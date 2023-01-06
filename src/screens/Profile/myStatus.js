@@ -11,6 +11,7 @@ import {
   CardBody
 } from '@/components';
 import {ms} from 'react-native-size-matters';
+import { strings } from '@/localization';
 
 export default function MyStatus() {
   const [open, setOpen] = useState(false)
@@ -33,35 +34,37 @@ export default function MyStatus() {
                     />
                     <CardFooter 
                         likeCount= {item.like}
-                        likePress = {()=> Alert.alert("like")}
+                        // likePress = {()=> Alert.alert("like")}
                         disLikeCount = {item.disLike}
-                        disLikePress = {()=> Alert.alert("dislike")}
+                        // disLikePress = {()=> Alert.alert("dislike")}
                         commentCount = {item.comment}
-                        commentPress = {()=> Alert.alert("Comment")}
-                        sharePress = {()=> Alert.alert("share")}
+                        // commentPress = {()=> Alert.alert("Comment")}
+                        // sharePress = {()=> Alert.alert("share")}
                         morePress = {()=>setOpen(true)}
                     />
                   </Card>
                 </View>
               )}
             />
-            <ModalDown 
-              open={open}
-              setOpen = {setOpen}
-            > 
-              <ModalList 
-                title='Edit'
-                icon={faPen}
-                iconBg = {theme.light.colors.infoBgLight}
-                iconColor= {theme.light.colors.info}
-              />
-              <ModalList 
-                title='Remove'
-                icon={faTrash}
-                iconBg = {theme.light.colors.infoBgLight}
-                iconColor= {theme.light.colors.secondary}
-              />
-            </ModalDown>
+            {open && 
+              <ModalDown 
+                open={open}
+                setOpen = {setOpen}
+              > 
+                <ModalList 
+                  title= {strings.operations.edit}
+                  icon={faPen}
+                  iconBg = {theme.light.colors.infoBgLight}
+                  iconColor= {theme.light.colors.info}
+                />
+                <ModalList 
+                  title= {strings.operations.remove}
+                  icon={faTrash}
+                  iconBg = {theme.light.colors.infoBgLight}
+                  iconColor= {theme.light.colors.secondary}
+                />
+              </ModalDown>
+            }
         </View>
   );
 }
@@ -75,7 +78,7 @@ const Data = [
     like : 100,
     disLike : 30,
     comment : 20,
-    text : "Initiated by IEEE President Toshio Fukuda and the IEEE 2020 IEEE Board Ad Hoc Committee on Lifelong Learning and Continuing Education, the IEEE Academies are designed to teach in-demand technical concepts in a new way to IEEE members working in industry. The IEEE Academies are a new learning format at IEEE that will help members understand",
+    text : "Hey guys! I’m glad to be a member here. How’s everyone’s day going? I just finished a workout and I’m totally wiped out",
     time : '10'
   },
   {
@@ -86,7 +89,7 @@ const Data = [
     like : 100,
     disLike : 30,
     comment : 20,
-    text : "Initiated by 2020 IEEE President Toshio Fukuda and the IEEE 2020 IEEE Board Ad Hoc Committee on Lifelong Learning and Continuing Education, the IEEE Academies are designed to teach in-demand technical concepts in a new way to IEEE members working in industry. The IEEE Academies are a new learning format at IEEE that will help members understand",
+    text : "I’m glad to be a member 👍 here. How’s everyone’s day going?",
     time : '10'
   }
 ]

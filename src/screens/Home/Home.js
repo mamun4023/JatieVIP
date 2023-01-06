@@ -6,11 +6,9 @@ import {theme, TextStyles} from  '@/theme';
 import {ms, vs} from 'react-native-size-matters';
 import {faCheck, faChevronDown, faFlag, faMessage, faSearch, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { FontFamily } from '@/theme/Fonts';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import VideoPlayer from 'react-native-video-controls';
 import { NAVIGATION } from '@/constants';
 import { 
   Text, 
@@ -22,6 +20,7 @@ import {
   TouchableOpacity, 
   TouchableWithoutFeedback, 
   StatusBar,
+  SafeAreaView
 } from 'react-native';
 import { 
   AppImageViewer,
@@ -37,6 +36,7 @@ import {
   Icon, 
   ModalDown,
   ModalList, 
+  SeeSchedulePost, 
   ShareFeed, 
   StatusNavigatorBar, 
   VerticalLine 
@@ -45,10 +45,10 @@ import {
 
 export function Home({navigation}) {
   const userType = useSelector(state => state.userType);
-  const [vipArea, setVipArea] = useState('news_feed')
+  const [vipArea, setVipArea] = useState(strings.home.vipArea)
   const [open, setOpen] = useState(false)
   const [recentFilterOpen, setRecentFilterOpen] = useState(false);
-  const [sortBy, setSortBy] = useState('recent')
+  const [sortBy, setSortBy] = useState(strings.sortBy.recent)
   const [follwingSwitch, setFollowingSwtich] = useState(false);
   const [showImageView, setShowImageView] = useState(false);
   const [feedImages, setFeedImages] = useState([])
@@ -60,10 +60,10 @@ export function Home({navigation}) {
         <View style = {styles.left}>
           <View>
              <Image 
-              source={{
-                uri : 'data:image/jpeg;base64,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'
-              }}
-              style ={styles.userPic}
+                source={{
+                  uri : 'data:image/jpeg;base64,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'
+                }}
+                style ={styles.userPic}
              />
           </View>
           <View>
@@ -103,71 +103,31 @@ export function Home({navigation}) {
           />
         </View>
       </View>
-
-      {/* recent filter list */}
-      <Modal
-        visible = {recentFilterOpen}
-        transparent = {true}
-        animationType = "fade"
-      >
-        <TouchableWithoutFeedback onPress = {()=> setRecentFilterOpen(false)}> 
-          <View style = {styles.sortModalContainer}>
-            <View  style = {styles.sortByContainer}>
-              <View>
-                <Text style = {styles.sortByTxt}> {strings.home.sortByFeed} </Text>
-              </View>
-              <TouchableOpacity 
-                style = {styles.recentList}
-                onPress = {()=> setSortBy('recent')}  
-              >
-                {sortBy == 'recent'? CheckIcon : <Text> {"   "}</Text>} 
-                <Text style = {styles.recentListTxt}> {strings.home.recent} </Text> 
-              </TouchableOpacity>  
-              <TouchableOpacity 
-                style = {styles.recentList}
-                onPress = {()=> setSortBy('today')} 
-              > 
-                {sortBy == 'today'? CheckIcon : <Text> {"   "}</Text>} 
-                <Text style = {styles.recentListTxt}> {strings.home.popularToday} </Text>  
-              </TouchableOpacity> 
-              <TouchableOpacity 
-                style = {styles.recentList}
-                onPress = {()=> setSortBy('week')}
-              > 
-                {sortBy == 'week'? CheckIcon : <Text> {"   "}</Text>} 
-                <Text style = {styles.recentListTxt}> {strings.home.popularThisWeek} </Text>
-              </TouchableOpacity>  
-              <TouchableOpacity 
-                style = {styles.recentList}
-                onPress = {()=> setSortBy('month')}
-              >
-                {sortBy == 'month'? CheckIcon : <Text> {"   "}</Text>}  
-                <Text style = {styles.recentListTxt}> {strings.home.popularThisMonth} </Text>
-              </TouchableOpacity>   
-            </View>
-          </View>
-        </TouchableWithoutFeedback>
-      </Modal>
-
       <StatusNavigatorBar 
           title1 = {strings.home.newFeed}
           title2 = {strings.home.vipArea}
-          key1 = "vip_area"
-          key2 = "news_feed"
+          key1 = {strings.home.vipArea}
+          key2 = {strings.home.newFeed}
           status = {vipArea}
           setStatus = {setVipArea}
-          showLock = {true}
+          showLock = {userType.user == `${strings.userType.free}`?true : false}
       />
       <HorizontalLine />
-      <ShareFeed />
-
+      <ShareFeed onPress={()=> navigation.navigate(NAVIGATION.post)} />
+              
       {/* feed list */}
       <View style = {styles.feedContainer}>
+        {userType.user == `${strings.userType.admin}` &&  
+          <SeeSchedulePost 
+                title= {strings.home.seeSchedulePost}
+                // onPress={}
+          />
+        }
         <FlatList 
           data={FeedData}
           keyExtractor = {(item)=> item.id}
           renderItem = {({item})=>(
-              <View style = {{margin : 8}}>
+              <View style = {{margin : ms(8)}}>
                   <Card>
                      <CardHeader 
                         fullName = {item.name}
@@ -224,7 +184,6 @@ export function Home({navigation}) {
                               )
                           }
                         </TouchableOpacity>
-            
                      <CardFooter 
                         likeCount={10}
                         disLikeCount = {1}
@@ -236,45 +195,95 @@ export function Home({navigation}) {
           )}
         /> 
       </View>
+      
+      {/* post filter modal */}
+      {recentFilterOpen && 
+      <Modal
+        visible = {recentFilterOpen}
+        transparent = {true}
+        animationType = "fade"
+      >
+        <TouchableWithoutFeedback onPress = {()=> setRecentFilterOpen(false)}> 
+          <View style = {styles.sortModalContainer}>
+            <View  style = {styles.sortByContainer}>
+              <View>
+                <Text style = {styles.sortByTxt}> {strings.home.sortByFeed} </Text>
+              </View>
+              <TouchableOpacity 
+                style = {styles.recentList}
+                onPress = {()=> setSortBy(strings.sortBy.recent)}  
+              >
+                {sortBy == `${strings.sortBy.recent}`? CheckIcon : <Text> {"   "}</Text>} 
+                <Text style = {styles.recentListTxt}> {strings.home.recent} </Text> 
+              </TouchableOpacity>  
+              <TouchableOpacity 
+                style = {styles.recentList}
+                onPress = {()=> setSortBy(strings.sortBy.today)} 
+              > 
+                {sortBy == `${strings.sortBy.today}`? CheckIcon : <Text> {"   "}</Text>} 
+                <Text style = {styles.recentListTxt}> {strings.home.popularToday} </Text>  
+              </TouchableOpacity> 
+              <TouchableOpacity 
+                style = {styles.recentList}
+                onPress = {()=> setSortBy(strings.sortBy.week)}
+              > 
+                {sortBy == `${strings.sortBy.week}`? CheckIcon : <Text> {"   "}</Text>} 
+                <Text style = {styles.recentListTxt}> {strings.home.popularThisWeek} </Text>
+              </TouchableOpacity>  
+              <TouchableOpacity 
+                style = {styles.recentList}
+                onPress = {()=> setSortBy(strings.sortBy.month)}
+              >
+                {sortBy == `${strings.sortBy.month}`? CheckIcon : <Text> {"   "}</Text>}  
+                <Text style = {styles.recentListTxt}> {strings.home.popularThisMonth} </Text>
+              </TouchableOpacity>   
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>}
 
       {/*  image view modal */}
-      <AppImageViewer 
-          visible={showImageView}
-          setVisible = {()=>setShowImageView(false)}
-          images = {feedImages}             
-      />
+      {showImageView &&  
+        <AppImageViewer 
+            visible={showImageView}
+            setVisible = {()=>setShowImageView(false)}
+            images = {feedImages}             
+        />
+      }
 
       {/*  Slide up for follow, edit , review  */}
-      <ModalDown
-        open = {open}
-        setOpen = {setOpen}
-      >
-        <ModalList 
-          title= {strings.profile.follow}
-          icon={faUserPlus}
-          iconColor = {theme.light.colors.primary}
-          iconBg = {theme.light.colors.primaryBgLight}           
-        />
-        <ModalList 
-          title= {strings.profile.sendPrivateMessage}
-          icon={faMessage}
-          iconColor = {theme.light.colors.success}
-          iconBg = {theme.light.colors.successBgLight}   
-        />
-        <HorizontalLine color = {theme.light.colors.infoBgLight} />
-        <ModalList 
-          title= {strings.profile.report}
-          icon={faFlag}
-          iconColor = {theme.light.colors.secondary}
-          iconBg = {theme.light.colors.infoBgLight}          
-        />
-        <ModalList 
-          title= {strings.profile.block}
-          icon={faXmark}
-          iconColor = {theme.light.colors.secondary}
-          iconBg = {theme.light.colors.infoBgLight}
-        />
-      </ModalDown>
+      {open && 
+        <ModalDown
+          open = {open}
+          setOpen = {setOpen}
+        >
+          <ModalList 
+            title= {strings.profile.follow}
+            icon={faUserPlus}
+            iconColor = {theme.light.colors.primary}
+            iconBg = {theme.light.colors.primaryBgLight}           
+          />
+          <ModalList 
+            title= {strings.profile.sendPrivateMessage}
+            icon={faMessage}
+            iconColor = {theme.light.colors.success}
+            iconBg = {theme.light.colors.successBgLight}   
+          />
+          <HorizontalLine color = {theme.light.colors.infoBgLight} />
+          <ModalList 
+            title= {strings.profile.report}
+            icon={faFlag}
+            iconColor = {theme.light.colors.secondary}
+            iconBg = {theme.light.colors.infoBgLight}          
+          />
+          <ModalList 
+            title= {strings.profile.block}
+            icon={faXmark}
+            iconColor = {theme.light.colors.secondary}
+            iconBg = {theme.light.colors.infoBgLight}
+          />
+        </ModalDown>
+      }
     </SafeAreaView>
   );
 }
@@ -358,7 +367,7 @@ const styles = StyleSheet.create({
     marginLeft : ms(10),
     fontFamily : FontFamily.Recoleta_semibold,
     color : theme.light.colors.black
-  }
+  },
 
 });
 

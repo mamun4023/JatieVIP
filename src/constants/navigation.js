@@ -6,9 +6,12 @@ export const NAVIGATION = {
 
   // home navigation strings
   home: 'Home',
-  comments: 'Comments',
-
-  // profle
+  comments : 'Comments',
+  post : "Post",
+  postOptions : "PostOptions",
+  scheduledPost : 'ScheduledPost',
+  
+  // profle 
   profile: 'Profile',
   followers: 'Followers',
   following: 'Following',

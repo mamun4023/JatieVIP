@@ -5,6 +5,8 @@ import { Card, CardHeader, Icon } from '@/components';
 import {faCircleUp ,faCircleDown, faMessage} from '@fortawesome/free-solid-svg-icons';
 import {ms} from 'react-native-size-matters';
 import { FontFamily } from '@/theme/Fonts';
+import { strings } from '@/localization';
+
 
 export default function MyActivity(){
     return(
@@ -23,7 +25,7 @@ export default function MyActivity(){
                             />
                               <View style = {styles.activity}>
 
-                                {item.status == "Upvoted"? 
+                                {item.status == `${strings.profile.upvoted}`? 
                                     <Icon 
                                         icon={faCircleUp}
                                         size = {ms(15)}
@@ -32,7 +34,7 @@ export default function MyActivity(){
                                         }]}
                                     /> : null
                                 }
-                                {item.status == "Downvoted"? 
+                                {item.status == `${strings.profile.downVoted}`? 
                                     <Icon 
                                         icon={faCircleDown}
                                         size = {ms(15)}
@@ -41,7 +43,7 @@ export default function MyActivity(){
                                         }]}
                                     />: null
                                 }
-                                {item.status == "Commented"? 
+                                {item.status == `${strings.profile.commented}`? 
                                     <Icon 
                                         icon={faMessage}
                                         size = {ms(15)}
