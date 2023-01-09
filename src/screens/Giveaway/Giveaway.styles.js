@@ -5,7 +5,7 @@ import { ms, vs } from 'react-native-size-matters';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: { color: theme.light.colors.white },
+    backgroundColor: theme.light.colors.white,
   },
   headerContainer: {
     flexDirection: 'row',
@@ -24,18 +24,19 @@ export const styles = StyleSheet.create({
   iconContiner: {
     flexDirection: 'row',
   },
-  icon: {
+  bellIcon: {
     margin: ms(10),
   },
-
+  searchIcon: {
+    margin: ms(10),
+  },
   bellAlert: {
     height: ms(10),
     width: ms(10),
-    backgroundColor: { color: theme.light.colors.error },
-    position: 'absolute',
-    borderRadius: 10,
-    left: ms(60),
-    top: ms(8),
+    backgroundColor: theme.light.colors.error,
+    borderRadius: 100,
+    left: ms(70),
+    top: ms(10),
   },
 
   feedContainer: {

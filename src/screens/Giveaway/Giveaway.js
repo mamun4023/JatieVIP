@@ -39,8 +39,8 @@ export function Giveaway({ navigation }) {
 
         <View style={styles.iconContiner}>
           <View style={styles.bellAlert} />
-          <Icon icon={faSearch} size={ms(20)} style={styles.icon} />
-          <Icon icon={faBell} size={ms(20)} style={styles.icon} />
+          <Icon icon={faSearch} size={ms(20)} style={styles.searchIcon} />
+          <Icon icon={faBell} size={ms(20)} style={styles.bellIcon} />
         </View>
       </View>
 
