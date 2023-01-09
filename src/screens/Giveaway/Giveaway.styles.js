@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
   },
   bellIcon: {
     margin: ms(10),
+    position: 'relative',
   },
   searchIcon: {
     margin: ms(10),
@@ -35,8 +36,9 @@ export const styles = StyleSheet.create({
     width: ms(10),
     backgroundColor: theme.light.colors.error,
     borderRadius: 100,
-    left: ms(70),
-    top: ms(10),
+    left: ms(340),
+    top: ms(20),
+    position: 'absolute',
   },
 
   feedContainer: {

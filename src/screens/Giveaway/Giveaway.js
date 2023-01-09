@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import React from 'react';
-import { Image, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { styles } from '@/screens/Giveaway/Giveaway.styles';
 import { TextStyles, theme } from '@/theme';
 import { HorizontalLine, Icon, StatusNavigatorBar } from '@/components';
@@ -38,10 +38,10 @@ export function Giveaway({ navigation }) {
         </View>
 
         <View style={styles.iconContiner}>
-          <View style={styles.bellAlert} />
           <Icon icon={faSearch} size={ms(20)} style={styles.searchIcon} />
           <Icon icon={faBell} size={ms(20)} style={styles.bellIcon} />
         </View>
+        <View style={styles.bellAlert} />
       </View>
 
       <StatusNavigatorBar

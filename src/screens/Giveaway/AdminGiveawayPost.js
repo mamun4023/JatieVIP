@@ -11,6 +11,7 @@ import {
 import { Button, HorizontalLine, Icon } from '@/components';
 import {
   faArrowLeft,
+  faCircle,
   faImage,
   faVideoCamera,
 } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +20,7 @@ import { FontFamily } from '@/theme/Fonts';
 import { NAVIGATION } from '@/constants';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 export default function AdminGiveawayPost({ navigation }) {
   return (
     <View style={styles.contianer}>
@@ -151,6 +153,18 @@ export const BttomContantLayout = () => {
         {/* circle minus */}
         <View style={styles.minus}>
           <Text style={[styles.minusTxt]}>{strings.giveaway.minus}</Text>
+        </View>
+        <View style={styles.videoPlayContainer}>
+          <FontAwesomeIcon
+            icon={faCircle}
+            size={30}
+            style={[styles.videoPlay]}
+          />
+          <FontAwesomeIcon
+            icon={faVideoCamera}
+            size={15}
+            style={[styles.Play]}
+          />
         </View>
       </View>
     </ScrollView>
@@ -299,5 +313,22 @@ const styles = StyleSheet.create({
     fontSize: ms(20, 0.3),
     textAlign: 'center',
     paddingTop: ms(3),
+  },
+
+  // video icon player
+
+  videoPlayContainer: {
+    position: 'absolute',
+    marginLeft: '40%',
+    marginTop: '43%',
+  },
+  videoPlay: {
+    color: theme.light.colors.primary,
+  },
+  Play: {
+    position: 'absolute',
+    color: theme.light.colors.background,
+    marginLeft: 8,
+    marginTop: 8,
   },
 });
