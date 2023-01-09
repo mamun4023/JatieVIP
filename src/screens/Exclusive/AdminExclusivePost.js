@@ -11,7 +11,9 @@ import {
 import { Button, HorizontalLine, Icon } from '@/components';
 import {
   faArrowLeft,
+  faCircle,
   faImage,
+  faPlay,
   faVideoCamera,
 } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
@@ -19,6 +21,7 @@ import { FontFamily } from '@/theme/Fonts';
 import { NAVIGATION } from '@/constants';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 export default function AdminExclusivePost({ navigation }) {
   return (
     <View style={styles.contianer}>
@@ -129,10 +132,28 @@ export const BttomContantLayout = () => {
                   style={styles.thumbnail}
                   source={{ uri: item.videoLink }}
                 />
+                <View style={styles.minus}>
+                  <Text style={[styles.minusTxt]}>
+                    {strings.giveaway.minus}
+                  </Text>
+                </View>
+                <View style={styles.videoPlayContainer}>
+                  <FontAwesomeIcon
+                    icon={faCircle}
+                    size={30}
+                    style={[styles.videoPlay]}
+                  />
+                  <FontAwesomeIcon
+                    icon={faVideoCamera}
+                    size={15}
+                    style={[styles.Play]}
+                  />
+                </View>
               </View>
             );
           }
         })}
+
         {File.photo.map(item => {
           if (item == null) {
             return;
@@ -143,6 +164,11 @@ export const BttomContantLayout = () => {
                   style={styles.thumbnail}
                   source={{ uri: item.photoLink }}
                 />
+                <View style={styles.minus}>
+                  <Text style={[styles.minusTxt]}>
+                    {strings.giveaway.minus}
+                  </Text>
+                </View>
               </View>
             );
           }
@@ -249,7 +275,7 @@ const styles = StyleSheet.create({
   BottomVideoContainer: {
     width: '100%',
     flexDirection: 'row',
-    marginBottom: vs(10),
+    marginBottom: vs(20),
     paddingTop: ms(10),
     borderTopWidth: 1,
     borderColor: theme.light.colors.infoBgLight,
@@ -259,14 +285,14 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     marginLeft: ms(10),
-    marginRight: ms(10),
-    height: ms(120),
+    marginRight: ms(15),
+    height: ms(110),
     alignItems: 'center',
   },
   thumbnail: {
     flex: 1,
-    width: ms(100),
-    height: vs(100),
+    width: ms(80),
+    height: vs(80),
     borderWidth: 1,
     borderRadius: 8,
     borderColor: theme.light.colors.infoBgLight,
@@ -306,5 +332,39 @@ const styles = StyleSheet.create({
     position: 'relative',
     backgroundColor: theme.light.colors.primary,
     width: ms(120),
+  },
+
+  // - circle
+
+  minus: {
+    width: ms(30),
+    height: ms(30),
+    backgroundColor: theme.light.colors.userBackgroundColor,
+    borderRadius: 50,
+    position: 'absolute',
+    marginLeft: ms(65),
+    top: 0,
+  },
+  minusTxt: {
+    fontFamily: FontFamily.Recoleta_bold,
+    color: theme.light.colors.primary,
+    fontSize: ms(23, 0.3),
+    textAlign: 'center',
+  },
+  //Video Icon
+
+  videoPlayContainer: {
+    position: 'absolute',
+    marginLeft: '40%',
+    marginTop: '20%',
+  },
+  videoPlay: {
+    color: theme.light.colors.primary,
+  },
+  Play: {
+    position: 'absolute',
+    color: theme.light.colors.background,
+    marginLeft: 8,
+    marginTop: 8,
   },
 });

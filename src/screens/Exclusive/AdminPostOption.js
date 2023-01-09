@@ -22,7 +22,11 @@ export default function AdminPostOption({ navigation }) {
         </Text>
       </View>
 
-      <View style={styles.postContainer}>{AdminSwitch('For VIPs Only')}</View>
+      <View style={styles.postContainer}>
+        {AdminSwitch(strings.exclusive.schedulePost)}
+        {AdminSwitch(strings.exclusive.forVIPsOnly)}
+        {AdminSwitch(strings.exclusive.pinThisPost)}
+      </View>
       <View style={styles.PostButtonContainer}>
         <Button
           style={styles.PostButton}
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
     color: theme.light.colors.black,
   },
   postContainer: {
-    flex: 1,
+    flexDirection: 'column',
   },
 
   //VIP Switch
@@ -93,8 +97,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: theme.light.colors.infoBgLight,
-    marginTop: vs(20),
-    marginBottom: vs(20),
   },
   Switch: {
     margin: ms(20),
@@ -102,6 +104,9 @@ const styles = StyleSheet.create({
 
   PostButtonContainer: {
     margin: ms(10),
+    flexDirection: 'column',
+    flexGrow: 1,
+    justifyContent: 'flex-end',
   },
 
   //BottomLayout of file upload

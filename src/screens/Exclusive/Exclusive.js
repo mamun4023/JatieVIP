@@ -5,7 +5,6 @@ import { styles } from '@/screens/Exclusive/Exclusive.styles';
 import { TextStyles, theme } from '@/theme';
 import {
   Card,
-  CardBody,
   CardHeader,
   HorizontalLine,
   Icon,
@@ -13,9 +12,12 @@ import {
   ModalList,
 } from '@/components';
 import {
-  faAngleDown,
+  faChevronDown,
+  faCircle,
   faEllipsis,
+  faLock,
   faPen,
+  faPlay,
   faSearch,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
@@ -26,10 +28,10 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ms } from 'react-native-size-matters';
 import { strings } from '@/localization';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 export function Exclusive({ navigation }) {
   const [open, setOpen] = useState(false);
-  const { colors } = useTheme();
   const userType = useSelector(state => state.userType);
 
   return (
@@ -37,7 +39,7 @@ export function Exclusive({ navigation }) {
       <View style={styles.headerContainer}>
         <View style={styles.headerImageContainer}>
           <Logo />
-          <View>
+          <View style={styles.exclusive}>
             <Text
               style={[TextStyles.header, { color: theme.light.colors.text }]}
             >
@@ -45,11 +47,11 @@ export function Exclusive({ navigation }) {
               {strings.exclusive.header}
             </Text>
             <View style={styles.recentContiner}>
-              <Text style={TextStyles.label}>{strings.exclusive.recent}</Text>
-              <Icon
-                icon={faAngleDown}
-                size={ms(20)}
-                TextStyles
+              <Text style={styles.recent}>{strings.exclusive.recent}</Text>
+              <FontAwesomeIcon
+                icon={faChevronDown}
+                size={ms(14)}
+                color={theme.light.colors.secondary}
                 style={styles.recentIcon}
               />
             </View>
@@ -61,7 +63,6 @@ export function Exclusive({ navigation }) {
           <Icon icon={faBell} size={ms(20)} style={styles.icon} />
         </View>
       </View>
-
       <HorizontalLine />
 
       <View style={styles.feedContainer}>
@@ -69,45 +70,90 @@ export function Exclusive({ navigation }) {
           data={Data}
           key={props => props.id}
           renderItem={({ item }) => (
-            <View style={{ margin: 10 }}>
+            <View style={{ margin: 12 }}>
               <Card>
                 <View style={styles.editContainer}>
-                  <CardHeader
-                    fullName={item.fullName}
-                    userName={item.userName}
-                    profilePic={item.profilePic}
-                    time={item.time}
-                  />
+                  <View style={{ paddingTop: 8 }}>
+                    <CardHeader
+                      fullName={item.fullName}
+                      userName={item.userName}
+                      profilePic={item.profilePic}
+                      isOfficial={true}
+                    />
+                  </View>
 
                   {/* Admin */}
 
-                  {userType.user == 'Admin' && (
-                    <Icon
-                      icon={faEllipsis}
-                      size={15}
-                      onPress={() => setOpen(true)}
-                      style={[
-                        styles.icon,
-                        {
-                          color: theme.light.colors.black,
-                        },
-                      ]}
-                    />
-                  )}
+                  <View style={styles.cardRightContainer}>
+                    <Text style={[styles.timeTxt]}>{item.time}</Text>
+                    {userType.user == 'Admin' && (
+                      <Icon
+                        icon={faEllipsis}
+                        size={15}
+                        onPress={() => setOpen(true)}
+                        style={[
+                          styles.icon,
+                          {
+                            color: theme.light.colors.black,
+                          },
+                        ]}
+                      />
+                    )}
+                  </View>
                 </View>
-                <CardBody text={item.text} />
+                {/* <CardBody text={item.text}/> */}
+                <View style={{ paddingLeft: ms(5) }}>
+                  <Text style={styles.fullNameTxt}>{item.text}</Text>
+                </View>
                 <View style={styles.thumbnailContainer}>
                   <TouchableOpacity
                     onPress={() =>
                       navigation.navigate(NAVIGATION.exclusiveThumbnail)
                     }
                   >
-                    <Image
-                      style={styles.thumbnailImage}
-                      source={{
-                        uri: 'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
-                      }}
-                    />
+                    {/* VIP only */}
+                    {userType.user == 'Free' && item.status == 'free' ? (
+                      <View>
+                        <Image
+                          blurRadius={15}
+                          style={styles.thumbnailImage}
+                          source={{
+                            uri: item.thumbnail,
+                          }}
+                        />
+                        <View style={styles.vipOnlyContainer}>
+                          <FontAwesomeIcon
+                            icon={faLock}
+                            size={10}
+                            style={[styles.lock]}
+                          />
+                          <Text style={styles.vipOnlyText}>
+                            {strings.exclusive.vipOnly}
+                          </Text>
+                        </View>
+                      </View>
+                    ) : (
+                      <View>
+                        <Image
+                          style={styles.thumbnailImage}
+                          source={{
+                            uri: item.thumbnail,
+                          }}
+                        />
+                        <View style={styles.videoPlayContainer}>
+                          <FontAwesomeIcon
+                            icon={faCircle}
+                            size={50}
+                            style={[styles.videoPlay]}
+                          />
+                          <FontAwesomeIcon
+                            icon={faPlay}
+                            size={15}
+                            style={[styles.Play]}
+                          />
+                        </View>
+                      </View>
+                    )}
                   </TouchableOpacity>
                 </View>
               </Card>
@@ -157,8 +203,11 @@ const Data = [
     userName: '@JatieVip',
     profilePic:
       'https://resources-live.sketch.cloud/files/d24dae39-1a64-47d5-af65-e14b5a1c533c.png?Expires=1672318800&Signature=IeAX1iEiKtOvnn5~~1FBUX4qZF3V~GvJhhSixUAlkKFgwxWDgVrjlOfcGVYUT5DEFNBOx2znlfwLHG5EfJtprrQ-Xlgxay9iB47DpvQnkRDIReag58U3i~tZbpKu37QqvqPzGwvRi~PPXCAPSrada~ujA-dVhePv-vX0A1F~VH4_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA',
-    text: 'Starting an argument then having bad period cramps *Pranks on Husband',
-    time: '39',
+    text: 'Starting an argument then having bad period cramps *Pranks on Husband!*',
+    time: '39 mins ago',
+    thumbnail:
+      'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
+    status: 'vip',
   },
   {
     id: 2,
@@ -166,7 +215,22 @@ const Data = [
     userName: '@JatieVip',
     profilePic:
       'https://resources-live.sketch.cloud/files/d24dae39-1a64-47d5-af65-e14b5a1c533c.png?Expires=1672318800&Signature=IeAX1iEiKtOvnn5~~1FBUX4qZF3V~GvJhhSixUAlkKFgwxWDgVrjlOfcGVYUT5DEFNBOx2znlfwLHG5EfJtprrQ-Xlgxay9iB47DpvQnkRDIReag58U3i~tZbpKu37QqvqPzGwvRi~PPXCAPSrada~ujA-dVhePv-vX0A1F~VH4_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA',
-    text: 'Starting an argument then having bad period cramps *Pranks on Husband',
-    time: '39',
+    text: 'Starting an argument then having bad period cramps *Pranks on Husband!*',
+    time: '39 mins ago',
+    thumbnail:
+      'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
+    status: 'free',
+  },
+  {
+    id: 3,
+    fullName: 'JatieVip',
+    userName: '@JatieVip',
+    profilePic:
+      'https://resources-live.sketch.cloud/files/d24dae39-1a64-47d5-af65-e14b5a1c533c.png?Expires=1672318800&Signature=IeAX1iEiKtOvnn5~~1FBUX4qZF3V~GvJhhSixUAlkKFgwxWDgVrjlOfcGVYUT5DEFNBOx2znlfwLHG5EfJtprrQ-Xlgxay9iB47DpvQnkRDIReag58U3i~tZbpKu37QqvqPzGwvRi~PPXCAPSrada~ujA-dVhePv-vX0A1F~VH4_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA',
+    text: 'Starting an argument then having bad period cramps *Pranks on Husband!*',
+    time: '39 mins ago',
+    thumbnail:
+      'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
+    status: 'vip',
   },
 ];

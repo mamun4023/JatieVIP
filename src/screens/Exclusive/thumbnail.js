@@ -7,7 +7,7 @@ import {
   Linking,
   ScrollView,
 } from 'react-native';
-import { Icon } from '@/components';
+import { AppVideoPlayer, Icon } from '@/components';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
@@ -37,8 +37,8 @@ export default function Thubmnail({ navigation }) {
                 TextStyles.text,
                 {
                   fontFamily: FontFamily.BrandonGrotesque_bold,
-                  textAlign: 'justify',
-                  color: { color: theme.light.colors.black },
+                  fontSize: ms(18, 0.3),
+                  color: theme.light.colors.black,
                 },
               ]}
             >
@@ -52,10 +52,13 @@ export default function Thubmnail({ navigation }) {
             } else {
               return (
                 <View style={styles.videoContainer} key={item.vID}>
-                  <Image
+                  {/* <Image
                     style={styles.thumbnailImage}
                     source={{ uri: item.videoLink }}
-                  />
+                  /> */}
+                  {item.videoLink ? (
+                    <AppVideoPlayer url={item.videoLink} />
+                  ) : null}
                 </View>
               );
             }
@@ -161,13 +164,11 @@ const Data = {
   video: [
     {
       vID: 1,
-      videoLink:
-        'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
+      videoLink: 'https://vjs.zencdn.net/v/oceans.mp4',
     },
     {
       vID: 2,
-      videoLink:
-        'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
+      videoLink: 'https://vjs.zencdn.net/v/oceans.mp4',
     },
   ],
   photo: [
@@ -187,7 +188,7 @@ const Data = {
         'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
     },
   ],
-  text: 'Starting an argument then having bad period cramps *Pranks on Wife',
+  text: 'Starting an argument then having bad period cramps *Pranks on Husband!*',
   description:
     'Nothing like starting an argument with your wife for fun lol.. Hope you guys enjoyed this video and get ready for vlogmas starting tomorrow!!',
 };
@@ -199,6 +200,8 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: ms(15),
+    borderBottomWidth: 0.5,
+    borderColor: theme.light.colors.primaryBg,
   },
   headerIcon: {
     color: theme.light.colors.info,
