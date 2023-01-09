@@ -30,7 +30,7 @@ export default function Following({navigation}){
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
-                <Text style = {[TextStyles.header, {color : "black", paddingRight : ms(8)}]}> {strings.profile.myFollowing}</Text>
+                <Text style = {styles.headerTxt}>{strings.profile.myFollowing}</Text>
                 <Badge count={23} size = {ms(16)} />
             </View>
             <View>
@@ -107,11 +107,16 @@ const styles = StyleSheet.create({
         backgroundColor : "white"
     },
     listHeader : {
-        paddingTop : ms(5),
         paddingBottom : ms(5),         
         flexDirection : 'row',
         alignItems : 'center'
     },
+    headerTxt : [
+        TextStyles.header, {
+            color : theme.light.colors.black,
+            paddingLeft : ms(9)
+        }
+    ],
     listContainer : {
         padding  : ms(2),
         paddingLeft : ms(8),

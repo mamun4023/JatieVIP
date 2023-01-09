@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { TextStyles, theme } from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
 import {faBell} from '@fortawesome/free-solid-svg-icons';
 import {faCircleUp ,faCircleDown, faMessage} from '@fortawesome/free-solid-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
@@ -28,8 +28,7 @@ export default function Notification({navigation}){
                             borderRadius : 100
                         }}
                     />
-
-                     <Text style = {[TextStyles.header, {color : theme.light.colors.black}]}> {strings.profile.notificatins} </Text>   
+                    <Text style = {[TextStyles.header, {color : theme.light.colors.black}]}> {strings.profile.notificatins} </Text>   
                 </View>
                 <View style = {styles.right}> 
                     <Icon 
@@ -46,67 +45,59 @@ export default function Notification({navigation}){
                     />
                 </View>
                 <View style = {styles.switchContainer}>
-                    <Text style = {[TextStyles.label, {fontSize : ms(12,0.3)}]}> {strings.profile.unreadOnly}  </Text>
+                    <Text style = {styles.togglerTxt}> {strings.profile.unreadOnly}  </Text>
                     <AppSwitch 
                         value = {read}
                         onChange = {()=> setRead(prev => !prev)}
                         style={{ transform: [{ scaleX:  ms(1, 0.01) }, { scaleY: ms(1, 0.01) }] }}
-
                     />
                 </View>
             </View>
             <View style ={{marginTop : ms(10)}} />
             <HorizontalLine />
-
             <View style = {styles.notifyContainer}>
             <FlatList 
                 data={Data}
                 key = {(item)=> item.id}
                 renderItem = {({item})=>(
-                    <View style = {{margin : ms(10)}} > 
-                        <Card>
-                            <CardHeader 
-                                fullName = {item.fullName}
-                                userName = {item.userName}
-                                profilePic = {item.profilePic}
-                                time = {item.time}
-                            />
-                              <View style = {styles.activity}>
-
-                                {item.status == "Upvoted"? 
-                                    <Icon 
-                                        icon={faCircleUp}
-                                        size = {ms(15)}
-                                        style = {[styles.icon, {
-                                            color : theme.light.colors.success
-                                        }]}
-                                    /> : null
-                                }
-                                {item.status == "Downvoted"? 
-                                    <Icon 
-                                        icon={faCircleDown}
-                                        size = {ms(15)}
-                                        style = {[styles.icon, {
-                                            color : theme.light.colors.error
-                                        }]}
-                                    />: null
-                                }
-                                {item.status == "Commented"? 
-                                    <Icon 
-                                        icon={faMessage}
-                                        size = {ms(15)}
-                                        style = {[styles.icon, {
-                                            color : theme.light.colors.info
-                                        }]}
-                                    />: null
-                                }
-                                <View style ={styles.textContainer}> 
-                                    <Text style = {styles.statsTxt}> {item.status} </Text>
-                                    <Text style = {styles.reactOnTxt}> {`${item.reactOn}'s post`} </Text>
-                                </View>
+                    <TouchableOpacity style = {styles.notificationCard}>
+                        <CardHeader 
+                            fullName = {item.fullName}
+                            userName = {item.userName}
+                            profilePic = {item.profilePic}
+                            time = {item.time}
+                        />
+                        <View style = {styles.activity}>
+                            {item.status == `${strings.profile.upvoted}`? 
+                                <Icon 
+                                    icon={faCircleUp}
+                                    size = {ms(15)}
+                                    color = {theme.light.colors.success}
+                                    style = {{marginLeft : ms(15)}}
+                                /> 
+                            : null}
+                            {item.status == `${strings.profile.downVoted}`? 
+                                <Icon 
+                                    icon = {faCircleDown}
+                                    size = {ms(15)}
+                                    color = {theme.light.colors.error}
+                                    style = {{marginLeft : ms(15)}}
+                                />
+                            : null}
+                            {item.status == `${strings.profile.commented}`? 
+                                <Icon 
+                                    icon={faMessage}
+                                    size = {ms(15)}
+                                    color = {theme.light.colors.info}
+                                    style = {{marginLeft : ms(15)}}
+                               
+                            />: null}
+                            <View style ={styles.textContainer}> 
+                                <Text style = {styles.statsTxt}> {item.status} </Text>
+                                <Text style = {styles.reactOnTxt}> {`${item.reactOn}'s post`} </Text>
                             </View>
-                        </Card>
-                    </View>
+                        </View>
+                    </TouchableOpacity>
                 )}
             />
             </View>
@@ -144,11 +135,19 @@ const styles = StyleSheet.create({
     },
     notifyContainer :{
         flex : 1,
-        backgroundColor : '#eee'
+        backgroundColor : theme.light.colors.primaryBgLight
+    },
+    notificationCard : {
+        backgroundColor : theme.light.colors.white,
+        marginTop : vs(2)
+    },
+    togglerTxt : {
+        fontFamily : FontFamily.Recoleta_medium,
+        fontSize : ms(12, 0.3) 
     },
     activity : {
         flexDirection : 'row',
-        padding : ms(10),
+        // padding : ms(10),
         alignItems : 'center'
     },
     textContainer : {

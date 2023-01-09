@@ -24,7 +24,7 @@ Badge.prototype = {
 const styles = StyleSheet.create({
     container :  {
         backgroundColor : theme.light.colors.infoBgLight,
-        padding : ms(5),
+        padding : ms(2),
         paddingLeft: ms(10),
         paddingRight : ms(10),
         borderRadius : 100

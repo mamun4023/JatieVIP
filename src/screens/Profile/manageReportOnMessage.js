@@ -13,7 +13,7 @@ export default function ManageReportOnMessage({navigation}){
     return(
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
-            <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.manageReports} </Text>
+            <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.manageReports} </Text>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
             <CardHeader 
                 fullName = {UserData.fullName}
@@ -24,10 +24,10 @@ export default function ManageReportOnMessage({navigation}){
             <View style = {styles.activity}>
                 <View style ={styles.textContainer}> 
                     <Text style = {styles.statsTxt}> {strings.profile.reported} </Text>
-                    <Text style = {styles.reactOnTxt}> {`this post`} </Text>
+                    <Text style = {styles.reactOnTxt}> {strings.profile.thisPost} </Text>
                 </View>
                 <View style = {styles.reasonContainer}> 
-                    <Text style = {styles.reasonTxt}> {strings.profile.reason} Explicit Content  </Text>
+                    <Text style = {styles.reasonTxt}> {strings.profile.reason} </Text>
                 </View>
             </View>
             <FlatList 
@@ -50,7 +50,7 @@ export default function ManageReportOnMessage({navigation}){
                             </View>
                         </TouchableOpacity>
                         <View style ={styles.rightChatBox}> 
-                            <Text style = {[styles.chatTxt, {color : 'black'}]} >{item.adminText} </Text>
+                            <Text style = {[styles.chatTxt, {color : theme.light.colors.black}]} >{item.adminText} </Text>
                         </View>
                     </View>
                )}
@@ -61,19 +61,20 @@ export default function ManageReportOnMessage({navigation}){
                     setOpen = {setOpen}
                 >
                     <ModalList 
-                        title= {strings.profile.follow}
+                        title= {strings.operations.follow}
                         icon={faUserPlus}
                         iconColor = {theme.light.colors.primary}
                         iconBg = {theme.light.colors.primaryBgLight}
                     />
                     <ModalList 
-                        title= {strings.profile.sendPrivateMessage}
+                        title= {strings.operations.sendPrivateMessage}
                         icon={faMessage}
                         iconColor = {theme.light.colors.success}
                         iconBg = {theme.light.colors.successBgLight}
                     />
+                    <HorizontalLine color = {theme.light.colors.infoBgLight} />
                     <ModalList 
-                        title= {strings.profile.report}
+                        title= {strings.operations.report}
                         icon={faFlag}
                         iconColor = {theme.light.colors.secondary}
                         iconBg = {theme.light.colors.infoBgLight}
@@ -102,7 +103,8 @@ const styles = StyleSheet.create({
         backgroundColor : theme.light.colors.white
     },
     headerText :{
-        color : theme.light.colors.black
+        color : theme.light.colors.black,
+        paddingLeft : ms(9)
     },
     activity : {
         flexDirection : 'row',
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
     statsTxt: {
         fontFamily : FontFamily.BrandonGrotesque_medium,
         fontSize : ms(15, 0.3),
-        paddingLeft : ms(5)
+        // paddingLeft : ms(5)
     },
     reactOnTxt: {
         color : theme.light.colors.info, 
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
         fontSize : ms(15, 0.3)
     },
     reasonContainer : {
-        backgroundColor : "#eee",
+        backgroundColor : theme.light.colors.inputFiled,
         borderRadius : 10,
         padding : ms(3),
         marginLeft : ms(10)
@@ -159,7 +161,7 @@ const styles = StyleSheet.create({
     rightChatBox : {
         width : '80%',
         marginLeft : '14%',
-        backgroundColor : 'white',
+        backgroundColor : theme.light.colors.white,
         margin : ms(10),
         marginTop : vs(20),
         borderRadius : 10,
