@@ -9,12 +9,26 @@ import { ms } from "react-native-size-matters";
 import { faImage, faVideo } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import { NAVIGATION } from "@/constants";
+import ImageCropPicker from "react-native-image-crop-picker";
 
 
 export default function Post({navigation}){
     const userType = useSelector(state => state.userType);
     const [postTxt, setPostTxt] = useState("")
-    const [vipOnly, setVipOnly] = useState(false)
+    const [vipOnly, setVipOnly] = useState(false);
+    const [images, setImages] = useState([]);
+
+    const OpenImagePicker = ()=>{
+        ImageCropPicker.openPicker({
+            width: 300,
+            height: 400,
+          }).then(image => {
+            // setImages(image.)
+            console.log(image);
+          }).catch(err =>{
+            console.log(err)
+          })
+    }
     
     return(
         <SafeAreaView style = {styles.container}>
@@ -47,6 +61,7 @@ export default function Post({navigation}){
                            size = {ms(22)}
                            color = {theme.light.colors.secondary}
                            style = {{marginRight : ms(10)}}
+                           onPress = {OpenImagePicker}
                         />
 
                         {/* show only for VIP user */}

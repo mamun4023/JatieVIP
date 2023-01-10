@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {TextStyles, theme} from '@/theme'
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
+import {TextStyles, theme} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import {AppSwitch, HorizontalLine, Button, TopBackButton} from '@/components';
 import { ms, vs } from 'react-native-size-matters';
@@ -11,10 +11,10 @@ export default function NotificationSettings({navigation}){
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()}  />
             <View style = {styles.listHeader}> 
-                <Text style = {[TextStyles.header, {color : 'black'}]}> {strings.profile.notificatin} </Text>
+                <Text style = {[TextStyles.header, {color : theme.light.colors.black}]}> {strings.profile.notificatin} </Text>
                 <AppSwitch 
                     value={isEnabled}
                     onChange = {toggleSwitch}
@@ -69,7 +69,7 @@ export default function NotificationSettings({navigation}){
 
             <View style = {{alignItems : 'center', marginTop : ms(150)}}> 
             <Button 
-                title="Save" 
+                title= {strings.operations.save} 
                 style={{
                     backgroundColor : theme.light.colors.primary,
                     alignItems : 'center',
@@ -80,14 +80,14 @@ export default function NotificationSettings({navigation}){
                     color : theme.light.colors.white
                 }} />
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        backgroundColor : "white"
+        backgroundColor : theme.light.colors.white
     },
     listHeader : {
         paddingTop : ms(5),

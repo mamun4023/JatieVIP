@@ -6,7 +6,8 @@ import {
     FlatList, 
     Image, 
     Alert,
-    TouchableOpacity
+    TouchableOpacity,
+    SafeAreaView
 } from 'react-native';
 import {
     faEllipsis,
@@ -27,7 +28,7 @@ import { FontFamily } from '@/theme/Fonts';
 export default function Followers({navigation}){
     const [open, setOpen] = useState(false);
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
                 <Text style = {styles.headerTxt}>{strings.profile.myFollowers}</Text>
@@ -48,7 +49,7 @@ export default function Followers({navigation}){
                                 > 
                                     <Image source={{uri : item.image}} style = {styles.profileImage} />
                                     <View style = {styles.nameContainer}> 
-                                        <Text style = {styles.nameTxt}> {item.name} { " "} </Text> 
+                                        <Text style = {styles.nameTxt}> {item.name} </Text> 
                                         <Text> {item.userName}  </Text>
                                     </View>
                                 </TouchableOpacity>
@@ -74,8 +75,8 @@ export default function Followers({navigation}){
                     iconBg = {theme.light.colors.primaryBgLight}
                 />
                 <ModalList 
-                    title= {strings.operations.sendPrivateMessage}
-                    icon={faMessage}
+                    title = {strings.operations.sendPrivateMessage}
+                    icon = {faMessage}
                     iconColor = {theme.light.colors.success}
                     iconBg = {theme.light.colors.successBgLight}
                     // onPress = {()=> Alert.alert("message")}
@@ -96,14 +97,14 @@ export default function Followers({navigation}){
                     // onPress = {()=> Alert.alert("blocked")}
                 />
             </ModalDown>
-        </View>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        backgroundColor : "white"
+        backgroundColor : theme.light.colors.white
     },
     listHeader : {
         paddingBottom : ms(5),         
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
         width : ms(40),
         borderRadius : 100,
         borderWidth : 1,
-        borderColor : 'gray'
+        borderColor : theme.light.colors.secondary
     },
     nameContainer : {
         flexDirection : 'row',
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     nameTxt : {
         fontFamily : FontFamily.Recoleta_bold,
         fontSize : ms(15, 0.3),
-        color : 'black' 
+        color : theme.light.colors.black 
     }
 })
 

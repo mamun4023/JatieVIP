@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet, StatusBar } from 'react-native';
+import { Text, View, Image, StyleSheet, StatusBar , SafeAreaView} from 'react-native';
 import {
   faSliders,
   faSearch,
@@ -30,7 +30,7 @@ export function Profile({ navigation }) {
   const [status, setStatus] = useState(strings.profile.myStatus);
   
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="transparent" />
       <View style={styles.headerContainer}>
         <View style={styles.headerImageContainer}>
@@ -95,14 +95,14 @@ export function Profile({ navigation }) {
       <View style={styles.feedContainer}>
         {status == `${strings.profile.myStatus}` ? <MyStatus /> : <MyActivity />}
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: theme.light.colors.white,
   },
   headerContainer: {
     flexDirection: 'row',

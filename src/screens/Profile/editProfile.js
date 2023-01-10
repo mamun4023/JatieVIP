@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text, StyleSheet, Image, TextInput, ScrollView, Modal, TouchableWithoutFeedback, Touchable} from 'react-native';
+import {View, TouchableOpacity, Text, StyleSheet, Image, TextInput, ScrollView, Modal, TouchableWithoutFeedback, Touchable, SafeAreaView} from 'react-native';
 import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -13,6 +13,7 @@ import {TopBackButton} from '@/components'
 import { ms, s, vs } from 'react-native-size-matters';
 import {strings} from '@/localization';
 import ImagePicker from 'react-native-image-crop-picker';
+import { string } from 'prop-types';
 
 export default function EditProfile({navigation}){
     const [date, setDate] = useState(new Date())
@@ -36,10 +37,16 @@ export default function EditProfile({navigation}){
     const[closeAccount, setCloseAccount] = useState(false);
     const [replageImage, setReplageImage] = useState('https://t4.ftcdn.net/jpg/00/88/53/89/360_F_88538986_5Bi4eJ667pocsO3BIlbN4fHKz8yUFSuA.jpg')
 
+    
+    const [name, setName] = useState('Adam Voigt');
+    const [email, setEmail] = useState('adam@gmail.com')
+    const [loginPhone, setLoginPhone] = useState ('84584566644')
+    
+    
     const PickFromCamera = ()=>{
         ImagePicker.openCamera({
-            width: 300,
-            height: 400,
+            width: ms(300),
+            height: ms(400),
             cropping: true,
           }).then(image => {
             console.log(image);
@@ -49,8 +56,8 @@ export default function EditProfile({navigation}){
 
     const SelectFromGallery = ()=>{
         ImagePicker.openPicker({
-            width: 300,
-            height: 400,
+            width: ms(300),
+            height: ms(400),
             cropping: true,
             freeStyleCropEnabled : true,
             cropperCircleOverlay : true
@@ -59,9 +66,8 @@ export default function EditProfile({navigation}){
           });
     }
 
-    
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.editProfile} </Text>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
@@ -79,12 +85,12 @@ export default function EditProfile({navigation}){
                     </View>
                     <View style = {{flexDirection : 'row'}} >
                         <Button 
-                            title= "Replace"
+                            title= {strings.addYourProfilePicture.replace}
                             style={styles.replaceBtn}
                             onPress = {()=> setReplace(true)}
                         />
                         <Button 
-                            title= "Remove"
+                            title= {strings.addYourProfilePicture.remove}
                             style={styles.removeBtn}
                             textStyle = {{
                               color : theme.light.colors.primary
@@ -94,26 +100,29 @@ export default function EditProfile({navigation}){
                 </View>
                 <View style = {styles.formContainer}>
                     <View style = {styles.textFiledContainer}> 
-                        <Text style = {[styles.textFieldLebel]}> Your Name </Text>
+                        <Text style = {[styles.textFieldLebel]}> {strings.SignUp.yourName} </Text>
                         <TextInput 
                             style={styles.textFiled}
+                            value = {name}
+                            onChangeText={(val)=> setName(val) }
                         />
                     </View>
                     <View style = {styles.textFiledContainer}> 
-                        <Text style = {[styles.textFieldLebel]}> Email </Text>
+                        <Text style = {[styles.textFieldLebel]}> {strings.SignUp.email} </Text>
                         <TextInput
                             style={styles.textFiled}
+                            value = {email}
+                            onChangeText = {(val)=> setEmail(val)}
                         />
                     </View>
                     <View style = {styles.textFiledContainer}> 
-                        <Text style = {[styles.textFieldLebel]}> Date of Birth </Text>
+                        <Text style = {[styles.textFieldLebel]}> {strings.SignUp.birthday} </Text>
                         <TextInput 
                             style={styles.textFiled}
                             selectTextOnFocus={false}
                             editable = {false}
                             value = {Moment(date).format('DD-MM-YYYY')}
                         />
-                            
                             <View
                                 style = {{
                                     position :'absolute',
@@ -140,16 +149,13 @@ export default function EditProfile({navigation}){
                                 onCancel={() => {
                                     setOpenDatePicker(false)
                                 }}
-                                style = {{
-                                    borderColor : 'red'
-                                }}
                             />      
                             
                     </View>
                     <View style = {styles.textFiledContainer}> 
-                        <Text style = {[styles.textFieldLebel]}> Gender </Text>
+                        <Text style = {[styles.textFieldLebel]}> {strings.SignUp.gender} </Text>
                         <DropDownPicker
-                            placeholder='Prefer Not to Say'
+                            placeholder= {strings.SignUp.genderPlaceHolder}
                             open={genderListOpen}
                             value={genderValue}
                             items={gender}
@@ -162,15 +168,9 @@ export default function EditProfile({navigation}){
                     </View>
                     
                     <View style = {styles.textFiledContainer}> 
-                        <Text style = {[styles.textFieldLebel]}> User ID </Text>
-                        <TextInput
-                            style={styles.textFiled}
-                        />
-                    </View>
-                    <View style = {styles.textFiledContainer}> 
-                        <Text style = {[styles.textFieldLebel]}> Location </Text>
+                        <Text style = {[styles.textFieldLebel]}> {strings.SignUp.country} </Text>
                         <DropDownPicker
-                            placeholder='Select location'
+                            placeholder= {strings.SignUp.countryPlaceHolder}
                             open={locationListOpen}
                             value={locationValue}
                             items={location}
@@ -182,25 +182,27 @@ export default function EditProfile({navigation}){
                         />
                     </View>
                     <View style = {styles.textFiledContainer}> 
-                        <Text style = {[styles.textFieldLebel]}> Login Phone </Text>
+                        <Text style = {[styles.textFieldLebel]}> {strings.SignUp.loginPhone} </Text>
                         <TextInput
                             style={styles.textFiled}
+                            value = {loginPhone}
+                            onChangeText = {(val)=> setLoginPhone(val)}
                         />
-                        <Text style = {styles.dropListTxt}> You used this phone number to Login your account</Text>
+                        <Text style = {styles.dropListTxt}> {strings.SignUp.loginFormBottomTxt}</Text>
                         
                     </View>
-                    <View style = {{marginTop : 50}} />            
+                    <View style = {{marginTop : vs(50)}} />            
                     <HorizontalLine color = {theme.light.colors.infoBgLight} />
                     <View>
                         <Button 
-                            title="Save"
+                            title= {strings.operations.save}
                         />
                     </View>
                     <View style = {{marginTop : ms(10)}} > 
                         <Button 
-                            title="Close My Account"
+                            title = {strings.profile.closeMyAccount}
                             style={{
-                                backgroundColor : 'white',
+                                backgroundColor : theme.light.colors.white,
                                 borderWidth : 2,
                                 borderColor : theme.light.colors.primary
                             }}
@@ -212,9 +214,9 @@ export default function EditProfile({navigation}){
                     </View> 
                </View>
                 {closeAccount &&  <View style = {styles.bottomTextContainer}> 
-                        <Text style = {styles.bottomTextLebel}>You can't close your account while your subsription is still active.</Text>
+                        <Text style = {styles.bottomTextLebel}> {strings.profile.closeWarning} </Text>
                         <TouchableOpacity onPress={()=> setSubscriptionPopup(true)}> 
-                            <Text style = {styles.bottomTextLink} > Manage your subscription</Text>
+                            <Text style = {styles.bottomTextLink} > {strings.profile.manageSubscription} </Text>
                         </TouchableOpacity>
 
                         {/* Pop up message */}
@@ -222,27 +224,27 @@ export default function EditProfile({navigation}){
                             open = {subscriptionPopup}
                             setOpen = {setSubscriptionPopup}
                         >
-                            <TouchableOpacity onPress={()=> setSubscriptionPopup(false)}  style = {{padding : 20}} > 
+                            <TouchableOpacity onPress={()=> setSubscriptionPopup(false)}  style = {{padding : ms(20)}} > 
                                 <FontAwesomeIcon 
                                     icon={faClose}
-                                    size = {30}
+                                    size = {ms(30)}
                                     color = {theme.light.colors.primary}
                                 />
                             </TouchableOpacity>
-                            <Text style = {[styles.errorTxt, {color : 'black'}]} > How do i cancel my subscription?</Text>
+                            <Text style = {[styles.errorTxt, {color : theme.light.colors.black}]} > {strings.profile.cancelSubscription} </Text>
                             <View style = {{alignItems : 'flex-start'}}> 
-                                <Text style = {styles.errorTxt}>1. Login to www.jativip.com</Text>
-                                <Text style = {styles.errorTxt} >2. Click 'Manage'</Text>
-                                <Text style = {styles.errorTxt}>3. Click 'Cancel Renewal'</Text>
+                                <Text style = {styles.errorTxt}>{strings.profile.rule1}</Text>
+                                <Text style = {styles.errorTxt} >{strings.profile.rule2} </Text>
+                                <Text style = {styles.errorTxt}>{strings.profile.rule3} </Text>
                             </View>
                             <Button 
-                                title= "Ok"
+                                title= {strings.operations.ok}
                             />
                         </PopUp>
                     </View>  
                 }    
 
-               <View style = {{marginBottom : 50}} />
+               <View style = {{marginBottom : ms(50)}} />
             </ScrollView>
           
             <PopUp
@@ -256,19 +258,19 @@ export default function EditProfile({navigation}){
                         color = {theme.light.colors.primary}
                     />
                 </TouchableOpacity>
-                <Text style = {[TextStyles.label, {textAlign : 'center'}]}> Are you sure want to close your Account? This action can't be undone.</Text>
+                <Text style = {[TextStyles.label, {textAlign : 'center'}]}> {strings.profile.closeConfirm} </Text>
                 <Button 
-                    title= "No"
+                    title= {strings.operations.no}
                     style={{
-                        marginTop : 20
+                        marginTop : vs(20)
                     }}
                     onPress = {()=> setOpenPopUp(false)}
                 />
                 <Button 
-                    title= "Yes"
+                    title= {strings.operations.yes}
                     style={{
-                        marginTop : 10,
-                        backgroundColor : 'white',
+                        marginTop : vs(10),
+                        backgroundColor : theme.light.colors.white,
                         borderWidth : 2,
                         borderColor : theme.light.colors.primary
                     }}
@@ -279,33 +281,29 @@ export default function EditProfile({navigation}){
                 />
             </PopUp>
 
-        {/* Replace Popup */}
-        {openReplace &&  
-            <PopUp
-                open = {openReplace}
-                setOpen = {setReplace}
-            >
-                
+            {/* Replace Popup */}
+            {openReplace &&  
+                <PopUp
+                    open = {openReplace}
+                    setOpen = {setReplace}
+                >
                     <Button 
-                        title= "Pickup From Camara"
+                        title = {strings.operations.imageFromCamera}
                         style={{
-                            margin : 5
+                            margin : ms(5)
                         }}
                         onPress = {PickFromCamera}
                     />
                     <Button 
-                        title= "Select From Gallery"
+                        title = {strings.operations.imageFromGallery}
                         style={{
-                            margin : 5
+                            margin : ms(5)
                         }}
                         onPress = {SelectFromGallery}
                     />
-                
-                
-            </PopUp>}
-         
-        
-        </View>
+                </PopUp>
+            }
+        </SafeAreaView>
     )
 }
 
@@ -327,7 +325,7 @@ const styles = StyleSheet.create({
     },
     profileTxt : {
         fontFamily : FontFamily.Recoleta_bold,
-        color : 'black'
+        color : theme.light.colors.black,
     },
     profileImage: {
         width : s(100),
@@ -365,7 +363,7 @@ const styles = StyleSheet.create({
     removeBtn : {
         width : '38%',
         marginLeft : ms(10),
-        backgroundColor : 'white',
+        backgroundColor : theme.light.colors.white,
         borderWidth : 2,
         borderColor : theme.light.colors.primary,
         elevation : 2
@@ -377,7 +375,7 @@ const styles = StyleSheet.create({
         backgroundColor : theme.light.colors.primaryBg
     },
     replaceContent: {
-        backgroundColor : 'white',
+        backgroundColor : theme.light.colors.white,
         width : '100%',
         padding : ms(10),
     },

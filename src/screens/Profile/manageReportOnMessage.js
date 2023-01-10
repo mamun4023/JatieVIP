@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, Text, StyleSheet, TouchableOpacity, Image, FlatList} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image, FlatList, SafeAreaView} from 'react-native';
 import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import {strings} from '@/localization';
@@ -11,7 +11,7 @@ export default function ManageReportOnMessage({navigation}){
     const [open, setOpen] = useState(false);
 
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.manageReports} </Text>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
@@ -93,7 +93,7 @@ export default function ManageReportOnMessage({navigation}){
                     />
                 </ModalDown>
             }
-        </View>
+        </SafeAreaView>
     )
 }
 

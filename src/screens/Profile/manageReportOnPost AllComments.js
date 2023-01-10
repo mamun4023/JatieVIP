@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import {strings} from '@/localization';
@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 export default function ManageReportOnPostAllComments({navigation}){
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.manageReports} </Text>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
@@ -49,39 +49,8 @@ export default function ManageReportOnPostAllComments({navigation}){
                 />
 
                 <CommentInput />
-                {/* <View 
-                    style = {{ 
-                        position : 'absolute', 
-                        bottom : -15,
-                        width : '100%'
-                        
-                    }}>
-                    <TextField 
-                        style={{
-                            backgroundColor : '#eee',
-                            paddingRight : 80
-                        }}
-                        placeholder = "Type your comment here"
-                    />
-                    <TouchableOpacity  
-                        style = {{
-                            backgroundColor : theme.light.colors.primaryBgLight,
-                            borderRadius : 100,
-                            position : 'absolute',
-                            bottom : 18,
-                            right : 10,
-                            padding : 10
-                        }}
-                    > 
-                        <FontAwesomeIcon 
-                            icon = {faPaperPlane}
-                            size  = {18}
-                            color = {theme.light.colors.primary}
-                        />
-                    </TouchableOpacity>
-                </View> */}
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

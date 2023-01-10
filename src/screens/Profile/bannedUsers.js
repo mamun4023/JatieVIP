@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { TextStyles, theme } from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
-import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import {faSearch, faEllipsis, faCheck} from '@fortawesome/free-solid-svg-icons';
 import { HorizontalLine, Icon, TextField, TopBackButton, Badge, ModalDown, ModalList } from '@/components';
 import { ms, vs } from 'react-native-size-matters';
@@ -12,7 +12,7 @@ export default function Notification({navigation}){
     const [open, setOpen]= useState(false)
  
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
                 <Text style = {styles.headerTxt}>{strings.profile.bannedUsers}</Text>
@@ -78,7 +78,7 @@ export default function Notification({navigation}){
                     />
                 </ModalDown>
             }
-        </View>
+        </SafeAreaView>
     )
 }
 

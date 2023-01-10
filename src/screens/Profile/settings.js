@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View , Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View , Text, TouchableOpacity, SafeAreaView } from "react-native";
 import { faArrowRight, faLock, faUser, faCrown, faSliders} from '@fortawesome/free-solid-svg-icons';
 import {faFacebook, faTiktok, faSnapchat, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { TextStyles, theme } from "@/theme";
@@ -16,7 +16,7 @@ export default function Settings({navigation}){
     const userType = useSelector(state => state.userType);
 
     return(
-        <View style = {styles.contianer}>
+        <SafeAreaView style = {styles.contianer}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.settings} </Text>
             <View style = {styles.body}>
@@ -163,7 +163,7 @@ export default function Settings({navigation}){
                     </View>
                 </View> }
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

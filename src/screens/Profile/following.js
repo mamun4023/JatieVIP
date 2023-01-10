@@ -6,7 +6,8 @@ import {
     FlatList, 
     Image, 
     Alert,
-    TouchableOpacity
+    TouchableOpacity,
+    SafeAreaView
 } from 'react-native';
 import {
     faEllipsis,
@@ -27,7 +28,7 @@ import { FontFamily } from '@/theme/Fonts';
 export default function Following({navigation}){
     const [open, setOpen] = useState(false);
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
                 <Text style = {styles.headerTxt}>{strings.profile.myFollowing}</Text>
@@ -48,14 +49,14 @@ export default function Following({navigation}){
                                 > 
                                     <Image source={{uri : item.image}} style = {styles.profileImage} />
                                     <View style = {styles.nameContainer}> 
-                                        <Text style = {styles.nameTxt}> {item.name} { " "} </Text> 
-                                        <Text> {item.userName}  </Text>
+                                        <Text style = {styles.nameTxt}> {item.name}</Text> 
+                                        <Text style = {styles.userNameTxt} > {item.userName} </Text>
                                     </View>
                                 </TouchableOpacity>
                                 <Icon 
                                     icon={faEllipsis}
                                     size = {ms(15)}
-                                    color = "gray"
+                                    color = {theme.light.colors.secondary}
                                     onPress = {()=> setOpen(true)}
                                 />
                             </View>
@@ -72,14 +73,14 @@ export default function Following({navigation}){
                     icon={faUserPlus}
                     iconColor = {theme.light.colors.primary}
                     iconBg = {theme.light.colors.primaryBgLight}
-                    onPress = {()=> Alert.alert("follow")}
+                    // onPress = {()=> Alert.alert("follow")}
                 />
                 <ModalList 
                     title= {strings.profile.sendPrivateMessage}
                     icon={faMessage}
                     iconColor = {theme.light.colors.success}
                     iconBg = {theme.light.colors.successBgLight}
-                    onPress = {()=> Alert.alert("message")}
+                    // onPress = {()=> Alert.alert("message")}
                 />
                 <HorizontalLine color = {theme.light.colors.infoBgLight} />
                 <ModalList 
@@ -87,24 +88,24 @@ export default function Following({navigation}){
                     icon={faFlag}
                     iconColor = {theme.light.colors.secondary}
                     iconBg = {theme.light.colors.infoBgLight}
-                    onPress = {()=> Alert.alert("report")}
+                    // onPress = {()=> Alert.alert("report")}
                 />
                 <ModalList 
                     title= {strings.profile.block}
                     icon={faXmark}
                     iconColor = {theme.light.colors.secondary}
                     iconBg = {theme.light.colors.infoBgLight}
-                    onPress = {()=> Alert.alert("blocked")}
+                    // onPress = {()=> Alert.alert("blocked")}
                 />
             </ModalDown>
-        </View>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        backgroundColor : "white"
+        backgroundColor : theme.light.colors.white
     },
     listHeader : {
         paddingBottom : ms(5),         
@@ -145,7 +146,10 @@ const styles = StyleSheet.create({
     nameTxt : {
         fontFamily : FontFamily.Recoleta_bold,
         fontSize : ms(15, 0.3),
-        color : 'black' 
+        color : theme.light.colors.black
+    },
+    userNameTxt :{
+        fontFamily : FontFamily.Recoleta_regular
     }
 })
 

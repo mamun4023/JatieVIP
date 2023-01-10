@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { TextStyles, theme } from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
-import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import {faBell} from '@fortawesome/free-solid-svg-icons';
 import {faCircleUp ,faCircleDown, faMessage} from '@fortawesome/free-solid-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,7 @@ export default function Notification({navigation}){
     const [read, setRead] = useState(false)
 
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <View style = {styles.header}>
                 <View style = {styles.left}> 
                     <Image 
@@ -102,7 +102,7 @@ export default function Notification({navigation}){
             />
             </View>
            
-        </View>
+        </SafeAreaView>
     )
 }
 
