@@ -43,7 +43,10 @@ export const en = {
     selectTimeAndDate : 'Select Date & Time',
     scheduledPost : 'Scheduled Posts',
     learMore : 'Learn More',
-    sponsordPost : 'Sponsored Post'
+    sponsordPost : 'Sponsored Post',
+    selectReason : 'Select Reason',
+    reportMessage : 'Thanks for reporting your concern. We will take down or ban this user if we find violation of our terms of services.'
+
   },
   sortBy : {
     recent : 'Recent',
@@ -272,7 +275,7 @@ export const en = {
     yes : 'Yes',
     no : 'No',
     ok : 'Ok',
-
-    
+    addComments : "Add Comments",
+    submit : 'Submit'
   }
 };

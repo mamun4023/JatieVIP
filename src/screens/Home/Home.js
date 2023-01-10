@@ -315,9 +315,9 @@ export function Home({navigation}) {
       > 
         <View style = {{backgroundColor : theme.light.colors.white}}>
            <TopBackButton onPress = {()=> setOpenReport(false)} />
-           <View style ={{paddingLeft : 9, paddingRight : 9}}> 
+           <View style ={{paddingLeft : ms(9), paddingRight : ms(9)}}> 
               <DropDownPicker
-                placeholder= "Select Resions"
+                placeholder= {strings.home.selectReason}
                 open={reportListOpen}
                 value={reportOptionValue}
                 items={reportOption}
@@ -325,8 +325,8 @@ export function Home({navigation}) {
                 setValue={setReportOptionValue}
                 setItems={setReportOption}
                 style={{
-                  padding : 10,
-                  marginBottom : 10,
+                  padding : ms(10),
+                  marginBottom : ms(10),
                   backgroundColor : theme.light.colors.inputFiled,
                   borderWidth : 0
                 }}
@@ -338,16 +338,14 @@ export function Home({navigation}) {
                     height : ms(2)
                   },
                   elevation : 2
-             
                 }}
               />
               <TextInput 
                 multiline
                 editable
-                placeholder = "Add Comments"
+                placeholder = {strings.operations.addComments}
                 numberOfLines={4}
                 style = {styles.txtInput}
-                
               />
             </View>
 
@@ -364,7 +362,7 @@ export function Home({navigation}) {
                   color = {theme.light.colors.secondary}
                />
                <Button 
-                  title= "Submit"
+                  title= {strings.operations.submit}
                   style={{
                     width : '30%'
                   }}
@@ -380,7 +378,7 @@ export function Home({navigation}) {
       <Toast 
         open={openToast}
         setOpen = {setOpenToast}
-        message = "Thanks for reporting your concern. We will take down or ban this user if we find violation of our terms of services."
+        message = {strings.home.reportMessage}
           
       />
      }
