@@ -14,8 +14,6 @@ import {
   faFlag,
   faXmark,
   faUserPlus,
-  faDeleteLeft,
-  faBinoculars,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
@@ -29,16 +27,18 @@ import { FontFamily } from '@/theme/Fonts';
 export default function Participants({ navigation }) {
   const [open, setOpen] = useState(false);
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TopBackButton onPress={() => navigation.goBack()} />
       <View style={styles.listHeader}>
         <Text
-          style={[TextStyles.header, { color: 'black', paddingRight: ms(8) }]}
+          style={[
+            TextStyles.header,
+            { color: theme.light.colors.black, paddingRight: ms(8) },
+          ]}
         >
-          {' '}
           {strings.giveaway.participants}
         </Text>
-        <Badge count={23} size={ms(16)} />
+        <Badge count={strings.giveaway.twentyThree} size={ms(16)} />
       </View>
       <View
         style={{
@@ -73,7 +73,7 @@ export default function Participants({ navigation }) {
                 <Icon
                   icon={faEllipsis}
                   size={ms(15)}
-                  color="gray"
+                  color={theme.light.colors.black}
                   onPress={() => setOpen(true)}
                 />
               </View>
@@ -87,14 +87,14 @@ export default function Participants({ navigation }) {
           icon={faUserPlus}
           iconColor={theme.light.colors.primary}
           iconBg={theme.light.colors.primaryBgLight}
-          onPress={() => Alert.alert('follow')}
+          onPress={() => Alert.alert(strings.giveaway.follow)}
         />
         <ModalList
           title={strings.profile.sendPrivateMessage}
           icon={faMessage}
           iconColor={theme.light.colors.success}
           iconBg={theme.light.colors.successBgLight}
-          onPress={() => Alert.alert('message')}
+          onPress={() => Alert.alert(strings.giveaway.message)}
         />
         <HorizontalLine color={theme.light.colors.infoBgLight} />
         <ModalList
@@ -102,31 +102,31 @@ export default function Participants({ navigation }) {
           icon={faTrash}
           iconColor={theme.light.colors.secondary}
           iconBg={theme.light.colors.infoBgLight}
-          onPress={() => Alert.alert('report')}
+          onPress={() => Alert.alert(strings.giveaway.report)}
         />
         <ModalList
           title={strings.profile.block}
           icon={faXmark}
           iconColor={theme.light.colors.secondary}
           iconBg={theme.light.colors.infoBgLight}
-          onPress={() => Alert.alert('blocked')}
+          onPress={() => Alert.alert(strings.giveaway.blocked)}
         />
         <ModalList
           title={strings.giveaway.ban}
           icon={faFlag}
           iconColor={theme.light.colors.secondary}
           iconBg={theme.light.colors.infoBgLight}
-          onPress={() => Alert.alert('report')}
+          onPress={() => Alert.alert(strings.giveaway.report)}
         />
       </ModalDown>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: theme.light.colors.white,
   },
   listHeader: {
     paddingTop: ms(5),
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     width: ms(40),
     borderRadius: 100,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: theme.light.colors.info,
   },
   nameContainer: {
     flexDirection: 'row',
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   nameTxt: {
     fontFamily: FontFamily.Recoleta_bold,
     fontSize: ms(15, 0.3),
-    color: 'black',
+    color: theme.light.colors.black,
   },
 });
 

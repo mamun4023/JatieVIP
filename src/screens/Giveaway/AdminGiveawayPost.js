@@ -21,9 +21,10 @@ import { NAVIGATION } from '@/constants';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function AdminGiveawayPost({ navigation }) {
   return (
-    <View style={styles.contianer}>
+    <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
@@ -32,7 +33,7 @@ export default function AdminGiveawayPost({ navigation }) {
           style={[styles.headerIcon]}
         />
         <Text style={[styles.headerText, TextStyles.header]}>
-          {strings.giveaway.createGiveaway}{' '}
+          {strings.giveaway.createGiveaway}
         </Text>
       </View>
       <HorizontalLine />
@@ -113,7 +114,7 @@ export default function AdminGiveawayPost({ navigation }) {
           </View>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -157,12 +158,12 @@ export const BttomContantLayout = () => {
         <View style={styles.videoPlayContainer}>
           <FontAwesomeIcon
             icon={faCircle}
-            size={30}
+            size={ms(30)}
             style={[styles.videoPlay]}
           />
           <FontAwesomeIcon
             icon={faVideoCamera}
-            size={15}
+            size={ms(15)}
             style={[styles.Play]}
           />
         </View>
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
     borderColor: theme.light.colors.infoBgLight,
   },
   TextField: {
-    backgroundColor: 'white',
+    backgroundColor: theme.light.colors.white,
   },
   InputTextBoxDEsc: {
     height: '100%',
@@ -328,7 +329,7 @@ const styles = StyleSheet.create({
   Play: {
     position: 'absolute',
     color: theme.light.colors.background,
-    marginLeft: 8,
-    marginTop: 8,
+    marginLeft: ms(8),
+    marginTop: ms(8),
   },
 });

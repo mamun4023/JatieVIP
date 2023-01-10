@@ -62,6 +62,6 @@ export const styles = StyleSheet.create({
   },
   adminBtnTxt: {
     fontFamily: FontFamily.BrandonGrotesque_bold,
-    fontSize: 18,
+    fontSize: ms(18, 0.3),
   },
 });

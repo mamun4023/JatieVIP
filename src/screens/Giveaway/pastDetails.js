@@ -30,12 +30,13 @@ import { strings } from '@/localization';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { NAVIGATION } from '@/constants';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function PastDetails({ navigation }) {
   const userType = useSelector(state => state.userType);
   const [open, setOpen] = useState(false);
   return (
-    <View style={styles.contianer}>
+    <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
@@ -49,10 +50,10 @@ export default function PastDetails({ navigation }) {
           </Text>
           {/* Admin */}
 
-          {userType.user == 'Admin' && (
+          {userType.user == `${strings.userType.admin}` && (
             <Icon
               icon={faEllipsis}
-              size={15}
+              size={ms(15)}
               onPress={() => setOpen(true)}
               style={[
                 styles.icon,
@@ -98,7 +99,7 @@ export default function PastDetails({ navigation }) {
                         <Icon
                           icon={faEllipsis}
                           size={ms(15)}
-                          color="gray"
+                          color={theme.light.colors.info}
                           onPress={() => setOpen(true)}
                         />
                       </View>
@@ -107,7 +108,7 @@ export default function PastDetails({ navigation }) {
                 }
               })}
               {/* Admin */}
-              {userType.user == 'Admin' && (
+              {userType.user == `${strings.userType.free}` && (
                 <View style={styles.PostButtonContainer}>
                   <TouchableOpacity>
                     <Button
@@ -165,7 +166,7 @@ export default function PastDetails({ navigation }) {
           iconColor={theme.light.colors.secondary}
         />
       </ModalDown>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -326,7 +327,7 @@ const styles = StyleSheet.create({
     width: ms(40),
     borderRadius: 100,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: theme.light.colors.info,
   },
   nameContainer: {
     paddingLeft: ms(10),
@@ -334,7 +335,7 @@ const styles = StyleSheet.create({
   nameTxt: {
     fontFamily: FontFamily.Recoleta_bold,
     fontSize: ms(15, 0.3),
-    color: 'black',
+    color: theme.light.colors.black,
   },
 
   // Admin

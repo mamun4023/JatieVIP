@@ -14,13 +14,14 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ms } from 'react-native-size-matters';
 import { strings } from '@/localization';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export function Giveaway({ navigation }) {
   const userType = useSelector(state => state.userType);
-  const [status, setStatus] = useState('Active');
+  const [status, setStatus] = useState(strings.giveaway.active);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
         <View style={styles.headerImageContainer}>
           <Logo />
@@ -28,10 +29,9 @@ export function Giveaway({ navigation }) {
             <Text
               style={[
                 TextStyles.header,
-                { color: theme.light.colors.text, margin: 15 },
+                { color: theme.light.colors.text, margin: ms(15) },
               ]}
             >
-              {' '}
               {strings.giveaway.header}
             </Text>
           </View>
@@ -46,25 +46,27 @@ export function Giveaway({ navigation }) {
 
       <StatusNavigatorBar
         title1={strings.giveaway.active}
-        key1="Active"
+        key1={strings.giveaway.active}
         title2={strings.giveaway.past}
-        key2="Past"
+        key2={strings.giveaway.past}
         status={status}
         setStatus={setStatus}
       />
       <HorizontalLine />
 
       <View style={styles.feedContainer}>
-        {status == 'Active' ? Active({ navigation }) : Past({ navigation })}
+        {status == `${strings.giveaway.active}`
+          ? Active({ navigation })
+          : Past({ navigation })}
       </View>
       {/* Admin Button */}
 
-      {userType.user == 'Admin' && (
+      {userType.user == `${strings.userType.admin}` && (
         <TouchableOpacity
           onPress={() => navigation.navigate(NAVIGATION.adminGiveawayPost)}
           style={[
             styles.adminBtn,
-            { backgroundColor: theme.light.colors.primary, width: 150 },
+            { backgroundColor: theme.light.colors.primary, width: ms(140) },
           ]}
         >
           <Text
@@ -74,7 +76,7 @@ export function Giveaway({ navigation }) {
           </Text>
         </TouchableOpacity>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 

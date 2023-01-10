@@ -13,12 +13,12 @@ import { ms, vs } from 'react-native-size-matters';
 import { FontFamily } from '@/theme/Fonts';
 import { strings } from '@/localization';
 import { NAVIGATION } from '@/constants';
-import { useSelector } from 'react-redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Active({ navigation }) {
   const [open, setOpen] = useState(false);
   return (
-    <View>
+    <SafeAreaView>
       <FlatList
         data={Data}
         key={props => props.id}
@@ -30,7 +30,7 @@ export default function Active({ navigation }) {
               </View>
               <View>
                 <Text style={styles.officialTxt}>
-                  {strings.giveaway.EndsIn}{' '}
+                  {strings.giveaway.EndsIn}
                   <Text style={[styles.EndTimeTxt]}> {item.EndsIn}</Text>
                 </Text>
               </View>
@@ -59,7 +59,7 @@ export default function Active({ navigation }) {
           </View>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
