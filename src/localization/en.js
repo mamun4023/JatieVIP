@@ -205,6 +205,7 @@ export const en = {
     EndsIn: 'Ends in',
     learnMore: 'Learn More',
     title: 'Summer 2023 Giveaway',
+    vipOnly: 'VIP Only',
 
     //onPress learn more
     expires: 'Expires in',
@@ -231,6 +232,7 @@ export const en = {
     createGiveaway: 'Create A Giveaway',
     next: 'Next',
     minus: '-',
+
     //Admin Giveaway options
     giveawayOption: 'Giveaway Options',
     startDate: 'Start Date',

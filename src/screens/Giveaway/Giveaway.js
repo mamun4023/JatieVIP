@@ -38,8 +38,8 @@ export function Giveaway({ navigation }) {
         </View>
 
         <View style={styles.iconContiner}>
-          <Icon icon={faSearch} size={ms(20)} style={styles.searchIcon} />
-          <Icon icon={faBell} size={ms(20)} style={styles.bellIcon} />
+          <Icon icon={faSearch} size={ms(22)} style={styles.searchIcon} />
+          <Icon icon={faBell} size={ms(22)} style={styles.bellIcon} />
         </View>
         <View style={styles.bellAlert} />
       </View>
@@ -56,7 +56,7 @@ export function Giveaway({ navigation }) {
 
       <View style={styles.feedContainer}>
         {status == `${strings.giveaway.active}`
-          ? Active({ navigation })
+          ? Active({ navigation, userType })
           : Past({ navigation })}
       </View>
       {/* Admin Button */}

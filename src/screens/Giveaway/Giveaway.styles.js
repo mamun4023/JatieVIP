@@ -9,8 +9,9 @@ export const styles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    padding: ms(10),
+    margin: ms(10),
   },
   headerImageContainer: {
     flexDirection: 'row',
@@ -25,11 +26,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   bellIcon: {
-    margin: ms(10),
     position: 'relative',
   },
   searchIcon: {
-    margin: ms(10),
+    marginRight: ms(10),
   },
   bellAlert: {
     height: ms(10),
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.error,
     borderRadius: 100,
     left: ms(340),
-    top: ms(20),
+    top: ms(22),
     position: 'absolute',
   },
 
