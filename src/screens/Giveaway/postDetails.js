@@ -90,7 +90,7 @@ export default function PostDetails({ navigation }) {
                         title={strings.giveaway.joinThisGiveaway}
                         style={styles.outOfUS}
                         textStyle={{
-                          color: theme.light.colors.userBackgroundColor,
+                          color: theme.light.colors.background,
                         }}
                       />
                     </TouchableOpacity>
@@ -262,9 +262,9 @@ const styles = StyleSheet.create({
   },
   outOfUS: {
     width: '100%',
-    backgroundColor: theme.light.colors.inactiveTabIcon,
+    backgroundColor: theme.light.colors.primaryBg,
     borderWidth: 2,
-    borderColor: theme.light.colors.inactiveTabIcon,
-    elevation: 2,
+    borderColor: theme.light.colors.primaryBg,
+    // elevation: 2,
   },
 });
