@@ -11,7 +11,6 @@ import { AppVideoPlayer, Icon } from '@/components';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
-import { FlatList } from 'react-native-gesture-handler';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
 
@@ -52,10 +51,6 @@ export default function Thubmnail({ navigation }) {
             } else {
               return (
                 <View style={styles.videoContainer} key={item.vID}>
-                  {/* <Image
-                    style={styles.thumbnailImage}
-                    source={{ uri: item.videoLink }}
-                  /> */}
                   {item.videoLink ? (
                     <AppVideoPlayer url={item.videoLink} />
                   ) : null}
@@ -86,7 +81,7 @@ export default function Thubmnail({ navigation }) {
                 {
                   fontFamily: FontFamily.BrandonGrotesque_regular,
                   textAlign: 'justify',
-                  color: 'black',
+                  color: theme.light.colors.black,
                 },
               ]}
             >

@@ -13,7 +13,6 @@ import {
   faArrowLeft,
   faCircle,
   faImage,
-  faPlay,
   faVideoCamera,
 } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
@@ -140,12 +139,12 @@ export const BttomContantLayout = () => {
                 <View style={styles.videoPlayContainer}>
                   <FontAwesomeIcon
                     icon={faCircle}
-                    size={30}
+                    size={ms(30)}
                     style={[styles.videoPlay]}
                   />
                   <FontAwesomeIcon
                     icon={faVideoCamera}
-                    size={15}
+                    size={ms(15)}
                     style={[styles.Play]}
                   />
                 </View>
@@ -355,7 +354,7 @@ const styles = StyleSheet.create({
 
   videoPlayContainer: {
     position: 'absolute',
-    marginLeft: '40%',
+    marginLeft: '35%',
     marginTop: '20%',
   },
   videoPlay: {
@@ -364,7 +363,7 @@ const styles = StyleSheet.create({
   Play: {
     position: 'absolute',
     color: theme.light.colors.background,
-    marginLeft: 8,
-    marginTop: 8,
+    marginLeft: ms(8),
+    marginTop: ms(8),
   },
 });

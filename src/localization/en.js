@@ -189,6 +189,8 @@ export const en = {
     forVIPsOnly: 'For VIPs Only',
     pinThisPost: 'Pin this Post',
     vipOnly: 'VIP Only',
+    remove: 'Remove',
+    edit: 'Edit',
   },
   giveaway: {
     header: 'Giveaway',

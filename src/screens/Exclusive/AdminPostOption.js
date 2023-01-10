@@ -64,7 +64,8 @@ const AdminSwitch = text => {
         thumbColor={
           isEnabled ? theme.light.colors.info : theme.light.colors.secondary
         }
-        ios_backgroundColor="#3e3e3e"
+        // ios_backgroundColor="#3e3e3e"
+        ios_backgroundColor={theme.light.colors.info}
         onValueChange={toggleSwitch}
         value={isEnabled}
       />

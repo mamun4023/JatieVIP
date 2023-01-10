@@ -26,7 +26,7 @@ import { NAVIGATION } from '@/constants';
 import { Logo } from '@/assets';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { ms } from 'react-native-size-matters';
+import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
@@ -70,10 +70,10 @@ export function Exclusive({ navigation }) {
           data={Data}
           key={props => props.id}
           renderItem={({ item }) => (
-            <View style={{ margin: 12 }}>
+            <View style={{ margin: ms(12) }}>
               <Card>
                 <View style={styles.editContainer}>
-                  <View style={{ paddingTop: 8 }}>
+                  <View style={{ paddingTop: vs(8) }}>
                     <CardHeader
                       fullName={item.fullName}
                       userName={item.userName}
@@ -89,7 +89,7 @@ export function Exclusive({ navigation }) {
                     {userType.user == 'Admin' && (
                       <Icon
                         icon={faEllipsis}
-                        size={15}
+                        size={ms(15)}
                         onPress={() => setOpen(true)}
                         style={[
                           styles.icon,
@@ -124,7 +124,7 @@ export function Exclusive({ navigation }) {
                         <View style={styles.vipOnlyContainer}>
                           <FontAwesomeIcon
                             icon={faLock}
-                            size={10}
+                            size={ms(10)}
                             style={[styles.lock]}
                           />
                           <Text style={styles.vipOnlyText}>
@@ -143,12 +143,12 @@ export function Exclusive({ navigation }) {
                         <View style={styles.videoPlayContainer}>
                           <FontAwesomeIcon
                             icon={faCircle}
-                            size={50}
+                            size={ms(50)}
                             style={[styles.videoPlay]}
                           />
                           <FontAwesomeIcon
                             icon={faPlay}
-                            size={15}
+                            size={ms(15)}
                             style={[styles.Play]}
                           />
                         </View>
@@ -163,13 +163,13 @@ export function Exclusive({ navigation }) {
         {/* Admin */}
         <ModalDown open={open} setOpen={setOpen}>
           <ModalList
-            title="Edit"
+            title={strings.exclusive.edit}
             icon={faPen}
             iconBg={theme.light.colors.infoBgLight}
             iconColor={theme.light.colors.info}
           />
           <ModalList
-            title="Remove"
+            title={strings.exclusive.remove}
             icon={faTrash}
             iconBg={theme.light.colors.infoBgLight}
             iconColor={theme.light.colors.secondary}
