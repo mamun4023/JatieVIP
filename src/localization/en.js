@@ -170,6 +170,7 @@ export const en = {
     rule3 : "3. Click 'Cancel Renewal'",
     closeWarning : "You can't close your account while your subsription is still active.",
     manageSubscription : 'Manage your subscription',
+    closeConfirm : "Are you sure want to close your Account? This action can't be undone."
 
   },
   Welcome: {

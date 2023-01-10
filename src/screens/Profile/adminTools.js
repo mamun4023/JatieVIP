@@ -15,7 +15,6 @@ export default function AdminTools({navigation}){
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText]}>{strings.profile.adminTools} </Text>
             <View style = {styles.body}>
-              
                 <TouchableOpacity style = {styles.list} onPress = {()=> navigation.navigate(NAVIGATION.manageReports)}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer}> 
