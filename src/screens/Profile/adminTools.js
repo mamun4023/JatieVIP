@@ -14,7 +14,7 @@ export default function AdminTools({navigation}){
     return(
         <View style = {styles.contianer}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
-            <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.adminTools} </Text>
+            <Text style = {[styles.headerText]}>{strings.profile.adminTools} </Text>
             <View style = {styles.body}>
               
                 <TouchableOpacity style = {styles.list} onPress = {()=> navigation.navigate(NAVIGATION.manageReports)}>
@@ -49,7 +49,7 @@ export default function AdminTools({navigation}){
                         color = {theme.light.colors.info}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.notificationSettings)} style = {styles.list}>
+                <TouchableOpacity style = {styles.list}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer} > 
                             <FontAwesomeIcon 
@@ -61,7 +61,7 @@ export default function AdminTools({navigation}){
                         <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.analytics}</Text>
                     </View>
                     <FontAwesomeIcon 
-                        icon={faArrowRight}
+                        icon = {faArrowRight}
                         color = {theme.light.colors.info}
                     />
                 </TouchableOpacity>
@@ -94,9 +94,12 @@ const styles = StyleSheet.create({
     headerIcon: {
         color : theme.light.colors.info
     },
-    headerText : {
-        color : theme.light.colors.black
-    },
+    headerText : [
+        TextStyles.header, {
+            color : theme.light.colors.black,
+            paddingLeft : ms(9)
+        }
+    ],
     body:{
         flex : 1,
         backgroundColor : theme.light.colors.primaryBgLight,

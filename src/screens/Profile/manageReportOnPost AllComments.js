@@ -26,7 +26,7 @@ export default function ManageReportOnPostAllComments({navigation}){
                     <Text style = {styles.reactOnTxt}> {`this post`} </Text>
                 </View>
                 <View style = {styles.reasonContainer}> 
-                    <Text style = {styles.reasonTxt}>{strings.profile.reason} Explicit Content  </Text>
+                    <Text style = {styles.reasonTxt}>{strings.profile.reason}</Text>
                 </View>
             </View>
             <View style = {styles.body}>

@@ -35,53 +35,44 @@ export const CommentCard = ({
                     </View>
                 </View>
             </View>                    
-
             <View style = {styles.footer}>
-            <View style ={styles.reacContainer}>
-                <TouchableOpacity style = {[styles.iconContainer, styles.likeContainer]}>
-                    <Icon 
-                        icon={faCircleUp}
-                        size = {ms(13)}
-                        color = {theme.light.colors.success}
-                        onPress = {likePress}
-                    />
-                    <Text style = {styles.likeTxt}>{likeCount} </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style = {[styles.iconContainer, styles.disLikeContainer]}> 
-                    <Icon 
-                        icon={faCircleDown}
-                        size = {ms(13)}
-                        color = {theme.light.colors.error}
-                        onPress = {disLikePress}
-                       
-                        
-                    />
-                    <Text style = {styles.disLikeTxt} > {disLikeCount} </Text>
-                </TouchableOpacity>
-                     <Icon 
-                        icon={faReply}
-                        size = {ms(13)}
-                        color = {theme.light.colors.info}
-                        onPress = {replyPress}
-                        style = {{marginLeft : ms(15)}}
-                    />
-                       
-                      </View>
-                      <View style = {{
-                        flexDirection : 'row'
-                      }}> 
-                        
+                <View style ={styles.reacContainer}>
+                    <TouchableOpacity style = {[styles.iconContainer, styles.likeContainer]}>
                         <Icon 
-                          icon={faEllipsis}
-                          size = {ms(13)}
-                          color = {theme.light.colors.secondary}
-                          onPress = {morePress}
-                          style = {{marginRight : ms(10)}}
-                          
-                          
+                            icon={faCircleUp}
+                            size = {ms(13)}
+                            color = {theme.light.colors.success}
+                            onPress = {likePress}
                         />
-                      </View>
-                   </View>
+                        <Text style = {styles.likeTxt}>{likeCount} </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style = {[styles.iconContainer, styles.disLikeContainer]}> 
+                        <Icon 
+                            icon={faCircleDown}
+                            size = {ms(13)}
+                            color = {theme.light.colors.error}
+                            onPress = {disLikePress}
+                        />
+                        <Text style = {styles.disLikeTxt} > {disLikeCount} </Text>
+                    </TouchableOpacity>
+                        <Icon 
+                            icon={faReply}
+                            size = {ms(13)}
+                            color = {theme.light.colors.info}
+                            onPress = {replyPress}
+                            style = {{marginLeft : ms(15)}}
+                        />
+                </View>
+                <View style = {{flexDirection : 'row'}}> 
+                    <Icon 
+                        icon={faEllipsis}
+                        size = {ms(13)}
+                        color = {theme.light.colors.secondary}
+                        onPress = {morePress}
+                        style = {{marginRight : ms(5)}}
+                    />
+                </View>
+            </View>
         </View>                  
     )
 }
@@ -154,8 +145,8 @@ const styles = StyleSheet.create({
     },
     nameTxt :[
         TextStyles.header, {
-            color : 'black', 
-            fontSize : 15
+            color : theme.light.colors.black, 
+            fontSize : ms(15, 0.13)
         } 
     ],
 })

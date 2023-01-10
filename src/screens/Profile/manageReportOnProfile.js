@@ -21,13 +21,12 @@ import {
     faFlag,
     faXmark,
     faPen,
-    faTrash
+    faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {faBell } from '@fortawesome/free-regular-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import { strings } from '@/localization';
-
 
 export default function ManageReportOnMessage({navigation}){
     const [openMore, setOpenMore] = useState(false)
@@ -37,7 +36,7 @@ export default function ManageReportOnMessage({navigation}){
     return(
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
-            <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.manageReports} </Text>
+            <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.manageReports} </Text>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
             <CardHeader 
                 fullName = {User.fullName}
@@ -47,15 +46,14 @@ export default function ManageReportOnMessage({navigation}){
             />
             <View style = {styles.activity}>
                 <View style ={styles.textContainer}> 
-                    <Text style = {styles.statsTxt}> Reported </Text>
+                    <Text style = {styles.statsTxt}> {strings.profile.reported} </Text>
                     <Text style = {styles.reactOnTxt}> {`this Profile`} </Text>
                 </View>
                 <View style = {styles.reasonContainer}> 
-                    <Text style = {styles.reasonTxt}>Reason : Explicit Content  </Text>
+                    <Text style = {styles.reasonTxt}>{strings.profile.reason} </Text>
                 </View>
             </View>
             <View style = {styles.body}>
-
 
             <View style = {styles.headerContainer}> 
                 <View style = {styles.headerImageContainer} >
@@ -69,34 +67,34 @@ export default function ManageReportOnMessage({navigation}){
                         <FontAwesomeIcon 
                             icon = {faCrown}
                             color = {theme.light.colors.primary}
-                            size={20}
+                            size={ms(20)}
                         />
                     </View>
                     <View>
-                        <Text style = {[TextStyles.header, {color : theme.light.colors.text}]} > Adam Voigt</Text>
-                        <Text style = {TextStyles.label}> @adamvoigt</Text>
+                        <Text style = {styles.fullNameTxt} > {User.fullName}</Text>
+                        <Text style = {styles.userNameTxt}> {User.userName} </Text>
                     </View>
                 </View>
                 <View style = {styles.iconContiner} > 
                     <Icon 
                         icon={faSearch} 
-                        size = {20}
-                        style={styles.icon}   
+                        size = {ms(20)}
+                        style={styles.searchIcon}   
                     />
                     <Icon 
                         icon= {faBell} 
-                        size={20}
-                        style={styles.icon}
+                        size={ms(20)}
+                        style={styles.bellIcon}
                     />
                 </View>
             </View>
             <HeaderTab 
-                title1 = "Followers"
+                title1 = {strings.profile.followers}
                 count1 = {10}
-                onPress1 = {()=>Alert.alert('press 1')}
-                title2 = "Following"
+                // onPress1 = {()=>Alert.alert('press 1')}
+                title2 = {strings.profile.following}
                 count2 = {20}
-                onPress2 = {()=>Alert.alert('press 2')}      
+                // onPress2 = {()=>Alert.alert('press 2')}      
             />
 
             <View style = {styles.messageHeader}>
@@ -104,16 +102,18 @@ export default function ManageReportOnMessage({navigation}){
                     <TouchableOpacity style = {[styles.IconBox, {backgroundColor : theme.light.colors.successBgLight}]}>
                         <FontAwesomeIcon 
                             icon = {faMessage}
+                            size = {ms(13)}
                             color  = {theme.light.colors.success}
                         />
-                        <Text style = {[TextStyles.label, {color : theme.light.colors.success}]} > Message </Text>
+                        <Text style = {styles.messageBtnTxt} > {strings.profile.message} </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style = {styles.IconBox}> 
+                    <TouchableOpacity style = {[styles.IconBox, {marginLeft : ms(10)}]}> 
                         <FontAwesomeIcon 
                             icon = {faUserPlus}
+                            size = {ms(13)}
                             color  = {theme.light.colors.primary}
                         />
-                        <Text style = {[TextStyles.label, {color : theme.light.colors.primary}]} > {strings.profile.followers} </Text> 
+                        <Text style = {styles.followersBtnTxt} > {strings.profile.follow} </Text> 
                     </TouchableOpacity>
                </View>
                <TouchableOpacity onPress={()=>setOpenMore(true)} style = {styles.moreIconContainer}> 
@@ -140,12 +140,12 @@ export default function ManageReportOnMessage({navigation}){
                         />
                         <CardFooter 
                             likeCount= {item.like}
-                            likePress = {()=> Alert.alert("like")}
+                            // likePress = {()=> Alert.alert("like")}
                             disLikeCount = {item.disLike}
-                            disLikePress = {()=> Alert.alert("dislike")}
+                            // disLikePress = {()=> Alert.alert("dislike")}
                             commentCount = {item.comment}
-                            commentPress = {()=> Alert.alert("Comment")}
-                            sharePress = {()=> Alert.alert("share")}
+                            // commentPress = {()=> Alert.alert("Comment")}
+                            // sharePress = {()=> Alert.alert("share")}
                             morePress = {()=>setOpenEdit(true)}
                         />
                     </Card>
@@ -154,45 +154,45 @@ export default function ManageReportOnMessage({navigation}){
              />
             {openMore && 
                 <ModalDown 
-                open={openMore} 
-                setOpen = {setOpenMore}
+                    open={openMore} 
+                    setOpen = {setOpenMore}
                 > 
                     <ModalList 
-                    title= "Follow"
-                    icon={faUserPlus}
-                    iconColor = {theme.light.colors.primary}
-                    iconBg = {theme.light.colors.primaryBgLight}
+                        title=  {strings.operations.follow}
+                        icon={faUserPlus}
+                        iconColor = {theme.light.colors.primary}
+                        iconBg = {theme.light.colors.primaryBgLight}
                     />
                     <ModalList 
-                    title= "Send a Private  Message"
-                    icon={faMessage}
-                    iconColor = {theme.light.colors.success}
-                    iconBg = {theme.light.colors.successBgLight}
-                    onPress = {()=> Alert.alert("working")}
+                        title= {strings.profile.sendPrivateMessage}
+                        icon={faMessage}
+                        iconColor = {theme.light.colors.success}
+                        iconBg = {theme.light.colors.successBgLight}
+                        // onPress = {()=> Alert.alert("working")}
                     />
+                    <HorizontalLine color = {theme.light.colors.infoBgLight} />
                     <ModalList 
-                    title= "Report"
-                    icon={faFlag}
+                        title= {strings.operations.remove}
+                        icon={faTrash}
                         iconColor = {theme.light.colors.secondary}
                         iconBg = {theme.light.colors.infoBgLight}
-                        />
-                        <ModalList 
-                        title= "Block"
+                    />
+                    <ModalList 
+                        title= {strings.operations.block}
                         icon={faXmark}
                         iconColor = {theme.light.colors.secondary}
                         iconBg = {theme.light.colors.infoBgLight}
-                        />
-                        <ModalList 
-                            title= "Ban"
-                            icon={faFlag}
-                            iconColor = {theme.light.colors.secondary}
-                            iconBg = {theme.light.colors.infoBgLight}
-                            onPress = {()=> {
-                                setOpenBan(true),
-                                setOpenMore(false)
-
-                            }}
-                        />
+                    />
+                    <ModalList 
+                        title= {strings.operations.ban}
+                        icon={faFlag}
+                        iconColor = {theme.light.colors.secondary}
+                        iconBg = {theme.light.colors.infoBgLight}
+                        onPress = {()=> {
+                            setOpenBan(true),
+                            setOpenMore(false)
+                        }}
+                    />
                 </ModalDown>
             }
             {openEdit && 
@@ -201,16 +201,16 @@ export default function ManageReportOnMessage({navigation}){
                     setOpen = {setOpenEdit}
                 > 
                 <ModalList 
-                    title='Edit'
+                    title= {strings.operations.edit}
                     icon={faPen}
                     iconBg = {theme.light.colors.infoBgLight}
                     iconColor= {theme.light.colors.info}
                 />
                 <ModalList 
-                  title='Remove'
-                  icon={faTrash}
-                  iconBg = {theme.light.colors.infoBgLight}
-                  iconColor= {theme.light.colors.secondary}
+                    title= {strings.operations.remove}
+                    icon={faTrash}
+                    iconBg = {theme.light.colors.infoBgLight}
+                    iconColor= {theme.light.colors.secondary}
                 />
               </ModalDown>
             }
@@ -220,22 +220,22 @@ export default function ManageReportOnMessage({navigation}){
                 setOpen = {setOpenBan}
             >
                 <View>
-                    <Text style = {[TextStyles.header,{color : 'black'}]} >Are you sure want to ban this user?</Text>
+                    <Text style = {[TextStyles.header,{color : theme.light.colors.black}]} >{strings.profile.areYouSureWantToBan}</Text>
                     <View style ={{flexDirection : 'row'}}>
                         <Image 
                             source={{
                                 uri : "https://media.istockphoto.com/id/1270067126/photo/smiling-indian-man-looking-at-camera.jpg?s=612x612&w=0&k=20&c=ovIQ5GPurLd3mOUj82jB9v-bjGZ8updgy1ACaHMeEC0="
                             }}
                             style = {{
-                                height : 40,
-                                width : 40,
+                                height : ms(40),
+                                width : ms(40),
                                 borderRadius : 100
                             }}
                         />
                         <View> 
-                            <Text style = {[TextStyles.header, {color :'black', fontSize : 18}]} > Adam </Text>
-                            <Text> @adam</Text>
-                            <Text style = {{backgroundColor : '#eee', borderRadius : 10, padding : 2}} > Free Member </Text> 
+                            <Text style = {[TextStyles.header, {color : theme.light.colors.black, fontSize : ms(18, 0.3)}]} >{User.fullName} </Text>
+                            <Text>{User.userName}</Text>
+                            <Text style = {{backgroundColor : theme.light.colors.inputFiled, borderRadius : 10, padding : 2}} > {strings.profile.freeMember} </Text> 
                         </View>
                     </View>
                     <View> 
@@ -257,13 +257,9 @@ export default function ManageReportOnMessage({navigation}){
                                 marginTop : 10
                             }}
                         />
-
                     </View>
-
                 </View>
             </PopUp>
-
-                
             </View>
         </View>
     )
@@ -275,11 +271,12 @@ const styles = StyleSheet.create({
         backgroundColor : theme.light.colors.white
     },
     headerText :{
-        color : theme.light.colors.black
+        color : theme.light.colors.black,
+        paddingLeft : ms(9)
     },
     activity : {
         flexDirection : 'row',
-        padding : ms(10),
+        padding : ms(9),
         alignItems : 'center',
         justifyContent : 'space-between',  
     },
@@ -291,7 +288,6 @@ const styles = StyleSheet.create({
     statsTxt: {
         fontFamily : FontFamily.BrandonGrotesque_medium,
         fontSize : ms(15, 0.3),
-        paddingLeft : ms(5)
     },
     reactOnTxt: {
         color : theme.light.colors.info, 
@@ -300,49 +296,67 @@ const styles = StyleSheet.create({
         fontSize : ms(15, 0.3)
     },
     reasonContainer : {
-        backgroundColor : "#eee",
+        backgroundColor : theme.light.colors.inputFiled,
         borderRadius : 10,
-        padding : 3,
-        marginLeft : 10
+        padding : ms(3),
+        marginLeft : ms(10)
     },
     reasonTxt : {
-        fontFamily : FontFamily.Recoleta_medium
+        fontFamily : FontFamily.BrandonGrotesque_bold,
+        fontSize : ms(11, 0.3)
     },
     body: {
         flex : 1,
         backgroundColor : theme.light.colors.primaryBgLight,
         elevation : 2,
-        padding : ms(8)
+        // padding : ms(8)
     },
 
     headerContainer : {
         flexDirection : 'row',
         justifyContent : 'space-between',
-        padding : 10
+        padding : ms(10)
     },
     headerImageContainer : {
         flexDirection : 'row',
         position : 'relative'
     },
     headerImage : {
-        width: 50,
-        height: 50,
+        width: ms(50),
+        height: ms(50),
         borderWidth: 2,
         borderRadius: 75
     },
+    fullNameTxt : [
+        TextStyles.header,{
+            color : theme.light.colors.text,
+            fontSize : ms(24)
+        }
+    ],
+    userNameTxt : {
+        fontFamily : FontFamily.Recoleta_regular,
+        fontSize : ms(14, 0.3),
+        position : 'absolute',
+        bottom : ms(5)
+    },
     iconContiner: {
-        flexDirection : 'row'
+        flexDirection : 'row',
+        marginTop : ms(8)
     },  
-    icon : {
-        margin : 10
+    searchIcon : {
+        marginRight : ms(12)
+    },
+    bellIcon : {
+        // marginRight : ms(20),
     },
     profileLogoContainer : {
-        height : 30,
-        width : 30,
+        height : ms(30),
+        width : ms(30),
         backgroundColor : theme.light.colors.primaryBg,
+        opacity : 1,
         position : 'absolute',
-        bottom : -18,
-        left : 10,
+        bottom : vs(-10),
+        left : ms(10),
         borderRadius : 100,
         justifyContent : 'center',
         alignItems : 'center'
@@ -350,8 +364,7 @@ const styles = StyleSheet.create({
     messageHeader: {
         flexDirection : 'row',
         justifyContent :  'space-between',
-        // backgroundColor : '#eee',
-        padding : 10,
+        padding : ms(10),
     },
     messageLeft : {
         flexDirection : 'row',
@@ -359,17 +372,30 @@ const styles = StyleSheet.create({
     messageRight : {
 
     },
+    messageBtnTxt :{
+        fontFamily : FontFamily.Recoleta_bold,
+        fontSize : ms(13),
+        color : theme.light.colors.success,
+        paddingLeft : ms(5)
+    },
+    followersBtnTxt :{
+        fontFamily : FontFamily.Recoleta_bold,
+        fontSize : ms(13),
+        color : theme.light.colors.primary,
+        paddingLeft : ms(5)
+    },
     IconBox : {
         flexDirection : 'row',
         alignItems : 'center',
         justifyContent : 'space-evenly',
         backgroundColor : theme.light.colors.primaryBgLight,
-        padding : 10,
+        padding : ms(5),
+        width : ms(100),
         borderRadius : 10
     },
     moreIconContainer: {
         backgroundColor : theme.light.colors.infoBg,
-        padding : 10,
+        padding : ms(10),
         borderRadius : 100,
         alignItems : 'center',
         justifyContent : 'center'
@@ -377,7 +403,7 @@ const styles = StyleSheet.create({
     feedContainer : {
         flex : 1,
         backgroundColor : theme.light.colors.primaryBgLight,
-        margin : 12
+        margin : ms(12)
     }
    
 })

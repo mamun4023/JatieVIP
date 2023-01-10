@@ -5,14 +5,13 @@ import {
     StyleSheet, 
     FlatList, 
     Image, 
-    Alert,
     TouchableOpacity
 } from 'react-native';
 import {faEllipsis, faCheck} from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
 import {TopBackButton, Icon, Badge ,ModalDown, ModalList} from '@/components';
-import {NAVIGATION} from '@/constants'
-import {strings} from '@/localization'
+import {NAVIGATION} from '@/constants';
+import {strings} from '@/localization';
 import { ms } from 'react-native-size-matters';
 import { FontFamily } from '@/theme/Fonts';
 
@@ -23,8 +22,8 @@ export default function BlockedUsers({navigation}){
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
-                <Text style = {[TextStyles.header, {color : "black", paddingRight : ms(8)}]}> {strings.profile.blockedUsers}</Text>
-                <Badge count={23} size = {ms(16)} />
+                <Text style = {styles.headerTxt}>{strings.profile.blockedUsers}</Text>
+                <Badge count={23} size = {ms(13)} />
             </View>
             <View>
                 <FlatList 
@@ -41,19 +40,19 @@ export default function BlockedUsers({navigation}){
                                 > 
                                     <Image source={{uri : item.image}} style = {styles.profileImage} />
                                     <View style = {styles.nameContainer}> 
-                                        <Text style = {styles.nameTxt}> {item.name} { " "} </Text> 
-                                        <Text> {item.userName}  </Text>
+                                        <Text style = {styles.nameTxt}> {item.name}</Text> 
+                                        <Text style = {styles.userNameTxt}> {item.userName}  </Text>
                                     </View>
                                 </TouchableOpacity>
                                 <Icon 
                                     icon={faEllipsis}
                                     size = {ms(15)}
-                                    color = "gray"
+                                    color = {theme.light.colors.secondary}
                                     onPress = {()=> setOpen(true)}
                                 />
                             </View>
                         )
-                    } }
+                    }}
                 />
             </View>
             <ModalDown 
@@ -65,7 +64,7 @@ export default function BlockedUsers({navigation}){
                     icon={faCheck}
                     iconColor = {theme.light.colors.secondary}
                     iconBg = {theme.light.colors.infoBgLight}
-                    onPress = {()=> Alert.alert("blocked")}
+                    // onPress = {()=> Alert.alert("blocked")}
                 />
             </ModalDown>
         </View>
@@ -75,14 +74,20 @@ export default function BlockedUsers({navigation}){
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        backgroundColor : "white"
+        backgroundColor : theme.light.colors.white
     },
     listHeader : {
-        paddingTop : ms(5),
-        paddingBottom : ms(5),         
         flexDirection : 'row',
         alignItems : 'center'
     },
+    headerTxt : [
+        TextStyles.header,{
+            color : theme.light.colors.black,
+            paddingRight : ms(8),
+            paddingLeft : ms(9)
+        }
+    ],
+    
     listContainer : {
         padding  : ms(2),
         paddingLeft : ms(8),
@@ -101,7 +106,7 @@ const styles = StyleSheet.create({
         width : ms(40),
         borderRadius : 100,
         borderWidth : 1,
-        borderColor : 'gray'
+        borderColor : theme.light.colors.secondary
     },
     nameContainer : {
         flexDirection : 'row',
@@ -109,9 +114,13 @@ const styles = StyleSheet.create({
         justifyContent : 'center'
     },
     nameTxt : {
-        fontFamily : FontFamily.Recoleta_bold,
-        fontSize : ms(15, 0.3),
-        color : 'black' 
+        fontFamily : FontFamily.Recoleta_black,
+        fontSize : ms(14, 0.3),
+        color : theme.light.colors.black
+    },
+    userNameTxt : {
+        fontFamily : FontFamily.Recoleta_regular,
+        fontSize : ms(14, 0.3)
     }
 })
 
