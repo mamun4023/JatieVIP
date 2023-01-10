@@ -13,10 +13,11 @@ import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Thubmnail({ navigation }) {
   return (
-    <View style={styles.contianer}>
+    <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
@@ -107,7 +108,7 @@ export default function Thubmnail({ navigation }) {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 

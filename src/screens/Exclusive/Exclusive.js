@@ -29,13 +29,14 @@ import { useSelector } from 'react-redux';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export function Exclusive({ navigation }) {
   const [open, setOpen] = useState(false);
   const userType = useSelector(state => state.userType);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
         <View style={styles.headerImageContainer}>
           <Logo />
@@ -86,7 +87,7 @@ export function Exclusive({ navigation }) {
 
                   <View style={styles.cardRightContainer}>
                     <Text style={[styles.timeTxt]}>{item.time}</Text>
-                    {userType.user == 'Admin' && (
+                    {userType.user == `${strings.userType.admin}` && (
                       <Icon
                         icon={faEllipsis}
                         size={ms(15)}
@@ -112,7 +113,8 @@ export function Exclusive({ navigation }) {
                     }
                   >
                     {/* VIP only */}
-                    {userType.user == 'Free' && item.status == 'free' ? (
+                    {userType.user == `${strings.userType.free}` &&
+                    item.status == `${strings.userType.free}` ? (
                       <View>
                         <Image
                           blurRadius={15}
@@ -179,12 +181,12 @@ export function Exclusive({ navigation }) {
 
       {/* Admin Button */}
 
-      {userType.user == 'Admin' && (
+      {userType.user == `${strings.userType.admin}` && (
         <TouchableOpacity
           onPress={() => navigation.navigate(NAVIGATION.adminExclusivePost)}
           style={[
             styles.btn,
-            { backgroundColor: theme.light.colors.primary, width: 150 },
+            { backgroundColor: theme.light.colors.primary, width: ms(140) },
           ]}
         >
           <Text style={[styles.btnTxt, { color: theme.light.colors.white }]}>
@@ -192,7 +194,7 @@ export function Exclusive({ navigation }) {
           </Text>
         </TouchableOpacity>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -207,7 +209,7 @@ const Data = [
     time: '39 mins ago',
     thumbnail:
       'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
-    status: 'vip',
+    status: 'VIP',
   },
   {
     id: 2,
@@ -219,7 +221,7 @@ const Data = [
     time: '39 mins ago',
     thumbnail:
       'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
-    status: 'free',
+    status: 'Free',
   },
   {
     id: 3,
@@ -231,6 +233,6 @@ const Data = [
     time: '39 mins ago',
     thumbnail:
       'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
-    status: 'vip',
+    status: 'VIP',
   },
 ];

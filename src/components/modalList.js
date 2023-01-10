@@ -1,6 +1,6 @@
 import React from "react"
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {ms} from 'react-native-size-matters';
 import {TextStyles, theme} from '@/theme'
 import PropTypes from 'prop-types';
@@ -17,6 +17,7 @@ export const ModalList = ({title, icon, onPress, iconBg, iconColor})=>{
                     } ]}> 
                         <FontAwesomeIcon 
                             icon={icon}
+                            size = {ms(13)}
                             color = {iconColor}
                             style = {styles.icon}
                         />
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     },
     list : {
         flexDirection : 'row',
-        padding : ms(10),
+        paddingTop : ms(10),
         alignItems : 'center',
         borderRadius : 10,
     },

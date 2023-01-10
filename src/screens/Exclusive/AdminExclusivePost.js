@@ -8,7 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import { Button, HorizontalLine, Icon } from '@/components';
+import { HorizontalLine, Icon } from '@/components';
 import {
   faArrowLeft,
   faCircle,
@@ -21,9 +21,10 @@ import { NAVIGATION } from '@/constants';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function AdminExclusivePost({ navigation }) {
   return (
-    <View style={styles.contianer}>
+    <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
@@ -32,7 +33,7 @@ export default function AdminExclusivePost({ navigation }) {
           style={[styles.headerIcon]}
         />
         <Text style={[styles.headerText, TextStyles.header]}>
-          {strings.exclusive.adminPostHeader}{' '}
+          {strings.exclusive.adminPostHeader}
         </Text>
       </View>
       <HorizontalLine />
@@ -113,7 +114,7 @@ export default function AdminExclusivePost({ navigation }) {
           </View>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
     borderColor: theme.light.colors.infoBgLight,
   },
   TextField: {
-    backgroundColor: 'white',
+    backgroundColor: theme.light.colors.white,
   },
   InputTextBoxDEsc: {
     height: '100%',

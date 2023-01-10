@@ -25,13 +25,14 @@ export default function Notification({navigation}){
                         icon = {faSearch}
                         color = {theme.light.colors.primary}
                         size = {ms(20)}
+                        style = {{marginRight : ms(15)}}
                     />
-                     <Icon 
+                    <Icon 
                         icon = {faBell}
                         color = {theme.light.colors.black}
                         size = {ms(20)}
                         onPress = {()=> navigation.navigate(NAVIGATION.notification)}
-                        style = {{marginLeft : ms(10)}}
+                        style = {{marginRight : ms(10)}}
                     />
                 </View>
             </View>
@@ -78,8 +79,8 @@ export default function Notification({navigation}){
                                 > 
                                     <Image source={{uri : item.image}} style = {styles.profileImage} />
                                     <View style = {styles.nameContainer}> 
-                                        <Text style = {styles.nameTxt}> {item.name} { " "} </Text> 
-                                        <Text> {item.userName}  </Text>
+                                        <Text style = {styles.nameTxt}> {item.name} </Text> 
+                                        <Text style = {styles.userNameTxt}> {item.userName}  </Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     header : {
         flexDirection : 'row',
         justifyContent : 'space-between',
-        padding : ms(10),
+        // padding : ms(10),
     },
     left:{
         flexDirection : 'row',
@@ -174,8 +175,12 @@ const styles = StyleSheet.create({
     },
     nameTxt : {
         fontFamily : FontFamily.Recoleta_bold,
-        fontSize : ms(15, 0.3),
-        color : 'black' 
+        fontSize : ms(14, 0.3),
+        color : theme.light.colors.black 
+    },
+    userNameTxt : {
+        fontFamily : FontFamily.Recoleta_regular,
+        fontSize : ms(14, 0.3)
     }
 })
 

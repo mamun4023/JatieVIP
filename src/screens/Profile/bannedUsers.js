@@ -2,13 +2,11 @@ import React, {useState} from 'react';
 import { TextStyles, theme } from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
-import {faBell} from '@fortawesome/free-regular-svg-icons'
 import {faSearch, faEllipsis, faCheck} from '@fortawesome/free-solid-svg-icons';
 import { HorizontalLine, Icon, TextField, TopBackButton, Badge, ModalDown, ModalList } from '@/components';
 import { ms, vs } from 'react-native-size-matters';
-import {NAVIGATION} from '@/constants/navigation';
 import {strings} from '@/localization';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
 
 export default function Notification({navigation}){
     const [open, setOpen]= useState(false)
@@ -17,7 +15,7 @@ export default function Notification({navigation}){
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
-                <Text style = {[TextStyles.header, {color : "black", paddingRight : ms(8)}]}> {strings.profile.bannedUsers}</Text>
+                <Text style = {styles.headerTxt}>{strings.profile.bannedUsers}</Text>
                 <Badge count={23} size = {ms(16)} />
             </View>
 
@@ -27,21 +25,17 @@ export default function Notification({navigation}){
                         paddingLeft : ms(40)
                     }}
                     placeholder = {strings.profile.searchUser}
-                 
                 />
                 <View style = {styles.moreIcon}> 
                     <Icon 
                         icon = {faSearch}
                         color = {theme.light.colors.secondary}
-                       
                     />
                 </View>
             </View>
             <HorizontalLine />
 
-
             <View style = {styles.searchList}> 
-                
                 <View>
                 <FlatList 
                     data={Data}
@@ -51,20 +45,17 @@ export default function Notification({navigation}){
                     renderItem = {({item})=> {
                         return (
                             <View style = {styles.listContainer}>   
-                                <TouchableOpacity 
-                                    style = {styles.list}
-                                
-                                > 
+                                <TouchableOpacity style = {styles.list}> 
                                     <Image source={{uri : item.image}} style = {styles.profileImage} />
                                     <View style = {styles.nameContainer}> 
-                                        <Text style = {styles.nameTxt}> {item.name} { " "} </Text> 
-                                        <Text> {item.userName}  </Text>
+                                        <Text style = {styles.nameTxt}> {item.name} </Text> 
+                                        <Text style = {styles.userNameTxt}> {item.userName} </Text>
                                     </View>
                                 </TouchableOpacity>
                                 <Icon 
                                     icon={faEllipsis}
                                     size = {ms(15)}
-                                    color = "gray"
+                                    color = {theme.light.colors.secondary}
                                     onPress = {()=> setOpen(true)}
                                 />
                             </View>
@@ -74,23 +65,22 @@ export default function Notification({navigation}){
                 </View>
             </View>
 
-            <ModalDown 
-                open = {open}
-                setOpen = {setOpen}
-            >
-                <ModalList 
-                    title='Unban'
-                    icon={faCheck}
-                    iconColor = {theme.light.colors.info}
-                    iconBg = {theme.light.colors.infoBgLight}
-
-                />
-            </ModalDown>
-         
+           {open &&  
+                <ModalDown 
+                    open = {open}
+                    setOpen = {setOpen}
+                >
+                    <ModalList 
+                        title= {strings.profile.unban} 
+                        icon={faCheck}
+                        iconColor = {theme.light.colors.info}
+                        iconBg = {theme.light.colors.infoBgLight}
+                    />
+                </ModalDown>
+            }
         </View>
     )
 }
-
 
 
 const styles = StyleSheet.create({
@@ -103,6 +93,12 @@ const styles = StyleSheet.create({
         justifyContent : 'space-between',
         padding : ms(10),
     },
+    headerTxt: [
+        TextStyles.header,{
+            color : theme.light.colors.black,
+            paddingLeft : ms(9)
+        }
+    ],
     left:{
         flexDirection : 'row',
         alignItems : 'center'
@@ -146,12 +142,10 @@ const styles = StyleSheet.create({
         alignItems : 'center'
     },
     listContainer : {
-        padding  : ms(2),
-        paddingLeft : ms(8),
-        paddingRight : ms(12),
         flexDirection : 'row',
         justifyContent : 'space-between',
-        margin : ms(2),
+        marginTop : ms(8),
+        marginRight : ms(8),
         alignItems : 'center'
     },
     list : {
@@ -163,7 +157,7 @@ const styles = StyleSheet.create({
         width : ms(40),
         borderRadius : 100,
         borderWidth : 1,
-        borderColor : 'gray'
+        borderColor : theme.light.colors.secondary
     },
     nameContainer : {
         flexDirection : 'row',
@@ -172,8 +166,12 @@ const styles = StyleSheet.create({
     },
     nameTxt : {
         fontFamily : FontFamily.Recoleta_bold,
-        fontSize : ms(15, 0.3),
-        color : 'black' 
+        fontSize : ms(14, 0.3),
+        color : theme.light.colors.black,
+    },
+    userNameTxt : {
+        fontFamily : FontFamily.Recoleta_regular,
+        fontSize : ms(14, 0.3)
     }
 })
 

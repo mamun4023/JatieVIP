@@ -8,17 +8,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCheck, faTruckFront } from '@fortawesome/free-solid-svg-icons';
 import { FontFamily } from '@/theme/Fonts';
 import { NAVIGATION } from '@/constants';
+import { strings } from '@/localization';
 
 export default function CancelMemberShip({navigation}){
     return(
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
-            <Text style = {[styles.headerTxt, {paddingLeft : ms(6)}]}>Cancel VIP Membership</Text>
+            <Text style = {[styles.headerTxt, {paddingLeft : ms(6)}]}>{strings.profile.cancelVipMembership}</Text>
             <View style = {styles.body}>
             <View style = {{marginTop : ms(20)}}/>
-                <Text style = {[styles.headerTxt, {fontSize : ms(18, 0.3)}]}>Are you sure want to cancel? You will lose the following benefits</Text>
+                <Text style = {[styles.headerTxt, {fontSize : ms(18, 0.3)}]}>{strings.profile.cencelMessage}</Text>
             <View style = {styles.card}>
-                <Text style = {[TextStyles.header, {fontSize : 15}]}> Benefits </Text>
+                <Text style = {[TextStyles.header, {fontSize : 15}]}> {strings.profile.benefits} </Text>
                 <View style = {styles.list}>
                     <View style = {styles.iconContainer}>     
                         <FontAwesomeIcon 
@@ -85,7 +86,6 @@ export default function CancelMemberShip({navigation}){
                         }}
                     />
                 </View>
-                     
             </View>
             </View>
         </View>

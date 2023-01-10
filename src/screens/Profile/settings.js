@@ -1,13 +1,7 @@
 import React from "react";
-import { StyleSheet, View , Text, TouchableOpacity, Linking } from "react-native";
-import { faArrowRight, faLock, faUser, faCrown, faEllipsis, faSliders} from '@fortawesome/free-solid-svg-icons';
-import {
-    faFacebook,
-    faTiktok,
-    faSnapchat,
-    faYoutube,
-    faInstagram,
-  } from '@fortawesome/free-brands-svg-icons';
+import { StyleSheet, View , Text, TouchableOpacity } from "react-native";
+import { faArrowRight, faLock, faUser, faCrown, faSliders} from '@fortawesome/free-solid-svg-icons';
+import {faFacebook, faTiktok, faSnapchat, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { TextStyles, theme } from "@/theme";
 import { FontFamily} from "@/theme/Fonts";
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -21,15 +15,14 @@ import {useSelector} from 'react-redux';
 export default function Settings({navigation}){
     const userType = useSelector(state => state.userType);
 
-    
     return(
         <View style = {styles.contianer}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
-            <Text style = {[styles.headerText, TextStyles.header]}> {strings.profile.settings} </Text>
+            <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.settings} </Text>
             <View style = {styles.body}>
 
                 {/* This feature is for free user */}
-                {userType?.user == 'Free' && <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.upgradeMembership)} style = {styles.upgradeBox}>
+                {userType?.user == `${strings.userType.free}` && <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.upgradeMembership)} style = {styles.upgradeBox}>
                     <View style = {{flexDirection : 'row',  justifyContent : 'space-between'}}> 
                         <View style = {{flexDirection : 'row'}}> 
                             <FontAwesomeIcon 
@@ -47,7 +40,6 @@ export default function Settings({navigation}){
                     </View>
                     <Text style = {styles.lebelText}>{strings.profile.upgradeLebel}</Text>
                 </TouchableOpacity> }
-
 
                 <TouchableOpacity style = {styles.list} onPress = {()=> navigation.navigate(NAVIGATION.editProfile)}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
@@ -99,7 +91,7 @@ export default function Settings({navigation}){
                 </TouchableOpacity>
 
                 {/* This feature is for VIP user */}
-                { userType.user == 'VIP' &&
+                { userType.user == `${strings.userType.vip}` &&
                     <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.notificationSettings)} style = {styles.list}>
                         <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                             <View style = {styles.iconContainer} > 
@@ -119,7 +111,7 @@ export default function Settings({navigation}){
                 }
 
                 {/* This feature for admin user */}
-               {userType.user == 'Admin' && <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.adminTools)} style = {styles.list}>
+               {userType.user == `${strings.userType.admin}` && <TouchableOpacity onPress={()=> navigation.navigate(NAVIGATION.adminTools)} style = {styles.list}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer} > 
                             <FontAwesomeIcon 
@@ -128,7 +120,7 @@ export default function Settings({navigation}){
                                 color = {theme.light.colors.primary}
                             />
                         </View>
-                        <Text style = {[TextStyles.header ,styles.listText]} >{strings.profile.adminTools}</Text>
+                        <Text style = {[TextStyles.header ,styles.listText]}>{strings.profile.adminTools}</Text>
                     </View>
                     <FontAwesomeIcon 
                         icon={faArrowRight}
@@ -137,7 +129,7 @@ export default function Settings({navigation}){
                 </TouchableOpacity> }
 
                 {/* This feature is for free and VIP users */}
-                {userType.user == 'Free' || userType.user == 'VIP' && <View style = {styles.footer}> 
+                {userType.user == `${strings.userType.free}` || userType.user == `${strings.userType.vip}` && <View style = {styles.footer}> 
                     <View style = {styles.socialContainer}>
                         <Icon
                             icon={faFacebook}
@@ -170,7 +162,6 @@ export default function Settings({navigation}){
                         <Text style = {styles.copyRightText}>{strings.profile.copyRightText} </Text>
                     </View>
                 </View> }
-
             </View>
         </View>
     )
@@ -185,7 +176,8 @@ const styles = StyleSheet.create({
         color : theme.light.colors.info
     },
     headerText : {
-        color : theme.light.colors.black
+        color : theme.light.colors.black,
+        paddingLeft : ms(9)
     },
     body:{
         flex : 1,

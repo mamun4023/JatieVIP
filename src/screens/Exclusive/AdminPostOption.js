@@ -7,9 +7,10 @@ import { FontFamily } from '@/theme/Fonts';
 import { useState } from 'react';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function AdminPostOption({ navigation }) {
   return (
-    <View style={styles.contianer}>
+    <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
@@ -18,7 +19,7 @@ export default function AdminPostOption({ navigation }) {
           style={[styles.headerIcon]}
         />
         <Text style={[styles.headerText, TextStyles.header]}>
-          {strings.exclusive.adminPostHeader}{' '}
+          {strings.exclusive.adminPostHeader}
         </Text>
       </View>
 
@@ -33,7 +34,7 @@ export default function AdminPostOption({ navigation }) {
           title={strings.exclusive.postButton}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

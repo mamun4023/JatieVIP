@@ -51,14 +51,14 @@ export const CardFooter = ({likeCount, disLikeCount, commentCount, likePress, di
                     size = {ms(13)}
                     color = {theme.light.colors.info}
                     onPress = {sharePress}
-                    style = {{marginRight : 13}}
+                    style = {{marginRight : ms(13)}}
                   />
                   <Icon 
                     icon={faEllipsis}
                     size = {ms(13)}
                     color = {theme.light.colors.black}
                     onPress = {morePress}
-                    style = {{marginRight : 13}}
+                    style = {{marginRight : ms(5)}}
                   />
             </View>
         </View>

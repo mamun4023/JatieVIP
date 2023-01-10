@@ -71,21 +71,21 @@ export default function UpgradeMembership({navigation}){
                 </View>
                 <View style = {styles.btnContainer}> 
                     <Button 
-                        title= "$9.99/Month"
+                        title= {strings.profile.monthlyPlan}
                         onPress = {()=> navigation.navigate(NAVIGATION.monthlyUpgradeSuccess)}
                         style={{
                             marginTop : ms(10)
                         }}
                     />
                     <Button 
-                        title= "$99/Year"
+                        title= {strings.profile.yearlyPlan}
                         style={{
                             marginTop : ms(10)
                         }}
                     />
                 </View>
                 <View style = {styles.footerTxtContainer}> 
-                    <Text style = {styles.footerTxt}> Save $20.88 by choosing the Yearly plan</Text>    
+                    <Text style = {styles.footerTxt}> {strings.profile.saveByYearlyPlan} </Text>    
                 </View>        
             </View>
         </View>

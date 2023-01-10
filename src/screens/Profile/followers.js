@@ -30,7 +30,7 @@ export default function Followers({navigation}){
         <View style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
-                <Text style = {[TextStyles.header, {color : "black", paddingRight : ms(8)}]}> {strings.profile.myFollowers}</Text>
+                <Text style = {styles.headerTxt}>{strings.profile.myFollowers}</Text>
                 <Badge count={23} size = {ms(16)} />
             </View>
             <View>
@@ -55,7 +55,7 @@ export default function Followers({navigation}){
                                 <Icon 
                                     icon={faEllipsis}
                                     size = {ms(15)}
-                                    color = "gray"
+                                    color = {theme.light.colors.secondary}
                                     onPress = {()=> setOpen(true)}
                                 />
                             </View>
@@ -68,33 +68,32 @@ export default function Followers({navigation}){
                 setOpen = {setOpen}
             > 
                 <ModalList 
-                    title= {strings.profile.follow}
+                    title= {strings.operations.follow}
                     icon={faUserPlus}
                     iconColor = {theme.light.colors.primary}
                     iconBg = {theme.light.colors.primaryBgLight}
-                    onPress = {()=> Alert.alert("follow")}
                 />
                 <ModalList 
-                    title= {strings.profile.sendPrivateMessage}
+                    title= {strings.operations.sendPrivateMessage}
                     icon={faMessage}
                     iconColor = {theme.light.colors.success}
                     iconBg = {theme.light.colors.successBgLight}
-                    onPress = {()=> Alert.alert("message")}
+                    // onPress = {()=> Alert.alert("message")}
                 />
                 <HorizontalLine color = {theme.light.colors.infoBgLight} />
                 <ModalList 
-                    title= {strings.profile.unfollow}
+                    title= {strings.operations.unFollow}
                     icon={faFlag}
                     iconColor = {theme.light.colors.secondary}
                     iconBg = {theme.light.colors.infoBgLight}
-                    onPress = {()=> Alert.alert("report")}
+                    // onPress = {()=> Alert.alert("report")}
                 />
                 <ModalList 
-                    title= {strings.profile.block}
+                    title= {strings.operations.block}
                     icon={faXmark}
                     iconColor = {theme.light.colors.secondary}
                     iconBg = {theme.light.colors.infoBgLight}
-                    onPress = {()=> Alert.alert("blocked")}
+                    // onPress = {()=> Alert.alert("blocked")}
                 />
             </ModalDown>
         </View>
@@ -107,11 +106,17 @@ const styles = StyleSheet.create({
         backgroundColor : "white"
     },
     listHeader : {
-        paddingTop : ms(5),
         paddingBottom : ms(5),         
         flexDirection : 'row',
         alignItems : 'center'
     },
+    headerTxt : [
+        TextStyles.header, {
+            color : theme.light.colors.black, 
+            paddingLeft : ms(9)
+        }
+    ],
+
     listContainer : {
         padding  : ms(2),
         paddingLeft : ms(8),

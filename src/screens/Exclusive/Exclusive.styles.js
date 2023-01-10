@@ -108,7 +108,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: theme.light.colors.primary,
     position: 'absolute',
-    top: '90%',
+    top: '91%',
     left: '50%',
     marginLeft: ms(35),
   },

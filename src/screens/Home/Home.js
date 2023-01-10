@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
   header : {
     flexDirection : 'row',
     justifyContent : 'space-between',
-    marginBottom :  vs(10)
+    marginBottom :  vs(8)
   },
   left: {
     flexDirection : 'row',
@@ -328,7 +328,8 @@ const styles = StyleSheet.create({
   userPic : {
     width : ms(61), 
     height : ms(66),
-    borderRadius : 100
+    borderRadius : 100,
+    marginLeft : ms(9)
   },
   filterContainer : {
     flexDirection : 'row',
@@ -359,7 +360,7 @@ const styles = StyleSheet.create({
     color : theme.light.colors.secondary
   },
   recentList :{
-    padding : 5,
+    padding : ms(5),
     flexDirection : 'row',
     alignItems : 'center',
   },
@@ -368,7 +369,6 @@ const styles = StyleSheet.create({
     fontFamily : FontFamily.Recoleta_semibold,
     color : theme.light.colors.black
   },
-
 });
 
 
