@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     borderRadius: 75,
   },
   exclusive: {
-    paddingLeft: 7,
+    paddingLeft: ms(7),
   },
   iconContiner: {
     flexDirection: 'row',
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     fontSize: ms(12, 0.3),
   },
   recentIcon: {
-    marginLeft: 3,
+    marginLeft: ms(3),
     color: theme.light.colors.secondary,
   },
   feedContainer: {
@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
     fontFamily: FontFamily.BrandonGrotesque_bold,
     fontSize: ms(18, 0.3),
     color: theme.light.colors.black,
-    margin: 10,
+    margin: ms(10),
   },
   cardRightContainer: {
     flexDirection: 'row',
@@ -120,13 +120,13 @@ export const styles = StyleSheet.create({
   //vip only
   vipOnlyContainer: {
     backgroundColor: theme.light.colors.primary,
-    width: 100,
-    height: 25,
+    width: ms(100),
+    height: vs(25),
     borderRadius: 6,
     position: 'absolute',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 10,
+    paddingLeft: ms(10),
     top: '42%',
     left: '38%',
 
@@ -136,7 +136,7 @@ export const styles = StyleSheet.create({
   vipOnlyText: {
     fontFamily: FontFamily.BrandonGrotesque_medium,
     color: theme.light.colors.background,
-    paddingLeft: 10,
+    paddingLeft: ms(10),
   },
   lock: {
     color: theme.light.colors.background,
