@@ -10,6 +10,10 @@ export const NAVIGATION = {
   post : "Post",
   postOptions : "PostOptions",
   scheduledPost : 'ScheduledPost',
+
+  // message
+  message: 'Message',
+  chat : 'Chat',
   
   // profle 
   profile: 'Profile',
@@ -32,7 +36,6 @@ export const NAVIGATION = {
   manageReportOnPost: 'ManageReportOnPost',
   manageReportOnPostAllComments: 'ManageReportOnPostAllComments',
   manageReportOnProfile: 'ManageReportOnProfile',
-  message: 'Message',
   exclusive: 'Exclusive',
   giveaway: 'Giveaway',
   homeNavigator: 'HomeNavigator',

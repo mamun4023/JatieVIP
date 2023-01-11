@@ -4,7 +4,7 @@ import { getUser } from '@/selectors/UserSelectors';
 import { strings } from '@/localization';
 import {theme, TextStyles} from  '@/theme';
 import {ms, vs} from 'react-native-size-matters';
-import {faCheck, faChevronDown, faFlag, faImage, faMessage, faSearch, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faChevronDown, faFlag, faImage, faMessage, faSearch, faThumbsUp, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons';
 import {useSelector} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -73,7 +73,7 @@ export function Home({navigation}) {
   ]);
 
   const [reportOptionValue, setReportOptionValue] = useState("")
-  const [reportComment, setReportCommnet] = useState()
+  const [reportComment, setReportCommnet] = useState("")
   
 
   return (
@@ -298,7 +298,10 @@ export function Home({navigation}) {
             icon={faFlag}
             iconColor = {theme.light.colors.secondary}
             iconBg = {theme.light.colors.infoBgLight}
-            onPress = {()=> setOpenReport(true)}          
+            onPress = {()=> {
+              setOpenReport(true)
+              setOpen(false) 
+            }}          
           />
           <ModalList 
             title= {strings.operations.block}
@@ -343,6 +346,7 @@ export function Home({navigation}) {
               <TextInput 
                 multiline
                 editable
+                onChangeText = {(val)=> setReportCommnet(val)}
                 placeholder = {strings.operations.addComments}
                 numberOfLines={4}
                 style = {styles.txtInput}
@@ -363,14 +367,18 @@ export function Home({navigation}) {
                />
                <Button 
                   title= {strings.operations.submit}
-                  style={{
-                    width : '30%'
+                  disabled={reportComment.length? false : true }
+                  style={ {
+                    opacity : reportComment.length? 1 :  0.4,
+                    width  : ms(100)
                   }}
-                  onPress = {()=> setOpenToast(true)}
-
+                  onPress = {()=> {
+                    setOpenToast(true),
+                    setOpenReport(false)
+                  }}
+                 
                />
             </View>
-
         </View>
 
       </ReportOnPostModal>
@@ -378,8 +386,9 @@ export function Home({navigation}) {
       <Toast 
         open={openToast}
         setOpen = {setOpenToast}
+        icon = {faThumbsUp}
         message = {strings.home.reportMessage}
-          
+        onPressOk = {setOpenToast}
       />
      }
       

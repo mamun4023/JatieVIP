@@ -46,7 +46,6 @@ export const en = {
     sponsordPost : 'Sponsored Post',
     selectReason : 'Select Reason',
     reportMessage : 'Thanks for reporting your concern. We will take down or ban this user if we find violation of our terms of services.'
-
   },
   sortBy : {
     recent : 'Recent',
@@ -54,7 +53,6 @@ export const en = {
     week : 'Week',
     month : 'Month'
   },
-
 
   login: {
     username: 'Username',
@@ -257,6 +255,14 @@ export const en = {
     forVIPsOnly: 'For VIPs Only',
     usOnly: 'US-only',
     post: 'Post',
+  },
+  message : {
+    message : 'Message',
+    newMessage : '+ New Message',
+    unreadOnly : 'Unread Only',
+    archive : 'Archive',
+    snoozeNotification : 'Snooze Notification'
+    
   },
   operations : {
     save : 'Save',
