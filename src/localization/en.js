@@ -261,7 +261,9 @@ export const en = {
     newMessage : '+ New Message',
     unreadOnly : 'Unread Only',
     archive : 'Archive',
-    snoozeNotification : 'Snooze Notification'
+    snoozeNotification : 'Snooze Notification',
+    inputPlaceholder : 'Type your messasge here…',
+    searchPlaceholder : "It’s very quiet here. Let’s start a chat!"
     
   },
   operations : {
