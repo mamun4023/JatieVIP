@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
 import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
 import {strings} from '@/localization';
@@ -19,7 +19,7 @@ import { NAVIGATION } from "@/constants";
 export default function ManageReportOnMessage({navigation}){
 
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.manageReports} </Text>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
@@ -69,7 +69,7 @@ export default function ManageReportOnMessage({navigation}){
                     />
                 </Card>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

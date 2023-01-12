@@ -46,6 +46,9 @@ export const en = {
     scheduledPost: 'Scheduled Posts',
     learMore: 'Learn More',
     sponsordPost: 'Sponsored Post',
+    selectReason: 'Select Reason',
+    reportMessage:
+      'Thanks for reporting your concern. We will take down or ban this user if we find violation of our terms of services.',
   },
   sortBy: {
     recent: 'Recent',
@@ -124,6 +127,7 @@ export const en = {
     search: 'Search',
     upgradeTo: 'Upgrade To',
     vipMemberShip: 'VIP Membership',
+    cancelMemberShip: 'Cancel Membership',
     cancelVipMembership: 'Cancel VIP Membership',
     cencelMessage:
       'Are you sure want to cancel? You will lose the following benefits',
@@ -135,6 +139,7 @@ export const en = {
     benefit_5: 'VIP only live streams and one-on-one',
     monthlyPlan: '$9.99/Month',
     yearlyPlan: '$99/Year',
+    upgradeYearlySubsription: 'Upgrade to Yearly Subscription',
     saveByYearlyPlan: 'Save $20.88 by choosing the Yearly plan',
     searchUser: 'Search Users',
     searchForUsers: 'Search for the users',
@@ -158,6 +163,21 @@ export const en = {
     areYouSureWantToBan: 'Are you sure want to ban this user?',
     freeMember: 'Free Member',
     thisPost: 'this post',
+    yesBan: 'Yes Ban',
+    DoNotBan: "No, Don't Ban",
+    renews: 'Renews on December 10,2023',
+    cancelAnyway: 'Cancel Anyway',
+    doNotCancel: "Don't Cancel",
+    closeMyAccount: 'Close My Account',
+    cancelSubscription: 'How do i cancel my subscription?',
+    rule1: '1. Login to www.jativip.com',
+    rule2: "2. Click 'Manage",
+    rule3: "3. Click 'Cancel Renewal'",
+    closeWarning:
+      "You can't close your account while your subsription is still active.",
+    manageSubscription: 'Manage your subscription',
+    closeConfirm:
+      "Are you sure want to close your Account? This action can't be undone.",
   },
   Welcome: {
     login: 'Login',
@@ -176,6 +196,8 @@ export const en = {
     dobPlaceHolder: 'Select your date of birth',
     genderPlaceHolder: 'Select your gender',
     countryPlaceHolder: 'Select your country',
+    loginPhone: 'Login Phone',
+    loginFormBottomTxt: 'You used this phone number to Login your account',
   },
   addYourProfilePicture: {
     title: 'Add Your Profile \nPicture',
@@ -245,7 +267,15 @@ export const en = {
     usOnly: 'US-only',
     post: 'Post',
   },
+  message: {
+    message: 'Message',
+    newMessage: '+ New Message',
+    unreadOnly: 'Unread Only',
+    archive: 'Archive',
+    snoozeNotification: 'Snooze Notification',
+  },
   operations: {
+    save: 'Save',
     follow: 'Follow',
     unFollow: 'Unfollow',
     sendPrivateMessage: 'Send a Private Message',
@@ -256,5 +286,12 @@ export const en = {
     unBan: 'Unban',
     block: 'Block',
     unBlock: 'Unblock',
+    imageFromCamera: 'Pickup From Camara',
+    imageFromGallery: 'Select From Gallery',
+    yes: 'Yes',
+    no: 'No',
+    ok: 'Ok',
+    addComments: 'Add Comments',
+    submit: 'Submit',
   },
 };

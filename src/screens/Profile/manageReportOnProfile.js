@@ -7,6 +7,7 @@ import {
     Alert,
     TouchableOpacity,
     FlatList,
+    SafeAreaView
 } from 'react-native';
 import {theme, TextStyles} from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
@@ -34,7 +35,7 @@ export default function ManageReportOnMessage({navigation}){
     const [openBan, setOpenBan] = useState(false);
 
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText, TextStyles.header]}>{strings.profile.manageReports} </Text>
             <HorizontalLine color = {theme.light.colors.infoBgLight} />
@@ -240,10 +241,10 @@ export default function ManageReportOnMessage({navigation}){
                     </View>
                     <View> 
                         <Button 
-                            title= "Yes Ban"
+                            title= {strings.profile.yesBan}
                             style={{
                                 marginTop : 10,
-                                backgroundColor : 'white',
+                                backgroundColor : theme.light.colors.white,
                                 borderWidth : 2,
                                 borderColor : theme.light.colors.primary
                             }}
@@ -252,7 +253,7 @@ export default function ManageReportOnMessage({navigation}){
                             }}
                         />
                         <Button 
-                            title= "No,don't ban"
+                            title= {strings.profile.DoNotBan}
                             style={{
                                 marginTop : 10
                             }}
@@ -261,7 +262,7 @@ export default function ManageReportOnMessage({navigation}){
                 </View>
             </PopUp>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

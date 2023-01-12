@@ -7,6 +7,7 @@ import {
     Alert,
     TouchableOpacity,
     FlatList,
+    SafeAreaView
 } from 'react-native';
 import {
     faSearch, 
@@ -26,6 +27,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {Card, CardHeader, CardBody, CardFooter, HeaderTab, Icon, ModalDown, ModalList} from '@/components'
 import { strings } from '@/localization';
 import {HorizontalLine} from '@/components';
+import { ms, vs } from 'react-native-size-matters';
 
 
 export default function UserProfile(){
@@ -33,7 +35,7 @@ export default function UserProfile(){
     const [openEdit, setOpenEdit] = useState(false)
 
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <View style = {styles.headerContainer}> 
                 <View style = {styles.headerImageContainer} >
                     <Image 
@@ -68,12 +70,12 @@ export default function UserProfile(){
                 </View>
             </View>
             <HeaderTab 
-                title1 = "Followers"
+                title1 = {strings.profile.followers}
                 count1 = {10}
-                onPress1 = {()=>Alert.alert('press 1')}
-                title2 = "Following"
+                // onPress1 = {()=>Alert.alert('press 1')}
+                title2 = {strings.profile.following}
                 count2 = {20}
-                onPress2 = {()=>Alert.alert('press 2')}      
+                // onPress2 = {()=>Alert.alert('press 2')}      
             />
 
             <View style = {styles.messageHeader}>
@@ -83,7 +85,7 @@ export default function UserProfile(){
                             icon = {faMessage}
                             color  = {theme.light.colors.success}
                         />
-                        <Text style = {[TextStyles.label, {color : theme.light.colors.success}]} > Message </Text>
+                        <Text style = {[TextStyles.label, {color : theme.light.colors.success}]} > {strings.profile.message} </Text>
                     </TouchableOpacity>
                     <TouchableOpacity style = {styles.IconBox}> 
                         <FontAwesomeIcon 
@@ -104,7 +106,7 @@ export default function UserProfile(){
                 data={Data}
                 key = {(props)=> props.id}
                 renderItem = {({item})=> (
-                    <View style = {{margin : 10}}> 
+                    <View style = {{margin : ms(10)}}> 
                     <Card>
                         <CardHeader 
                         fullName = {item.fullName}
@@ -117,12 +119,12 @@ export default function UserProfile(){
                         />
                         <CardFooter 
                             likeCount= {item.like}
-                            likePress = {()=> Alert.alert("like")}
+                            // likePress = {()=> Alert.alert("like")}
                             disLikeCount = {item.disLike}
-                            disLikePress = {()=> Alert.alert("dislike")}
+                            // disLikePress = {()=> Alert.alert("dislike")}
                             commentCount = {item.comment}
-                            commentPress = {()=> Alert.alert("Comment")}
-                            sharePress = {()=> Alert.alert("share")}
+                            // commentPress = {()=> Alert.alert("Comment")}
+                            // sharePress = {()=> Alert.alert("share")}
                             morePress = {()=>setOpenEdit(true)}
                         />
                     </Card>
@@ -131,34 +133,34 @@ export default function UserProfile(){
              />
             {openMore && 
                 <ModalDown 
-                open={openMore} 
-                setOpen = {setOpenMore}
+                    open={openMore} 
+                    setOpen = {setOpenMore}
                 > 
                     <ModalList 
-                    title= "Follow"
-                    icon={faUserPlus}
-                    iconColor = {theme.light.colors.primary}
-                    iconBg = {theme.light.colors.primaryBgLight}
+                        title= {strings.operations.follow}
+                        icon={faUserPlus}
+                        iconColor = {theme.light.colors.primary}
+                        iconBg = {theme.light.colors.primaryBgLight}
                     />
                     <ModalList 
-                    title= "Send a Private  Message"
-                    icon={faMessage}
-                    iconColor = {theme.light.colors.success}
-                    iconBg = {theme.light.colors.successBgLight}
-                    onPress = {()=> Alert.alert("working")}
+                        title= {strings.operations.sendPrivateMessage}
+                        icon={faMessage}
+                        iconColor = {theme.light.colors.success}
+                        iconBg = {theme.light.colors.successBgLight}
+                        // onPress = {()=> Alert.alert("working")}
                     />
                     <ModalList 
-                    title= "Report"
-                    icon={faFlag}
+                        title= {strings.operations.report}
+                        icon={faFlag}
                         iconColor = {theme.light.colors.secondary}
                         iconBg = {theme.light.colors.infoBgLight}
-                        />
-                        <ModalList 
-                        title= "Block"
+                    />
+                    <ModalList 
+                        title= {strings.operations.block}
                         icon={faXmark}
                         iconColor = {theme.light.colors.secondary}
                         iconBg = {theme.light.colors.infoBgLight}
-                        />
+                    />
                 </ModalDown>
             }
             {openEdit && 
@@ -167,20 +169,20 @@ export default function UserProfile(){
                     setOpen = {setOpenEdit}
                 > 
                 <ModalList 
-                    title='Edit'
+                    title= {strings.operations.edit}
                     icon={faPen}
                     iconBg = {theme.light.colors.infoBgLight}
                     iconColor= {theme.light.colors.info}
                 />
                 <ModalList 
-                  title='Remove'
-                  icon={faTrash}
-                  iconBg = {theme.light.colors.infoBgLight}
-                  iconColor= {theme.light.colors.secondary}
+                    title= {strings.operations.remove}
+                    icon={faTrash}
+                    iconBg = {theme.light.colors.infoBgLight}
+                    iconColor= {theme.light.colors.secondary}
                 />
               </ModalDown>
             }
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -192,15 +194,15 @@ const styles = StyleSheet.create({
     headerContainer : {
         flexDirection : 'row',
         justifyContent : 'space-between',
-        padding : 10
+        padding : ms(10)
     },
     headerImageContainer : {
         flexDirection : 'row',
         position : 'relative'
     },
     headerImage : {
-        width: 50,
-        height: 50,
+        width: ms(50),
+        height: ms (50),
         borderWidth: 2,
         borderRadius: 75
     },
@@ -208,15 +210,15 @@ const styles = StyleSheet.create({
         flexDirection : 'row'
     },  
     icon : {
-        margin : 10
+        margin : ms(10)
     },
     profileLogoContainer : {
-        height : 30,
-        width : 30,
+        height : ms(30),
+        width : ms(30),
         backgroundColor : theme.light.colors.primaryBg,
         position : 'absolute',
-        bottom : -18,
-        left : 10,
+        bottom : vs(-18),
+        left : ms(10),
         borderRadius : 100,
         justifyContent : 'center',
         alignItems : 'center'
@@ -224,8 +226,7 @@ const styles = StyleSheet.create({
     messageHeader: {
         flexDirection : 'row',
         justifyContent :  'space-between',
-        // backgroundColor : '#eee',
-        padding : 10,
+        padding : ms(10),
     },
     messageLeft : {
         flexDirection : 'row',
@@ -238,12 +239,12 @@ const styles = StyleSheet.create({
         alignItems : 'center',
         justifyContent : 'space-evenly',
         backgroundColor : theme.light.colors.primaryBgLight,
-        padding : 10,
+        padding : ms(10),
         borderRadius : 10
     },
     moreIconContainer: {
         backgroundColor : theme.light.colors.infoBg,
-        padding : 10,
+        padding : ms(10),
         borderRadius : 100,
         alignItems : 'center',
         justifyContent : 'center'
@@ -251,7 +252,7 @@ const styles = StyleSheet.create({
     feedContainer : {
         flex : 1,
         backgroundColor : theme.light.colors.primaryBgLight,
-        margin : 12
+        margin : ms(12)
     }
 })
 

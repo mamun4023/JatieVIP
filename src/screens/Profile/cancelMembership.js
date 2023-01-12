@@ -12,14 +12,14 @@ import { strings } from '@/localization';
 
 export default function CancelMemberShip({navigation}){
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerTxt, {paddingLeft : ms(6)}]}>{strings.profile.cancelVipMembership}</Text>
             <View style = {styles.body}>
             <View style = {{marginTop : ms(20)}}/>
                 <Text style = {[styles.headerTxt, {fontSize : ms(18, 0.3)}]}>{strings.profile.cencelMessage}</Text>
             <View style = {styles.card}>
-                <Text style = {[TextStyles.header, {fontSize : 15}]}> {strings.profile.benefits} </Text>
+                <Text style = {[TextStyles.header, {fontSize : ms(15, 0.3)}]}> {strings.profile.benefits} </Text>
                 <View style = {styles.list}>
                     <View style = {styles.iconContainer}>     
                         <FontAwesomeIcon 
@@ -27,7 +27,7 @@ export default function CancelMemberShip({navigation}){
                             color = {theme.light.colors.success}
                         />
                     </View>
-                    <Text style = {styles.listText} > Access to all VIP Exclusive Content </Text>
+                    <Text style = {styles.listText} > {strings.profile.benefit_1} </Text>
                 </View>
                 <View style = {styles.list}>
                     <View style = {styles.iconContainer}>     
@@ -36,7 +36,7 @@ export default function CancelMemberShip({navigation}){
                             color = {theme.light.colors.success}
                         />
                     </View>
-                    <Text style = {styles.listText} > Access to exclusive VIP Giveaways  </Text>
+                    <Text style = {styles.listText} > {strings.profile.benefit_2}  </Text>
                 </View>
                 <View style = {styles.list}>
                     <View style = {styles.iconContainer}>     
@@ -45,7 +45,7 @@ export default function CancelMemberShip({navigation}){
                             color = {theme.light.colors.success}
                         />
                     </View>
-                    <Text style = {styles.listText} > Private message from Josh and Katie </Text>
+                    <Text style = {styles.listText} > {strings.profile.benefit_3} </Text>
                 </View>
                 <View style = {styles.list}>
                     <View style = {styles.iconContainer}>     
@@ -54,7 +54,7 @@ export default function CancelMemberShip({navigation}){
                             color = {theme.light.colors.success}
                         />
                     </View>
-                    <Text style = {styles.listText} > VIP Member only feed </Text>
+                    <Text style = {styles.listText} > {strings.profile.benefit_4} </Text>
                 </View>
                 <View style = {styles.list}>
                     <View style = {styles.iconContainer}>     
@@ -63,18 +63,18 @@ export default function CancelMemberShip({navigation}){
                             color = {theme.light.colors.success}
                         />
                     </View>
-                    <Text style = {styles.listText} > VIP only live streams and one-on-one </Text>
+                    <Text style = {styles.listText} > {strings.profile.benefit_5}</Text>
                 </View>
                 <View style = {styles.btnContainer}> 
                     <Button 
-                        title= "Don't Cancel"
+                        title= {strings.profile.doNotCancel}
                         onPress = {()=> navigation.navigate(NAVIGATION.monthlyUpgradeSuccess)}
                         style={{
                             marginTop : ms(10)
                         }}
                     />
                     <Button 
-                        title= "Cancel Anyway"
+                        title= {strings.profile.cancelAnyway}
                         style={{
                             marginTop : ms(10),
                             borderWidth : 2,
@@ -88,7 +88,7 @@ export default function CancelMemberShip({navigation}){
                 </View>
             </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -1,10 +1,9 @@
 import React from "react";
-import { StyleSheet, View , Text, TouchableOpacity, Linking } from "react-native";
-import { faArrowRight, faLock, faUser, faChartColumn, faBan, faPeopleRoof, faFile} from '@fortawesome/free-solid-svg-icons';
+import { StyleSheet, View , Text, TouchableOpacity, SafeAreaView } from "react-native";
+import { faArrowRight, faChartColumn, faBan, faPeopleRoof, faFile} from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from "@/theme";
 import { FontFamily} from "@/theme/Fonts";
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faBell} from '@fortawesome/free-solid-svg-icons';
 import { strings } from "@/localization";
 import { NAVIGATION } from "@/constants";
 import {ms, vs} from 'react-native-size-matters';
@@ -12,11 +11,10 @@ import {Icon, TopBackButton} from '@/components';
 
 export default function AdminTools({navigation}){
     return(
-        <View style = {styles.contianer}>
+        <SafeAreaView style = {styles.contianer}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {[styles.headerText]}>{strings.profile.adminTools} </Text>
             <View style = {styles.body}>
-              
                 <TouchableOpacity style = {styles.list} onPress = {()=> navigation.navigate(NAVIGATION.manageReports)}>
                     <View style ={{flexDirection : 'row', alignItems : 'center'}}> 
                         <View style = {styles.iconContainer}> 
@@ -82,7 +80,7 @@ export default function AdminTools({navigation}){
                     />
                 </TouchableOpacity>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -115,7 +113,7 @@ const styles = StyleSheet.create({
     upgradeText : [
         TextStyles.header, {
             fontSize : ms(15, 0.3), 
-            color : 'black',
+            color : theme.light.colors.black,
             paddingLeft : ms(10),
         }
     ],
@@ -137,7 +135,7 @@ const styles = StyleSheet.create({
     listText : {
         color : theme.light.colors.black,
         fontSize : ms(15, 0.3),
-        paddingLeft : 10
+        paddingLeft : ms(10)
     },
     footer : {
         flex : 1,

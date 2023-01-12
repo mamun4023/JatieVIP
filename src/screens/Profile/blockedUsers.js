@@ -5,7 +5,8 @@ import {
     StyleSheet, 
     FlatList, 
     Image, 
-    TouchableOpacity
+    TouchableOpacity,
+    SafeAreaView
 } from 'react-native';
 import {faEllipsis, faCheck} from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
@@ -19,7 +20,7 @@ import { FontFamily } from '@/theme/Fonts';
 export default function BlockedUsers({navigation}){
     const [open, setOpen] = useState(false);
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <View style = {styles.listHeader}> 
                 <Text style = {styles.headerTxt}>{strings.profile.blockedUsers}</Text>
@@ -55,19 +56,21 @@ export default function BlockedUsers({navigation}){
                     }}
                 />
             </View>
-            <ModalDown 
-                open={open} 
-                setOpen = {setOpen}
-            > 
-                <ModalList 
-                    title= {strings.profile.unblock}
-                    icon={faCheck}
-                    iconColor = {theme.light.colors.secondary}
-                    iconBg = {theme.light.colors.infoBgLight}
-                    // onPress = {()=> Alert.alert("blocked")}
-                />
-            </ModalDown>
-        </View>
+            {open && 
+                <ModalDown 
+                    open={open} 
+                    setOpen = {setOpen}
+                > 
+                    <ModalList 
+                        title= {strings.profile.unblock}
+                        icon={faCheck}
+                        iconColor = {theme.light.colors.secondary}
+                        iconBg = {theme.light.colors.infoBgLight}
+                        // onPress = {()=> Alert.alert("blocked")}
+                    />
+                </ModalDown>
+            }
+        </SafeAreaView>
     )
 }
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { TextStyles, theme } from '@/theme';
 import {FontFamily} from '@/theme/Fonts';
-import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import {faBell} from '@fortawesome/free-regular-svg-icons'
 import {faSearch, faEllipsis} from '@fortawesome/free-solid-svg-icons';
 import { HorizontalLine, Icon, TextField, TopBackButton } from '@/components';
@@ -14,7 +14,7 @@ export default function Notification({navigation}){
     const [searchListOpen, setSearchListOpen]= useState(false)
  
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <View style = {styles.header}>
                 <View style = {styles.left}> 
                     <TopBackButton onPress = {()=> navigation.goBack()} />
@@ -89,8 +89,7 @@ export default function Notification({navigation}){
                 />
                 </View>
             </View>}
-         
-        </View>
+        </SafeAreaView>
     )
 }
 

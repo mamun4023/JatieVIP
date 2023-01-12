@@ -4,12 +4,13 @@ import { getUser } from '@/selectors/UserSelectors';
 import { strings } from '@/localization';
 import {theme, TextStyles} from  '@/theme';
 import {ms, vs} from 'react-native-size-matters';
-import {faCheck, faChevronDown, faFlag, faMessage, faSearch, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faChevronDown, faFlag, faImage, faMessage, faSearch, faThumbsUp, faUserPlus, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {faBell} from '@fortawesome/free-regular-svg-icons';
 import {useSelector} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { FontFamily } from '@/theme/Fonts';
 import { NAVIGATION } from '@/constants';
+import DropDownPicker from 'react-native-dropdown-picker'
 import { 
   Text, 
   View, 
@@ -20,12 +21,14 @@ import {
   TouchableOpacity, 
   TouchableWithoutFeedback, 
   StatusBar,
-  SafeAreaView
+  SafeAreaView,
+  TextInput
 } from 'react-native';
 import { 
   AppImageViewer,
   AppSwitch, 
   AppVideoPlayer, 
+  Button, 
   Card, 
   CardBody, 
   CardFooter, 
@@ -36,9 +39,13 @@ import {
   Icon, 
   ModalDown,
   ModalList, 
+  ReportOnPostModal, 
   SeeSchedulePost, 
   ShareFeed, 
   StatusNavigatorBar, 
+  TextField, 
+  Toast, 
+  TopBackButton, 
   VerticalLine 
 } from '@/components';
 
@@ -47,11 +54,27 @@ export function Home({navigation}) {
   const userType = useSelector(state => state.userType);
   const [vipArea, setVipArea] = useState(strings.home.vipArea)
   const [open, setOpen] = useState(false)
+  const [openToast, setOpenToast] = useState(false)
+  const [openReport, setOpenReport] = useState(false)
   const [recentFilterOpen, setRecentFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState(strings.sortBy.recent)
   const [follwingSwitch, setFollowingSwtich] = useState(false);
   const [showImageView, setShowImageView] = useState(false);
   const [feedImages, setFeedImages] = useState([])
+
+
+
+  const [reportListOpen, setReportListOpen] = useState(false);
+  const [reportOption, setReportOption] = useState([
+    {label: 'Explicit Content', value: 'Explicit Content'},
+    {label: 'Bullying or Hurrasment', value: 'Bullying'},
+    {label: 'Sparm', value: 'Sparm'},
+    {label: 'Misleading information or Fake News', value: 'Misleading'}
+  ]);
+
+  const [reportOptionValue, setReportOptionValue] = useState("")
+  const [reportComment, setReportCommnet] = useState("")
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -258,32 +281,118 @@ export function Home({navigation}) {
           setOpen = {setOpen}
         >
           <ModalList 
-            title= {strings.profile.follow}
+            title= {strings.operations.follow}
             icon={faUserPlus}
             iconColor = {theme.light.colors.primary}
             iconBg = {theme.light.colors.primaryBgLight}           
           />
           <ModalList 
-            title= {strings.profile.sendPrivateMessage}
+            title= {strings.operations.sendPrivateMessage}
             icon={faMessage}
             iconColor = {theme.light.colors.success}
             iconBg = {theme.light.colors.successBgLight}   
           />
           <HorizontalLine color = {theme.light.colors.infoBgLight} />
           <ModalList 
-            title= {strings.profile.report}
+            title= {strings.operations.report}
             icon={faFlag}
             iconColor = {theme.light.colors.secondary}
-            iconBg = {theme.light.colors.infoBgLight}          
+            iconBg = {theme.light.colors.infoBgLight}
+            onPress = {()=> {
+              setOpenReport(true)
+              setOpen(false) 
+            }}          
           />
           <ModalList 
-            title= {strings.profile.block}
+            title= {strings.operations.block}
             icon={faXmark}
             iconColor = {theme.light.colors.secondary}
             iconBg = {theme.light.colors.infoBgLight}
           />
         </ModalDown>
       }
+
+      <ReportOnPostModal
+        open={openReport}
+        setOpen = {setOpenReport}
+      > 
+        <View style = {{backgroundColor : theme.light.colors.white}}>
+           <TopBackButton onPress = {()=> setOpenReport(false)} />
+           <View style ={{paddingLeft : ms(9), paddingRight : ms(9)}}> 
+              <DropDownPicker
+                placeholder= {strings.home.selectReason}
+                open={reportListOpen}
+                value={reportOptionValue}
+                items={reportOption}
+                setOpen={setReportListOpen}
+                setValue={setReportOptionValue}
+                setItems={setReportOption}
+                style={{
+                  padding : ms(10),
+                  marginBottom : ms(10),
+                  backgroundColor : theme.light.colors.inputFiled,
+                  borderWidth : 0
+                }}
+                textStyle = {styles.dropListTxt}
+                dropDownContainerStyle = {{
+                  borderWidth : 0,
+                  shadowOffset : {
+                    width : 0,
+                    height : ms(2)
+                  },
+                  elevation : 2
+                }}
+              />
+              <TextInput 
+                multiline
+                editable
+                onChangeText = {(val)=> setReportCommnet(val)}
+                placeholder = {strings.operations.addComments}
+                numberOfLines={4}
+                style = {styles.txtInput}
+              />
+            </View>
+
+            <View style = {{
+                flexDirection : 'row', 
+                justifyContent : 'space-between',
+                alignItems : 'center',
+                padding : ms(10)  
+              }}
+            > 
+               <Icon 
+                  icon = {faImage}
+                  size = {ms(22)}
+                  color = {theme.light.colors.secondary}
+               />
+               <Button 
+                  title= {strings.operations.submit}
+                  disabled={reportComment.length? false : true }
+                  style={ {
+                    opacity : reportComment.length? 1 :  0.4,
+                    width  : ms(100)
+                  }}
+                  onPress = {()=> {
+                    setOpenToast(true),
+                    setOpenReport(false)
+                  }}
+                 
+               />
+            </View>
+        </View>
+
+      </ReportOnPostModal>
+     {openToast && 
+      <Toast 
+        open={openToast}
+        setOpen = {setOpenToast}
+        icon = {faThumbsUp}
+        message = {strings.home.reportMessage}
+        onPressOk = {setOpenToast}
+      />
+     }
+      
+
     </SafeAreaView>
   );
 }
@@ -369,6 +478,18 @@ const styles = StyleSheet.create({
     fontFamily : FontFamily.Recoleta_semibold,
     color : theme.light.colors.black
   },
+  txtInput : {
+    fontFamily : FontFamily.BrandonGrotesque_regular,
+    fontSize : ms(18, 0.3),
+    lineHeight : ms(22),
+    textAlignVertical : 'top',
+    backgroundColor : theme.light.colors.inputFiled,
+    borderRadius : 10
+  },
+  dropListTxt : {
+    fontFamily : FontFamily.BrandonGrotesque_regular,
+    fontSize : ms(16, 0.3)
+  }
 });
 
 

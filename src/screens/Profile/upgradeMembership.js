@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import { TextStyles, theme } from '@/theme';
 import { Logo } from '@/assets';
 import { ms, vs } from 'react-native-size-matters';
@@ -12,7 +12,7 @@ import { strings } from '@/localization';
 
 export default function UpgradeMembership({navigation}){
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <View style={styles.logo}>
                 <Logo height={ms(100)} width={ms(100)} />
             </View>
@@ -88,7 +88,7 @@ export default function UpgradeMembership({navigation}){
                     <Text style = {styles.footerTxt}> {strings.profile.saveByYearlyPlan} </Text>    
                 </View>        
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

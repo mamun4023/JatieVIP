@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import { Button, TopBackButton } from '@/components';
 import { TextStyles, theme } from '@/theme';
-import { ms } from 'react-native-size-matters';
+import { ms, vs } from 'react-native-size-matters';
 import {Logo} from '@/assets';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
@@ -12,40 +12,39 @@ import { strings } from '@/localization';
 
 export default function MonthlyUpgradeSuccess({navigation}){
     return(
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
             <TopBackButton onPress = {()=> navigation.goBack()} />
             <Text style = {styles.headerTxt}>{strings.profile.vipMemberShip} </Text>
 
             <View style = {styles.succesBox}>
                 <View>
                     <Logo 
-                        height = {70}
-                        width = {70}
+                        height = {ms(70)}
+                        width = {ms(70)}
                     />
                 </View>
                 <View>
                     <View>
                         <FontAwesomeIcon 
                             icon={faCheckCircle}
-                            size = {25}
+                            size = {ms(25)}
                             color = {theme.light.colors.success}
                         />
                     </View>
-                    <Text style = {[TextStyles.header, {fontSize : 18, color : 'black'}]} >{strings.profile.youAreVIP} </Text>
-                    <Text style = {styles.RenewsTxt}>Renews on December 10,2023 </Text>
+                    <Text style = {[TextStyles.header, {fontSize : ms(18, 0.3), color : theme.light.colors.black}]} >{strings.profile.youAreVIP} </Text>
+                    <Text style = {styles.RenewsTxt}>{strings.profile.renews} </Text>
                 </View>
             </View>
 
-
             <View style = {styles.footerBtnContainer}> 
                 <Button 
-                    title= "Upgrade to Yearly Subscription"
+                    title= {strings.profile.upgradeYearlySubsription}
                 />
                 <Button 
-                    title= "Cancel Membership"
+                    title= {strings.profile.cancelMemberShip}
                     onPress = {()=> navigation.navigate(NAVIGATION.cancelMembership)}
                     style={{
-                        marginTop : 10,
+                        marginTop : vs(10),
                         borderWidth : 2,
                         borderColor : theme.light.colors.primary,
                         backgroundColor : theme.light.colors.white
@@ -55,7 +54,7 @@ export default function MonthlyUpgradeSuccess({navigation}){
                     }}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
