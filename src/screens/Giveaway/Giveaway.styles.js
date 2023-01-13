@@ -5,12 +5,13 @@ import { ms, vs } from 'react-native-size-matters';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: { color: theme.light.colors.white },
+    backgroundColor: theme.light.colors.white,
   },
   headerContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    padding: ms(10),
+    margin: ms(10),
   },
   headerImageContainer: {
     flexDirection: 'row',
@@ -24,18 +25,20 @@ export const styles = StyleSheet.create({
   iconContiner: {
     flexDirection: 'row',
   },
-  icon: {
-    margin: ms(10),
+  bellIcon: {
+    position: 'relative',
   },
-
+  searchIcon: {
+    marginRight: ms(10),
+  },
   bellAlert: {
     height: ms(10),
     width: ms(10),
-    backgroundColor: { color: theme.light.colors.error },
+    backgroundColor: theme.light.colors.error,
+    borderRadius: 100,
+    left: ms(340),
+    top: ms(22),
     position: 'absolute',
-    borderRadius: 10,
-    left: ms(60),
-    top: ms(8),
   },
 
   feedContainer: {
@@ -59,6 +62,6 @@ export const styles = StyleSheet.create({
   },
   adminBtnTxt: {
     fontFamily: FontFamily.BrandonGrotesque_bold,
-    fontSize: 18,
+    fontSize: ms(18, 0.3),
   },
 });

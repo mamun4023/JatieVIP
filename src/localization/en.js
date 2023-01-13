@@ -235,6 +235,7 @@ export const en = {
     EndsIn: 'Ends in',
     learnMore: 'Learn More',
     title: 'Summer 2023 Giveaway',
+    vipOnly: 'VIP Only',
 
     //onPress learn more
     expires: 'Expires in',
@@ -247,6 +248,7 @@ export const en = {
       "Unfortunately, you can't join this giveaway. The prize ships only to US addresses",
     winner: 'Winner',
     winners: 'Winners',
+    twentyThree: '23',
 
     //Admin
     newGiveaway: '+ New Giveaway',
@@ -260,6 +262,7 @@ export const en = {
     createGiveaway: 'Create A Giveaway',
     next: 'Next',
     minus: '-',
+
     //Admin Giveaway options
     giveawayOption: 'Giveaway Options',
     startDate: 'Start Date',
@@ -268,7 +271,26 @@ export const en = {
     forVIPsOnly: 'For VIPs Only',
     usOnly: 'US-only',
     post: 'Post',
+
+    //Alert
+
+    follow: 'follow',
+    message: 'message',
+    report: 'report',
+    blocked: 'blocked',
   },
+  // operations: {
+  //   follow: 'Follow',
+  //   unFollow: 'Unfollow',
+  //   sendPrivateMessage: 'Send a Private Message',
+  //   report: 'Report',
+  //   remove: 'Remove',
+  //   edit: 'Edit',
+  //   ban: 'Ban',
+  //   unBan: 'Unban',
+  //   block: 'Block',
+  //   unBlock: 'Unblock',
+  // },
   message: {
     message: 'Message',
     newMessage: '+ New Message',

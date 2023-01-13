@@ -7,9 +7,10 @@ import { FontFamily } from '@/theme/Fonts';
 import { useState } from 'react';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function AdminGiveawayOption({ navigation }) {
   return (
-    <View style={styles.contianer}>
+    <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
@@ -18,7 +19,7 @@ export default function AdminGiveawayOption({ navigation }) {
           style={[styles.headerIcon]}
         />
         <Text style={[styles.headerText, TextStyles.header]}>
-          {strings.giveaway.giveawayOption}{' '}
+          {strings.giveaway.giveawayOption}
         </Text>
       </View>
 
@@ -37,7 +38,7 @@ export default function AdminGiveawayOption({ navigation }) {
           title={strings.exclusive.postButton}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -68,7 +69,8 @@ const AdminSwitch = text => {
         thumbColor={
           isEnabled ? theme.light.colors.info : theme.light.colors.secondary
         }
-        ios_backgroundColor="#3e3e3e"
+        // ios_backgroundColor="#3e3e3e"
+        ios_backgroundColor={theme.light.colors.info}
         onValueChange={toggleSwitch}
         value={isEnabled}
       />

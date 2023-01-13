@@ -14,11 +14,12 @@ import { ms, vs } from 'react-native-size-matters';
 import { FontFamily } from '@/theme/Fonts';
 import { strings } from '@/localization';
 import { NAVIGATION } from '@/constants';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Past({ navigation }) {
   const [open, setOpen] = useState(false);
   return (
-    <View>
+    <SafeAreaView>
       <FlatList
         data={Data}
         key={props => props.id}
@@ -37,9 +38,7 @@ export default function Past({ navigation }) {
                 </View>
               ) : (
                 <View>
-                  <Text style={styles.winners}>
-                    {strings.giveaway.winners}{' '}
-                  </Text>
+                  <Text style={styles.winners}>{strings.giveaway.winners}</Text>
                 </View>
               )}
 
@@ -63,7 +62,7 @@ export default function Past({ navigation }) {
                         <Icon
                           icon={faEllipsis}
                           size={ms(15)}
-                          color="gray"
+                          color={theme.light.colors.info}
                           onPress={() => setOpen(true)}
                         />
                       </View>
@@ -97,7 +96,7 @@ export default function Past({ navigation }) {
           </View>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -147,41 +146,6 @@ const Data = [
         userName: '@dana',
         image:
           'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      },
-      {
-        id: 4,
-        name: 'Mayke Sehurs',
-        userName: '@mayke',
-        image:
-          'https://media.istockphoto.com/photos/smiling-man-outdoors-in-the-city-picture-id1179420343?b=1&k=20&m=1179420343&s=612x612&w=0&h=c9Z3DyUg-YvgOQnL_ykTIgVTWXjF-GNo4FUQ7i5fyyk=',
-      },
-      {
-        id: 5,
-        name: 'Anatoly Shcherbatykh',
-        userName: '@anatoly',
-        image:
-          'https://image.shutterstock.com/image-photo/portrait-mature-businessman-wearing-glasses-260nw-738242395.jpg',
-      },
-      {
-        id: 6,
-        name: 'Otmar Dolezal',
-        userName: '@otmar',
-        image:
-          'https://img.freepik.com/free-photo/no-problem-concept-bearded-man-makes-okay-gesture-has-everything-control-all-fine-gesture-wears-spectacles-jumper-poses-against-pink-wall-says-i-got-this-guarantees-something_273609-42817.jpg?w=2000',
-      },
-      {
-        id: 7,
-        name: 'Siri Jakobsson',
-        userName: '@mayke',
-        image:
-          'https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?w=2000',
-      },
-      {
-        id: 8,
-        name: 'Bansilal Brata ',
-        userName: '@brata',
-        image:
-          'https://image.shutterstock.com/image-photo/young-handsome-man-beard-wearing-260nw-1768126784.jpg',
       },
     ],
   },
@@ -269,7 +233,7 @@ const styles = StyleSheet.create({
     width: ms(40),
     borderRadius: 100,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: theme.light.colors.info,
   },
   nameContainer: {
     paddingLeft: ms(10),
@@ -277,6 +241,6 @@ const styles = StyleSheet.create({
   nameTxt: {
     fontFamily: FontFamily.Recoleta_bold,
     fontSize: ms(15, 0.3),
-    color: 'black',
+    color: theme.light.colors.black,
   },
 });

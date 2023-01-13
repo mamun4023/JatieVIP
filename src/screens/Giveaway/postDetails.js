@@ -14,13 +14,13 @@ import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import { ms, vs } from 'react-native-size-matters';
 import { strings } from '@/localization';
-import { NAVIGATION } from '@/constants';
 import { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function PostDetails({ navigation }) {
   const [active, setActive] = useState(true);
   return (
-    <View style={styles.contianer}>
+    <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
         <Icon
           icon={faArrowLeft}
@@ -41,7 +41,7 @@ export default function PostDetails({ navigation }) {
               </View>
               <View>
                 <Text style={styles.timeLable}>
-                  {strings.giveaway.expires}{' '}
+                  {strings.giveaway.expires}
                   <Text style={[styles.EndTimeTxt]}> {item.EndsIn}</Text>
                 </Text>
               </View>
@@ -90,7 +90,7 @@ export default function PostDetails({ navigation }) {
                         title={strings.giveaway.joinThisGiveaway}
                         style={styles.outOfUS}
                         textStyle={{
-                          color: theme.light.colors.userBackgroundColor,
+                          color: theme.light.colors.background,
                         }}
                       />
                     </TouchableOpacity>
@@ -104,7 +104,7 @@ export default function PostDetails({ navigation }) {
           </View>
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -262,9 +262,9 @@ const styles = StyleSheet.create({
   },
   outOfUS: {
     width: '100%',
-    backgroundColor: theme.light.colors.inactiveTabIcon,
+    backgroundColor: theme.light.colors.primaryBg,
     borderWidth: 2,
-    borderColor: theme.light.colors.inactiveTabIcon,
-    elevation: 2,
+    borderColor: theme.light.colors.primaryBg,
+    // elevation: 2,
   },
 });
