@@ -83,7 +83,7 @@ export function Message({navigation}) {
             keyExtractor = {item => item.id}
             renderItem = {({item})=>(
               <TouchableOpacity 
-                onPress={()=> navigation.navigate(NAVIGATION.chat)}
+                onPress={()=> navigation.navigate(NAVIGATION.chat, item.id)}
                 onLongPress = {()=> setOpenCrud(true)}
                 style = {styles.messageCard} >
                   <View style = {styles.messageHeader}>
