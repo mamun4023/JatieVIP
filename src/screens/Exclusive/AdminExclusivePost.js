@@ -50,7 +50,7 @@ export default function AdminExclusivePost({ navigation }) {
 
   const OpenGallery = () => {
     {
-      isImage == 'image'
+      isImage == strings.exclusive.image
         ? ImageCropPicker.openPicker({
             width: 300,
             height: 400,
@@ -64,7 +64,6 @@ export default function AdminExclusivePost({ navigation }) {
                   image: item.path,
                 });
                 setModalVisible(!isModalVisible);
-                console.log('opengallery multiple');
               });
             })
             .catch(e => {
@@ -73,7 +72,7 @@ export default function AdminExclusivePost({ navigation }) {
         : ImageCropPicker.openPicker({
             width: 300,
             height: 400,
-            mediaType: 'video',
+            mediaType: strings.exclusive.video,
             multiple: true,
           })
             .then(video => {
@@ -83,7 +82,6 @@ export default function AdminExclusivePost({ navigation }) {
                 image: video.path,
               });
               setModalVisible(!isModalVisible);
-              console.log('opengallery multiple video');
             })
             .catch(e => {
               console.log('Error: ' + e);
@@ -93,7 +91,7 @@ export default function AdminExclusivePost({ navigation }) {
 
   const OpenCamera = () => {
     {
-      isImage == 'image'
+      isImage == strings.exclusive.image
         ? ImageCropPicker.openCamera({
             width: 300,
             height: 400,
@@ -106,7 +104,6 @@ export default function AdminExclusivePost({ navigation }) {
                 image: image.path,
               });
               setModalVisible(!isModalVisible);
-              console.log('openCamera single');
             })
             .catch(e => {
               console.log('Error: ' + e);
@@ -115,7 +112,7 @@ export default function AdminExclusivePost({ navigation }) {
             width: 300,
             height: 400,
             cropping: false,
-            mediaType: 'video',
+            mediaType: strings.exclusive.video,
           })
             .then(image => {
               // setImage(image.path);
@@ -124,7 +121,6 @@ export default function AdminExclusivePost({ navigation }) {
                 image: image.path,
               });
               setModalVisible(!isModalVisible);
-              console.log('openCamera single video ');
             })
             .catch(e => {
               console.log('Error: ' + e);
@@ -204,13 +200,13 @@ export default function AdminExclusivePost({ navigation }) {
           <Icon
             icon={faImage}
             size={ms(20)}
-            onPress={() => toggleModal() & setIsImage('image')}
+            onPress={() => toggleModal() & setIsImage(strings.exclusive.image)}
             style={styles.icon}
           />
           <Icon
             icon={faVideoCamera}
             size={ms(20)}
-            onPress={() => toggleModal() & setIsImage('video')}
+            onPress={() => toggleModal() & setIsImage(strings.exclusive.video)}
             style={styles.icon}
           />
         </View>

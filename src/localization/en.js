@@ -225,6 +225,8 @@ export const en = {
     vipOnly: 'VIP Only',
     remove: 'Remove',
     edit: 'Edit',
+    image: 'image',
+    video: 'video',
   },
   giveaway: {
     header: 'Giveaway',
