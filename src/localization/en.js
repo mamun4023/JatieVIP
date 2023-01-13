@@ -279,18 +279,6 @@ export const en = {
     report: 'report',
     blocked: 'blocked',
   },
-  // operations: {
-  //   follow: 'Follow',
-  //   unFollow: 'Unfollow',
-  //   sendPrivateMessage: 'Send a Private Message',
-  //   report: 'Report',
-  //   remove: 'Remove',
-  //   edit: 'Edit',
-  //   ban: 'Ban',
-  //   unBan: 'Unban',
-  //   block: 'Block',
-  //   unBlock: 'Unblock',
-  // },
   message: {
     message: 'Message',
     newMessage: '+ New Message',

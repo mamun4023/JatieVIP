@@ -112,19 +112,18 @@ export function Message({navigation}) {
 
                   <Text style = {styles.messageTxt}> {item.textMessage}</Text>        
               </TouchableOpacity>
-
             )}
-          
           />
       </View>
       
       <Button 
         title= {strings.message.newMessage}
+        onPress = {()=> navigation.navigate(NAVIGATION.searchUser)}
         style={{
           width : '35%',
           position : 'absolute',
-          bottom : 10,
-          right : 10
+          bottom : ms(10),
+          right : ms(10)
         }}
       />
    

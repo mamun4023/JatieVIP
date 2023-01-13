@@ -14,6 +14,7 @@ export const NAVIGATION = {
   // message
   message: 'Message',
   chat : 'Chat',
+  searchUser : 'SearchUser',
   
   // profle 
   profile: 'Profile',
