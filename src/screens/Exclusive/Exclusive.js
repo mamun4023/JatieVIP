@@ -165,13 +165,13 @@ export function Exclusive({ navigation }) {
         {/* Admin */}
         <ModalDown open={open} setOpen={setOpen}>
           <ModalList
-            title={strings.exclusive.edit}
+            title={strings.operations.edit}
             icon={faPen}
             iconBg={theme.light.colors.infoBgLight}
             iconColor={theme.light.colors.info}
           />
           <ModalList
-            title={strings.exclusive.remove}
+            title={strings.operations.remove}
             icon={faTrash}
             iconBg={theme.light.colors.infoBgLight}
             iconColor={theme.light.colors.secondary}

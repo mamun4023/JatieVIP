@@ -75,6 +75,7 @@ export default function AdminExclusivePost({ navigation }) {
             height: 400,
             mediaType: strings.exclusive.video,
             multiple: true,
+            loadingLabelText: 'loading',
           })
             .then(video => {
               imageArray.push({
@@ -241,12 +242,12 @@ export default function AdminExclusivePost({ navigation }) {
             </View>
           </TouchableOpacity>
           <Button
-            title={strings.addYourProfilePicture.uploadFromCamera}
+            title={strings.operations.imageFromCamera}
             onPress={OpenCamera}
           />
           <View style={{ marginTop: vs(20) }}>
             <Button
-              title={strings.addYourProfilePicture.uploadFromGallery}
+              title={strings.operations.imageFromGallery}
               onPress={OpenGallery}
             />
           </View>
@@ -318,47 +319,6 @@ export const FileUpload = imageArray => {
           </View>
         </View>
       ) : null}
-
-      {/* {videoArray ? (
-        <View style={styles.BottomVideoContainer}>
-          {videoArray.map(item => {
-            if (item == null) {
-              return;
-            } else {
-              return (
-                <View style={styles.videoContainer} key={item.id}>
-                  <Image
-                    style={styles.thumbnail}
-                    source={{ uri: item.image }}
-                  />
-                  <View style={styles.minus}>
-                    <Text
-                      style={[styles.minusTxt]}
-                      onPress={() => {
-                        deleteFile(item.id);
-                      }}
-                    >
-                      {strings.giveaway.minus}
-                    </Text>
-                  </View>
-                  <View style={styles.videoPlayContainer}>
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      size={ms(30)}
-                      style={[styles.videoPlay]}
-                    />
-                    <FontAwesomeIcon
-                      icon={faVideoCamera}
-                      size={ms(15)}
-                      style={[styles.Play]}
-                    />
-                  </View>
-                </View>
-              );
-            }
-          })}
-        </View>
-      ) : null} */}
     </ScrollView>
   );
 };

@@ -35,10 +35,10 @@ export const styles = StyleSheet.create({
     height: ms(10),
     width: ms(10),
     backgroundColor: theme.light.colors.error,
-    borderRadius: 100,
-    left: ms(340),
-    top: ms(22),
     position: 'absolute',
+    borderRadius: 100,
+    left: ms(353),
+    top: ms(21),
   },
 
   feedContainer: {
