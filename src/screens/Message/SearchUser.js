@@ -67,7 +67,7 @@ export default function SearchUser({navigation}){
                     size = {ms(44)}
                     color = {theme.light.colors.primary}
                 />
-                <Text style = {[styles.searchTxt, {fontSize : ms(18), marginTop : ms(10)}]}> {strings.message.searchPlaceholder}</Text>
+                <Text style = {[styles.searchTxt, {fontSize : ms(18), marginTop : ms(10)}]}> {strings.message.emptyTxt}</Text>
             </View>}
             {searchListOpen && 
             <View style = {styles.searchList}> 

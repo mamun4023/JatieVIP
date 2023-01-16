@@ -54,14 +54,15 @@ export default function AdminExclusivePost({ navigation }) {
         ? ImageCropPicker.openPicker({
             width: 300,
             height: 400,
+            mediaType: strings.exclusive.image,
             multiple: true,
           })
             .then(images => {
               images.forEach(item => {
-                // setImage(image.path);
                 imageArray.push({
                   id: nextId++,
                   image: item.path,
+                  video: null,
                 });
                 setModalVisible(!isModalVisible);
               });
@@ -76,10 +77,10 @@ export default function AdminExclusivePost({ navigation }) {
             multiple: true,
           })
             .then(video => {
-              // setImage(image.path);
-              videoArray.push({
+              imageArray.push({
                 id: nextId++,
-                image: video.path,
+                image: null,
+                video: video.path,
               });
               setModalVisible(!isModalVisible);
             })
@@ -98,10 +99,10 @@ export default function AdminExclusivePost({ navigation }) {
             cropping: false,
           })
             .then(image => {
-              // setImage(image.path);
               imageArray.push({
                 id: nextId++,
                 image: image.path,
+                video: null,
               });
               setModalVisible(!isModalVisible);
             })
@@ -115,10 +116,10 @@ export default function AdminExclusivePost({ navigation }) {
             mediaType: strings.exclusive.video,
           })
             .then(image => {
-              // setImage(image.path);
-              videoArray.push({
+              imageArray.push({
                 id: nextId++,
-                image: image.path,
+                image: null,
+                video: image.path,
               });
               setModalVisible(!isModalVisible);
             })
@@ -193,7 +194,7 @@ export default function AdminExclusivePost({ navigation }) {
       </ScrollView>
 
       {/* {BttomContantLayout()} */}
-      {FileUpload(imageArray, videoArray)}
+      {FileUpload(imageArray)}
 
       <View style={styles.BottomFileContainer}>
         <View style={styles.iconContainer}>
@@ -255,39 +256,70 @@ export default function AdminExclusivePost({ navigation }) {
   );
 }
 
-export const FileUpload = (imageArray, videoArray) => {
+export const FileUpload = imageArray => {
   return (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       {imageArray ? (
         <View style={styles.BottomVideoContainer}>
-          {imageArray.map(item => {
-            if (item == null) {
-              return;
-            } else {
-              return (
-                <View style={styles.videoContainer} key={item.id}>
-                  <Image
-                    style={styles.thumbnail}
-                    source={{ uri: item.image }}
-                  />
-                  <View style={styles.minus}>
-                    <Text
-                      style={[styles.minusTxt]}
-                      onPress={() => {
-                        deleteFile(item.id);
-                      }}
-                    >
-                      {strings.giveaway.minus}
-                    </Text>
+          <View style={styles.videoContainer}>
+            {imageArray.map(item => {
+              if (item == null) {
+                return;
+              } else {
+                return item.image ? (
+                  <View style={styles.fileSpacing} key={item.id}>
+                    <Image
+                      style={styles.thumbnail}
+                      source={{ uri: item.image }}
+                    />
+                    <View style={styles.minus}>
+                      <Text
+                        style={[styles.minusTxt]}
+                        onPress={() => {
+                          deleteFile(item.id);
+                        }}
+                      >
+                        {strings.giveaway.minus}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-              );
-            }
-          })}
+                ) : (
+                  <View style={styles.fileSpacing} key={item.id}>
+                    <Image
+                      style={styles.thumbnail}
+                      source={{ uri: item.image }}
+                    />
+                    <View style={styles.minus}>
+                      <Text
+                        style={[styles.minusTxt]}
+                        onPress={() => {
+                          deleteFile(item.id);
+                        }}
+                      >
+                        {strings.giveaway.minus}
+                      </Text>
+                    </View>
+                    <View style={styles.videoPlayContainer}>
+                      <FontAwesomeIcon
+                        icon={faCircle}
+                        size={ms(30)}
+                        style={[styles.videoPlay]}
+                      />
+                      <FontAwesomeIcon
+                        icon={faVideoCamera}
+                        size={ms(15)}
+                        style={[styles.Play]}
+                      />
+                    </View>
+                  </View>
+                );
+              }
+            })}
+          </View>
         </View>
       ) : null}
 
-      {videoArray ? (
+      {/* {videoArray ? (
         <View style={styles.BottomVideoContainer}>
           {videoArray.map(item => {
             if (item == null) {
@@ -326,7 +358,7 @@ export const FileUpload = (imageArray, videoArray) => {
             }
           })}
         </View>
-      ) : null}
+      ) : null} */}
     </ScrollView>
   );
 };
@@ -486,12 +518,14 @@ const styles = StyleSheet.create({
 
   BottomVideoContainer: {
     width: '100%',
-    // width: ms(110),
     flexDirection: 'row',
     marginBottom: vs(20),
     paddingTop: ms(10),
-    borderTopWidth: 1,
-    borderColor: theme.light.colors.infoBgLight,
+    // borderTopWidth: 1,
+    // borderColor: theme.light.colors.infoBgLight,
+  },
+  fileSpacing: {
+    padding: 10,
   },
   videoContainer: {
     flex: 1,
@@ -537,7 +571,6 @@ const styles = StyleSheet.create({
   },
   ButtonContainer: {
     margin: ms(10),
-    borderWidth: 0,
     borderRadius: 10,
     padding: ms(8),
     alignItems: 'center',
@@ -569,8 +602,8 @@ const styles = StyleSheet.create({
 
   videoPlayContainer: {
     position: 'absolute',
-    marginLeft: '35%',
-    marginTop: '20%',
+    marginLeft: '45%',
+    marginTop: '45%',
   },
   videoPlay: {
     color: theme.light.colors.primary,
