@@ -227,6 +227,16 @@ export const en = {
     edit: 'Edit',
     image: 'image',
     video: 'video',
+    //recent modal
+    recent: 'Recent',
+    popularToday: 'Popular Today',
+    popularThisWeek: 'Popular This Week',
+    popularThisMonth: 'Popular This Month',
+
+    //search
+    search: 'Search',
+    searchUser: 'Search users...',
+    searchForUsers: 'Search for users...',
   },
   giveaway: {
     header: 'Giveaway',

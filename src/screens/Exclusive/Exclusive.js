@@ -1,6 +1,14 @@
 import { useTheme } from '@react-navigation/native';
 import React from 'react';
-import { Image, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import {
+  Image,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Modal,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { styles } from '@/screens/Exclusive/Exclusive.styles';
 import { TextStyles, theme } from '@/theme';
 import {
@@ -12,6 +20,7 @@ import {
   ModalList,
 } from '@/components';
 import {
+  faCheck,
   faChevronDown,
   faCircle,
   faEllipsis,
@@ -34,6 +43,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export function Exclusive({ navigation }) {
   const [open, setOpen] = useState(false);
   const userType = useSelector(state => state.userType);
+  const [recentFilterOpen, setRecentFilterOpen] = useState(false);
+  const [sortBy, setSortBy] = useState(strings.sortBy.recent);
+
+  const CheckIcon = (
+    <FontAwesomeIcon icon={faCheck} color={theme.light.colors.primary} />
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -47,24 +62,126 @@ export function Exclusive({ navigation }) {
               {' '}
               {strings.exclusive.header}
             </Text>
-            <View style={styles.recentContiner}>
-              <Text style={styles.recent}>{strings.exclusive.recent}</Text>
+
+            <TouchableOpacity
+              onPress={() => setRecentFilterOpen(true)}
+              style={styles.recentContiner}
+            >
+              <Text style={styles.recent}>{sortBy}</Text>
               <FontAwesomeIcon
                 icon={faChevronDown}
                 size={ms(14)}
                 color={theme.light.colors.secondary}
                 style={styles.recentIcon}
               />
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
 
         <View style={styles.iconContiner}>
-          <Icon icon={faSearch} size={ms(20)} style={styles.icon} />
-          <Icon icon={faBell} size={ms(20)} style={styles.icon} />
+          <Icon
+            icon={faSearch}
+            size={ms(20)}
+            style={styles.icon}
+            onPress={() => navigation.navigate(NAVIGATION.search)}
+          />
+          <Icon
+            icon={faBell}
+            size={ms(20)}
+            style={styles.icon}
+            onPress={() => navigation.navigate(NAVIGATION.notification)}
+          />
         </View>
       </View>
       <HorizontalLine />
+
+      {/* recent */}
+
+      {recentFilterOpen && (
+        <Modal
+          visible={recentFilterOpen}
+          transparent={true}
+          animationType="fade"
+        >
+          <TouchableWithoutFeedback onPress={() => setRecentFilterOpen(false)}>
+            <View style={styles.sortModalContainer}>
+              <View style={styles.sortByContainer}>
+                <View>
+                  <Text style={styles.sortByTxt}>
+                    {' '}
+                    {strings.home.sortByFeed}{' '}
+                  </Text>
+                </View>
+                <TouchableOpacity
+                  style={styles.recentList}
+                  onPress={() =>
+                    setSortBy(strings.sortBy.recent) &
+                    setRecentFilterOpen(false)
+                  }
+                >
+                  {sortBy == `${strings.sortBy.recent}` ? (
+                    CheckIcon
+                  ) : (
+                    <Text> {'   '}</Text>
+                  )}
+                  <Text style={styles.recentListTxt}>
+                    {' '}
+                    {strings.exclusive.recent}{' '}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.recentList}
+                  onPress={() =>
+                    setSortBy(strings.sortBy.today) & setRecentFilterOpen(false)
+                  }
+                >
+                  {sortBy == `${strings.sortBy.today}` ? (
+                    CheckIcon
+                  ) : (
+                    <Text> {'   '}</Text>
+                  )}
+                  <Text style={styles.recentListTxt}>
+                    {' '}
+                    {strings.exclusive.popularToday}{' '}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.recentList}
+                  onPress={() =>
+                    setSortBy(strings.sortBy.week) & setRecentFilterOpen(false)
+                  }
+                >
+                  {sortBy == `${strings.sortBy.week}` ? (
+                    CheckIcon
+                  ) : (
+                    <Text> {'   '}</Text>
+                  )}
+                  <Text style={styles.recentListTxt}>
+                    {' '}
+                    {strings.exclusive.popularThisWeek}{' '}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.recentList}
+                  onPress={() =>
+                    setSortBy(strings.sortBy.month) & setRecentFilterOpen(false)
+                  }
+                >
+                  {sortBy == `${strings.sortBy.month}` ? (
+                    CheckIcon
+                  ) : (
+                    <Text> {'   '}</Text>
+                  )}
+                  <Text style={styles.recentListTxt}>
+                    {' '}
+                    {strings.exclusive.popularThisMonth}{' '}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
+      )}
 
       <View style={styles.feedContainer}>
         <FlatList

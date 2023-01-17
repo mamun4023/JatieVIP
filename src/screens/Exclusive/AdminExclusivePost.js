@@ -7,7 +7,7 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
-  RefreshControl,
+  ActivityIndicator,
 } from 'react-native';
 import { Button, HorizontalLine, Icon } from '@/components';
 import {
@@ -37,6 +37,7 @@ export default function AdminExclusivePost({ navigation }) {
   const [isModalVisible, setModalVisible] = useState(false);
   const [isImage, setIsImage] = useState();
   const [cropImageModal, setCropImageModal] = useState();
+  const [loading, setLoading] = useState(true);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -301,6 +302,13 @@ export const FileUpload = imageArray => {
                       </Text>
                     </View>
                     <View style={styles.videoPlayContainer}>
+                      {' '}
+                      <ActivityIndicator
+                        animating={animating}
+                        color="#bc2b78"
+                        size="large"
+                        style={styles.activityIndicator}
+                      />
                       <FontAwesomeIcon
                         icon={faCircle}
                         size={ms(30)}
@@ -594,5 +602,14 @@ const styles = StyleSheet.create({
   closeIcon: {
     height: vs(20),
     width: ms(20),
+  },
+
+  // loading
+
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 80,
   },
 });

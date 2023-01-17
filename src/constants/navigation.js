@@ -6,17 +6,17 @@ export const NAVIGATION = {
 
   // home navigation strings
   home: 'Home',
-  comments : 'Comments',
-  post : "Post",
-  postOptions : "PostOptions",
-  scheduledPost : 'ScheduledPost',
+  comments: 'Comments',
+  post: 'Post',
+  postOptions: 'PostOptions',
+  scheduledPost: 'ScheduledPost',
 
   // message
   message: 'Message',
-  chat : 'Chat',
-  searchUser : 'SearchUser',
-  
-  // profle 
+  chat: 'Chat',
+  searchUser: 'SearchUser',
+
+  // profle
   profile: 'Profile',
   followers: 'Followers',
   following: 'Following',
@@ -52,6 +52,8 @@ export const NAVIGATION = {
   exclusiveThumbnail: 'ExclusiveThumbnail', //onPress thumbnail navigator
   adminExclusivePost: 'AdminExclusivePost', //onPress post on exclusive content
   adminPostOption: 'AdminPostOption', //onPress admin post option
+  notification: 'Notification',
+  search: 'Search',
 
   // Giveaway
   giveawayPostDetails: 'GiveawayPostDetails', //onPress post details of giveaway

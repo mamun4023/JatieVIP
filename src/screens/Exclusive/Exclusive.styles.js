@@ -141,4 +141,32 @@ export const styles = StyleSheet.create({
   lock: {
     color: theme.light.colors.background,
   },
+
+  // recent model
+
+  sortModalContainer: {
+    flex: 1,
+    backgroundColor: theme.light.colors.primaryBg,
+  },
+  sortByContainer: {
+    backgroundColor: theme.light.colors.white,
+    padding: ms(20),
+    marginTop: vs(60),
+    elevation: 8,
+  },
+  sortByTxt: {
+    fontFamily: FontFamily.Recoleta_semibold,
+    fontSize: ms(16, 0.3),
+    color: theme.light.colors.secondary,
+  },
+  recentList: {
+    padding: ms(5),
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  recentListTxt: {
+    marginLeft: ms(10),
+    fontFamily: FontFamily.Recoleta_semibold,
+    color: theme.light.colors.black,
+  },
 });
