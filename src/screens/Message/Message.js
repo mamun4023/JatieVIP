@@ -8,10 +8,8 @@ import {
   SafeAreaView,
   FlatList,
 } from 'react-native';
-import { useTheme } from '@react-navigation/native';
-import { ShadowStyles, TextStyles, theme } from '@/theme';
+import { TextStyles, theme } from '@/theme';
 import { strings } from '@/localization';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faBellSlash,
   faBoxArchive,
@@ -80,6 +78,7 @@ export function Message({ navigation }) {
         <View style={styles.right}>
           <Icon icon={faSearch} size={ms(22)} />
           <Icon icon={faBell} size={ms(22)} style={{ marginLeft: ms(10) }} />
+          <View style={styles.bellAlert} />
         </View>
       </View>
       <View style={{ marginTop: ms(10) }} />
@@ -175,14 +174,14 @@ export function Message({ navigation }) {
             iconBg={theme.light.colors.infoBgLight}
           />
           <ModalList
-            title={strings.message.snoozeNotification}
+            title={strings.message.delete}
             icon={faTrash}
             iconColor={theme.light.colors.error}
             iconBg={theme.light.colors.infoBgLight}
           />
           <HorizontalLine color={theme.light.colors.infoBgLight} />
           <ModalList
-            title={strings.operations.report}
+            title={strings.message.reportThisMEssage}
             icon={faFlag}
             iconColor={theme.light.colors.secondary}
             iconBg={theme.light.colors.infoBgLight}
@@ -303,6 +302,15 @@ export const styles = StyleSheet.create({
     top: ms(50),
     left: ms(60),
     color: theme.light.colors.black,
+  },
+  bellAlert: {
+    height: ms(10),
+    width: ms(10),
+    backgroundColor: theme.light.colors.error,
+    position: 'absolute',
+    borderRadius: 100,
+    left: ms(52),
+    top: ms(24),
   },
 });
 
