@@ -4,12 +4,14 @@ import { theme } from '@/theme';
 import PropsType from 'prop-types';
 import { ms } from 'react-native-size-matters';
 
-export const HorizontalLine = ({ color }) => {
+export const HorizontalLine = ({ color, paddingTop, paddingBottom }) => {
   return (
     <View
       style={{
         borderBottomColor: color ? color : theme.light.colors.primary,
         borderBottomWidth: ms(1), //2.5
+        marginTop: paddingTop ? ms(paddingTop) : 0,
+        marginBottom: paddingBottom ? ms(paddingBottom) : 0,
       }}
     />
   );

@@ -10,6 +10,8 @@ export const NAVIGATION = {
   post: 'Post',
   postOptions: 'PostOptions',
   scheduledPost: 'ScheduledPost',
+  notification: 'Notification',
+  search: 'Search',
 
   // message
   message: 'Message',
