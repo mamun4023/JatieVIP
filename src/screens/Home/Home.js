@@ -502,7 +502,10 @@ export function Home({ navigation }) {
               style={styles.txtInput}
             />
           </View>
-
+          <HorizontalLine
+            color={theme.light.colors.infoBgLight}
+            paddingTop={15}
+          />
           <View
             style={{
               flexDirection: 'row',
