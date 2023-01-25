@@ -46,7 +46,6 @@ let nextId = 0;
 export default function Chat({ navigation, route }) {
   // const params = route.params;
   const [openCrud, setOpenCrud] = useState(false);
-  const [imageItem, setImageItem] = useState(200);
   const [imageArray, setImageArray] = useState([]);
   const [isImageList, setImageList] = useState(false);
   const [showImageView, setShowImageView] = useState(false);
@@ -57,9 +56,6 @@ export default function Chat({ navigation, route }) {
   deleteFile = id => {
     setImageArray(imageArray.filter(a => a.id !== id));
     imageArray.length == 1 ? setImageList(false) : setImageList(true);
-  };
-  const imageCountSize = height => {
-    setImageItem(height);
   };
   const UploadImages = () => {
     ImageCropPicker.openPicker({
@@ -113,7 +109,7 @@ export default function Chat({ navigation, route }) {
         <View>
           <Icon
             icon={faEllipsis}
-            size={ms(20)}
+            size={ms(16)}
             style={{
               marginTop: vs(18),
             }}
@@ -127,6 +123,7 @@ export default function Chat({ navigation, route }) {
           data={Data.messaging.conversation}
           keyExtractor={item => item.messageId}
           contentContainerStyle={{ paddingBottom: ms(50) }}
+          initialScrollIndex={Data.messaging.conversation.length - 1}
           renderItem={({ item }) => (
             <View style={{ margin: ms(10) }}>
               {/* only Text sending */}
@@ -153,92 +150,113 @@ export default function Chat({ navigation, route }) {
               {/*  only images sending */}
 
               {item.sendingImages.length > 0 ? (
-                <View style={styles.messageContainer}>
-                  {item.sendingImages.length == 1
-                    ? imageCountSize(200)
-                    : item.sendingImages.length == 2
-                    ? imageCountSize(140)
-                    : item.sendingImages.length >= 3
-                    ? imageCountSize(100)
-                    : null}
-
+                <View>
                   {item.sendingImages.length <= 3 ? (
-                    <View style={styles.imageContainer}>
-                      {item?.sendingImages?.map(data => (
-                        <Image
-                          source={{
-                            uri: data.url,
-                          }}
-                          key={data.id}
-                          style={[
-                            styles.image,
-                            {
-                              height: ms(imageItem),
-                              // height: ms(100),
-                            },
-                          ]}
-                        />
-                      ))}
-                    </View>
-                  ) : item.sendingImages.length > 3 ? (
-                    <View style={styles.imageContainer}>
-                      {item?.sendingImages?.map(data =>
-                        data.id <= 2 ? (
+                    <TouchableOpacity
+                      onPress={() => {
+                        setShowImageView(true),
+                          setFeedImages(item.sendingImages);
+                      }}
+                    >
+                      <View style={styles.imageContainer}>
+                        {item?.sendingImages?.map(data => (
                           <Image
                             source={{
                               uri: data.url,
                             }}
                             key={data.id}
-                            style={[
-                              styles.image,
-                              {
-                                height: ms(100),
-                              },
-                            ]}
+                            style={
+                              item.sendingImages.length == 1
+                                ? [
+                                    styles.image,
+                                    {
+                                      height: ms(200),
+                                    },
+                                  ]
+                                : item.sendingImages.length == 2
+                                ? [
+                                    styles.image,
+                                    {
+                                      height: ms(140),
+                                    },
+                                  ]
+                                : [
+                                    styles.image,
+                                    {
+                                      height: ms(100),
+                                    },
+                                  ]
+                            }
                           />
-                        ) : data.id == 3 ? (
-                          <ImageBackground
-                            source={{
-                              uri: data.url,
-                            }}
-                            key={data.id}
-                            style={[
-                              styles.image,
-                              {
-                                height: ms(100),
-                                backgroundColor: theme.light.colors.hyperlink,
-                                opacity: 0.7,
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                overflow: 'hidden',
-                                width: '100%',
-                              },
-                            ]}
-                          >
-                            <TouchableOpacity
-                              onPress={() => {
-                                setShowImageView(true),
-                                  setFeedImages(item.sendingImages);
+                        ))}
+                      </View>
+                    </TouchableOpacity>
+                  ) : item.sendingImages.length > 3 ? (
+                    <TouchableOpacity
+                      onPress={() => {
+                        setShowImageView(true),
+                          setFeedImages(item.sendingImages);
+                      }}
+                    >
+                      <View style={styles.imageContainer}>
+                        {item?.sendingImages?.map(data =>
+                          data.id <= 2 ? (
+                            <Image
+                              source={{
+                                uri: data.url,
                               }}
-                            >
-                              <Text
-                                style={{
-                                  color: theme.light.colors.white,
-                                  fontFamily:
-                                    FontFamily.BrandonGrotesque_regular,
-                                  fontSize: ms(24, 0.3),
+                              key={data.id}
+                              style={[
+                                styles.image,
+                                {
+                                  height: ms(100),
+                                },
+                              ]}
+                            />
+                          ) : data.id == 3 ? (
+                            <ImageBackground
+                              source={{
+                                uri: data.url,
+                              }}
+                              key={data.id}
+                              style={[
+                                styles.image,
+                                {
+                                  height: ms(100),
+                                  backgroundColor: theme.light.colors.hyperlink,
+                                  opacity: 0.7,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  overflow: 'hidden',
                                   width: '100%',
-                                  padding: 35,
+                                },
+                              ]}
+                            >
+                              <TouchableOpacity
+                                onPress={() => {
+                                  setShowImageView(true),
+                                    setFeedImages(item.sendingImages);
                                 }}
                               >
-                                {strings.message.plus}
-                                {item.sendingImages.length - 2}
-                              </Text>
-                            </TouchableOpacity>
-                          </ImageBackground>
-                        ) : null
-                      )}
-                    </View>
+                                <Text
+                                  style={{
+                                    color: theme.light.colors.white,
+                                    fontFamily:
+                                      FontFamily.BrandonGrotesque_regular,
+                                    fontSize: ms(24, 0.3),
+                                    width: '100%',
+                                    padding: 35,
+                                  }}
+                                >
+                                  {strings.message.plus}
+                                  {item.sendingImages.length - 2}
+                                </Text>
+                              </TouchableOpacity>
+                            </ImageBackground>
+                          ) : null
+                        )}
+                      </View>
+                    </TouchableOpacity>
                   ) : null}
                   <View>
                     <Image
@@ -440,6 +458,79 @@ const Data = {
       },
       {
         messageId: 5,
+        sendingTxt:
+          'Fernando Garibay. It is taken from her third extended play, The Fame Monster (2009)',
+        sendingImages: [],
+        replyingTxt: '',
+        replyImages: [],
+      },
+      {
+        messageId: 6,
+        sendingTxt: '',
+        sendingImages: [],
+        replyingTxt:
+          'La reine de Chypre (The Queen of Cyprus) is an 1841 grand opera in five acts composed.',
+        replyImages: [],
+      },
+      {
+        messageId: 7,
+        sendingTxt:
+          'Dance in the Dark" is a song written, produced and arranged by American singer Lady Gaga (pictured) and Fernando Garibay. It is taken from her third extended play, The Fame Monster (2009)—the reissue of her debut studio album, The Fame (2008).',
+        sendingImages: [],
+        replyingTxt: '',
+        replyImages: [],
+      },
+      {
+        messageId: 8,
+        sendingTxt: '',
+        sendingImages: [
+          {
+            id: 1,
+            url: 'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
+          },
+        ],
+        replyingTxt: '',
+        replyImages: [],
+      },
+      {
+        messageId: 9,
+        sendingTxt: '',
+        sendingImages: [],
+        replyingTxt: 'Send me the pictures...',
+        replyImages: [],
+      },
+      {
+        messageId: 10,
+        sendingTxt: '',
+        sendingImages: [
+          {
+            id: 1,
+            url: 'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
+          },
+          {
+            id: 2,
+            url: 'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
+          },
+        ],
+        replyingTxt: '',
+        replyImages: [],
+      },
+      {
+        messageId: 11,
+        sendingTxt: 'Done, Now what?',
+        sendingImages: [],
+        replyingTxt: '',
+        replyImages: [],
+      },
+      {
+        messageId: 12,
+        sendingTxt: '',
+        sendingImages: [],
+        replyingTxt: 'Send me more...!!',
+        replyImages: [],
+      },
+      {
+        messageId: 13,
         sendingTxt: '',
         sendingImages: [
           {
@@ -488,15 +579,17 @@ const styles = StyleSheet.create({
     marginRight: ms(9),
   },
   searchIcon: {
-    marginRight: ms(9),
+    marginRight: ms(12), //
   },
   userContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: ms(9),
+    paddingRight: ms(12),
   },
   userNameTxtContainer: {
     padding: ms(2),
+    paddingLeft: ms(5),
   },
   fullnameTxt: {
     fontFamily: FontFamily.Recoleta_bold,
@@ -538,7 +631,7 @@ const styles = StyleSheet.create({
   replyContainer: {
     backgroundColor: theme.light.colors.white,
     borderRadius: 10,
-    marginTop: vs(10),
+    // marginTop: vs(10),
     width: '90%',
     padding: ms(8),
     marginLeft: '10%',
@@ -584,7 +677,7 @@ const styles = StyleSheet.create({
     width: '85%',
     height: ms(200),
     borderRadius: 10,
-    marginTop: ms(10),
+    // marginTop: ms(10),
     marginRight: ms(10),
     // resizeMode: 'contain',
   },
