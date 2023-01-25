@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import { Button, HorizontalLine, Icon } from '@/components';
+import { AppSwitch, Button, HorizontalLine, Icon } from '@/components';
 import {
   faArrowLeft,
   faCircle,
@@ -27,18 +27,21 @@ import { useState } from 'react';
 import Modal from 'react-native-modal';
 import { close } from '@/assets';
 import ImageCropPicker from 'react-native-image-crop-picker';
+import { useSelector } from 'react-redux';
 
 let nextId = 0;
 
-export default function AdminExclusivePost({ navigation }) {
+export default function Post({ navigation }) {
+  const userType = useSelector(state => state.userType);
   const [imageArray, setImageArray] = useState([]);
   const [videoArray, setVideoArray] = useState([]);
   const [image, setImage] = useState();
   const [isModalVisible, setModalVisible] = useState(false);
   const [isImage, setIsImage] = useState();
   const [cropImageModal, setCropImageModal] = useState();
-  const [loading, setLoading] = useState(true);
   const [postTxt, setPostTxt] = useState('');
+  const [vipOnly, setVipOnly] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -141,103 +144,115 @@ export default function AdminExclusivePost({ navigation }) {
           style={[styles.headerIcon]}
         />
         <Text style={[styles.headerText, TextStyles.header]}>
-          {strings.giveaway.createGiveaway}
+          {strings.home.shareToFeed}
         </Text>
       </View>
       <HorizontalLine />
       <ScrollView>
         <View style={styles.postContainer}>
-          <View style={styles.title}>
-            <Text
-              style={[
-                TextStyles.text,
-                {
-                  fontFamily: FontFamily.BrandonGrotesque_bold,
-                  textAlign: 'justify',
-                  color: theme.light.colors.black,
-                },
-              ]}
-            >
-              {strings.exclusive.title}
-            </Text>
-          </View>
-          <View style={styles.TextBox}>
-            <TextInput
-              style={styles.InputTextBox}
-              multiline={true}
-              placeholder={strings.exclusive.titleHere}
-              onChangeText={val => setPostTxt(val)}
-            >
-              <Text
-                style={[
-                  TextStyles.text,
-                  {
-                    fontFamily: FontFamily.BrandonGrotesque_regular,
-                    textAlign: 'justify',
-                    color: theme.light.colors.black,
-                  },
-                ]}
-              >
-                {Data.title}
-              </Text>
-            </TextInput>
-          </View>
           <View style={styles.TextBoxDEsc}>
             <TextInput
+              placeholder={strings.home.whatOnYourMind}
               style={styles.InputTextBoxDEsc}
-              multiline={true}
-              placeholder={strings.exclusive.whatOnYourMind}
               onChangeText={val => setPostTxt(val)}
-            >
-              <Text
-                style={[
-                  TextStyles.text,
-                  {
-                    fontFamily: FontFamily.BrandonGrotesque_regular,
-                    textAlign: 'justify',
-                    color: theme.light.colors.black,
-                  },
-                ]}
-              >
-                {Data.desc}
-              </Text>
-            </TextInput>
+              editable
+              multiline
+              numberOfLines={6}
+            />
           </View>
         </View>
       </ScrollView>
 
-      {/* {BttomContantLayout()} */}
-      {FileUpload(imageArray)}
+      <View>
+        {imageArray.length ? (
+          <HorizontalLine color={theme.light.colors.infoBgLight} />
+        ) : null}
+        {FileUpload(imageArray)}
+        <View style={styles.BottomFileContainer}>
+          <View style={styles.iconContainer}>
+            <Icon
+              icon={faImage}
+              size={ms(20)}
+              onPress={() =>
+                toggleModal() & setIsImage(strings.exclusive.image)
+              }
+              style={styles.icon}
+            />
 
-      <View style={styles.BottomFileContainer}>
-        <View style={styles.iconContainer}>
-          <Icon
-            icon={faImage}
-            size={ms(20)}
-            onPress={() => toggleModal() & setIsImage(strings.exclusive.image)}
-            style={styles.icon}
-          />
-          <Icon
-            icon={faVideoCamera}
-            size={ms(20)}
-            onPress={() => toggleModal() & setIsImage(strings.exclusive.video)}
-            style={styles.icon}
-          />
+            {/* show only for VIP user */}
+            {userType.user == strings.userType.vip && (
+              <>
+                <View style={styles.verticalBar} />
+                <View style={styles.vipSwitch}>
+                  <Text style={styles.onlyTxt}>
+                    {' '}
+                    {strings.home.shareToVipOnly}{' '}
+                  </Text>
+                  <AppSwitch
+                    value={vipOnly}
+                    onChange={() => setVipOnly(prev => !prev)}
+                  />
+                </View>
+              </>
+            )}
+
+            {/* show only for admin */}
+            {/* {userType.user == strings.userType.admin && (
+              <>
+                <View style={styles.verticalBar} />
+                <Icon
+                  icon={faVideoCamera}
+                  size={ms(20)}
+                  onPress={() =>
+                    toggleModal() & setIsImage(strings.exclusive.video)
+                  }
+                  style={styles.icon}
+                />
+              </>
+            )} */}
+          </View>
+
+          {/* button */}
+
+          <TouchableOpacity>
+            {/* show only for Free and vip user */}
+            {userType.user == strings.userType.vip && (
+              <Button
+                title={strings.home.post}
+                style={{
+                  opacity: postTxt.length ? 1 : 0.4,
+                  width: ms(100),
+                  margin: ms(10),
+                }}
+                disabled={postTxt.length == 0 ? false : true}
+              />
+            )}
+            {userType.user == strings.userType.free && (
+              <Button
+                title={strings.home.post}
+                style={{
+                  opacity: postTxt.length ? 1 : 0.4,
+                  width: ms(100),
+                  margin: ms(10),
+                }}
+                disabled={postTxt.length ? false : true}
+              />
+            )}
+            {/* show only for Admin */}
+            {userType.user == strings.userType.admin && (
+              <Button
+                title={strings.home.next}
+                onPress={() => navigation.navigate(NAVIGATION.postOptions)}
+                style={{
+                  opacity: postTxt.length ? 1 : 0.4,
+                  width: ms(100),
+                  margin: ms(10),
+                }}
+                disabled={postTxt.length ? false : true}
+              />
+            )}
+          </TouchableOpacity>
         </View>
-
-        {/* button */}
-
-        <Button
-          title={strings.exclusive.next}
-          onPress={() => navigation.navigate(NAVIGATION.adminGiveawayOption)}
-          style={{
-            opacity: postTxt.length ? 1 : 0.4,
-            width: ms(100),
-            margin: ms(10),
-          }}
-          disabled={postTxt.length ? false : true}
-        />
-        {/* </TouchableOpacity> */}
       </View>
 
       {/* Model */}
@@ -337,109 +352,6 @@ export const FileUpload = imageArray => {
     </ScrollView>
   );
 };
-export const BttomContantLayout = () => {
-  return (
-    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-      <View style={styles.BottomVideoContainer}>
-        {File.video.map(item => {
-          if (item == null) {
-            return;
-          } else {
-            return (
-              <View style={styles.videoContainer} key={item.vID}>
-                <Image
-                  style={styles.thumbnail}
-                  source={{ uri: item.videoLink }}
-                />
-                <View style={styles.minus}>
-                  <Text style={[styles.minusTxt]}>
-                    {strings.giveaway.minus}
-                  </Text>
-                </View>
-                <View style={styles.videoPlayContainer}>
-                  <FontAwesomeIcon
-                    icon={faCircle}
-                    size={ms(30)}
-                    style={[styles.videoPlay]}
-                  />
-                  <FontAwesomeIcon
-                    icon={faVideoCamera}
-                    size={ms(15)}
-                    style={[styles.Play]}
-                  />
-                </View>
-              </View>
-            );
-          }
-        })}
-
-        {File.photo.map(item => {
-          if (item == null) {
-            return;
-          } else {
-            return (
-              <View style={styles.videoContainer} key={item.pID}>
-                <Image
-                  style={styles.thumbnail}
-                  source={{ uri: item.photoLink }}
-                />
-                <View style={styles.minus}>
-                  <Text style={[styles.minusTxt]}>
-                    {strings.giveaway.minus}
-                  </Text>
-                </View>
-              </View>
-            );
-          }
-        })}
-      </View>
-    </ScrollView>
-  );
-};
-
-const File = {
-  id: 1,
-  video: [
-    {
-      vID: 1,
-      videoLink:
-        'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
-    },
-    {
-      vID: 2,
-      videoLink:
-        'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
-    },
-  ],
-  photo: [
-    {
-      pID: 1,
-      photoLink:
-        'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
-    },
-    {
-      pID: 2,
-      photoLink:
-        'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
-    },
-    {
-      pID: 3,
-      photoLink:
-        'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
-    },
-    {
-      pID: 4,
-      photoLink:
-        'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
-    },
-  ],
-};
-
-const Data = {
-  id: 1,
-  title: 'Summer 2023 Giveaway',
-  desc: 'All of them were independently selected bn our editors. We hope you ❤️ love the products we recommend! All of them were independently selected by our editors. Some may have sent as samples, but all options and reviews are our own. Just so you know. ✊',
-};
 
 const styles = StyleSheet.create({
   contianer: {
@@ -459,30 +371,12 @@ const styles = StyleSheet.create({
   postContainer: {
     flex: 1,
   },
-  title: {
-    padding: ms(10),
-  },
-  InputTextBox: {
-    paddingLeft: ms(10),
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: theme.light.colors.infoBgLight,
-    backgroundColor: theme.light.colors.inputFiled,
-  },
-  TextBox: {
-    marginLeft: ms(10),
-    marginRight: vs(10),
-    marginBottom: vs(10),
-  },
   TextBoxDEsc: {
     width: '100%',
-    height: vs(300),
+    height: vs(320),
     padding: ms(8),
-    borderWidth: 1,
-    borderColor: theme.light.colors.infoBgLight,
-  },
-  TextField: {
-    backgroundColor: theme.light.colors.white,
+    // borderWidth: 1,
+    // borderColor: theme.light.colors.infoBgLight,
   },
   InputTextBoxDEsc: {
     height: '100%',
@@ -491,13 +385,18 @@ const styles = StyleSheet.create({
 
   //BottomLAyout of file contant
 
+  verticalBar: {
+    height: 40,
+    width: 1,
+    backgroundColor: theme.light.colors.infoBgLight,
+    marginRight: ms(5),
+    marginLeft: ms(5),
+  },
   BottomVideoContainer: {
     width: '100%',
     flexDirection: 'row',
-    marginBottom: vs(20),
+    marginBottom: vs(10),
     paddingTop: ms(10),
-    // borderTopWidth: 1,
-    // borderColor: theme.light.colors.infoBgLight,
   },
   fileSpacing: {
     padding: 10,
@@ -537,8 +436,6 @@ const styles = StyleSheet.create({
   iconContainer: {
     flexDirection: 'row',
     marginLeft: ms(10),
-    borderRightWidth: 1,
-    borderColor: theme.light.colors.infoBgLight,
   },
   icon: {
     margin: ms(10),
@@ -618,5 +515,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 80,
+  },
+
+  //vip only
+
+  vipSwitch: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  onlyTxt: {
+    fontFamily: FontFamily.Recoleta_medium,
+    fontSize: ms(12, 0.3),
+    marginRight: ms(10),
   },
 });

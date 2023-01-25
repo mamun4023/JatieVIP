@@ -9,12 +9,15 @@ export const styles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'space-between',
     margin: ms(10),
   },
   headerImageContainer: {
+    // flexDirection: 'row',
     flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
   headerImage: {
     width: ms(50),
@@ -23,7 +26,11 @@ export const styles = StyleSheet.create({
     borderRadius: 75,
   },
   iconContiner: {
+    // flexDirection: 'row',
     flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    // padding: ms(10),
   },
   bellIcon: {
     position: 'relative',
@@ -37,7 +44,7 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.error,
     position: 'absolute',
     borderRadius: 100,
-    left: ms(353),
+    left: ms(339),
     top: ms(21),
   },
 
@@ -62,6 +69,6 @@ export const styles = StyleSheet.create({
   },
   adminBtnTxt: {
     fontFamily: FontFamily.BrandonGrotesque_bold,
-    fontSize: ms(18, 0.3),
+    fontSize: ms(15, 0.3),
   },
 });

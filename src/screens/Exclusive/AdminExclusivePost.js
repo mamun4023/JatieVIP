@@ -38,6 +38,7 @@ export default function AdminExclusivePost({ navigation }) {
   const [isImage, setIsImage] = useState();
   const [cropImageModal, setCropImageModal] = useState();
   const [loading, setLoading] = useState(true);
+  const [postTxt, setPostTxt] = useState('');
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -161,7 +162,12 @@ export default function AdminExclusivePost({ navigation }) {
             </Text>
           </View>
           <View style={styles.TextBox}>
-            <TextInput style={styles.InputTextBox} multiline={true}>
+            <TextInput
+              style={styles.InputTextBox}
+              multiline={true}
+              placeholder={strings.exclusive.titleHere}
+              onChangeText={val => setPostTxt(val)}
+            >
               <Text
                 style={[
                   TextStyles.text,
@@ -177,7 +183,12 @@ export default function AdminExclusivePost({ navigation }) {
             </TextInput>
           </View>
           <View style={styles.TextBoxDEsc}>
-            <TextInput style={styles.InputTextBoxDEsc} multiline={true}>
+            <TextInput
+              style={styles.InputTextBoxDEsc}
+              multiline={true}
+              placeholder={strings.exclusive.whatOnYourMind}
+              onChangeText={val => setPostTxt(val)}
+            >
               <Text
                 style={[
                   TextStyles.text,
@@ -213,10 +224,13 @@ export default function AdminExclusivePost({ navigation }) {
             style={styles.icon}
           />
         </View>
-        <TouchableOpacity
+
+        {/* button */}
+
+        {/* <TouchableOpacity
           onPress={() => navigation.navigate(NAVIGATION.adminPostOption)}
-        >
-          <View style={styles.ButtonContainer}>
+        > */}
+        {/* <View style={styles.ButtonContainer}>
             <Text
               style={[
                 TextStyles.text,
@@ -229,8 +243,19 @@ export default function AdminExclusivePost({ navigation }) {
             >
               {strings.exclusive.nextButton}
             </Text>
-          </View>
-        </TouchableOpacity>
+          </View> */}
+
+        <Button
+          title={strings.exclusive.next}
+          onPress={() => navigation.navigate(NAVIGATION.adminPostOption)}
+          style={{
+            opacity: postTxt.length ? 1 : 0.4,
+            width: ms(100),
+            margin: ms(10),
+          }}
+          disabled={postTxt.length ? false : true}
+        />
+        {/* </TouchableOpacity> */}
       </View>
 
       {/* Model */}

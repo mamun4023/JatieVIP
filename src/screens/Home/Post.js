@@ -31,7 +31,7 @@ import { useSelector } from 'react-redux';
 
 let nextId = 0;
 
-export default function AdminExclusivePost({ navigation }) {
+export default function AdminPost({ navigation }) {
   const userType = useSelector(state => state.userType);
   const [imageArray, setImageArray] = useState([]);
   const [videoArray, setVideoArray] = useState([]);
@@ -353,12 +353,6 @@ export const FileUpload = imageArray => {
       ) : null}
     </ScrollView>
   );
-};
-
-const Data = {
-  id: 1,
-  title: 'Summer 2023 Giveaway',
-  desc: 'All of them were independently selected bn our editors. We hope you ❤️ love the products we recommend! All of them were independently selected by our editors. Some may have sent as samples, but all options and reviews are our own. Just so you know. ✊',
 };
 
 const styles = StyleSheet.create({

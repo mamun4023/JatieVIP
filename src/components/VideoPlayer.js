@@ -26,6 +26,7 @@ export const AppVideoPlayer = ({ url, poster }) => {
             // poster= "https://e7.pngegg.com/pngimages/244/695/png-clipart-play-icon-video-player-information-play-icon-miscellaneous-angle-thumbnail.png"
             paused={true}
             playIcon={<FontAwesomeIcon icon={faPlay} />}
+            showOnStart={false}
           />
         </Modal>
       )}
@@ -54,37 +55,8 @@ export const AppVideoPlayer = ({ url, poster }) => {
             },
           }}
           playIcon={true}
+          showOnStart={false}
         />
-        {/* <View>
-          {pause
-            ? (console.log(pause),
-              (
-                <View
-                  style={{
-                    position: 'relative',
-                    marginLeft: '43%',
-                    marginTop: '22%',
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faCircle}
-                    size={ms(50)}
-                    style={{ color: theme.light.colors.primary }}
-                  />
-                  <FontAwesomeIcon
-                    icon={faPlay}
-                    size={ms(15)}
-                    style={{
-                      position: 'absolute',
-                      color: theme.light.colors.background,
-                      marginLeft: ms(18),
-                      marginTop: ms(18),
-                    }}
-                  />
-                </View>
-              ))
-            : null}
-        </View> */}
       </View>
     </View>
   );

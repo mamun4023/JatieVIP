@@ -23,6 +23,7 @@ import { NAVIGATION } from '@/constants';
 import { strings } from '@/localization';
 import { ms } from 'react-native-size-matters';
 import { FontFamily } from '@/theme/Fonts';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Participants({ navigation }) {
   const [open, setOpen] = useState(false);
@@ -96,7 +97,11 @@ export default function Participants({ navigation }) {
           iconBg={theme.light.colors.successBgLight}
           onPress={() => Alert.alert(strings.giveaway.message)}
         />
-        <HorizontalLine color={theme.light.colors.infoBgLight} />
+        <HorizontalLine
+          color={theme.light.colors.infoBgLight}
+          paddingTop={15}
+          paddingBottom={8}
+        />
         <ModalList
           title={strings.giveaway.deletePost}
           icon={faTrash}

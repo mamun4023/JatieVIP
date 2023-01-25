@@ -7,11 +7,13 @@ import {
   Linking,
   ScrollView,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import {
   Button,
   Card,
   CardBody,
+  HorizontalLine,
   Icon,
   ModalDown,
   ModalList,
@@ -30,7 +32,6 @@ import { strings } from '@/localization';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { NAVIGATION } from '@/constants';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function PastDetails({ navigation }) {
   const userType = useSelector(state => state.userType);
@@ -108,7 +109,7 @@ export default function PastDetails({ navigation }) {
                 }
               })}
               {/* Admin */}
-              {userType.user == `${strings.userType.free}` && (
+              {userType.user == `${strings.userType.admin}` && (
                 <View style={styles.PostButtonContainer}>
                   <TouchableOpacity>
                     <Button
@@ -147,11 +148,10 @@ export default function PastDetails({ navigation }) {
           iconBg={theme.light.colors.infoBgLight}
           iconColor={theme.light.colors.info}
         />
-        <View
-          style={{
-            borderBottomWidth: 1,
-            borderBottomColor: theme.light.colors.infoBgLight,
-          }}
+        <HorizontalLine
+          color={theme.light.colors.infoBgLight}
+          paddingTop={15}
+          paddingBottom={8}
         />
         <ModalList
           title={strings.giveaway.endNow}

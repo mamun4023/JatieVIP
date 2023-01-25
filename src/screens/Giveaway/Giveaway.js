@@ -38,10 +38,20 @@ export function Giveaway({ navigation }) {
         </View>
 
         <View style={styles.iconContiner}>
-          <Icon icon={faSearch} size={ms(22)} style={styles.searchIcon} />
-          <Icon icon={faBell} size={ms(22)} style={styles.bellIcon} />
+          <Icon
+            icon={faSearch}
+            size={ms(22)}
+            style={styles.searchIcon}
+            onPress={() => navigation.navigate(NAVIGATION.search)}
+          />
+          <Icon
+            icon={faBell}
+            size={ms(22)}
+            style={styles.bellIcon}
+            onPress={() => navigation.navigate(NAVIGATION.notification)}
+          />
         </View>
-        <View style={styles.bellAlert} />
+        {/* <View style={styles.bellAlert} /> */}
       </View>
 
       <StatusNavigatorBar

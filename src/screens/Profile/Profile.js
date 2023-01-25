@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet, StatusBar , SafeAreaView} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  StatusBar,
+  SafeAreaView,
+} from 'react-native';
 import {
   faSliders,
   faSearch,
@@ -20,15 +27,15 @@ import {
   HorizontalLine,
 } from '@/components';
 import { strings } from '@/localization';
-import {useSelector, useDispatch} from 'react-redux';
-import {ChooseUser, logout} from '@/actions/UserActions'
+import { useSelector, useDispatch } from 'react-redux';
+import { ChooseUser, logout } from '@/actions/UserActions';
 import { FontFamily } from '@/theme/Fonts';
 
 export function Profile({ navigation }) {
   const dispatch = useDispatch();
-  const userType = useSelector(state => state.userType)
+  const userType = useSelector(state => state.userType);
   const [status, setStatus] = useState(strings.profile.myStatus);
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="transparent" />
@@ -37,7 +44,7 @@ export function Profile({ navigation }) {
           <Image
             style={styles.headerImage}
             source={{
-              uri: Data.profilePic
+              uri: Data.profilePic,
             }}
           />
           <View>
@@ -55,22 +62,22 @@ export function Profile({ navigation }) {
           <Icon
             icon={faSearch}
             size={ms(20)}
-            onPress = {()=> navigation.navigate(NAVIGATION.search)} 
-            style={styles.searchIcon} 
+            onPress={() => navigation.navigate(NAVIGATION.search)}
+            style={styles.searchIcon}
           />
-          <Icon 
-            icon={faBell} 
-            size={ms(20)} 
-            onPress = {()=> navigation.navigate(NAVIGATION.notification)}
-            style={styles.bellIcon} 
+          <Icon
+            icon={faBell}
+            size={ms(20)}
+            onPress={() => navigation.navigate(NAVIGATION.notification)}
+            style={styles.bellIcon}
           />
           <View style={styles.bellAlert} />
           <Icon
             icon={faRightFromBracket}
             size={ms(20)}
-            color = {theme.light.colors.secondary} 
-            onPress = {()=> dispatch(logout())}
-            style={styles.logOutIcon} 
+            color={theme.light.colors.secondary}
+            onPress={() => dispatch(logout())}
+            style={styles.logOutIcon}
           />
         </View>
       </View>
@@ -84,16 +91,20 @@ export function Profile({ navigation }) {
       />
       <StatusNavigatorBar
         title1={strings.profile.myStatus}
-        key1= {strings.profile.myStatus}
+        key1={strings.profile.myStatus}
         title2={strings.profile.myActivity}
-        key2= {strings.profile.myActivity}
+        key2={strings.profile.myActivity}
         status={status}
         setStatus={setStatus}
       />
       <HorizontalLine />
-      <ShareFeed />
+      <ShareFeed onPress={() => navigation.navigate(NAVIGATION.post)} />
       <View style={styles.feedContainer}>
-        {status == `${strings.profile.myStatus}` ? <MyStatus /> : <MyActivity />}
+        {status == `${strings.profile.myStatus}` ? (
+          <MyStatus />
+        ) : (
+          <MyActivity />
+        )}
       </View>
     </SafeAreaView>
   );
@@ -107,26 +118,27 @@ export const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems : 'flex-start',
+    alignItems: 'flex-start',
     padding: ms(9),
   },
   headerImageContainer: {
     flexDirection: 'row',
   },
-  nameTxt : [
-    TextStyles.header, {
-       color: theme.light.colors.black,
-       fontSize : ms(20, 0.3),
-       paddingLeft : ms(3, 0.3),
-       paddingTop : ms(4)
-    }
+  nameTxt: [
+    TextStyles.header,
+    {
+      color: theme.light.colors.black,
+      fontSize: ms(20, 0.3),
+      paddingLeft: ms(3, 0.3),
+      paddingTop: ms(4),
+    },
   ],
-  userNameTxt : {
-    fontFamily : FontFamily.Recoleta_regular,
-    fontSize : ms(14, 0.3),
-    position : 'absolute',
-    top : ms(25),
-    paddingLeft : ms(3, 0.3)
+  userNameTxt: {
+    fontFamily: FontFamily.Recoleta_regular,
+    fontSize: ms(14, 0.3),
+    position: 'absolute',
+    top: ms(25),
+    paddingLeft: ms(3, 0.3),
   },
   headerImage: {
     width: ms(50),
@@ -136,19 +148,19 @@ export const styles = StyleSheet.create({
   },
   iconContiner: {
     flexDirection: 'row',
-    paddingTop : ms(9)
+    paddingTop: ms(9),
   },
   logOutIcon: {
     // marginRight : ms(9)
   },
-  bellIcon : {
-    marginRight : ms(12)
+  bellIcon: {
+    marginRight: ms(12),
   },
-  searchIcon : {
-    marginRight : ms(12)
+  searchIcon: {
+    marginRight: ms(12),
   },
-  settingsIcon : {
-    marginRight : ms(12)
+  settingsIcon: {
+    marginRight: ms(12),
   },
   bellAlert: {
     height: ms(10),
@@ -165,9 +177,9 @@ export const styles = StyleSheet.create({
   },
 });
 
-
 const Data = {
-  name : "Adam Voigt",
-  userName : "@adam",
-  profilePic : 'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
-}
+  name: 'Adam Voigt',
+  userName: '@adam',
+  profilePic:
+    'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
+};

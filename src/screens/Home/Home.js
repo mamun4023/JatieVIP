@@ -130,7 +130,12 @@ export function Home({ navigation }) {
             size={ms(22)}
             onPress={() => navigation.navigate(NAVIGATION.search)}
           />
-          <Icon icon={faBell} size={ms(22)} style={{ marginLeft: ms(10) }} />
+          <Icon
+            icon={faBell}
+            size={ms(22)}
+            style={{ marginLeft: ms(10) }}
+            onPress={() => navigation.navigate(NAVIGATION.notification)}
+          />
         </View>
       </View>
       <StatusNavigatorBar

@@ -228,6 +228,10 @@ export const en = {
     edit: 'Edit',
     image: 'image',
     video: 'video',
+    titleHere: 'Title here',
+    whatOnYourMind: "What's on your mind?",
+    next: 'Next',
+
     //recent modal
     recent: 'Recent',
     popularToday: 'Popular Today',
@@ -279,8 +283,7 @@ export const en = {
     startDate: 'Start Date',
     endDate: 'End Date',
     numberOfWinners: 'Number of Winners',
-    forVIPsOnly: 'For VIPs Only',
-    usOnly: 'US-only',
+
     post: 'Post',
 
     //Alert
@@ -289,6 +292,13 @@ export const en = {
     message: 'message',
     report: 'report',
     blocked: 'blocked',
+
+    // post option
+
+    startDate: 'Start Date',
+    endDate: 'End Date',
+    forVIPsOnly: 'For VIPs Only',
+    usOnly: 'US-only',
   },
   message: {
     message: 'Message',

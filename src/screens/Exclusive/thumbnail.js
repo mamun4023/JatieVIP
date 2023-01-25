@@ -53,7 +53,7 @@ export default function Thubmnail({ navigation }) {
               return (
                 <View style={styles.videoContainer} key={item.vID}>
                   {item.videoLink ? (
-                    <AppVideoPlayer url={item.videoLink} />
+                    <AppVideoPlayer url={item.videoLink} poster={item.poster} />
                   ) : null}
                 </View>
               );
@@ -161,10 +161,14 @@ const Data = {
     {
       vID: 1,
       videoLink: 'https://vjs.zencdn.net/v/oceans.mp4',
+      poster:
+        'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
     },
     {
       vID: 2,
       videoLink: 'https://vjs.zencdn.net/v/oceans.mp4',
+      poster:
+        'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
     },
   ],
   photo: [
@@ -172,6 +176,8 @@ const Data = {
       pID: 1,
       photoLink:
         'https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=',
+      poster:
+        'https://www.dharmann.com/wp-content/uploads/2022/06/YT-Thumbnail-566-Husband-Pranks-Wife-Goes-Too-Far-Option-1E.jpg',
     },
     {
       pID: 2,

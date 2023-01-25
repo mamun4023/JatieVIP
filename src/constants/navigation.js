@@ -53,6 +53,7 @@ export const NAVIGATION = {
   signUp: 'SignUp',
   addProfilePicture: 'AddProfilePicture',
   adjustPicture: 'AdjustPicture',
+  post: 'Post',
 
   //Exclusive
   exclusiveThumbnail: 'ExclusiveThumbnail', //onPress thumbnail navigator
@@ -67,4 +68,6 @@ export const NAVIGATION = {
   seeAllParticipants: 'SeeAllParticipants', //onPress Admin see all participants
   adminGiveawayPost: 'AdminGiveawayPost', //onPress Admin giveaway
   adminGiveawayOption: 'AdminGiveawayOption', //onPress Admin giveaway options
+  notification: 'Notification',
+  search: 'Search',
 };
