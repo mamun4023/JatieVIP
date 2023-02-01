@@ -28,7 +28,10 @@ export default function Followers({ navigation }) {
   const [open, setOpen] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
-      <TopBackButton onPress={() => navigation.goBack()} />
+      <TopBackButton
+        onPress={() => navigation.goBack()}
+        style={{ padding: ms(10) }}
+      />
       <View style={styles.listHeader}>
         <Text style={styles.headerTxt}>{strings.profile.myFollowers}</Text>
         <Badge count={23} size={ms(16)} />

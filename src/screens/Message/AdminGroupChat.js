@@ -87,7 +87,10 @@ export default function AdminGroupChat({ navigation, route }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View>
-          <TopBackButton onPress={() => navigation.goBack()} />
+          <TopBackButton
+            onPress={() => navigation.goBack()}
+            style={{ paddingLeft: ms(10) }}
+          />
         </View>
         <View style={styles.headerIconContainer}>
           <Icon icon={faSearch} size={ms(22)} style={styles.searchIcon} />
@@ -454,6 +457,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop: ms(10),
+    paddingRight: ms(3),
   },
   headerIconContainer: {
     flexDirection: 'row',

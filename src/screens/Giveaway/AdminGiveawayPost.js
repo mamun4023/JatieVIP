@@ -9,9 +9,8 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import { Button, HorizontalLine, Icon } from '@/components';
+import { Button, HorizontalLine, Icon, TopBackButton } from '@/components';
 import {
-  faArrowLeft,
   faCircle,
   faImage,
   faVideoCamera,
@@ -134,12 +133,7 @@ export default function AdminExclusivePost({ navigation }) {
   return (
     <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
-        <Icon
-          icon={faArrowLeft}
-          size={ms(20)}
-          onPress={() => navigation.goBack()}
-          style={[styles.headerIcon]}
-        />
+        <TopBackButton onPress={() => navigation.goBack()} />
         <Text style={[styles.headerText, TextStyles.header]}>
           {strings.giveaway.createGiveaway}
         </Text>

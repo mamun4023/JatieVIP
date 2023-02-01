@@ -8,8 +8,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import { Button, Card, CardBody, Icon } from '@/components';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Button, Card, CardBody, Icon, TopBackButton } from '@/components';
 import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import { ms, vs } from 'react-native-size-matters';
@@ -22,12 +21,7 @@ export default function PostDetails({ navigation }) {
   return (
     <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
-        <Icon
-          icon={faArrowLeft}
-          size={ms(20)}
-          onPress={() => navigation.goBack()}
-          style={[styles.headerIcon]}
-        />
+        <TopBackButton onPress={() => navigation.goBack()} />
         <Text style={[styles.headerText, TextStyles.header]}>
           {strings.giveaway.title}
         </Text>
@@ -251,20 +245,33 @@ const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.primary,
     borderWidth: 2,
     borderColor: theme.light.colors.primary,
-    elevation: 2,
+    //IOS
+    shadowOffset: { width: -2, height: 4 },
+    shadowColor: theme.light.colors.secondary,
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+
+    //android
+    elevation: 5,
   },
   withdrawBtn: {
     width: '100%',
     backgroundColor: theme.light.colors.white,
     borderWidth: 2,
     borderColor: theme.light.colors.primary,
-    elevation: 2,
+    //IOS
+    shadowOffset: { width: -2, height: 4 },
+    shadowColor: theme.light.colors.secondary,
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+
+    //android
+    elevation: 5,
   },
   outOfUS: {
     width: '100%',
     backgroundColor: theme.light.colors.primaryBg,
     borderWidth: 2,
     borderColor: theme.light.colors.primaryBg,
-    // elevation: 2,
   },
 });

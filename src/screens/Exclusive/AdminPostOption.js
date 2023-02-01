@@ -47,7 +47,10 @@ export default function AdminPostOption({ navigation }) {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.headerContainer}>
-          <TopBackButton onPress={() => navigation.goBack()} />
+          <TopBackButton
+            onPress={() => navigation.goBack()}
+            style={{ padding: ms(10), paddingBottom: ms(10) }}
+          />
           <Text style={styles.headerTxt}>{strings.home.postOptions} </Text>
         </View>
         <View style={styles.optionContainer}>

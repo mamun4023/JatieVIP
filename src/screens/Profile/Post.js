@@ -9,9 +9,14 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import { AppSwitch, Button, HorizontalLine, Icon } from '@/components';
 import {
-  faArrowLeft,
+  AppSwitch,
+  Button,
+  HorizontalLine,
+  Icon,
+  TopBackButton,
+} from '@/components';
+import {
   faCircle,
   faImage,
   faVideoCamera,
@@ -137,12 +142,7 @@ export default function Post({ navigation }) {
   return (
     <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
-        <Icon
-          icon={faArrowLeft}
-          size={ms(20)}
-          onPress={() => navigation.goBack()}
-          style={[styles.headerIcon]}
-        />
+        <TopBackButton onPress={() => navigation.goBack()} />
         <Text style={[styles.headerText, TextStyles.header]}>
           {strings.home.shareToFeed}
         </Text>

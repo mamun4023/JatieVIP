@@ -21,7 +21,10 @@ export default function SchedulePost({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
-        <TopBackButton onPress={() => navigation.goBack()} />
+        <TopBackButton
+          onPress={() => navigation.goBack()}
+          style={{ padding: ms(5), paddingBottom: ms(10) }}
+        />
         <Text style={styles.headerTxt}>{strings.home.scheduledPost} </Text>
       </View>
       <View style={styles.postContainer}>
@@ -112,19 +115,19 @@ const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.white,
   },
   headerContainer: {
-    padding: ms(0),
+    padding: ms(10),
   },
   headerTxt: [
     TextStyles.header,
     {
       color: theme.light.colors.black,
-      paddingLeft: ms(9),
+      paddingLeft: ms(5),
     },
   ],
   postContainer: {
     flex: 1,
-    backgroundColor: theme.light.colors.primaryBgLight,
-    margin: ms(9),
+    backgroundColor: theme.light.colors.primaryBgLight, //
+    padding: ms(9),
   },
   cardFooter: {
     backgroundColor: theme.light.colors.infoBgLight,

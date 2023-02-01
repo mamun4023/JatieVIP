@@ -17,9 +17,9 @@ import {
   Icon,
   ModalDown,
   ModalList,
+  TopBackButton,
 } from '@/components';
 import {
-  faArrowLeft,
   faEllipsis,
   faFlag,
   faPen,
@@ -39,12 +39,7 @@ export default function PastDetails({ navigation }) {
   return (
     <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
-        <Icon
-          icon={faArrowLeft}
-          size={ms(20)}
-          onPress={() => navigation.goBack()}
-          style={[styles.headerIcon]}
-        />
+        <TopBackButton onPress={() => navigation.goBack()} />
         <View style={styles.adminoOption}>
           <Text style={[styles.headerText, TextStyles.header]}>
             {strings.giveaway.title}
@@ -348,7 +343,14 @@ const styles = StyleSheet.create({
     backgroundColor: theme.light.colors.white,
     borderWidth: 2,
     borderColor: theme.light.colors.primary,
-    elevation: 2,
+    //IOS
+    shadowOffset: { width: -2, height: 4 },
+    shadowColor: theme.light.colors.secondary,
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+
+    //android
+    elevation: 5,
   },
   adminoOption: {
     flexDirection: 'row',

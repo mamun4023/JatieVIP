@@ -29,12 +29,15 @@ export default function Participants({ navigation }) {
   const [open, setOpen] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
-      <TopBackButton onPress={() => navigation.goBack()} />
+      <TopBackButton
+        onPress={() => navigation.goBack()}
+        style={{ padding: ms(10), paddingBottom: ms(10) }}
+      />
       <View style={styles.listHeader}>
         <Text
           style={[
             TextStyles.header,
-            { color: theme.light.colors.black, paddingRight: ms(8) },
+            { color: theme.light.colors.black, paddingRight: ms(10) },
           ]}
         >
           {strings.giveaway.participants}
@@ -44,7 +47,7 @@ export default function Participants({ navigation }) {
       <View
         style={{
           borderBottomWidth: 1,
-          borderBottomColor: theme.light.colors.infoBgLight,
+          borderBottomColor: theme.light.colors.primaryBgLight,
           marginBottom: ms(10),
           marginTop: ms(10),
         }}
@@ -138,6 +141,7 @@ const styles = StyleSheet.create({
     paddingBottom: ms(5),
     flexDirection: 'row',
     alignItems: 'center',
+    paddingLeft: ms(10),
   },
   listContainer: {
     padding: ms(2),
@@ -156,8 +160,8 @@ const styles = StyleSheet.create({
     height: ms(40),
     width: ms(40),
     borderRadius: 100,
-    borderWidth: 1,
-    borderColor: theme.light.colors.info,
+    // borderWidth: 1,
+    // borderColor: theme.light.colors.info,
   },
   nameContainer: {
     flexDirection: 'row',

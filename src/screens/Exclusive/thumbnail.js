@@ -7,8 +7,7 @@ import {
   Linking,
   ScrollView,
 } from 'react-native';
-import { AppVideoPlayer, Icon } from '@/components';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { AppVideoPlayer, Icon, TopBackButton } from '@/components';
 import { TextStyles, theme } from '@/theme';
 import { FontFamily } from '@/theme/Fonts';
 import { ms, vs } from 'react-native-size-matters';
@@ -19,12 +18,7 @@ export default function Thubmnail({ navigation }) {
   return (
     <SafeAreaView style={styles.contianer}>
       <View style={styles.header}>
-        <Icon
-          icon={faArrowLeft}
-          size={ms(20)}
-          onPress={() => navigation.goBack()}
-          style={[styles.headerIcon]}
-        />
+        <TopBackButton onPress={() => navigation.goBack()} />
         <Text style={[styles.headerText, TextStyles.header]}>
           {strings.exclusive.header}
         </Text>

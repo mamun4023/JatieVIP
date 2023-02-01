@@ -10,7 +10,14 @@ import {
 } from 'react-native';
 import { faEllipsis, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { TextStyles, theme } from '@/theme';
-import { TopBackButton, Icon, Badge, ModalDown, ModalList } from '@/components';
+import {
+  TopBackButton,
+  Icon,
+  Badge,
+  ModalDown,
+  ModalList,
+  HorizontalLine,
+} from '@/components';
 import { NAVIGATION } from '@/constants';
 import { strings } from '@/localization';
 import { ms } from 'react-native-size-matters';
@@ -20,13 +27,16 @@ export default function BlockedUsers({ navigation }) {
   const [open, setOpen] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
-      <TopBackButton onPress={() => navigation.goBack()} />
+      <TopBackButton
+        onPress={() => navigation.goBack()}
+        style={{ padding: 10 }}
+      />
       <View style={styles.listHeader}>
         <Text style={styles.headerTxt}>{strings.profile.blockedUsers}</Text>
         <Badge count={23} size={ms(13)} />
       </View>
       <HorizontalLine
-        color={theme.light.colors.infoBgLight}
+        color={theme.light.colors.primaryBg}
         paddingTop={15}
         paddingBottom={8}
       />

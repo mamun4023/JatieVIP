@@ -25,12 +25,15 @@ export default function Search({ navigation }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.left}>
-          <TopBackButton onPress={() => navigation.goBack()} />
+          <TopBackButton
+            onPress={() => navigation.goBack()}
+            style={{ paddingRight: ms(5), paddingLeft: ms(10) }}
+          />
           <Text
             style={[TextStyles.header, { color: theme.light.colors.black }]}
           >
             {' '}
-            {strings.profile.search}{' '}
+            {strings.exclusive.search}{' '}
           </Text>
         </View>
         <View style={styles.right}>
@@ -53,8 +56,9 @@ export default function Search({ navigation }) {
         <TextField
           style={{
             paddingRight: ms(80),
+            backgroundColor: theme.light.colors.white,
           }}
-          placeholder={strings.profile.searchUser}
+          placeholder={strings.exclusive.searchUser}
           onFocus={() => setSearchListOpen(true)}
         />
         <View style={styles.moreIcon}>
@@ -72,8 +76,10 @@ export default function Search({ navigation }) {
           />
           <Text style={styles.searchTxt}>
             {' '}
-            {strings.profile.searchForUsers}
+            {strings.exclusive.searchForUsers}
           </Text>
+
+          {/* <View style={styles.arrow}></View> */}
         </View>
       )}
       {searchListOpen && (
@@ -123,7 +129,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // padding : ms(10),
+    margin: ms(10),
   },
   left: {
     flexDirection: 'row',
@@ -141,8 +147,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchBox: {
-    marginTop: vs(-15),
-    marginBottom: vs(-10),
+    marginTop: vs(-20),
+    marginBottom: vs(-15),
+    margin: ms(10),
   },
   moreIcon: {
     position: 'absolute',
@@ -200,6 +207,36 @@ const styles = StyleSheet.create({
   userNameTxt: {
     fontFamily: FontFamily.Recoleta_regular,
     fontSize: ms(14, 0.3),
+  },
+
+  //   search
+
+  //   arrow: {
+  //     height: '40%',
+  //     backgroundColor: theme.light.colors.primary,
+  //     marginLeft: '2%',
+  //     borderBottomLeftRadius: 40,
+  //     overflow: 'hidden',
+  //     position: 'absolute',
+  //   },
+  arrow: {
+    top: 20,
+    left: 40,
+    borderWidth: 1,
+    borderColor: theme.light.colors.primary,
+    // border: 2px dotted #BE5F4B,
+    // border-color: transparent transparent transparent #BE5F4B;
+    height: '40%',
+    width: '50%',
+    borderBottomLeftRadius: 250,
+    borderTopRightRadius: 250,
+    // border-radius: 230px 0 0 150px;
+    position: 'absolute',
+    // borderBottomColor: 'transparent',
+    // borderLeftColor: 'transparent',
+    borderTopColor: 'transparent',
+    borderEndColor: 'transparent',
+    borderStyle: 'dotted',
   },
 });
 

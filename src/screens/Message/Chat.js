@@ -82,7 +82,10 @@ export default function Chat({ navigation, route }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View>
-          <TopBackButton onPress={() => navigation.goBack()} />
+          <TopBackButton
+            onPress={() => navigation.goBack()}
+            style={{ paddingLeft: ms(10) }}
+          />
         </View>
         <View style={styles.headerIconContainer}>
           <Icon icon={faSearch} size={ms(22)} style={styles.searchIcon} />
@@ -152,19 +155,20 @@ export default function Chat({ navigation, route }) {
               {item.sendingImages.length > 0 ? (
                 <View>
                   {item.sendingImages.length <= 3 ? (
-                    <TouchableOpacity
-                      onPress={() => {
-                        setShowImageView(true),
-                          setFeedImages(item.sendingImages);
-                      }}
-                    >
-                      <View style={styles.imageContainer}>
-                        {item?.sendingImages?.map(data => (
+                    <View style={styles.imageContainer}>
+                      {item?.sendingImages?.map(data => (
+                        <TouchableOpacity
+                          style={styles.touchContainer}
+                          key={data.id}
+                          onPress={() => {
+                            setShowImageView(true),
+                              setFeedImages(item.sendingImages);
+                          }}
+                        >
                           <Image
                             source={{
                               uri: data.url,
                             }}
-                            key={data.id}
                             style={
                               item.sendingImages.length == 1
                                 ? [
@@ -188,19 +192,21 @@ export default function Chat({ navigation, route }) {
                                   ]
                             }
                           />
-                        ))}
-                      </View>
-                    </TouchableOpacity>
+                        </TouchableOpacity>
+                      ))}
+                    </View>
                   ) : item.sendingImages.length > 3 ? (
-                    <TouchableOpacity
-                      onPress={() => {
-                        setShowImageView(true),
-                          setFeedImages(item.sendingImages);
-                      }}
-                    >
-                      <View style={styles.imageContainer}>
-                        {item?.sendingImages?.map(data =>
-                          data.id <= 2 ? (
+                    <View style={styles.imageContainer}>
+                      {item?.sendingImages?.map(data =>
+                        data.id <= 2 ? (
+                          <TouchableOpacity
+                            style={styles.touchContainer}
+                            key={data.id}
+                            onPress={() => {
+                              setShowImageView(true),
+                                setFeedImages(item.sendingImages);
+                            }}
+                          >
                             <Image
                               source={{
                                 uri: data.url,
@@ -213,7 +219,16 @@ export default function Chat({ navigation, route }) {
                                 },
                               ]}
                             />
-                          ) : data.id == 3 ? (
+                          </TouchableOpacity>
+                        ) : data.id == 3 ? (
+                          <TouchableOpacity
+                            style={styles.touchContainer}
+                            key={data.id}
+                            onPress={() => {
+                              setShowImageView(true),
+                                setFeedImages(item.sendingImages);
+                            }}
+                          >
                             <ImageBackground
                               source={{
                                 uri: data.url,
@@ -232,31 +247,24 @@ export default function Chat({ navigation, route }) {
                                 },
                               ]}
                             >
-                              <TouchableOpacity
-                                onPress={() => {
-                                  setShowImageView(true),
-                                    setFeedImages(item.sendingImages);
+                              <Text
+                                style={{
+                                  color: theme.light.colors.white,
+                                  fontFamily:
+                                    FontFamily.BrandonGrotesque_regular,
+                                  fontSize: ms(24, 0.3),
+                                  width: '100%',
+                                  padding: 35,
                                 }}
                               >
-                                <Text
-                                  style={{
-                                    color: theme.light.colors.white,
-                                    fontFamily:
-                                      FontFamily.BrandonGrotesque_regular,
-                                    fontSize: ms(24, 0.3),
-                                    width: '100%',
-                                    padding: 35,
-                                  }}
-                                >
-                                  {strings.message.plus}
-                                  {item.sendingImages.length - 2}
-                                </Text>
-                              </TouchableOpacity>
+                                {strings.message.plus}
+                                {item.sendingImages.length - 2}
+                              </Text>
                             </ImageBackground>
-                          ) : null
-                        )}
-                      </View>
-                    </TouchableOpacity>
+                          </TouchableOpacity>
+                        ) : null
+                      )}
+                    </View>
                   ) : null}
                   <View>
                     <Image
@@ -351,7 +359,11 @@ export default function Chat({ navigation, route }) {
             iconColor={theme.light.colors.error}
             iconBg={theme.light.colors.infoBgLight}
           />
-          <HorizontalLine color={theme.light.colors.infoBgLight} />
+          <HorizontalLine
+            color={theme.light.colors.infoBgLight}
+            paddingTop={15}
+            paddingBottom={8}
+          />
           <ModalList
             title={strings.operations.report}
             icon={faFlag}
@@ -570,6 +582,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop: ms(10),
   },
   headerIconContainer: {
     flexDirection: 'row',
@@ -665,6 +678,13 @@ const styles = StyleSheet.create({
 
   //single image container
 
+  touchContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    // paddingRight: ms(40),
+    justifyContent: 'space-between',
+    marginRight: ms(-5),
+  },
   imageContainer: {
     flex: 1,
     flexDirection: 'row',

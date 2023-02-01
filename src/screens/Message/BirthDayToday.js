@@ -28,17 +28,23 @@ export default function BirthDayToday({ navigation }) {
   const [open, setOpen] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
-      <TopBackButton onPress={() => navigation.goBack()} />
+      <TopBackButton
+        onPress={() => navigation.goBack()}
+        style={{
+          paddingRight: ms(5),
+          paddingLeft: ms(10),
+          paddingTop: ms(10),
+          paddingBottom: ms(10),
+        }}
+      />
       <View style={styles.listHeader}>
         <Text style={styles.headerTxt}>{strings.message.birthDaysToday}</Text>
         <Badge count={12} size={ms(16)} />
       </View>
-      <View
-        style={{
-          borderBottomWidth: 0.5,
-          borderColor: theme.light.colors.primaryBg,
-          margin: ms(10),
-        }}
+      <HorizontalLine
+        color={theme.light.colors.primaryBg}
+        paddingTop={10}
+        paddingBottom={10}
       />
       <View>
         <FlatList
@@ -122,6 +128,7 @@ const styles = StyleSheet.create({
     {
       color: theme.light.colors.black,
       paddingLeft: ms(9),
+      paddingRight: ms(10),
     },
   ],
 

@@ -90,7 +90,7 @@ export const en = {
     message: 'This screen has the iOS native large header.',
     header: 'Profile',
     logout: 'Logout',
-    feedTitle: 'Share To Feed',
+    feedTitle: 'Share to Feed',
     feedLebel: "What's on your mind?",
     follow: 'Follow',
     unfollow: 'Unfollow',

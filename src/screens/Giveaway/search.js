@@ -25,7 +25,10 @@ export default function Search({ navigation }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.left}>
-          <TopBackButton onPress={() => navigation.goBack()} />
+          <TopBackButton
+            onPress={() => navigation.goBack()}
+            style={{ paddingRight: ms(5), paddingLeft: ms(10) }}
+          />
           <Text
             style={[TextStyles.header, { color: theme.light.colors.black }]}
           >

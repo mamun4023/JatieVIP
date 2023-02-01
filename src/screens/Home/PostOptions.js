@@ -46,7 +46,10 @@ export default function PostOptions({ navigation }) {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.headerContainer}>
-          <TopBackButton onPress={() => navigation.goBack()} />
+          <TopBackButton
+            onPress={() => navigation.goBack()}
+            style={{ padding: ms(10), paddingBottom: ms(10) }}
+          />
           <Text style={styles.headerTxt}>{strings.home.postOptions} </Text>
         </View>
         <View style={styles.optionContainer}>
@@ -257,7 +260,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.light.colors.white,
   },
-
+  headerContainer: {
+    paddingTop: 20,
+  },
   headerTxt: [
     TextStyles.header,
     {
