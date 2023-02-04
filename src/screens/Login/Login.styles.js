@@ -13,6 +13,8 @@ export const styles = StyleSheet.create({
   submitButton: {
     marginTop: 20,
   },
+  logoContainer: { marginBottom: ms(10) },
+  linkColor: { color: theme.light.colors.hyperlink },
   subTitle: {
     fontSize: ms(18, 0.3),
     fontFamily: FontFamily.BrandonGrotesque_medium,

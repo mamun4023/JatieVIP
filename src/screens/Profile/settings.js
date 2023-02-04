@@ -37,7 +37,7 @@ export default function Settings({ navigation }) {
     <SafeAreaView style={styles.contianer}>
       <TopBackButton
         onPress={() => navigation.goBack()}
-        style={{ padding: ms(10) }}
+        style={styles.TopBackButton}
       />
       <Text style={[styles.headerText, TextStyles.header]}>
         {strings.profile.settings}{' '}
@@ -49,10 +49,8 @@ export default function Settings({ navigation }) {
             onPress={() => navigation.navigate(NAVIGATION.upgradeMembership)}
             style={styles.upgradeBox}
           >
-            <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <View style={{ flexDirection: 'row' }}>
+            <View style={styles.iconView}>
+              <View style={styles.bellIcon}>
                 <FontAwesomeIcon
                   icon={faBell}
                   color={theme.light.colors.primary}
@@ -77,7 +75,7 @@ export default function Settings({ navigation }) {
           style={styles.list}
           onPress={() => navigation.navigate(NAVIGATION.editProfile)}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.rawContainer}>
             <View style={styles.iconContainer}>
               <FontAwesomeIcon
                 icon={faUser}
@@ -98,7 +96,7 @@ export default function Settings({ navigation }) {
           onPress={() => navigation.navigate(NAVIGATION.blockedUsers)}
           style={styles.list}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.rawContainer}>
             <View style={styles.iconContainer}>
               <FontAwesomeIcon
                 icon={faLock}
@@ -119,7 +117,7 @@ export default function Settings({ navigation }) {
           onPress={() => navigation.navigate(NAVIGATION.notificationSettings)}
           style={styles.list}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.rawContainer}>
             <View style={styles.iconContainer}>
               <FontAwesomeIcon
                 icon={faBell}
@@ -143,7 +141,7 @@ export default function Settings({ navigation }) {
             onPress={() => navigation.navigate(NAVIGATION.notificationSettings)}
             style={styles.list}
           >
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={styles.rawContainer}>
               <View style={styles.iconContainer}>
                 <FontAwesomeIcon
                   icon={faCrown}
@@ -168,7 +166,7 @@ export default function Settings({ navigation }) {
             onPress={() => navigation.navigate(NAVIGATION.adminTools)}
             style={styles.list}
           >
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={styles.rawContainer}>
               <View style={styles.iconContainer}>
                 <FontAwesomeIcon
                   icon={faSliders}
@@ -238,6 +236,7 @@ const styles = StyleSheet.create({
   headerIcon: {
     color: theme.light.colors.info,
   },
+  TopBackButton: { padding: ms(10) },
   headerText: {
     color: theme.light.colors.black,
     paddingLeft: ms(9),
@@ -254,6 +253,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: ms(10),
   },
+  iconView: { flexDirection: 'row', justifyContent: 'space-between' },
+  bellIcon: { flexDirection: 'row' },
+  rawContainer: { flexDirection: 'row', alignItems: 'center' },
   upgradeText: [
     TextStyles.header,
     {

@@ -11,6 +11,7 @@ export const styles = colors =>
       paddingHorizontal: ms(20),
       backgroundColor: 'gray',
     },
+    logoContainer: { marginBottom: s(41) },
     subContainer: {
       position: 'absolute',
       bottom: ms(30),
@@ -23,6 +24,7 @@ export const styles = colors =>
       justifyContent: 'space-between',
       width: '80%',
     },
+    signButton: { marginTop: s(15) },
     copyrightTitle: {
       fontFamily: FontFamily.BrandonGrotesque_regular,
       fontSize: ms(15, 0.3),

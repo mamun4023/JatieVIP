@@ -14,10 +14,10 @@ export default function NotificationSettings({ navigation }) {
     <SafeAreaView style={styles.container}>
       <TopBackButton
         onPress={() => navigation.goBack()}
-        style={{ padding: ms(10) }}
+        style={styles.TopBackButton}
       />
       <View style={styles.listHeader}>
-        <Text style={[TextStyles.header, { color: theme.light.colors.black }]}>
+        <Text style={[TextStyles.header, styles.headerColor]}>
           {' '}
           {strings.profile.notificatin}{' '}
         </Text>
@@ -52,15 +52,10 @@ export default function NotificationSettings({ navigation }) {
         <AppSwitch value={isEnabled} onChange={toggleSwitch} />
       </View>
 
-      <View style={{ alignItems: 'center', marginTop: ms(150) }}>
+      <View style={styles.buttonContainer}>
         <Button
           title={strings.operations.save}
-          style={{
-            backgroundColor: theme.light.colors.primary,
-            alignItems: 'center',
-            borderWidth: 0,
-            width: '90%',
-          }}
+          style={styles.button}
           textStyle={{
             color: theme.light.colors.white,
           }}
@@ -75,6 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.light.colors.white,
   },
+  TopBackButton: { padding: ms(10) },
   listHeader: {
     paddingTop: ms(5),
     paddingBottom: ms(5),
@@ -99,4 +95,15 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.BrandonGrotesque_medium,
     fontSize: ms(16, 0.3),
   },
+  buttonContainer: {
+    alignItems: 'center',
+    marginTop: ms(150),
+  },
+  button: {
+    backgroundColor: theme.light.colors.primary,
+    alignItems: 'center',
+    borderWidth: 0,
+    width: '90%',
+  },
+  headerColor: { color: theme.light.colors.black },
 });
