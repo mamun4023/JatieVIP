@@ -69,10 +69,5 @@ Modify the environment variables files in root folder (`.env.development`, `.env
 For coding styling we decided to go with ESLint and [React Native community's styleguide](https://github.com/facebook/react-native/tree/master/packages/eslint-config-react-native-community#readme).
 
 ## Developer
-
-[Jayant Sharma](https://bitbucket.org/jayant_yapapp/)
-
-## Author
-
-[Jayant Sharma](https://bitbucket.org/jayant_yapapp/)
+Mamunur Rashid
 
